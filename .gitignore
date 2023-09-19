@@ -1,0 +1,6 @@
+*
+!.gitignore
+!wofi/
+!waybar/
+!hypr/
+!mako/
