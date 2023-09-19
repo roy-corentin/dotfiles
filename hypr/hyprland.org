@@ -1,0 +1,434 @@
+#+title: Hyprland
+#+AUTHOR Corentin ROY (JilkoniX)
+#+PROPERTY: header-args :tangle hyprland.conf
+#+STARTUP: showeverything
+
+* TABLE OF CONTENT :TOC:
+- [[#output][OUTPUT]]
+- [[#input][INPUT]]
+- [[#genereal][GENEREAL]]
+- [[#decoration][DECORATION]]
+  - [[#blur-for-waybar][Blur For Waybar]]
+- [[#anmations][ANMATIONS]]
+- [[#dwindle][DWINDLE]]
+- [[#misc][MISC]]
+- [[#gesture][GESTURE]]
+- [[#window-rules][WINDOW RULES]]
+  - [[#general][General]]
+  - [[#applications-specific][Applications specific]]
+- [[#keybindings][KEYBINDINGS]]
+  - [[#variable][Variable]]
+  - [[#terminal][Terminal]]
+  - [[#apps][Apps]]
+  - [[#wofi][Wofi]]
+  - [[#misc-1][Misc]]
+  - [[#some-nice-mouse-binds][Some nice mouse binds]]
+  - [[#function-keys][Function keys]]
+  - [[#screenshots][Screenshots]]
+  - [[#hyprland][Hyprland]]
+  - [[#focus][Focus]]
+  - [[#move][Move]]
+  - [[#resize][Resize]]
+  - [[#workspaces][Workspaces]]
+  - [[#send-to-workspaces][Send to Workspaces]]
+- [[#startup][STARTUP]]
+  - [[#notifications][Notifications]]
+  - [[#status-bar][Status-Bar]]
+  - [[#startup-script][Startup Script]]
+  - [[#blue-light][Blue-Light]]
+  - [[#bluetooth][Bluetooth]]
+  - [[#screen-sharing][Screen-Sharing]]
+  - [[#polkit][Polkit]]
+  - [[#exec-process-on-specific-workspace][Exec process on specific workspace]]
+  - [[#wallpaper][Wallpaper]]
+
+* OUTPUT
+Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
+#+begin_src conf
+monitor=eDP-1,1920x1080@60,1920x0,1
+workspace=eDP-1,2
+monitor=HDMI-A-1,1920x1080@60,0x0,1
+workspace=HDMI-A-1,1
+ # monitor=DP-2,1920x1080@144,0x0,1
+ # workspace=DP-2,1
+ # monitor=DVI-D-1,1920x1080@60,1920x0,1
+ # workspace=DVI-D-1,2
+
+# Example :
+#monitor=eDP-1,1920x1080@60,0x0,1
+#monitor=eDP-1,transform,0
+#monitor=eDP-1,addreserved,10,10,10,10
+#workspace=eDP-1,1
+#+end_src
+
+* INPUT
+Configure mouse and touchpad here
+#+begin_src conf
+input {
+    kb_layout=fr
+    kb_variant=
+    kb_model=
+    kb_options=
+    kb_rules=
+    follow_mouse=1
+    natural_scroll=0
+    force_no_accel=0
+    # repeat_rate=
+    # repeat_delay=
+    numlock_by_default=1
+}
+#+end_src
+
+* GENEREAL
+#+begin_src conf
+general {
+    # main_mod=SUPER
+
+    layout=dwindle
+    sensitivity=1.0 # for mouse cursor
+
+    gaps_in=5
+    gaps_out=10
+
+    border_size=3
+    col.active_border=0xFFB4A1DB
+    col.inactive_border=0xFF343A40
+
+    # damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
+    apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
+}
+#+end_src
+
+* DECORATION
+Decoration settings like Rounded Corners, Opacity, Blur, etc.
+
+Your blur ="amount"= is =blur_size * blur_passes=, but high blur_size (over around 5-ish) will produce artifacts.
+if you want heavy blur, you need to up the blur_passes.
+the more passes, the more you can up the blur_size without noticing artifacts.
+
+#+begin_src conf
+decoration {
+    rounding=12       # Original: rounding=-1
+    multisample_edges=0
+
+    drop_shadow=true
+    shadow_range=15
+    col.shadow=0xffa7caff
+    col.shadow_inactive=0x50000000
+
+    active_opacity=0.9
+    inactive_opacity=0.7
+    fullscreen_opacity=1.0
+
+    blur {
+        size=2 # minimum 1
+        passes=2 # minimum 1, more passes = more resource intensive.
+        ignore_opacity=true
+        new_optimizations=on
+    }
+}
+#+end_src
+
+** Blur For Waybar
+#+begin_src conf
+blurls=waybar
+blurls=lockscreen
+#+end_src
+
+
+* ANMATIONS
+#+begin_src conf
+animations {
+    enabled=1
+
+    # Old
+    # animation=windows,1,8,default,popin 80%
+    # animation=fadeOut,1,8,default
+    # animation=fadeIn,1,8,default
+    # animation=workspaces,1,8,default
+    #animation=workspaces,1,6,overshot
+
+    # New
+    bezier=overshot,0.13,0.99,0.29,1.1
+    animation=windows,1,4,overshot,popin
+    animation=fade,1,10,default
+    animation=workspaces,1,6,overshot,slide
+    animation=border,1,10,default
+}
+#+end_src
+
+* DWINDLE
+#+begin_src conf
+dwindle {
+    pseudotile=0 # enable pseudotiling on dwindle
+    preserve_split=true
+}
+#+end_src
+
+* MISC
+#+begin_src conf
+misc {
+  disable_hyprland_logo=true
+  disable_splash_rendering=true
+  mouse_move_enables_dpms=true
+  vfr = false
+}
+#+end_src
+
+* GESTURE
+#+begin_src conf
+gestures {
+    workspace_swipe=yes
+    workspace_swipe_fingers=3
+}
+#+end_src
+
+* WINDOW RULES
+** General
+#+begin_src conf
+
+# Float Necessary Windows
+windowrule=float,Wofi
+windowrule=float,waypaper
+windowrule=float,Tuple
+windowrule=float,pavucontrol
+windowrule=float,foot-float
+windowrule=float,yad|nm-connection-editor|pavucontrolk
+windowrule=float,polkit-gnome|kvantummanager|qt5ct
+windowrule=float,feh|Viewnior|Gpicview|Gimp|nomacs
+windowrule=float,VirtualBox Manager|qemu|Qemu-system-x86_64
+windowrule=float,xfce4-appfinder
+
+windowrulev2=float,class:^()$,title:^(Picture in picture)$
+windowrulev2=float,class:^(brave)$,title:^(Save File)$
+windowrulev2=float,class:^(brave)$,title:^(Open File)$
+windowrulev2=float,class:^(blueman-manager)$
+windowrulev2=float,class:^(org.twosheds.iwgtk)$
+windowrulev2=float,class:^(blueberry.py)$
+windowrulev2=float,class:^(xdg-desktop-portal-gtk)$
+
+windowrule=float,foot-full
+windowrule=move 0 0,foot-full
+windowrule=size 100% 100%,foot-full
+
+windowrule=float,wlogout
+windowrule=move 0 0,wlogout
+windowrule=size 100% 100%,wlogout
+windowrule=animation slide,wlogout
+
+#windowrule=move 69 420,abc
+#windowrule=size 420 69,abc
+#windowrule=tile,xyz
+#windowrule=pseudo,abc
+#windowrule=monitor 0,xyz
+#windowrule=workspace 12,abc
+#windowrule=opacity 1.0,abc
+#windowrule=animation slide left,abc
+#windowrule=rounding 10,abc
+#+end_src
+
+** Applications specific
+#+begin_src conf
+windowrule=opacity 0.9 override 0.8,^(Emacs)$
+windowrulev2=opacity 1.0 ,fullscreen:1,class:^(Emacs)$
+windowrule=opacity 1.0,^(Brave-browser)$
+#+end_src
+
+* KEYBINDINGS
+** Variable
+#+begin_src conf
+# $term = ~/.config/hypr/scripts/terminal
+$term = terminator
+$wifimenu = ~/.config/wofi/wifimenu.sh
+$menu2 = ~/.config/hypr/scripts/menu
+$menu3 = xfce4-appfinder
+$powermenu = ~/.config/hypr/scripts/powermenu
+$volume = ~/.config/hypr/scripts/volume
+$backlight = ~/.config/hypr/scripts/brightness
+$screenshot = ~/.config/hypr/scripts/screenshot
+$lockscreen = ~/.config/hypr/scripts/lockscreen
+$wlogout = ~/.config/hypr/scripts/wlogout
+$colorpicker = ~/.config/hypr/scripts/colorpicker
+#$files = nemo
+$files = files
+$editor = emacs
+$browser = brave
+#+end_src
+
+** Terminal
+#+begin_src conf
+bind=SUPER,Return,exec,$term
+bind=SUPERSHIFT,Return,exec,$term
+bind=SUPERALT,Return,exec,$term -f
+bind=SUPER,T,exec,$term -F
+#+end_src
+
+** Apps
+#+begin_src conf
+bind=SUPERSHIFT,F,exec,$files
+bind=SUPERSHIFT,E,exec,$editor
+bind=SUPERSHIFT,W,exec,$browser
+#+end_src
+
+** Wofi
+#+begin_src conf
+bind=ALT,F1,exec,$wifimenu
+bind=SUPER,D,exec,$menu2
+bind=SUPER,X,exec,$powermenu
+#+end_src
+
+** Misc
+#+begin_src conf
+bind=SUPER,N,exec,nm-connection-editor
+bind=SUPER,P,exec,$colorpicker
+# bind=SUPER,X,exec,$wlogout
+bind=CTRLALT,L,exec,$lockscreen
+#+end_src
+
+** Some nice mouse binds
+#+begin_src conf
+bindm=SUPER,mouse:272,movewindow
+bindm=SUPER,mouse:273,resizewindow
+#+end_src
+
+** Function keys
+#+begin_src conf
+bind=,XF86MonBrightnessUp,exec,$backlight --inc
+bind=,XF86MonBrightnessDown,exec,$backlight --dec
+bind=,XF86AudioRaiseVolume,exec,$volume --inc
+bind=,XF86AudioLowerVolume,exec,$volume --dec
+bind=,XF86AudioMute,exec,$volume --toggle
+bind=,XF86AudioMicMute,exec,$volume --toggle-mic
+bind=,XF86AudioNext,exec,mpc next
+bind=,XF86AudioPrev,exec,mpc prev
+bind=,XF86AudioPlay,exec,mpc toggle
+bind=,XF86AudioStop,exec,mpc stop
+#+end_src
+
+** Screenshots
+#+begin_src conf
+bind=,Print,exec,$screenshot --now
+bind=SUPER,Print,exec,$screenshot --in5
+bind=SHIFT,Print,exec,$screenshot --in10
+bind=CTRL,Print,exec,$screenshot --win
+bind=SUPERCTRL,Print,exec,$screenshot --area
+#+end_src
+
+** Hyprland
+#+begin_src conf
+bind=SUPER,Q,killactive,
+bind=SUPER,C,killactive,
+bind=CTRLALT,Delete,exit,
+bind=SUPER,F,fullscreen,
+bind=SUPER,Space,togglefloating,
+bind=SUPERSHIFT,Space,togglesplit,
+bind=SUPER,S,pseudo,
+#+end_src
+
+** Focus
+#+begin_src conf
+bind=SUPER,H,movefocus,l
+bind=SUPER,L,movefocus,r
+bind=SUPER,K,movefocus,u
+bind=SUPER,J,movefocus,d
+#+end_src
+
+** Move
+#+begin_src conf
+bind=SUPERSHIFT,H,movewindow,l
+bind=SUPERSHIFT,L,movewindow,r
+bind=SUPERSHIFT,K,movewindow,u
+bind=SUPERSHIFT,J,movewindow,d
+#+end_src
+
+** Resize
+#+begin_src conf
+bind=SUPERCTRL,H,resizeactive,-20 0
+bind=SUPERCTRL,L,resizeactive,20 0
+bind=SUPERCTRL,K,resizeactive,0 -20
+bind=SUPERCTRL,J,resizeactive,0 20
+#+end_src
+
+** Workspaces
+#+begin_src conf
+bind=SUPER,Z,workspace,1
+bind=SUPER,E,workspace,2
+bind=SUPER,R,workspace,3
+bind=SUPER,T,workspace,4
+bind=SUPER,Y,workspace,5
+bind=SUPER,U,workspace,6
+bind=SUPER,I,workspace,7
+bind=SUPER,O,workspace,8
+#+end_src
+
+** Send to Workspaces
+#+begin_src conf
+bind=ALT,Z,movetoworkspace,1
+bind=ALT,E,movetoworkspace,2
+bind=ALT,R,movetoworkspace,3
+bind=ALT,T,movetoworkspace,4
+bind=ALT,Y,movetoworkspace,5
+bind=ALT,U,movetoworkspace,6
+bind=ALT,I,movetoworkspace,7
+bind=ALT,O,movetoworkspace,8
+
+bind=SUPER,mouse_down,workspace,e+1
+bind=SUPER,mouse_up,workspace,e-1
+#+end_src
+
+* STARTUP
+=dbus-update-activation-environment...= , =--user import-environment...= and the script called =screensharing= are found online and known to save time on laggy app on start and other good behaviors
+
+** Notifications
+#+begin_src conf
+exec-once=~/.config/hypr/scripts/notifications
+#+end_src
+
+** Status-Bar
+Execute waybar
+#+begin_src conf
+exec=~/.config/hypr/scripts/statusbar
+#+end_src
+
+** Startup Script
+#+begin_src conf
+exec-once=~/.config/hypr/scripts/startup
+#+end_src
+
+** Blue-Light
+#+begin_src conf
+exec=hyprshade auto
+#+end_src
+
+** Bluetooth
+Make sure you have installed blueman
+
+#+begin_src conf
+exec-once=blueman-applet
+#+end_src
+
+** Screen-Sharing
+#+begin_src conf
+# For screen sharing
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=~/.config/hypr/scripts/screensharing.sh
+#+end_src
+
+** Polkit
+#+begin_src conf
+exec-once=/usr/lib/polkit-kde-authentication-agent-1
+#+end_src
+
+** Exec process on specific workspace
+#+begin_src conf
+# exec-once = [workspace 1 silent;noanim] firefox
+# exec-once = [workspace 2 silent;noanim] wezterm
+# exec-once=[workspace 3 silent;noanim] discord
+#+end_src
+
+** Wallpaper
+#+begin_src conf
+#exec-once=swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
+exec-once=swww init && swww img ~/.config/hypr/wallpapers/livepixelart.gif
+#+end_src

@@ -1,6 +1,25 @@
+# Ignore everything by default
 *
+
 !.gitignore
+
+
+# Keep these directories
 !wofi/
 !waybar/
 !hypr/
 !mako/
+
+# Allow files inside the specified directories
+!wofi/**
+!waybar/**
+!hypr/**
+!mako/**
+
+hypr/hyprland-bkp.conf
+hypr/wallpapers/*
+!hypr/wallpapers/wallpaper.png
+!hypr/wallpapers/lockscreen.png
+
+waybar/style.old.css
+wofi/style.old.css
