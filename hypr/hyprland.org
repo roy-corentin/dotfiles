@@ -321,7 +321,7 @@ windowrule=opacity 1.0,^(Brave-browser)$
 # $term = ~/.config/hypr/scripts/terminal
 $term = terminator
 $wifimenu = ~/.config/wofi/wifimenu.sh
-$menu2 = ~/.config/hypr/scripts/menu
+$appmenu = ~/.config/hypr/scripts/menu
 $menu3 = xfce4-appfinder
 $powermenu = ~/.config/hypr/scripts/powermenu
 $volume = ~/.config/hypr/scripts/volume
@@ -353,7 +353,7 @@ bind=SUPERSHIFT,W,exec,$browser
 ** Wofi
 #+begin_src conf
 bind=ALT,F1,exec,$wifimenu
-bind=SUPER,D,exec,$menu2
+bind=SUPER,D,exec,$appmenu
 bind=SUPER,X,exec,$powermenu
 #+end_src
 
