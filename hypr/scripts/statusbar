@@ -6,17 +6,14 @@ CONFIG="$HOME/.config/waybar/config"
 STYLE="$HOME/.config/waybar/style.css"
 
 # Kill already running process
-_ps=(inotifywatch inotifywait waybar)
-for _prs in "${_ps[@]}"; do
-    if [[ $(pidof "${_prs}") ]]; then
-        killall -9 "${_prs}"
-    fi
-done
+pkill waybar
+pkill inotifywait
+pkill inotifywatch
 
 while true; do
     waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
     inotifywait -e create,modify "$CONFIG" "$STYLE"
-    killall waybar
+    pkill waybar
 done
 
 trap "killall waybar" EXIT

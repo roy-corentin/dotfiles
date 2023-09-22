@@ -5,12 +5,23 @@
 
 * TABLE OF CONTENT :TOC:
 - [[#output][OUTPUT]]
+- [[#startup][STARTUP]]
+  - [[#desktop-portals][Desktop-Portals]]
+  - [[#wallpaper][Wallpaper]]
+  - [[#notifications][Notifications]]
+  - [[#status-bar][Status-Bar]]
+  - [[#startup-script][Startup Script]]
+  - [[#blue-light][Blue-Light]]
+  - [[#bluetooth][Bluetooth]]
+  - [[#sleep][Sleep]]
+  - [[#polkit][Polkit]]
 - [[#input][INPUT]]
 - [[#genereal][GENEREAL]]
 - [[#decoration][DECORATION]]
   - [[#blur-for-waybar][Blur For Waybar]]
 - [[#anmations][ANMATIONS]]
 - [[#dwindle][DWINDLE]]
+- [[#binds][BINDS]]
 - [[#misc][MISC]]
 - [[#gesture][GESTURE]]
 - [[#window-rules][WINDOW RULES]]
@@ -31,16 +42,7 @@
   - [[#resize][Resize]]
   - [[#workspaces][Workspaces]]
   - [[#send-to-workspaces][Send to Workspaces]]
-- [[#startup][STARTUP]]
-  - [[#notifications][Notifications]]
-  - [[#status-bar][Status-Bar]]
-  - [[#startup-script][Startup Script]]
-  - [[#blue-light][Blue-Light]]
-  - [[#bluetooth][Bluetooth]]
-  - [[#screen-sharing][Screen-Sharing]]
-  - [[#polkit][Polkit]]
-  - [[#exec-process-on-specific-workspace][Exec process on specific workspace]]
-  - [[#wallpaper][Wallpaper]]
+- [[#screen-sharing][SCREEN-SHARING]]
 
 * OUTPUT
 Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
@@ -59,6 +61,59 @@ workspace=HDMI-A-1,1
 #monitor=eDP-1,transform,0
 #monitor=eDP-1,addreserved,10,10,10,10
 #workspace=eDP-1,1
+#+end_src
+
+* STARTUP
+=dbus-update-activation-environment...= , =--user import-environment...= and the script called =screensharing= are found online and known to save time on laggy app on start and other good behaviors
+
+** Desktop-Portals
+#+begin_src conf
+exec-once=.config/hypr/desktop-portals.sh
+#+end_src
+
+
+** Wallpaper
+#+begin_src conf
+#exec-once=swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
+exec-once=swww init && swww img ~/.config/hypr/wallpapers/livepixelart.gif
+#+end_src
+
+
+** Notifications
+#+begin_src conf
+exec-once=~/.config/hypr/scripts/notifications
+#+end_src
+
+** Status-Bar
+Execute waybar
+#+begin_src conf
+exec-once=~/.config/hypr/scripts/statusbar
+#+end_src
+
+** Startup Script
+#+begin_src conf
+exec-once=~/.config/hypr/scripts/startup
+#+end_src
+
+** Blue-Light
+#+begin_src conf
+exec=hyprshade auto
+#+end_src
+
+** Bluetooth
+Make sure you have installed blueman
+#+begin_src conf
+exec-once=blueman-applet
+#+end_src
+
+** Sleep
+#+begin_src conf
+exec-once=swayidle -w before-sleep swaylock
+#+end_src
+
+** Polkit
+#+begin_src conf
+exec-once=/usr/lib/polkit-kde-authentication-agent-1
 #+end_src
 
 * INPUT
@@ -85,10 +140,11 @@ general {
     # main_mod=SUPER
 
     layout=dwindle
+
     sensitivity=1.0 # for mouse cursor
 
     gaps_in=5
-    gaps_out=10
+    gaps_out=20
 
     border_size=3
     col.active_border=0xFFB4A1DB
@@ -109,7 +165,6 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 #+begin_src conf
 decoration {
     rounding=12       # Original: rounding=-1
-    multisample_edges=0
 
     drop_shadow=true
     shadow_range=15
@@ -126,6 +181,11 @@ decoration {
         ignore_opacity=true
         new_optimizations=on
     }
+
+    dim_inactive = false
+    dim_strength = 0.2
+
+    multisample_edges=true
 }
 #+end_src
 
@@ -148,12 +208,26 @@ animations {
     # animation=workspaces,1,8,default
     #animation=workspaces,1,6,overshot
 
-    # New
-    bezier=overshot,0.13,0.99,0.29,1.1
-    animation=windows,1,4,overshot,popin
-    animation=fade,1,10,default
-    animation=workspaces,1,6,overshot,slide
-    animation=border,1,10,default
+    # Old
+    # bezier=overshot,0.13,0.99,0.29,1.1
+    # animation=windows,1,4,overshot,popin
+    # animation=fade,1,10,default
+    # animation=workspaces,1,6,overshot,slide
+    # animation=border,1,10,default
+
+    bezier=myBezier, 0.05, 0.9, 0.1, 1.05
+    bezier=myBezier2, 0.65, 0, 0.35, 1
+
+    bezier=slow,0,0.85,0.3,1
+    bezier=overshot,0.7,0.6,0.1,1.1
+    bezier=bounce,1,1.6,0.1,0.85
+    bezier=slingshot,1,-1,0.15,1.25
+    bezier=nice,0,6.9,0.5,-4.20
+
+    animation=windows,1,5,bounce,popin
+    animation=border,1,20,default
+    animation=fade,1,5,default
+    animation=workspaces,1,5,overshot,slide
 }
 #+end_src
 
@@ -165,13 +239,20 @@ dwindle {
 }
 #+end_src
 
+* BINDS
+#+begin_src conf
+binds {
+  workspace_back_and_forth = true
+}
+#+end_src
+
 * MISC
 #+begin_src conf
 misc {
   disable_hyprland_logo=true
   disable_splash_rendering=true
   mouse_move_enables_dpms=true
-  vfr = false
+  vfr=false
 }
 #+end_src
 
@@ -260,7 +341,6 @@ $browser = brave
 bind=SUPER,Return,exec,$term
 bind=SUPERSHIFT,Return,exec,$term
 bind=SUPERALT,Return,exec,$term -f
-bind=SUPER,T,exec,$term -F
 #+end_src
 
 ** Apps
@@ -368,67 +448,18 @@ bind=ALT,E,movetoworkspace,2
 bind=ALT,R,movetoworkspace,3
 bind=ALT,T,movetoworkspace,4
 bind=ALT,Y,movetoworkspace,5
-bind=ALT,U,movetoworkspace,6
-bind=ALT,I,movetoworkspace,7
-bind=ALT,O,movetoworkspace,8
+bind=ALT,7,movetoworkspace,6
+bind=ALT,8,movetoworkspace,7
+bind=ALT,9,movetoworkspace,8
 
 bind=SUPER,mouse_down,workspace,e+1
 bind=SUPER,mouse_up,workspace,e-1
 #+end_src
 
-* STARTUP
-=dbus-update-activation-environment...= , =--user import-environment...= and the script called =screensharing= are found online and known to save time on laggy app on start and other good behaviors
 
-** Notifications
-#+begin_src conf
-exec-once=~/.config/hypr/scripts/notifications
-#+end_src
-
-** Status-Bar
-Execute waybar
-#+begin_src conf
-exec=~/.config/hypr/scripts/statusbar
-#+end_src
-
-** Startup Script
-#+begin_src conf
-exec-once=~/.config/hypr/scripts/startup
-#+end_src
-
-** Blue-Light
-#+begin_src conf
-exec=hyprshade auto
-#+end_src
-
-** Bluetooth
-Make sure you have installed blueman
-
-#+begin_src conf
-exec-once=blueman-applet
-#+end_src
-
-** Screen-Sharing
+* SCREEN-SHARING
 #+begin_src conf
 # For screen sharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec-once=~/.config/hypr/scripts/screensharing.sh
-#+end_src
-
-** Polkit
-#+begin_src conf
-exec-once=/usr/lib/polkit-kde-authentication-agent-1
-#+end_src
-
-** Exec process on specific workspace
-#+begin_src conf
-# exec-once = [workspace 1 silent;noanim] firefox
-# exec-once = [workspace 2 silent;noanim] wezterm
-# exec-once=[workspace 3 silent;noanim] discord
-#+end_src
-
-** Wallpaper
-#+begin_src conf
-#exec-once=swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
-exec-once=swww init && swww img ~/.config/hypr/wallpapers/livepixelart.gif
 #+end_src
