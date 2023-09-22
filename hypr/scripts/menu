@@ -8,7 +8,7 @@ COLORS="$HOME/.config/wofi/colors"
 
 if [[ ! $(pidof wofi) ]]; then
 	# wofi --show drun --width=40% --prompt 'Search...' --conf "${CONFIG}" --style "${STYLE}" --color "${COLORS}" --columns 2
-	wofi --show drun --width=40% --prompt 'Search...' --columns 2 -I -s ~/.config/wofi/style.css
+	wofi --show drun --width=40% --prompt 'Search...' --columns 2 -I --style "${STYLE}"
 else
 	pkill wofi
 fi

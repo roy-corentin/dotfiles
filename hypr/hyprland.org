@@ -68,9 +68,8 @@ workspace=HDMI-A-1,1
 
 ** Desktop-Portals
 #+begin_src conf
-exec-once=.config/hypr/desktop-portals.sh
+exec-once=~/.config/hypr/scripts/desktop-portals.sh
 #+end_src
-
 
 ** Wallpaper
 #+begin_src conf
