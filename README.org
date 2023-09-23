@@ -1,4 +1,4 @@
 * DOTFILES
 All my dotfiles for Hyprland config
 
-[[./screenshots/screenshot1]]
+[[./screenshots/screenshot1.png]]
