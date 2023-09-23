@@ -1,6 +1,15 @@
 * DOTFILES
 All my dotfiles for Hyprland config
 
+** Screenshots
 [[./screenshots/screenshot1.png]]
 
 [[./screenshots/screenshot2.png]]
+
+** Utils
+- [[https://github.com/hyprwm/Hyprland][Hyprland]]
+- [[https://hg.sr.ht/~scoopta/wofi][wofi]]
+- [[https://github.com/Alexays/Waybar][waybar]]
+- [[https://github.com/Horus645/swww][sww]]
+- [[https://github.com/emersion/mako][mako]]
+- [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
