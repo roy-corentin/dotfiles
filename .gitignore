@@ -10,6 +10,10 @@
 !waybar/
 !hypr/
 !mako/
+!screenshots/
+
+# Allow screenshots
+!screenshots/**
 
 # Allow files inside the specified directories
 !wofi/**
@@ -24,3 +28,4 @@ hypr/wallpapers/*
 
 waybar/style.old.css
 wofi/style.old.css
+
