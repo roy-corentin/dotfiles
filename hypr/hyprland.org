@@ -18,7 +18,6 @@
 - [[#input][INPUT]]
 - [[#genereal][GENEREAL]]
 - [[#decoration][DECORATION]]
-  - [[#blur-for-waybar][Blur For Waybar]]
 - [[#anmations][ANMATIONS]]
 - [[#dwindle][DWINDLE]]
 - [[#binds][BINDS]]
@@ -64,7 +63,7 @@ workspace=HDMI-A-1,1
 #+end_src
 
 * STARTUP
-=dbus-update-activation-environment...= , =--user import-environment...= and the script called =screensharing= are found online and known to save time on laggy app on start and other good behaviors
+=dbus-update-activation-environment...= , =--user import-environment...= and the script called =desktop-portals= are found online and known to save time on laggy app on start and other good behaviors
 
 ** Desktop-Portals
 #+begin_src conf
@@ -74,7 +73,8 @@ exec-once=~/.config/hypr/scripts/desktop-portals.sh
 ** Wallpaper
 #+begin_src conf
 #exec-once=swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
-exec-once=swww init && swww img ~/.config/hypr/wallpapers/livepixelart.gif
+exec-once=swww init
+exec=swww img ~/.config/hypr/wallpapers/livepixelart.gif
 #+end_src
 
 
@@ -107,7 +107,8 @@ exec-once=blueman-applet
 
 ** Sleep
 #+begin_src conf
-exec-once=swayidle -w before-sleep swaylock
+exec-once=swayidle -w timeout 200 scripts/lockscreen
+exec-once=swayidle -w before-sleep scripts/lockscreen
 #+end_src
 
 ** Polkit
@@ -148,6 +149,8 @@ general {
     border_size=3
     col.active_border=0xFFB4A1DB
     col.inactive_border=0xFF343A40
+    # col.active_border=0xff5e81ac
+    # col.inactive_border=0x66333333
 
     # damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
     apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
@@ -170,12 +173,12 @@ decoration {
     col.shadow=0xffa7caff
     col.shadow_inactive=0x50000000
 
-    active_opacity=0.9
+    active_opacity=0.8
     inactive_opacity=0.7
     fullscreen_opacity=1.0
 
     blur {
-        size=2 # minimum 1
+        size=4 # minimum 1
         passes=2 # minimum 1, more passes = more resource intensive.
         ignore_opacity=true
         new_optimizations=on
@@ -186,12 +189,6 @@ decoration {
 
     multisample_edges=true
 }
-#+end_src
-
-** Blur For Waybar
-#+begin_src conf
-blurls=waybar
-blurls=lockscreen
 #+end_src
 
 
@@ -309,7 +306,7 @@ windowrule=animation slide,wlogout
 
 ** Applications specific
 #+begin_src conf
-windowrule=opacity 0.9 override 0.8,^(Emacs)$
+windowrule=opacity 0.8 override 0.8,^(Emacs)$
 windowrulev2=opacity 1.0 ,fullscreen:1,class:^(Emacs)$
 windowrule=opacity 1.0,^(Brave-browser)$
 #+end_src
@@ -326,7 +323,8 @@ $powermenu = ~/.config/hypr/scripts/powermenu
 $volume = ~/.config/hypr/scripts/volume
 $backlight = ~/.config/hypr/scripts/brightness
 $screenshot = ~/.config/hypr/scripts/screenshot
-$lockscreen = ~/.config/hypr/scripts/lockscreen
+# $lockscreen = ~/.config/hypr/scripts/lockscreen
+$lockscreen = ~/.config/hypr/scripts/suspend
 $wlogout = ~/.config/hypr/scripts/wlogout
 $colorpicker = ~/.config/hypr/scripts/colorpicker
 #$files = nemo

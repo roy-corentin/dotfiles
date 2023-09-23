@@ -55,10 +55,7 @@ open_menu() {
 		"$suspend")
 			cdialog
 			if [[ $? == 0 ]]; then
-				mpc -q pause
-				amixer set Master mute
-				~/.config/hypr/scripts/lockscreen
-				systemctl suspend
+				~/.config/hypr/scripts/suspend
 			else
 				exit
 			fi
