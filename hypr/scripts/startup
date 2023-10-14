@@ -10,9 +10,6 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-# Polkit agent
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
 # Apply themes
 ~/.config/hypr/scripts/gtkthemes-bkp &
 
@@ -21,7 +18,7 @@ exec mpd &
 
 # Custom start
 flatpak run app.tuple.app &
-flatpak run io.github.spacingbat3.webcord &
+webcord &
 exec ~/Perso/script/teams_start.sh &
 exec ~/Perso/script/slack_start.sh &
 emacs_start &

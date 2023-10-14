@@ -3,8 +3,8 @@
 ## launch wofi with alt config
 
 CONFIG="$HOME/.config/wofi/config"
-STYLE="$HOME/.config/wofi/style.css"
-COLORS="$HOME/.config/wofi/colors"
+# STYLE="$HOME/.config/wofi/style-dracula.css"
+STYLE="$HOME/.config/wofi/style-nord.css"
 
 if [[ ! $(pidof wofi) ]]; then
 	# wofi --show drun --width=40% --prompt 'Search...' --conf "${CONFIG}" --style "${STYLE}" --color "${COLORS}" --columns 2

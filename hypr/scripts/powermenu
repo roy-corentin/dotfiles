@@ -4,7 +4,8 @@
 
 ## Files
 CONFIG=~/.config/wofi/config
-STYLE=~/.config/wofi/style.css
+# STYLE=~/.config/wofi/style-dracula.css
+STYLE=~/.config/wofi/style-nord.css
 COLORS=~/.config/wofi/colors
 
 ## Wofi Command
