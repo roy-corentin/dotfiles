@@ -1,11 +1,6 @@
 * DOTFILES
 All my dotfiles for Hyprland config
 
-** Screenshots
-[[./screenshots/screenshot1.png]]
-
-[[./screenshots/screenshot2.png]]
-
 ** Utils
 - [[https://github.com/hyprwm/Hyprland][Hyprland]]
 - [[https://hg.sr.ht/~scoopta/wofi][wofi]]
@@ -13,3 +8,13 @@ All my dotfiles for Hyprland config
 - [[https://github.com/Horus645/swww][sww]]
 - [[https://github.com/emersion/mako][mako]]
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
+
+** Themes
++ Nord
++ Dracula
+
+** Screenshots
+[[./screenshots/screenshot1.png]]
+
+[[./screenshots/screenshot2.png]]
+
