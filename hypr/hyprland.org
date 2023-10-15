@@ -109,14 +109,14 @@ exec-once=blueman-applet
 
 ** Sleep
 #+begin_src conf
-exec-once=swayidle -w timeout 200 '~/.config/hypr/scripts/lockscreen' before-sleep '~/.config/hypr/scripts/lockscreen'
+exec-once=swayidle -w timeout 300 '~/.config/hypr/scripts/lockscreen' before-sleep '~/.config/hypr/scripts/lockscreen'
 #+end_src
 
 ** Polkit
 #+begin_src conf
 # exec-once=/usr/lib/polkit-kde-authentication-agent-1
 
-exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 
 * INPUT
