@@ -22,5 +22,3 @@ webcord &
 exec ~/Perso/script/teams_start.sh &
 exec ~/Perso/script/slack_start.sh &
 emacs_start &
-
-# exec ~/Perso/script/git_config_by_day.sh &
