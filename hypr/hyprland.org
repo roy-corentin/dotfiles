@@ -304,7 +304,7 @@ windowrule=float,xfce4-appfinder
 windowrulev2=float,class:^()$,title:^(Picture in picture)$
 windowrulev2=float,class:^(brave)$,title:^(Save File)$
 windowrulev2=float,class:^(brave)$,title:^(Open File)$
-windowrulev2=float,class:^(brave)$,title:^(Bitwarden)$
+windowrulev2=float,class:^(brave-browser)$,title:^(Bitwarden - Brave)$
 windowrulev2=float,class:^(blueman-manager)$
 windowrulev2=float,class:^(org.twosheds.iwgtk)$
 windowrulev2=float,class:^(blueberry.py)$
@@ -356,6 +356,7 @@ $colorpicker = ~/.config/hypr/scripts/colorpicker
 #$files = nemo
 $files = files
 $editor = emacsclient -c -n -a 'emacs'
+$editor-everywhere = emacsclient --eval "(emacs-everywhere)" -a "doom +everywhere"
 $browser = brave
 #+end_src
 
@@ -370,6 +371,7 @@ bind=SUPERALT,Return,exec,$term -f
 #+begin_src conf
 bind=SUPERSHIFT,F,exec,$files
 bind=SUPERSHIFT,E,exec,$editor
+bind=SUPERSHIFT,I,exec,$editor-everywhere
 bind=SUPERSHIFT,W,exec,$browser
 #+end_src
 
