@@ -45,17 +45,27 @@
 
 * OUTPUT
 Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
+
+~monitor=name,resolution,position,scale~
+
+*Mirrored displays*
+If you want to mirror a display, add a ,mirror,[NAME] at the end of the monitor rule, examples:
+
+~monitor=DP-3,1920x1080@60,0x0,1,mirror,DP-2~
+~monitor=,preferred,auto,1,mirror,DP-1~
+
 #+begin_src conf
 monitor=eDP-1,1920x1080@60,1920x0,1
 workspace=eDP-1,2
-monitor=HDMI-A-1,1920x1080@60,0x0,1
+# monitor=HDMI-A-1,1920x1080@60,0x0,1
+monitor=HDMI-A-1,preferred,0x0,1
 workspace=HDMI-A-1,1
- # monitor=DP-2,1920x1080@144,0x0,1
-monitor=,preferred,auto,1
+
+# monitor=HDMI-A-1,preferred,auto,1
 # monitor=DP-2,1920x1080@144,0x0,1
- # workspace=DP-2,1
- # monitor=DVI-D-1,1920x1080@60,1920x0,1
- # workspace=DVI-D-1,2
+# workspace=DP-2,1
+# monitor=DVI-D-1,1920x1080@60,1920x0,1
+# workspace=DVI-D-1,2
 
 # Example :
 #monitor=eDP-1,1920x1080@60,0x0,1
@@ -386,7 +396,6 @@ bind=SUPER,X,exec,$powermenu
 #+begin_src conf
 bind=SUPER,N,exec,nm-connection-editor
 bind=SUPER,P,exec,$colorpicker
-# bind=SUPER,X,exec,$wlogout
 bind=CTRLALT,L,exec,$lockscreen
 #+end_src
 
@@ -427,6 +436,7 @@ bind=SUPER,F,fullscreen,
 bind=SUPER,Space,togglefloating,
 bind=SUPERSHIFT,Space,togglesplit,
 bind=SUPER,S,pseudo,
+bind=SUPER,O,toggleopaque
 #+end_src
 
 ** Focus
