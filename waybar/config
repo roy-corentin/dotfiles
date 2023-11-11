@@ -9,7 +9,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "cpu", "memory", "temperature", "tray", "custom/media"],
     "modules-center": ["clock"],
-    "modules-right": ["mpd", "pulseaudio", "network", "battery", "battery#bat2", "custom/power-menu"],
+    "modules-right": ["pulseaudio", "network", "battery", "battery#bat2", "custom/power-menu"],
     // Modules configuration
 
     "hyprland/workspaces": {
