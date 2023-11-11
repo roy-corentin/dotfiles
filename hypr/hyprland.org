@@ -119,7 +119,7 @@ exec-once=blueman-applet
 
 ** Sleep
 #+begin_src conf
-exec-once=swayidle -w timeout 300 '~/.config/hypr/scripts/lockscreen' before-sleep '~/.config/hypr/scripts/lockscreen'
+exec-once=swayidle -w timeout 300 '~/.config/hypr/scripts/lockscreen' before-sleep '~/.config/hypr/scripts/check_music_playing'
 #+end_src
 
 ** Polkit
