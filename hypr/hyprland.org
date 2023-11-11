@@ -16,7 +16,7 @@
   - [[#sleep][Sleep]]
   - [[#polkit][Polkit]]
 - [[#input][INPUT]]
-- [[#genereal][GENEREAL]]
+- [[#general][GENERAL]]
 - [[#decoration][DECORATION]]
 - [[#anmations][ANMATIONS]]
 - [[#dwindle][DWINDLE]]
@@ -24,7 +24,7 @@
 - [[#misc][MISC]]
 - [[#gesture][GESTURE]]
 - [[#window-rules][WINDOW RULES]]
-  - [[#general][General]]
+  - [[#general-1][General]]
   - [[#applications-specific][Applications specific]]
 - [[#keybindings][KEYBINDINGS]]
   - [[#variable][Variable]]
@@ -147,7 +147,7 @@ input {
 }
 #+end_src
 
-* GENEREAL
+* GENERAL
 #+begin_src conf
 general {
     # main_mod=SUPER
@@ -157,7 +157,7 @@ general {
     sensitivity=1.0 # for mouse cursor
 
     gaps_in=5
-    gaps_out=20
+    gaps_out=15
 
     border_size=3
     # col.active_border=0xFFB4A1DB
