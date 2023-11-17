@@ -66,10 +66,11 @@ If you want to mirror a display, add a ,mirror,[NAME] at the end of the monitor 
 
 ** Home/Epitech Setup
 #+begin_src conf
-# monitor=eDP-1,1920x1080@60,1920x0,1
-# workspace=eDP-1,2
-# monitor=HDMI-A-1,preferred,0x0,1
-# workspace=HDMI-A-1,1
+monitor=eDP-1,1920x1080@60,1920x0,1
+workspace=eDP-1,2
+monitor=HDMI-A-1,preferred,0x0,1
+workspace=HDMI-A-1,1
+
 # monitor=HDMI-A-1,1920x1080@60,0x0,1
 
 # monitor=HDMI-A-1,preferred,auto,1
@@ -81,10 +82,10 @@ If you want to mirror a display, add a ,mirror,[NAME] at the end of the monitor 
 
 ** Syadem Setup
 #+begin_src conf
-monitor=eDP-1,1920x1080@60,0x0,1
-workspace=eDP-1,1
-monitor=HDMI-A-1,preferred,1920x0,1
-workspace=HDMI-A-1,2
+# monitor=eDP-1,1920x1080@60,0x0,1
+# workspace=eDP-1,1
+# monitor=HDMI-A-1,preferred,1920x0,1
+# workspace=HDMI-A-1,2
 #+end_src
 
 * STARTUP
@@ -132,7 +133,7 @@ exec-once=blueman-applet
 
 ** Sleep
 #+begin_src conf
-exec-once=swayidle -w timeout 300 '~/.config/hypr/scripts/lockscreen' before-sleep '~/.config/hypr/scripts/check_music_playing'
+exec-once=swayidle -w timeout 300 '~/.config/hypr/scripts/sleep' before-sleep '~/.config/hypr/scripts/sleep'
 #+end_src
 
 ** Polkit
