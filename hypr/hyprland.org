@@ -8,6 +8,7 @@
   - [[#example][Example]]
   - [[#homeepitech-setup][Home/Epitech Setup]]
   - [[#syadem-setup][Syadem Setup]]
+  - [[#test-setup][Test Setup]]
 - [[#startup][STARTUP]]
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
@@ -40,6 +41,7 @@
   - [[#function-keys][Function keys]]
   - [[#screenshots][Screenshots]]
   - [[#hyprland][Hyprland]]
+  - [[#tab-cycle][Tab Cycle]]
   - [[#focus][Focus]]
   - [[#move][Move]]
   - [[#resize][Resize]]
@@ -66,26 +68,30 @@ If you want to mirror a display, add a ,mirror,[NAME] at the end of the monitor 
 
 ** Home/Epitech Setup
 #+begin_src conf
-monitor=eDP-1,1920x1080@60,1920x0,1
-workspace=eDP-1,2
-monitor=HDMI-A-1,preferred,0x0,1
-workspace=HDMI-A-1,1
+# monitor=eDP-1,1920x1080@60,1920x0,1
+# workspace=eDP-1,2
+# monitor=HDMI-A-1,preferred,0x0,1
+# workspace=HDMI-A-1,1
 
 # monitor=HDMI-A-1,1920x1080@60,0x0,1
 
+#+end_src
+
+** Syadem Setup
+#+begin_src conf
+monitor=eDP-1,1920x1080@60,0x0,1
+workspace=eDP-1,1
+monitor=HDMI-A-1,preferred,1920x0,1
+workspace=HDMI-A-1,2
+#+end_src
+
+** Test Setup
+#+begin_src conf
 # monitor=HDMI-A-1,preferred,auto,1
 # monitor=DP-2,1920x1080@144,0x0,1
 # workspace=DP-2,1
 # monitor=DVI-D-1,1920x1080@60,1920x0,1
 # workspace=DVI-D-1,2
-#+end_src
-
-** Syadem Setup
-#+begin_src conf
-# monitor=eDP-1,1920x1080@60,0x0,1
-# workspace=eDP-1,1
-# monitor=HDMI-A-1,preferred,1920x0,1
-# workspace=HDMI-A-1,2
 #+end_src
 
 * STARTUP
@@ -234,9 +240,9 @@ decoration {
     col.shadow = rgba(1E202966)
     # col.shadow=0xffa7caff
 
-    active_opacity=0.8
-    inactive_opacity=0.7
-    fullscreen_opacity=1.0
+    active_opacity=0.9
+    inactive_opacity=0.8
+    fullscreen_opacity=0.9
 
     blur {
         size=4 # minimum 1
@@ -366,7 +372,7 @@ windowrule=animation slide,wlogout
 
 ** Applications specific
 #+begin_src conf
-windowrule=opacity 0.8 override 0.8,^(Emacs)$
+windowrule=opacity 0.9 override 0.9,^(Emacs)$
 windowrule=opacity 0.8 override 1.0,^(brave)$
 windowrulev2=opacity 1.0,fullscreen:1,class:^(Emacs)$
 #+end_src
@@ -390,7 +396,8 @@ $colorpicker = ~/.config/hypr/scripts/colorpicker
 #$files = nemo
 $files = files
 $editor = emacsclient -c -n -a 'emacs'
-$editor-everywhere = emacsclient --eval "(emacs-everywhere)" -a "doom +everywhere"
+# $editor-everywhere = emacsclient --eval "(emacs-everywhere)" -a "doom +everywhere"
+$editor-everywhere = emacsclient --eval "(emacs-everywhere)"
 $browser = brave
 #+end_src
 
@@ -461,6 +468,15 @@ bind=SUPER,Space,togglefloating,
 bind=SUPERSHIFT,Space,togglesplit,
 bind=SUPER,S,pseudo,
 bind=SUPER,O,toggleopaque
+
+#+end_src
+
+** Tab Cycle
+To switch between windows in a floating workspace
+
+#+begin_src conf
+bind = SUPER,Tab,cyclenext,          # change focus to another window
+bind = SUPER,Tab,bringactivetotop,   # bring it to the topbind=SUPER,Space,togglefloating,
 #+end_src
 
 ** Focus
