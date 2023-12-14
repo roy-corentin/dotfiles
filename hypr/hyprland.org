@@ -55,135 +55,135 @@
 * OUTPUT
 Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
 
-~monitor=name,resolution,position,scale~
+~monitor = name,resolution,position,scale~
 
 *Mirrored displays*
 If you want to mirror a display, add a ,mirror,[NAME] at the end of the monitor rule, examples:
 
-~monitor=DP-3,1920x1080@60,0x0,1,mirror,DP-2~
-~monitor=,preferred,auto,1,mirror,DP-1~
+~monitor = DP-3,1920x1080@60,0x0,1,mirror,DP-2~
+~monitor = ,preferred,auto,1,mirror,DP-1~
 
 ** Example
-~monitor=eDP-1,1920x1080@60,0x0,1~
-~monitor=eDP-1,transform,0~
-~monitor=eDP-1,addreserved,10,10,10,10~
-~workspace=eDP-1,1~
+~monitor = eDP-1,1920x1080@60,0x0,1~
+~monitor = eDP-1,transform,0~
+~monitor = eDP-1,addreserved,10,10,10,10~
+~workspace = eDP-1,1~
 
 ** Home/Epitech Setup
 #+begin_src conf
-# monitor=eDP-1,1920x1080@60,1920x0,1
-# workspace=eDP-1,2
-# monitor=HDMI-A-1,preferred,0x0,1
-# workspace=HDMI-A-1,1
+# monitor = eDP-1,1920x1080@60,1920x0,1
+# workspace = eDP-1,2
+# monitor = HDMI-A-1,preferred,0x0,1
+# workspace = HDMI-A-1,1
 
-# monitor=HDMI-A-1,1920x1080@60,0x0,1
+# monitor = HDMI-A-1,1920x1080@60,0x0,1
 
 #+end_src
 
 ** Syadem Setup
 #+begin_src conf
-monitor=eDP-1,1920x1080@60,0x0,1
-workspace=eDP-1,1
-monitor=HDMI-A-1,preferred,1920x0,1
-workspace=HDMI-A-1,2
+monitor = eDP-1,1920x1080@60,0x0,1
+workspace = eDP-1,1
+monitor = HDMI-A-1,preferred,1920x0,1
+workspace = HDMI-A-1,2
 #+end_src
 
 ** Test Setup
 #+begin_src conf
-# monitor=HDMI-A-1,preferred,auto,1
-# monitor=DP-2,1920x1080@144,0x0,1
-# workspace=DP-2,1
-# monitor=DVI-D-1,1920x1080@60,1920x0,1
-# workspace=DVI-D-1,2
+# monitor = HDMI-A-1,preferred,auto,1
+# monitor = DP-2,1920x1080@144,0x0,1
+# workspace = DP-2,1
+# monitor = DVI-D-1,1920x1080@60,1920x0,1
+# workspace = DVI-D-1,2
 #+end_src
 
 * STARTUP
-=dbus-update-activation-environment...= , =--user import-environment...= and the script called =desktop-portals= are found online and known to save time on laggy app on start and other good behaviors
+=dbus-update-activation-environment...= , =--user import-environment...= and the script called =desktop-portals =  are found online and known to save time on laggy app on start and other good behaviors
 
 ** Desktop-Portals
 #+begin_src conf
-exec-once=~/.config/hypr/scripts/desktop-portals.sh
+exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 #+end_src
 
 ** Wallpaper
 #+begin_src conf
-#exec-once=swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
-# exec-once=swww img ~/.config/hypr/wallpapers/wallpaper.jpg
-exec-once=swww img ~/Pictures/wallpapers/nature_blue_simplist_art.jpg
-exec-once=swww init; sww kill; sww init
+#exec-once = swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
+# exec-once = swww img ~/.config/hypr/wallpapers/wallpaper.jpg
+exec-once = swww img ~/Pictures/wallpapers/nature_blue_simplist_art.jpg
+exec-once = swww init; sww kill; sww init
 #+end_src
 
 
 ** Notifications
 #+begin_src conf
-exec-once=~/.config/hypr/scripts/notifications
+exec-once = ~/.config/hypr/scripts/notifications
 #+end_src
 
 ** Status-Bar
 Execute waybar
 #+begin_src conf
-exec-once=~/.config/hypr/scripts/statusbar
+exec-once = ~/.config/hypr/scripts/statusbar
 #+end_src
 
 ** Startup Script
 #+begin_src conf
-exec-once=~/.config/hypr/scripts/startup
+exec-once = ~/.config/hypr/scripts/startup
 #+end_src
 
 ** Blue-Light
 #+begin_src conf
-exec=hyprshade auto
+exec = hyprshade auto
 #+end_src
 
 ** Bluetooth
 Make sure you have installed blueman
 #+begin_src conf
-exec-once=blueman-applet
+exec-once = blueman-applet
 #+end_src
 
 ** Sleep
 #+begin_src conf
-exec-once=swayidle -w timeout 300 '~/.config/hypr/scripts/sleep' before-sleep '~/.config/hypr/scripts/sleep'
+exec-once = swayidle -w timeout 300 '~/.config/hypr/scripts/sleep' before-sleep '~/.config/hypr/scripts/sleep'
 #+end_src
 
 ** Polkit
 #+begin_src conf
-# exec-once=/usr/lib/polkit-kde-authentication-agent-1
+# exec-once = /usr/lib/polkit-kde-authentication-agent-1
 
-exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 
 * INPUT
 Configure mouse and touchpad here
 #+begin_src conf
 input {
-    kb_layout=fr
-    kb_variant=
-    kb_model=
-    kb_options=
-    kb_rules=
-    follow_mouse=1
-    natural_scroll=0
-    force_no_accel=0
-    # repeat_rate=
-    # repeat_delay=
-    numlock_by_default=1
+    kb_layout = fr
+    kb_variant =
+    kb_model =
+    kb_options =
+    kb_rules =
+    follow_mouse = 1
+    natural_scroll = 0
+    force_no_accel = 0
+    # repeat_rate =
+    # repeat_delay =
+    numlock_by_default = 1
 }
 #+end_src
 
 * GENERAL
 #+begin_src conf
 general {
-    # main_mod=SUPER
+    # main_mod = SUPER
 
-    layout=dwindle
+    layout = dwindle
 
-    sensitivity=1.0 # for mouse cursor
+    sensitivity = 1.0 # for mouse cursor
 
-    gaps_in=4
-    gaps_out=5
+    gaps_in = 4
+    gaps_out = 5
 
-    border_size=3
+    border_size = 3
 
     # Dracula Theme
     # col.active_border = rgb(bd93f9)
@@ -194,11 +194,11 @@ general {
     col.inactive_border = rgba(44475aaa)
 
 
-    # damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
-    apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
+    # damage_tracking = full # leave it on full unless you hate your GPU and want to make it suffer
+    apply_sens_to_raw = 0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
 
     # Make the cursor disappear after 3 seconds
-    cursor_inactive_timeout=3
+    cursor_inactive_timeout = 3
 }
 #+end_src
 
@@ -218,38 +218,38 @@ group {
 * DECORATION
 Decoration settings like Rounded Corners, Opacity, Blur, etc.
 
-Your blur ="amount"= is =blur_size * blur_passes=, but high blur_size (over around 5-ish) will produce artifacts.
+Your blur ="amount"= is =blur_size * blur_passes = , but high blur_size (over around 5-ish) will produce artifacts.
 if you want heavy blur, you need to up the blur_passes.
 the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
 decoration {
-    rounding=12       # Original: rounding=-1
+    rounding = 12       # Original: rounding = -1
 
     # Old
-    # drop_shadow=true
-    # shadow_range=15
+    # drop_shadow = true
+    # shadow_range = 15
 
     # Shadow
-    drop_shadow=true
-    shadow_range=8
-    shadow_offset=1 2
-    shadow_render_power=3
-    shadow_scale=0.97
+    drop_shadow = true
+    shadow_range = 8
+    shadow_offset = 1 2
+    shadow_render_power = 3
+    shadow_scale = 0.97
 
-    col.shadow_inactive=0x50000000
-    col.shadow=rgba(1E202966)
-    # col.shadow=0xffa7caff
+    col.shadow_inactive = 0x50000000
+    col.shadow = rgba(1E202966)
+    # col.shadow = 0xffa7caff
 
     blur {
-        enabled=true
-        xray=true
+        enabled = true
+        xray = true
 
-        size=4 # minimum 1
-        passes=2 # minimum 1, more passes = more resource intensive.
+        size = 4 # minimum 1
+        passes = 2 # minimum 1, more passes = more resource intensive.
 
-        ignore_opacity=true
-        new_optimizations=true
+        ignore_opacity = true
+        new_optimizations = true
     }
 
     # Dim
@@ -262,36 +262,36 @@ decoration {
 * ANMATIONS
 #+begin_src conf
 animations {
-    enabled=1
+    enabled = 1
 
     # Old
-    # animation=windows,1,8,default,popin 80%
-    # animation=fadeOut,1,8,default
-    # animation=fadeIn,1,8,default
-    # animation=workspaces,1,8,default
-    #animation=workspaces,1,6,overshot
+    # animation = windows,1,8,default,popin 80%
+    # animation = fadeOut,1,8,default
+    # animation = fadeIn,1,8,default
+    # animation = workspaces,1,8,default
+    #animation = workspaces,1,6,overshot
 
     # Old
-    # bezier=overshot,0.13,0.99,0.29,1.1
-    # animation=windows,1,4,overshot,popin
-    # animation=fade,1,10,default
-    # animation=workspaces,1,6,overshot,slide
-    # animation=border,1,10,default
+    # bezier = overshot,0.13,0.99,0.29,1.1
+    # animation = windows,1,4,overshot,popin
+    # animation = fade,1,10,default
+    # animation = workspaces,1,6,overshot,slide
+    # animation = border,1,10,default
 
     # Old
-    # bezier=myBezier, 0.05, 0.9, 0.1, 1.05
-    # bezier=myBezier2, 0.65, 0, 0.35, 1
+    # bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    # bezier = myBezier2, 0.65, 0, 0.35, 1
 
-    # bezier=slow,0,0.85,0.3,1
-    # bezier=overshot,0.7,0.6,0.1,1.1
-    # bezier=bounce,1,1.6,0.1,0.85
-    # bezier=slingshot,1,-1,0.15,1.25
-    # bezier=nice,0,6.9,0.5,-4.20
+    # bezier = slow,0,0.85,0.3,1
+    # bezier = overshot,0.7,0.6,0.1,1.1
+    # bezier = bounce,1,1.6,0.1,0.85
+    # bezier = slingshot,1,-1,0.15,1.25
+    # bezier = nice,0,6.9,0.5,-4.20
 
-    # animation=windows,1,5,bounce,popin
-    # animation=border,1,20,default
-    # animation=fade,1,5,default
-    # animation=workspaces,1,5,overshot,slide
+    # animation = windows,1,5,bounce,popin
+    # animation = border,1,20,default
+    # animation = fade,1,5,default
+    # animation = workspaces,1,5,overshot,slide
 
     # New
     bezier = linear, 0, 0, 1, 1
@@ -319,9 +319,9 @@ animations {
 * DWINDLE
 #+begin_src conf
 dwindle {
-    pseudotile=0 # enable pseudotiling on dwindle
-    preserve_split=true
-    smart_split=false
+    pseudotile = 0 # enable pseudotiling on dwindle
+    preserve_split = true
+    smart_split = false
 }
 #+end_src
 
@@ -335,18 +335,18 @@ binds {
 * MISC
 #+begin_src conf
 misc {
-  disable_hyprland_logo=true
-  disable_splash_rendering=true
-  mouse_move_enables_dpms=true
-  vfr=false
+  disable_hyprland_logo = true
+  disable_splash_rendering = true
+  mouse_move_enables_dpms = true
+  vfr = false
 }
 #+end_src
 
 * GESTURE
 #+begin_src conf
 gestures {
-    workspace_swipe=yes
-    workspace_swipe_fingers=3
+    workspace_swipe = yes
+    workspace_swipe_fingers = 3
 }
 #+end_src
 
@@ -355,44 +355,44 @@ gestures {
 #+begin_src conf
 
 # Float Necessary Windows
-windowrule=float,Wofi
-windowrule=float,waypaper
-windowrule=float,Tuple
-windowrule=float,pavucontrol
-windowrule=float,foot-float
-windowrule=float,yad|nm-connection-editor|pavucontrolk
-windowrule=float,polkit-gnome|kvantummanager|qt5ct
-windowrule=float,feh|Viewnior|Gpicview|Gimp|nomacs
-windowrule=float,VirtualBox Manager|qemu|Qemu-system-x86_64
-windowrule=float,xfce4-appfinder
+windowrule = float,Wofi
+windowrule = float,waypaper
+windowrule = float,Tuple
+windowrule = float,pavucontrol
+windowrule = float,foot-float
+windowrule = float,yad|nm-connection-editor|pavucontrolk
+windowrule = float,polkit-gnome|kvantummanager|qt5ct
+windowrule = float,feh|Viewnior|Gpicview|Gimp|nomacs
+windowrule = float,VirtualBox Manager|qemu|Qemu-system-x86_64
+windowrule = float,xfce4-appfinder
 
-windowrulev2=float,class:^()$,title:^(Picture in picture)$
-windowrulev2=float,class:^(brave)$,title:^(Save File)$
-windowrulev2=float,class:^(brave)$,title:^(Open File)$
-windowrulev2=float,class:^(brave-browser)$,title:^(Bitwarden - Brave)$
-windowrulev2=float,class:^(blueman-manager)$
-windowrulev2=float,class:^(org.twosheds.iwgtk)$
-windowrulev2=float,class:^(blueberry.py)$
-windowrulev2=float,class:^(xdg-desktop-portal-gtk)$
+windowrulev2 = float,class:^()$,title:^(Picture in picture)$
+windowrulev2 = float,class:^(brave)$,title:^(Save File)$
+windowrulev2 = float,class:^(brave)$,title:^(Open File)$
+windowrulev2 = float,class:^(brave-browser)$,title:^(Bitwarden - Brave)$
+windowrulev2 = float,class:^(blueman-manager)$
+windowrulev2 = float,class:^(org.twosheds.iwgtk)$
+windowrulev2 = float,class:^(blueberry.py)$
+windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
 
-windowrule=float,foot-full
-windowrule=move 0 0,foot-full
-windowrule=size 100% 100%,foot-full
+windowrule = float,foot-full
+windowrule = move 0 0,foot-full
+windowrule = size 100% 100%,foot-full
 
-windowrule=float,wlogout
-windowrule=move 0 0,wlogout
-windowrule=size 100% 100%,wlogout
-windowrule=animation slide,wlogout
+windowrule = float,wlogout
+windowrule = move 0 0,wlogout
+windowrule = size 100% 100%,wlogout
+windowrule = animation slide,wlogout
 
-#windowrule=move 69 420,abc
-#windowrule=size 420 69,abc
-#windowrule=tile,xyz
-#windowrule=pseudo,abc
-#windowrule=monitor 0,xyz
-#windowrule=workspace 12,abc
-#windowrule=opacity 1.0,abc
-#windowrule=animation slide left,abc
-#windowrule=rounding 10,abc
+#windowrule = move 69 420,abc
+#windowrule = size 420 69,abc
+#windowrule = tile,xyz
+#windowrule = pseudo,abc
+#windowrule = monitor 0,xyz
+#windowrule = workspace 12,abc
+#windowrule = opacity 1.0,abc
+#windowrule = animation slide left,abc
+#windowrule = rounding 10,abc
 #+end_src
 
 ** Applications specific
@@ -426,62 +426,62 @@ $browser = brave
 
 ** Terminal
 #+begin_src conf
-bind=SUPER,Return,exec,$term
-bind=SUPERSHIFT,Return,exec,$term
-bind=SUPERALT,Return,exec,$term -f
+bind = SUPER,Return,exec,$term
+bind = SUPERSHIFT,Return,exec,$term
+bind = SUPERALT,Return,exec,$term -f
 #+end_src
 
 ** Apps
 #+begin_src conf
-bind=SUPERSHIFT,F,exec,$files
-bind=SUPERSHIFT,E,exec,$editor
-bind=SUPERSHIFT,I,exec,$editor-everywhere
-bind=SUPERSHIFT,W,exec,$browser
-bind=SUPERSHIFT,S,exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
-bind=CTRLSHIFT,Escape,exec,btop
+bind = SUPERSHIFT,F,exec,$files
+bind = SUPERSHIFT,E,exec,$editor
+bind = SUPERSHIFT,I,exec,$editor-everywhere
+bind = SUPERSHIFT,W,exec,$browser
+bind = SUPERSHIFT,S,exec,XDG_CURRENT_DESKTOP = "gnome" gnome-control-center
+bind = CTRLSHIFT,Escape,exec,btop
 #+end_src
 
 ** Wofi
 #+begin_src conf
-bind=ALT,F1,exec,$wifimenu
-bind=SUPER,D,exec,$appmenu
-bind=SUPER,X,exec,$powermenu
+bind = ALT,F1,exec,$wifimenu
+bind = SUPER,D,exec,$appmenu
+bind = SUPER,X,exec,$powermenu
 #+end_src
 
 ** Misc
 #+begin_src conf
-bind=SUPER,N,exec,nm-connection-editor
-bind=SUPER,P,exec,$colorpicker
-bind=CTRLALT,L,exec,$lockscreen
+bind = SUPER,N,exec,nm-connection-editor
+bind = SUPER,P,exec,$colorpicker
+bind = CTRLALT,L,exec,$lockscreen
 #+end_src
 
 ** Some nice mouse binds
 #+begin_src conf
-bindm=SUPER,mouse:272,movewindow
-bindm=SUPER,mouse:273,resizewindow
+bindm = SUPER,mouse:272,movewindow
+bindm = SUPER,mouse:273,resizewindow
 #+end_src
 
 ** Function keys
 #+begin_src conf
-bind=,XF86MonBrightnessUp,exec,$backlight --inc
-bind=,XF86MonBrightnessDown,exec,$backlight --dec
-bind=,XF86AudioRaiseVolume,exec,$volume --inc
-bind=,XF86AudioLowerVolume,exec,$volume --dec
-bind=,XF86AudioMute,exec,$volume --toggle
-bind=,XF86AudioMicMute,exec,$volume --toggle-mic
-bind=,XF86AudioNext,exec,playerctl next
-bind=,XF86AudioPrev,exec,playerctl previous
-bind=,XF86AudioPlay,exec,playerctl play-pause
-bind=,XF86AudioStop,exec,playerctl stop
+bind = ,XF86MonBrightnessUp,exec,$backlight --inc
+bind = ,XF86MonBrightnessDown,exec,$backlight --dec
+bind = ,XF86AudioRaiseVolume,exec,$volume --inc
+bind = ,XF86AudioLowerVolume,exec,$volume --dec
+bind = ,XF86AudioMute,exec,$volume --toggle
+bind = ,XF86AudioMicMute,exec,$volume --toggle-mic
+bind = ,XF86AudioNext,exec,playerctl next
+bind = ,XF86AudioPrev,exec,playerctl previous
+bind = ,XF86AudioPlay,exec,playerctl play-pause
+bind = ,XF86AudioStop,exec,playerctl stop
 #+end_src
 
 ** Screenshots
 #+begin_src conf
-bind=,Print,exec,$screenshot --now
-bind=SUPER,Print,exec,$screenshot --in5
-bind=SHIFT,Print,exec,$screenshot --in10
-bind=CTRL,Print,exec,$screenshot --win
-bind=SUPERCTRL,Print,exec,$screenshot --area
+bind = ,Print,exec,$screenshot --now
+bind = SUPER,Print,exec,$screenshot --in5
+bind = SHIFT,Print,exec,$screenshot --in10
+bind = CTRL,Print,exec,$screenshot --win
+bind = SUPERCTRL,Print,exec,$screenshot --area
 #+end_src
 
 ** Image To Text
@@ -491,14 +491,14 @@ bind = ControlSuperShift,S,exec,grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 0
 
 ** Hyprland
 #+begin_src conf
-bind=SUPER,Q,killactive,
-bind=CTRLALT,Delete,exit,
-bind=SUPER,F,fullscreen,0
-bind=SUPERCTRL,F,fullscreen, 1
-bind=SUPER,Space,togglefloating,
-bind=SUPERSHIFT,Space,togglesplit,
-bind=SUPER,S,pseudo,
-bind=SUPER,O,toggleopaque
+bind = SUPER,Q,killactive,
+bind = CTRLALT,Delete,exit,
+bind = SUPER,F,fullscreen,0
+bind = SUPERCTRL,F,fullscreen, 1
+bind = SUPER,Space,togglefloating,
+bind = SUPERSHIFT,Space,togglesplit,
+bind = SUPER,S,pseudo,
+bind = SUPER,O,toggleopaque
 #+end_src
 
 ** Window Split Ratio
@@ -512,70 +512,70 @@ To switch between windows in a floating workspace
 
 #+begin_src conf
 bind = SUPER,Tab,cyclenext,          # change focus to another window
-bind = SUPER,Tab,bringactivetotop,   # bring it to the topbind=SUPER,Space,togglefloating,
+bind = SUPER,Tab,bringactivetotop,   # bring it to the topbind = SUPER,Space,togglefloating,
 #+end_src
 
 ** Focus
 #+begin_src conf
-bind=SUPER,H,movefocus,l
-bind=SUPER,L,movefocus,r
-bind=SUPER,K,movefocus,u
-bind=SUPER,J,movefocus,d
+bind = SUPER,H,movefocus,l
+bind = SUPER,L,movefocus,r
+bind = SUPER,K,movefocus,u
+bind = SUPER,J,movefocus,d
 #+end_src
 
 ** Move
 #+begin_src conf
-bind=SUPERSHIFT,H,movewindow,l
-bind=SUPERSHIFT,L,movewindow,r
-bind=SUPERSHIFT,K,movewindow,u
-bind=SUPERSHIFT,J,movewindow,d
+bind = SUPERSHIFT,H,movewindow,l
+bind = SUPERSHIFT,L,movewindow,r
+bind = SUPERSHIFT,K,movewindow,u
+bind = SUPERSHIFT,J,movewindow,d
 #+end_src
 
 ** Resize
 #+begin_src conf
-bind=SUPERCTRL,H,resizeactive,-20 0
-bind=SUPERCTRL,L,resizeactive,20 0
-bind=SUPERCTRL,K,resizeactive,0 -20
-bind=SUPERCTRL,J,resizeactive,0 20
+bind = SUPERCTRL,H,resizeactive,-20 0
+bind = SUPERCTRL,L,resizeactive,20 0
+bind = SUPERCTRL,K,resizeactive,0 -20
+bind = SUPERCTRL,J,resizeactive,0 20
 #+end_src
 
 ** Workspaces
 #+begin_src conf
-bind=SUPER,Z,workspace,1
-bind=SUPER,E,workspace,2
-bind=SUPER,R,workspace,3
-bind=SUPER,T,workspace,4
-bind=SUPER,Y,workspace,5
-bind=SUPER,7,workspace,6
-bind=SUPER,8,workspace,7
-bind=SUPER,9,workspace,8
+bind = SUPER,Z,workspace,1
+bind = SUPER,E,workspace,2
+bind = SUPER,R,workspace,3
+bind = SUPER,T,workspace,4
+bind = SUPER,Y,workspace,5
+bind = SUPER,7,workspace,6
+bind = SUPER,8,workspace,7
+bind = SUPER,9,workspace,8
 #+end_src
 
 ** Send to Workspaces
 #+begin_src conf
-bind=ALT,Z,movetoworkspace,1
-bind=ALT,E,movetoworkspace,2
-bind=ALT,R,movetoworkspace,3
-bind=ALT,T,movetoworkspace,4
-bind=ALT,Y,movetoworkspace,5
-bind=ALT,7,movetoworkspace,6
-bind=ALT,8,movetoworkspace,7
-bind=ALT,9,movetoworkspace,8
+bind = ALT,Z,movetoworkspace,1
+bind = ALT,E,movetoworkspace,2
+bind = ALT,R,movetoworkspace,3
+bind = ALT,T,movetoworkspace,4
+bind = ALT,Y,movetoworkspace,5
+bind = ALT,7,movetoworkspace,6
+bind = ALT,8,movetoworkspace,7
+bind = ALT,9,movetoworkspace,8
 
-bind=SUPER,mouse_down,workspace,e+1
-bind=SUPER,mouse_up,workspace,e-1
+bind = SUPER,mouse_down,workspace,e+1
+bind = SUPER,mouse_up,workspace,e-1
 #+end_src
 
 ** Scroll Through Existing Workspaces
 #+begin_src conf
-bind=ControlSuper, mouse_up, workspace, +1
-bind=ControlSuper, mouse_down, workspace, -1
+bind = ControlSuper, mouse_up, workspace, +1
+bind = ControlSuper, mouse_down, workspace, -1
 #+end_src
 
 
 * SCREEN-SHARING
 #+begin_src conf
 # For screen sharing
-exec-once=sleep 1 && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = sleep 1 && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #+end_src
