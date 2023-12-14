@@ -5,7 +5,6 @@
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-FIELDS=SSID,SECURITY
 POSITION=3
 YOFF=20
 XOFF=-40
