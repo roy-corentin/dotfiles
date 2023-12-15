@@ -14,7 +14,7 @@
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
   - [[#notifications][Notifications]]
-  - [[#status-bar][Status-Bar]]
+  - [[#status-barwaybar][Status-Bar/Waybar]]
   - [[#startup-script][Startup Script]]
   - [[#blue-light][Blue-Light]]
   - [[#bluetooth][Bluetooth]]
@@ -179,7 +179,7 @@ general {
     gaps_in = 4
     gaps_out = 5
 
-    border_size = 3
+    border_size = 4
 
     # Dracula Theme
     # col.active_border = rgb(bd93f9)
@@ -188,7 +188,6 @@ general {
     # Nord Theme
     col.active_border = rgb(88c0d0)
     col.inactive_border = rgba(44475aaa)
-
 
     # damage_tracking = full # leave it on full unless you hate your GPU and want to make it suffer
     apply_sens_to_raw = 0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
