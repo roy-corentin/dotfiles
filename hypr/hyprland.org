@@ -434,7 +434,7 @@ bind = SUPERSHIFT,F,exec,$files
 bind = SUPERSHIFT,E,exec,$editor
 bind = SUPERSHIFT,I,exec,$editor-everywhere
 bind = SUPERSHIFT,W,exec,$browser
-bind = SUPERSHIFT,S,exec,XDG_CURRENT_DESKTOP = "gnome" gnome-control-center
+bind = SUPERSHIFT,S,exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
 bind = CTRLSHIFT,Escape,exec,btop
 #+end_src
 
