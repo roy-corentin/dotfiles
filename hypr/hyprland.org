@@ -500,8 +500,8 @@ bind = SUPER,O,toggleopaque
 
 ** Window Split Ratio
 #+begin_src conf
-binde = Super, Minus, splitratio, -0.1
-binde = Super, Equal, splitratio, 0.1
+binde = SUPERCTRL, Minus, splitratio, -0.1
+binde = SUPERCTRL, Equal, splitratio, 0.1
 #+end_src
 
 ** Tab Cycle
@@ -538,33 +538,33 @@ bind = SUPERCTRL,J,resizeactive,0 20
 
 ** Workspaces
 #+begin_src conf
-bind = SUPER,Z,workspace,1
-bind = SUPER,E,workspace,2
-bind = SUPER,R,workspace,3
-bind = SUPER,T,workspace,4
-bind = SUPER,Y,workspace,5
-bind = SUPER,7,workspace,6
-bind = SUPER,8,workspace,7
-bind = SUPER,9,workspace,8
+bind = SUPER,ampersand,workspace,1
+bind = SUPER,eacute,workspace,2
+bind = SUPER,quotedbl,workspace,3
+bind = SUPER,apostrophe,workspace,4
+bind = SUPER,egrave,workspace,5
+bind = SUPER,minus,workspace,6
+bind = SUPER,underscore,workspace,7
+bind = SUPER,agrave,workspace,8
 #+end_src
 
 ** Send to Workspaces
 #+begin_src conf
-bind = ALT,Z,movetoworkspace,1
-bind = ALT,E,movetoworkspace,2
-bind = ALT,R,movetoworkspace,3
-bind = ALT,T,movetoworkspace,4
-bind = ALT,Y,movetoworkspace,5
-bind = ALT,7,movetoworkspace,6
-bind = ALT,8,movetoworkspace,7
-bind = ALT,9,movetoworkspace,8
-
-bind = SUPER,mouse_down,workspace,e+1
-bind = SUPER,mouse_up,workspace,e-1
+bind = ALT,ampersand,movetoworkspace,1
+bind = ALT,eacute,movetoworkspace,2
+bind = ALT,quotedbl,movetoworkspace,3
+bind = ALT,apostrophe,movetoworkspace,4
+bind = ALT,egrave,movetoworkspace,5
+bind = ALT,minus,movetoworkspace,6
+bind = ALT,underscore,movetoworkspace,7
+bind = ALT,agrave,movetoworkspace,8
 #+end_src
 
 ** Scroll Through Existing Workspaces
 #+begin_src conf
+bind = SUPER,mouse_down,workspace,e+1
+bind = SUPER,mouse_up,workspace,e-1
+
 bind = ControlSuper, mouse_up, workspace, +1
 bind = ControlSuper, mouse_down, workspace, -1
 #+end_src
