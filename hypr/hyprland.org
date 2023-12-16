@@ -21,6 +21,7 @@
   - [[#bluetooth][Bluetooth]]
   - [[#sleep][Sleep]]
   - [[#polkit][Polkit]]
+  - [[#wal][Wal]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#group][GROUP]]
@@ -153,6 +154,11 @@ exec-once = swayidle -w timeout 300 '~/.config/hypr/scripts/sleep' before-sleep 
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 
+** Wal
+#+begin_src conf
+exec-once = wal -R
+#+end_src
+
 * INPUT
 Configure mouse and touchpad here
 #+begin_src conf
@@ -240,7 +246,7 @@ decoration {
 
     blur {
         enabled = true
-        xray = true
+        xray = false
 
         size = 5 # minimum 1
         passes = 2 # minimum 1, more passes = more resource intensive.
@@ -394,7 +400,7 @@ windowrule = animation slide,wlogout
 
 ** Applications specific
 #+begin_src conf
-windowrule = opacity 0.94 override 0.94 override, .*
+windowrule = opacity 0.90 override 0.90 override, .*
 #+end_src
 
 * KEYBINDINGS
@@ -402,7 +408,10 @@ windowrule = opacity 0.94 override 0.94 override, .*
 #+begin_src conf
 # $term = ~/.config/hypr/scripts/terminal
 $term = terminator
+$term1 = kitty
+$term2 = alacritty
 $wifimenu = ~/.config/wofi/wifimenu.sh
+$wallpapermenu = ~/.config/wofi/wallpaper.sh
 $appmenu = ~/.config/hypr/scripts/menu
 $menu3 = xfce4-appfinder
 $powermenu = ~/.config/hypr/scripts/powermenu
@@ -423,8 +432,8 @@ $browser = brave
 ** Terminal
 #+begin_src conf
 bind = SUPER,Return,exec,$term
-bind = SUPERSHIFT,Return,exec,$term
-bind = SUPERALT,Return,exec,$term -f
+bind = SUPERSHIFT,Return,exec,$term1
+bind = SUPERALT,Return,exec,$term2
 #+end_src
 
 ** Apps
@@ -442,6 +451,7 @@ bind = CTRLSHIFT,Escape,exec,btop
 bind = ALT,F1,exec,$wifimenu
 bind = SUPER,D,exec,$appmenu
 bind = SUPER,X,exec,$powermenu
+bind = SUPER,W,exec,$wallpapermenu
 #+end_src
 
 ** Misc
@@ -508,15 +518,19 @@ To switch between windows in a floating workspace
 
 #+begin_src conf
 bind = SUPER,Tab,cyclenext,          # change focus to another window
-bind = SUPER,Tab,bringactivetotop,   # bring it to the topbind = SUPER,Space,togglefloating,
+bind = SUPER,Tab,bringactivetotop,   # bring it to the top
 #+end_src
 
 ** Focus
 #+begin_src conf
 bind = SUPER,H,movefocus,l
+bind = SUPER,H,bringactivetotop
 bind = SUPER,L,movefocus,r
+bind = SUPER,L,bringactivetotop
 bind = SUPER,K,movefocus,u
+bind = SUPER,K,bringactivetotop
 bind = SUPER,J,movefocus,d
+bind = SUPER,J,bringactivetotop
 #+end_src
 
 ** Move
