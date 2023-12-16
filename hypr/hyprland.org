@@ -180,10 +180,10 @@ general {
 
     sensitivity = 1.0 # for mouse cursor
 
-    gaps_in = 4
-    gaps_out = 5
+    gaps_in = 3
+    gaps_out = 7
 
-    border_size = 4
+    border_size = 3
 
     # Dracula Theme
     # col.active_border = rgb(bd93f9)
@@ -223,7 +223,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
 decoration {
-    rounding = 12       # Original: rounding = -1
+    rounding = 4       # Original: rounding = -1
 
     # Old
     # drop_shadow = true
