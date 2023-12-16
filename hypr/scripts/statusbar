@@ -1,19 +1,37 @@
 #!/usr/bin/env bash
 
-## launch waybar with alt config
-
 CONFIG="$HOME/.config/waybar/config"
 STYLE="$HOME/.config/waybar/style.css"
 
-# Kill already running process
-pkill waybar
-pkill inotifywait
-pkill inotifywatch
-
-while true; do
+# Function to start waybar
+start_waybar() {
     waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
-    inotifywait -e create,modify "$CONFIG" "$STYLE"
-    pkill waybar
+    WAYBAR_PID=$!
+}
+
+# Function to stop waybar
+stop_waybar() {
+    kill "$WAYBAR_PID" 2>/dev/null # Suppress error if already killed
+    pkill inotifywait
+    pkill inotifywatch
+}
+
+# Check if waybar is running, start if not
+check_waybar() {
+    if ! pgrep -x "waybar" >/dev/null; then
+        start_waybar
+    fi
+}
+
+# Start waybar initially
+start_waybar
+
+# Watch for changes in config and style files
+while true; do
+    inotifywait -e modify "$CONFIG" "$STYLE"
+    stop_waybar
+    check_waybar
 done
 
-trap "killall waybar" EXIT
+# Cleanup on exit
+trap "stop_waybar" EXIT

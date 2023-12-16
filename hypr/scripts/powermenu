@@ -4,13 +4,11 @@
 
 ## Files
 CONFIG=~/.config/wofi/config
-# STYLE=~/.config/wofi/style-dracula.css
-STYLE=~/.config/wofi/style-nord.css
-COLORS=~/.config/wofi/colors
+STYLE=~/.config/wofi/style.css
 
 ## Wofi Command
 wofi_command="wofi --show dmenu \
-			--conf ${CONFIG} --style ${STYLE} --color ${COLORS} \
+			--conf ${CONFIG} --style ${STYLE} \
 			--cache-file=/dev/null \
 			--insensitive"
 

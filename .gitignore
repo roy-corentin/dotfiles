@@ -11,6 +11,7 @@
 !hypr/
 !mako/
 !screenshots/
+!colors/
 
 # Allow screenshots
 !screenshots/**
@@ -20,6 +21,7 @@
 !waybar/**
 !hypr/**
 !mako/**
+!colors/**
 
 hypr/hyprland-bkp.conf
 hypr/wallpapers/*

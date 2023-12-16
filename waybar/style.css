@@ -1,3 +1,9 @@
+/* @import "/home/croy/.config/colors/nord.css"; */
+/* @import "/home/croy/.config/colors/dracula.css"; */
+@import "/home/croy/.cache/wal/colors-waybar.css";
+
+/* @define-color background #010409; */
+
 * {
   border: none;
   border-radius: 0;
@@ -9,18 +15,18 @@
 
 window#waybar {
   border-radius: 10px;
-  background: #010409;
-  color: #cdd6f4;
+  background: @background;
+  color: @foreground;
 }
 
 tooltip {
-  background: #010409;
+  background: @background;
   border-radius: 10px;
 }
 
 #workspaces button {
   padding: 5px;
-  color: #313244;
+  color: @color8;
   margin-right: 5px;
 }
 
@@ -30,17 +36,17 @@ tooltip {
 
 #workspaces button.focused {
   color: #a6adc8;
-  background: #010409;
+  background: @background;
 }
 
 #workspaces button.urgent {
   color: #11111b;
-  background: #010409;
+  background: @background;
 }
 
 #workspaces button:hover {
-  background: #010409;
-  color: #cdd6f4;
+  background: @background;
+  color: @foreground;
 }
 
 #window,
@@ -66,7 +72,7 @@ tooltip {
 }
 
 #temperature.critical {
-  color: #eba0ac;
+  color: @color6;
 }
 
 #tray {
@@ -86,21 +92,20 @@ tooltip {
 
 #clock {
   margin-left: 5px;
-  /* color: #fab387; */
-  color: #cdd6f4;
+  color: @foreground;
 }
 
 #network {
-  color: #f9e2af;
+  color: @color4;
 }
 
 #bluetooth {
-  color: #89b4fa;
+  color: @color1;
   margin-right: 10px;
 }
 
 #pulseaudio {
-  color: #89b4fa;
+  color: @color1;
 }
 
 #pulseaudio.microphone {
@@ -109,7 +114,7 @@ tooltip {
 }
 
 #battery {
-  color: #a6e3a1;
+  color: @color5;
   margin-right: 10px;
 }
 
@@ -126,7 +131,7 @@ tooltip {
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
+  background-color: @color2;
   color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
