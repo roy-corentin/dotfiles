@@ -417,7 +417,6 @@ $screenshot = ~/.config/hypr/scripts/screenshot
 $lockscreen = ~/.config/hypr/scripts/suspend
 $wlogout = ~/.config/hypr/scripts/wlogout
 $colorpicker = ~/.config/hypr/scripts/colorpicker
-#$files = nemo
 $files = thunar
 $editor = emacsclient -c -n -a 'emacs'
 # $editor-everywhere = emacsclient --eval "(emacs-everywhere)" -a "doom +everywhere"
@@ -434,7 +433,7 @@ bind = SUPERALT,Return,exec,$term -f
 
 ** Apps
 #+begin_src conf
-bind = SUPERSHIFT,F,exec,$files
+bind = SUPERSHIFT,T,exec,$files
 bind = SUPERSHIFT,E,exec,$editor
 bind = SUPERSHIFT,I,exec,$editor-everywhere
 bind = SUPERSHIFT,W,exec,$browser
