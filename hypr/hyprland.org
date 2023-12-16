@@ -225,10 +225,6 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 decoration {
     rounding = 4       # Original: rounding = -1
 
-    # Old
-    # drop_shadow = true
-    # shadow_range = 15
-
     # Shadow
     drop_shadow = true
     shadow_range = 8
@@ -246,7 +242,7 @@ decoration {
         enabled = true
         xray = true
 
-        size = 4 # minimum 1
+        size = 5 # minimum 1
         passes = 2 # minimum 1, more passes = more resource intensive.
 
         ignore_opacity = true
@@ -254,8 +250,8 @@ decoration {
     }
 
     # Dim
-    dim_inactive = false
-    dim_strength = 0.2
+    dim_inactive = true
+    dim_strength = 0.1
 }
 #+end_src
 
@@ -398,7 +394,7 @@ windowrule = animation slide,wlogout
 
 ** Applications specific
 #+begin_src conf
-windowrule = opacity 0.94 override 0.93 override, .*
+windowrule = opacity 0.94 override 0.94 override, .*
 #+end_src
 
 * KEYBINDINGS
