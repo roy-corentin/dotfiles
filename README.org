@@ -13,7 +13,9 @@ All my dotfiles for Hyprland config
 - [[https://github.com/Horus645/swww][sww]]
 - [[https://github.com/emersion/mako][mako]]
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
-- [[https://github.com/dylanaraps/pywal][pywal]]
+
+** Dependencies
+- [[https://github.com/dylanaraps/pywal][pywal]] (Theme based on your background)
 
 ** Themes
 + Nord
@@ -22,8 +24,7 @@ All my dotfiles for Hyprland config
 
   For theme based on you background you need to install =pywal= and add a custom template for Hyprland
 
-
-** Pywal Custom Template
+*** Pywal Custom Template
 Create your template in =~/.config/wal/templates= not =.cache=
 It will create the file with the same name in the =~/.cache/wal/=
 

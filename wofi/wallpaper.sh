@@ -30,6 +30,4 @@ swww img "$wallpaper" --transition-type grow --transition-fps 60 --transition-du
 
 sleep 1.25
 
-wal -i "$wallpaper" --backend "$backend" --saturate 0.7
-
-~/.config/hypr/scripts/statusbar
+wal -i "$wallpaper" --backend "$backend" --saturate 0.6
