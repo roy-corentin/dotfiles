@@ -32,4 +32,4 @@ sleep 1.25
 
 wal -i "$wallpaper" --backend "$backend" --saturate 0.7
 
-pkill waybar
+~/.config/hypr/scripts/statusbar
