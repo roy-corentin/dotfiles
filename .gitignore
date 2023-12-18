@@ -12,6 +12,7 @@
 !mako/
 !screenshots/
 !colors/
+!swaync/
 
 # Allow screenshots
 !screenshots/**
@@ -22,6 +23,7 @@
 !hypr/**
 !mako/**
 !colors/**
+!swaync/**
 
 hypr/hyprland-bkp.conf
 hypr/wallpapers/*

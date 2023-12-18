@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-## launch mako with alt config
+## launch swaync with alt config
+CONFIG="$HOME/.config/swaync/config.json"
+STYLE="$HOME/.config/swaync/style.css"
 
-CONFIG="$HOME/.config/mako/config"
 
-if [[ ! $(pidof mako) ]]; then
-    mako --config "${CONFIG}"
+if [[ ! $(pidof swaync) ]]; then
+    swaync -s "${STYLE}" -c "${CONFIG}"
 fi

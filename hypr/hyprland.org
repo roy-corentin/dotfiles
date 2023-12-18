@@ -118,7 +118,7 @@ exec-once = swww init; swww kill; swww init
 
 ** Notifications
 #+begin_src conf
-exec-once = ~/.config/hypr/scripts/notifications
+exec = ~/.config/hypr/scripts/notifications
 #+end_src
 
 ** Status-Bar/Waybar
@@ -133,7 +133,7 @@ exec-once = ~/.config/hypr/scripts/startup
 
 ** Blue-Light
 #+begin_src conf
-exec = hyprshade auto
+exec-once = hyprshade auto
 #+end_src
 
 ** Bluetooth
@@ -449,6 +449,7 @@ bind = SUPERSHIFT,I,exec,$editor-everywhere
 bind = SUPERSHIFT,W,exec,$browser
 bind = SUPERSHIFT,S,exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
 bind = CTRLSHIFT,Escape,exec,btop
+bind = SUPERSHIFT,N,exec,swaync-client -t -sw
 #+end_src
 
 ** Wofi
