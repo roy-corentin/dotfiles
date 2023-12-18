@@ -491,9 +491,9 @@ bind = ,XF86AudioStop,exec,playerctl stop
 ** Screenshots
 #+begin_src conf
 bind = ,Print,exec,$screenshot --now
-bind = SUPER,Print,exec,$screenshot --in5
+bind = CTRL,Print,exec,$screenshot --in5
 bind = SHIFT,Print,exec,$screenshot --in10
-bind = CTRL,Print,exec,$screenshot --win
+bind = SUPER,Print,exec,$screenshot --win
 bind = SUPERCTRL,Print,exec,$screenshot --area
 #+end_src
 
