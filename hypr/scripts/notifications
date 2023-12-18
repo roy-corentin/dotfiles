@@ -4,7 +4,6 @@
 CONFIG="$HOME/.config/swaync/config.json"
 STYLE="$HOME/.config/swaync/style.css"
 
-
 if [[ ! $(pidof swaync) ]]; then
     swaync -s "${STYLE}" -c "${CONFIG}"
 fi

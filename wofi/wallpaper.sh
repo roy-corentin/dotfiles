@@ -32,5 +32,4 @@ sleep 1.25
 
 wal -i "$wallpaper" --backend "$backend" --saturate 0.6
 
-cat "$home/.cache/wal/colors-mako.conf" "$home/.config/mako/config.tmp" > "$home/.config/mako/config"
-makoctl reload
+swaync-client -rs

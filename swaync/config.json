@@ -54,8 +54,7 @@
     "title",
     "dnd",
     "mpris",
-    "notifications",
-    "buttons-grid"
+    "notifications"
   ],
   "widget-config": {
     "inhibitors": {
@@ -82,7 +81,7 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "Wifi",
+          "label": "直",
           "type": "toggle",
           "active": true,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
