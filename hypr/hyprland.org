@@ -411,7 +411,6 @@ windowrule = opacity 0.90 override 0.90 override, .*
 * KEYBINDINGS
 ** Variable
 #+begin_src conf
-# $term = ~/.config/hypr/scripts/terminal
 $term = terminator
 $term1 = kitty
 $term2 = alacritty
@@ -437,9 +436,9 @@ $browser = brave
 
 ** Terminal
 #+begin_src conf
-bind = SUPER,Return,exec,$term
+bind = SUPER,Return,exec,$term2
 bind = SUPERSHIFT,Return,exec,$term1
-bind = SUPERALT,Return,exec,$term2
+bind = SUPERALT,Return,exec,$term
 #+end_src
 
 ** Apps
