@@ -2,7 +2,7 @@
 /* @import "/home/croy/.config/colors/dracula.css"; */
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
-/* @define-color background #010409; */
+@define-color background #010409;
 
 * {
   border: none;
