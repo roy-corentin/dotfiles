@@ -112,7 +112,7 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 #+begin_src conf
 #exec-once = swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
 # exec-once = swww img ~/.config/hypr/wallpapers/wallpaper.jpg
-exec-once = swww img ~/Pictures/wallpapers/nature_blue_simplist_art.jpg
+exec-once = swww img ~/Pictures/wallpapers/nature-blue-simplist.jpg
 exec-once = swww init; swww kill; swww init
 #+end_src
 
