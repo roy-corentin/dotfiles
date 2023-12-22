@@ -5,7 +5,7 @@
 STYLE="$HOME/.config/wofi/style.css"
 
 if [[ ! $(pidof wofi) ]]; then
-	wofi --show drun --width=35% --prompt 'Search...' --columns 2 -I --style "${STYLE}"
+	wofi --show drun --width=25% --height=40% --prompt 'Search...' -I --style "${STYLE}"
 else
 	pkill wofi
 fi
