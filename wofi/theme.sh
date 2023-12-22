@@ -9,5 +9,6 @@ theme=$(wal --theme | wofi --dmenu --prompt 'Select theme' | grep -o "base16-\([
 
 echo "$theme"
 
-
 wal --theme "$theme"
+
+swaync-client -rs
