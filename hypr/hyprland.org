@@ -22,6 +22,7 @@
   - [[#sleep][Sleep]]
   - [[#polkit][Polkit]]
   - [[#wal][Wal]]
+  - [[#network-manager][Network-Manager]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#group][GROUP]]
@@ -157,6 +158,11 @@ exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 ** Wal
 #+begin_src conf
 exec-once = wal -R
+#+end_src
+
+** Network-Manager
+#+begin_src conf
+exec-once = nm-applet --indicator
 #+end_src
 
 * INPUT
