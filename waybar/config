@@ -9,7 +9,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "cpu", "memory", "temperature", "tray", "custom/media"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "battery#bat2", "custom/power-menu"],
+    "modules-right": ["pulseaudio", "network", "battery", "battery#bat2","custom/vpn", "custom/pacman", "custom/power-menu"],
     // Modules configuration
 
     "hyprland/workspaces": {
@@ -69,19 +69,11 @@
     },
 
     "custom/pacman": {
-       "format": "{}  ",
-       "interval": "once",
-       "exec": "pacman_packages",
-       "on-click": "update-system",
-       "signal": 8
-   },
-    //alternate
-    "custom/pacman": {
-        "format": "{}  ",
+        "format": "{} ",
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "termite -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+        "on-click": "termite -e 'sudo pacman -Syyu'; pkill -SIGRTMIN+8 waybar", // update system
         "signal": 8
     },
 
@@ -148,7 +140,7 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         // "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "bash ~/.config/wofi/wifimenu.sh"
+        "on-click": "nmtui"
     },
 
     "pulseaudio": {
