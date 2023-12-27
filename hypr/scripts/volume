@@ -27,17 +27,17 @@ get_icon() {
 
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Volume : $(get_volume)"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "Volume : $(get_volume)"
 }
 
 # Increase Volume
 inc_volume() {
-	amixer -Mq set Master,0 5%+ unmute && get_icon && notify_user
+	amixer -Mq set Master,0 5%+ unmute && notify_user
 }
 
 # Decrease Volume
 dec_volume() {
-	amixer -Mq set Master,0 5%- unmute && get_icon && notify_user
+	amixer -Mq set Master,0 5%- unmute && notify_user
 }
 
 # Toggle Mute
