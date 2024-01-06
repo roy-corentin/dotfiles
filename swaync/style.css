@@ -14,7 +14,7 @@
 @define-color text-color-disabled rgb(150, 150, 150);
 @define-color bg-selected @color5;
 .root{
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "JetBrainsMonoNerdFont";
 }
 .notification-row {
   outline: none;
