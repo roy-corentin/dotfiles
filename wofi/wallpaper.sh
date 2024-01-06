@@ -20,17 +20,17 @@ find_wallpaper_in_directory() {
 }
 
 if [[ ! $(pidof wofi) ]]; then
-  wallpaper=find_wallpaper_in_directory
+  find_wallpaper_in_directory
 
-  echo "$wallpaper"
+  echo "$wallpaper_path"
 
   backend=$(echo -e "wal\nhaishoku\ncolorthief" | wofi --dmenu --prompt 'Select backend')
 
-  swww img "$wallpaper" --transition-type grow --transition-fps 60 --transition-duration 0.5 --transition-bezier 0.65,0,0.35,1 --transition-step 1
+  swww img "$wallpaper_path" --transition-type grow --transition-fps 60 --transition-duration 0.5 --transition-bezier 0.65,0,0.35,1 --transition-step 1
 
   sleep 1.25
 
-  wal -i "$wallpaper" --backend "$backend" --saturate 0.6
+  wal -i "$wallpaper_path" --backend "$backend" --saturate 0.6
 
   swaync-client -rs
 else
