@@ -29,7 +29,6 @@
 - [[#decoration][DECORATION]]
 - [[#anmations][ANMATIONS]]
 - [[#dwindle][DWINDLE]]
-- [[#binds][BINDS]]
 - [[#misc][MISC]]
 - [[#gesture][GESTURE]]
 - [[#window-rules][WINDOW RULES]]
@@ -111,8 +110,6 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 
 ** Wallpaper
 #+begin_src conf
-#exec-once = swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
-# exec-once = swww img ~/.config/hypr/wallpapers/wallpaper.jpg
 exec-once = swww img ~/Pictures/wallpapers/nature-blue-simplist.jpg
 exec-once = swww init; swww kill; swww init
 #+end_src
@@ -158,8 +155,8 @@ exec-once = swayidle -w \
 #+end_src
 
 ** Polkit
+Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src conf
-# exec-once = /usr/lib/polkit-kde-authentication-agent-1
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 
@@ -262,7 +259,6 @@ decoration {
 
     col.shadow_inactive = 0x50000000
     col.shadow = rgba(1E202966)
-    # col.shadow = 0xffa7caff
 
     fullscreen_opacity=0.9
 
@@ -289,36 +285,6 @@ decoration {
 animations {
     enabled = 1
 
-    # Old
-    # animation = windows,1,8,default,popin 80%
-    # animation = fadeOut,1,8,default
-    # animation = fadeIn,1,8,default
-    # animation = workspaces,1,8,default
-    #animation = workspaces,1,6,overshot
-
-    # Old
-    # bezier = overshot,0.13,0.99,0.29,1.1
-    # animation = windows,1,4,overshot,popin
-    # animation = fade,1,10,default
-    # animation = workspaces,1,6,overshot,slide
-    # animation = border,1,10,default
-
-    # Old
-    # bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-    # bezier = myBezier2, 0.65, 0, 0.35, 1
-
-    # bezier = slow,0,0.85,0.3,1
-    # bezier = overshot,0.7,0.6,0.1,1.1
-    # bezier = bounce,1,1.6,0.1,0.85
-    # bezier = slingshot,1,-1,0.15,1.25
-    # bezier = nice,0,6.9,0.5,-4.20
-
-    # animation = windows,1,5,bounce,popin
-    # animation = border,1,20,default
-    # animation = fade,1,5,default
-    # animation = workspaces,1,5,overshot,slide
-
-    # New
     bezier = linear, 0, 0, 1, 1
     bezier = md3_standard, 0.2, 0, 0, 1
     bezier = md3_decel, 0.05, 0.7, 0.1, 1
@@ -347,13 +313,6 @@ dwindle {
     pseudotile = 0 # enable pseudotiling on dwindle
     preserve_split = true
     smart_split = false
-}
-#+end_src
-
-* BINDS
-#+begin_src conf
-binds {
-  workspace_back_and_forth = true
 }
 #+end_src
 
