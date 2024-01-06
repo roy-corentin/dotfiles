@@ -5,7 +5,7 @@ if [[ $(pidof wofi) ]]; then
   exit 1
 fi
 
-theme=$(wal --theme | wofi --dmenu --prompt 'Select theme' | grep -o "base16-\([[:alpha:]]*-\?\)*" | head -n1)
+theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | wofi --dmenu --prompt 'Select theme')
 
 echo "$theme"
 
