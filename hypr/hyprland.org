@@ -19,7 +19,7 @@
   - [[#startup-script][Startup Script]]
   - [[#blue-light][Blue-Light]]
   - [[#bluetooth][Bluetooth]]
-  - [[#sleep][Sleep]]
+  - [[#swayidle][Swayidle]]
   - [[#polkit][Polkit]]
   - [[#wal][Wal]]
   - [[#network-manager][Network-Manager]]
@@ -143,15 +143,23 @@ Make sure you have installed =blueman=
 exec-once = blueman-applet
 #+end_src
 
-** Sleep
+** Swayidle
++ Dim after 240sec decrease brightness
++ Send notification about the pc going to sleep after 300sec
++ Lock the screen after 360sec
++ Before sleep lock screen
 #+begin_src conf
-exec-once = swayidle -w before-sleep '~/.config/hypr/scripts/lockscreen'
+exec-once = swayidle -w \
+            timeout 240 'brightnessctl --save; brightnessctl set 20%' \
+            timeout 300 'notify-send Going to sleep in less a minute' \
+            timeout 360 '~/.config/hypr/scripts/sleep' \
+                resume 'brightnessctl --restore' \
+            before-sleep '~/.config/hypr/scripts/lockscreen'
 #+end_src
 
 ** Polkit
 #+begin_src conf
 # exec-once = /usr/lib/polkit-kde-authentication-agent-1
-
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 
