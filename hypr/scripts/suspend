@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-mpc -q pause
+playerctl pause
 amixer set Master mute
 systemctl suspend
