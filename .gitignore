@@ -26,9 +26,6 @@
 !swaync/**
 
 hypr/hyprland-bkp.conf
-hypr/wallpapers/*
-!hypr/wallpapers/wallpaper.png
-!hypr/wallpapers/lockscreen.png
 
 waybar/style.old.css
 wofi/style.old.css
