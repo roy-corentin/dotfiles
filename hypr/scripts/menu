@@ -4,8 +4,9 @@
 
 STYLE="$HOME/.config/wofi/style.css"
 
-if [[ ! $(pidof wofi) ]]; then
-	wofi --show drun --width=25% --height=40% --prompt 'Search...' -I --style "${STYLE}"
-else
+if [[ $(pidof wofi) ]]; then
 	pkill wofi
+	exit 1
 fi
+
+wofi --show drun --width=25% --height=40% --prompt 'Search...' -I --style "${STYLE}"
