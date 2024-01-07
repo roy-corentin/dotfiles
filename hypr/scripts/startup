@@ -18,7 +18,7 @@ exec mpd &
 
 # Custom start
 flatpak run app.tuple.app &
-webcord &
+discord &
 exec ~/Perso/script/teams_start.sh &
 exec ~/Perso/script/slack_start.sh &
 emacs_start &
