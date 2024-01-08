@@ -2,4 +2,5 @@
 
 playerctl pause
 amixer set Master mute
+~/.config/hypr/scripts/lockscreen
 systemctl suspend
