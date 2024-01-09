@@ -20,7 +20,7 @@ All my dotfiles for Hyprland config
 ** Themes
 + Nord
 + Dracula
-+ Background based (pywal)
++ Background based (pywal, see screenshots)
 
   For theme based on you background you need to install =pywal= and add a custom template for Hyprland
 
