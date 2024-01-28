@@ -13,6 +13,8 @@ All my dotfiles for Hyprland config
 - [[https://github.com/Horus645/swww][sww]]
 - [[https://github.com/ErikReider/SwayNotificationCenter][SwayNotificationCenter]]
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
+- Blueman
+- NetworkMarnager-Applet
 
 ** Dependencies
 - [[https://github.com/dylanaraps/pywal][pywal]] (Create theme based on your background)
