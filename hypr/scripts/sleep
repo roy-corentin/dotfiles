@@ -5,5 +5,5 @@ if playerctl status 2> /dev/null | grep -q "Playing"; then
     exit 0  # Music is playing, exit without taking any action
 else
     # No music playing, trigger the lockscreen or sleep
-    ~/.config/hypr/scripts/lockscreen
+    ~/.config/hypr/scripts/suspend
 fi

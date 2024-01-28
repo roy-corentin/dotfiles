@@ -16,6 +16,6 @@ done
 # Custom start
 flatpak run app.tuple.app &
 discord &
-exec ~/Perso/script/teams_start.sh &
-exec ~/Perso/script/slack_start.sh &
+slack_start &
+teams_start &
 emacs_start &
