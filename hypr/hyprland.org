@@ -10,10 +10,9 @@
   - [[#syadem-setup][Syadem Setup]]
   - [[#home-setup][Home Setup]]
   - [[#default-setup][Default Setup]]
-  - [[#default-mirror-setup][Default Mirror Setup]]
 - [[#startup][STARTUP]]
   - [[#desktop-portals][Desktop-Portals]]
-  - [[#wallpaper][Wallpaper]]
+  - [[#wallpaper-swww][Wallpaper (SWWW)]]
   - [[#notifications][Notifications]]
   - [[#status-bar-waybar][Status-Bar (Waybar)]]
   - [[#startup-script][Startup Script]]
@@ -94,12 +93,8 @@ monitor = desc:Iiyama North America PL2390 11298JH100680, preferred, -1920x0, 1
 ** Default Setup
 #+begin_src conf
 monitor = ,preferred, auto, 1
+# monitor = , preferred, auto, 1, mirror, eDP-1 # Mirror
 workspace = HDMI-A-1, 1
-#+end_src
-
-** Default Mirror Setup
-#+begin_src conf
-# monitor = , preferred, auto, 1, mirror, eDP-1
 #+end_src
 
 * STARTUP
@@ -110,10 +105,11 @@ workspace = HDMI-A-1, 1
 exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 #+end_src
 
-** Wallpaper
+** Wallpaper (SWWW)
 #+begin_src conf
+exec-once = swww init
 exec-once = swww img ~/.config/hypr/wallpapers/nature-blue-simplist.jpg
-exec-once = swww init; swww kill; swww init
+# exec-once = swww init; swww kill; swww init
 #+end_src
 
 ** Notifications
@@ -160,7 +156,6 @@ exec-once = swayidle -w \
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src conf
-# exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once=/usr/lib/polkit-1/polkitd
 #+end_src
 
