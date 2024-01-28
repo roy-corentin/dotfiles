@@ -2,14 +2,14 @@
 
 wallpaper_directory="$HOME/.config/hypr/wallpapers"
 
-find_wallpaper_in_directory() {
+chose_wallpaper() {
   image=$(ls "$wallpaper_directory" | wofi --dmenu --prompt 'Select wallpaper')
   wallpaper_path="$wallpaper_directory/$image"
 
   if [[ -d $wallpaper_path ]]; then
     echo "$wallpaper_path is a directory"
     wallpaper_directory="$wallpaper_path"
-    find_wallpaper_in_directory
+    chose_wallpaper
   elif [[ -f $wallpaper_path ]]; then
     echo "$wallpaper_path is a file"
   else
@@ -23,7 +23,7 @@ if [[ $(pidof wofi) ]]; then
   exit 1
 fi
 
-find_wallpaper_in_directory
+chose_wallpaper
 
 echo "$wallpaper_path"
 
