@@ -15,7 +15,7 @@
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
   - [[#notifications][Notifications]]
-  - [[#status-barwaybar][Status-Bar/Waybar]]
+  - [[#status-bar-waybar][Status-Bar (Waybar)]]
   - [[#startup-script][Startup Script]]
   - [[#blue-light][Blue-Light]]
   - [[#bluetooth][Bluetooth]]
@@ -29,8 +29,9 @@
 - [[#decoration][DECORATION]]
 - [[#anmations][ANMATIONS]]
 - [[#dwindle][DWINDLE]]
-- [[#misc][MISC]]
+- [[#master][MASTER]]
 - [[#gesture][GESTURE]]
+- [[#misc][MISC]]
 - [[#window-rules][WINDOW RULES]]
   - [[#general-1][General]]
   - [[#applications-specific][Applications specific]]
@@ -111,7 +112,7 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 
 ** Wallpaper
 #+begin_src conf
-exec-once = swww img ~/Pictures/wallpapers/nature-blue-simplist.jpg
+exec-once = swww img ~/.config/hypr/wallpapers/nature-blue-simplist.jpg
 exec-once = swww init; swww kill; swww init
 #+end_src
 
@@ -120,7 +121,7 @@ exec-once = swww init; swww kill; swww init
 exec = ~/.config/hypr/scripts/notifications
 #+end_src
 
-** Status-Bar/Waybar
+** Status-Bar (Waybar)
 #+begin_src conf
 exec-once = ~/.config/hypr/scripts/statusbar
 #+end_src
@@ -131,6 +132,7 @@ exec-once = ~/.config/hypr/scripts/startup
 #+end_src
 
 ** Blue-Light
+Make sure you have installed =hyprshade=
 #+begin_src conf
 exec-once = hyprshade auto
 #+end_src
@@ -158,7 +160,8 @@ exec-once = swayidle -w \
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src conf
-exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once=/usr/lib/polkit-1/polkitd
 #+end_src
 
 ** Wal
@@ -167,6 +170,7 @@ exec-once = wal -R
 #+end_src
 
 ** Network-Manager
+Make sure you havc installed =network-manager-applet=
 #+begin_src conf
 exec-once = nm-applet --indicator
 #+end_src
@@ -180,12 +184,17 @@ input {
     kb_model =
     kb_options =
     kb_rules =
+
     follow_mouse = 1
-    natural_scroll = 0
+
     force_no_accel = 0
-    # repeat_rate =
-    # repeat_delay =
     numlock_by_default = 1
+
+    touchpad {
+        natural_scroll = no
+    }
+
+    sensitivity = 1.0 # -1.0 - 1.0, 0 means no modification.
 }
 #+end_src
 
@@ -196,14 +205,11 @@ source = ~/.cache/wal/colors-hyprland.conf
 general {
     # main_mod = SUPER
 
-    layout = dwindle
-
-    sensitivity = 1.0 # for mouse cursor
-
-    gaps_in = 3
+    gaps_in = 2
     gaps_out = 7
-
     border_size = 4
+
+    layout = dwindle
 
     # Dracula Theme
     # col.active_border = rgb(bd93f9)
@@ -217,11 +223,10 @@ general {
     col.active_border = $color1
     col.inactive_border = $color0
 
-    # damage_tracking = full # leave it on full unless you hate your GPU and want to make it suffer
-    apply_sens_to_raw = 0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
-
     # Make the cursor disappear after 3 seconds
     cursor_inactive_timeout = 3
+
+    allow_tearing = false
 }
 #+end_src
 
@@ -251,14 +256,16 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
 decoration {
-    rounding = 4       # Original: rounding = -1
+    # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+    rounding = 4       # Original: 10
 
     # Shadow
-    drop_shadow = true
+    drop_shadow = yes
     shadow_range = 8
     shadow_offset = 1 2
-    shadow_render_power = 3
     shadow_scale = 0.97
+    shadow_render_power = 3
 
     col.shadow_inactive = 0x50000000
     col.shadow = rgba(1E202966)
@@ -266,13 +273,13 @@ decoration {
     fullscreen_opacity=0.9
 
     blur {
+        enabled = true
         size = 5 # minimum 1
         passes = 2 # minimum 1, more passes = more resource intensive.
 
         ignore_opacity = false
     }
 
-    # Dim
     dim_inactive = true
     dim_strength = 0.1
 }
@@ -282,7 +289,7 @@ decoration {
 * ANMATIONS
 #+begin_src conf
 animations {
-    enabled = 1
+    enabled = yes
 
     bezier = linear, 0, 0, 1, 1
     bezier = md3_standard, 0.2, 0, 0, 1
@@ -310,9 +317,25 @@ animations {
 * DWINDLE
 #+begin_src conf
 dwindle {
-    pseudotile = 0 # enable pseudotiling on dwindle
-    preserve_split = true
+    pseudotile = yes # enable pseudotiling on dwindle
+    preserve_split = yes
     smart_split = false
+}
+#+end_src
+
+* MASTER
+#+begin_src conf
+master {
+    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+    new_is_master = true
+}
+#+end_src
+
+* GESTURE
+#+begin_src conf
+gestures {
+    workspace_swipe = yes
+    workspace_swipe_fingers = 3
 }
 #+end_src
 
@@ -326,18 +349,9 @@ misc {
 }
 #+end_src
 
-* GESTURE
-#+begin_src conf
-gestures {
-    workspace_swipe = yes
-    workspace_swipe_fingers = 3
-}
-#+end_src
-
 * WINDOW RULES
 ** General
 #+begin_src conf
-
 # Float Necessary Windows
 windowrule = float,Wofi
 windowrule = float,waypaper
@@ -387,6 +401,9 @@ windowrule = opacity 0.90 override 0.90 override, .*
 * KEYBINDINGS
 ** Variable
 #+begin_src conf
+# See https://wiki.hyprland.org/Configuring/Keywords/ for more
+$mainMod = SUPER
+
 $term = terminator
 $term1 = kitty
 $term2 = alacritty
@@ -402,7 +419,7 @@ $lockscreen = ~/.config/hypr/scripts/lockscreen
 $suspend = ~/.config/hypr/scripts/suspend
 $wlogout = ~/.config/hypr/scripts/wlogout
 $colorpicker = ~/.config/hypr/scripts/colorpicker
-$files = thunar
+$files = dolphin
 $editor = emacsclient -c -n -a 'emacs'
 # $editor-everywhere = emacsclient --eval "(emacs-everywhere)" -a "doom +everywhere"
 $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
@@ -411,35 +428,35 @@ $browser = brave
 
 ** Terminal
 #+begin_src conf
-bind = SUPER,Return,exec,$term2
-bind = SUPERSHIFT,Return,exec,$term1
-bind = SUPERALT,Return,exec,$term
+bind = $mainMod,Return,exec,$term2
+bind = $mainMod SHIFT,Return,exec,$term1
+bind = $mainMod ALT,Return,exec,$term
 #+end_src
 
 ** Apps
 #+begin_src conf
-bind = SUPERSHIFT,T,exec,$files
-bind = SUPERSHIFT,E,exec,$editor
-bind = SUPERSHIFT,I,exec,$editor-everywhere
-bind = SUPERSHIFT,W,exec,$browser
-bind = SUPERSHIFT,S,exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
-bind = CTRLSHIFT,Escape,exec,btop
-bind = SUPERSHIFT,N,exec,swaync-client -t -sw
+bind = $mainMod SHIFT, T ,exec,$files
+bind = $mainMod SHIFT, E ,exec,$editor
+bind = $mainMod SHIFT, I ,exec,$editor-everywhere
+bind = $mainMod SHIFT, W ,exec,$browser
+bind = $mainMod SHIFT, S, exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
+bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
+bind = CTRL SHIFT, Escape, exec, btop
 #+end_src
 
 ** Wofi
 #+begin_src conf
-bind = SUPER,D,exec,$appmenu
-bind = SUPER,X,exec,$powermenu
-bind = SUPER,W,exec,$wallpapermenu
-bind = SUPER,T,exec,$thememenu
+bind = $mainMod, D, exec,$appmenu
+bind = $mainMod, X, exec,$powermenu
+bind = $mainMod, W, exec,$wallpapermenu
+bind = $mainMod, T, exec,$thememenu
 #+end_src
 
 ** Misc
 #+begin_src conf
-bind = SUPER,N,exec,nm-connection-editor
-bind = SUPER,P,exec,$colorpicker
-bind = CTRLALT,L,exec,$suspend
+bind = $mainMod, N, exec,nm-connection-editor
+bind = $mainMod, P, exec,$colorpicker
+bind = CTRL ALT,L, exec, $suspend
 #+end_src
 
 ** Some nice mouse binds
@@ -450,117 +467,124 @@ bindm = SUPER,mouse:273,resizewindow
 
 ** Function keys
 #+begin_src conf
-bind = ,XF86MonBrightnessUp,exec,$backlight --inc
-bind = ,XF86MonBrightnessDown,exec,$backlight --dec
-bind = ,XF86AudioRaiseVolume,exec,$volume --inc
-bind = ,XF86AudioLowerVolume,exec,$volume --dec
-bind = ,XF86AudioMute,exec,$volume --toggle
-bind = ,XF86AudioMicMute,exec,$volume --toggle-mic
-bind = ,XF86AudioNext,exec,playerctl next
-bind = ,XF86AudioPrev,exec,playerctl previous
-bind = ,XF86AudioPlay,exec,playerctl play-pause
-bind = ,XF86AudioStop,exec,playerctl stop
+bind = ,XF86MonBrightnessUp, exec, $backlight --inc
+bind = ,XF86MonBrightnessDown, exec, $backlight --dec
+bind = ,XF86AudioRaiseVolume, exec, $volume --inc
+bind = ,XF86AudioLowerVolume, exec, $volume --dec
+bind = ,XF86AudioMute, exec, $volume --toggle
+bind = ,XF86AudioMicMute, exec, $volume --toggle-mic
+bind = ,XF86AudioNext, exec, playerctl next
+bind = ,XF86AudioPrev, exec, playerctl previous
+bind = ,XF86AudioPlay, exec, playerctl play-pause
+bind = ,XF86AudioStop, exec, playerctl stop
 #+end_src
 
 ** Screenshots
 #+begin_src conf
-bind = ,Print,exec,$screenshot --now
-bind = CTRL,Print,exec,$screenshot --in5
-bind = SHIFT,Print,exec,$screenshot --in10
-bind = SUPER,Print,exec,$screenshot --win
-bind = SUPERCTRL,Print,exec,$screenshot --area
+bind = ,Print, exec, $screenshot --now
+bind = CTRL, Print, exec, $screenshot --in5
+bind = SHIFT, Print, exec, $screenshot --in10
+bind = $mainMod, Print, exec, $screenshot --win
+bind = $mainMod, Print, exec, $screenshot --area
 #+end_src
 
 ** Image To Text
 #+begin_src conf
-bind = SUPERSHIFTCTRL,S,exec,grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+bind = $mainMod SHIFT CTRL, S, exec,grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
 #+end_src
 
 ** Hyprland
 #+begin_src conf
-bind = SUPER,Q,killactive,
-bind = CTRLALT,Delete,exit,
-bind = SUPER,F,fullscreen, 0
-bind = SUPERSHIFT,F,fullscreen,1
-bind = SUPER,Space,togglefloating,
-bind = SUPERSHIFT,Space,togglesplit,
-bind = SUPER,S,pseudo,
-bind = SUPER,O,toggleopaque
+bind = $mainMod, Q, killactive,
+bind = CTRL ALT, Delete,exit,
+bind = $mainMod, F, fullscreen, 0
+bind = $mainMod SHIFT, F, fullscreen,1
+bind = $mainMod, Space, togglefloating,
+bind = $mainMod SHIFT, Space, togglesplit,
+bind = $mainMod, P, pseudo,
+bind = $mainMod, O, toggleopaque
+
+# Example special workspace (scratchpad)
+bind = $mainMod, S, togglespecialworkspace, magic
+bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 #+end_src
 
 ** Window Split Ratio
 #+begin_src conf
-binde = SUPERCTRL, Minus, splitratio, -0.1
-binde = SUPERCTRL, Equal, splitratio, 0.1
+binde = $mainMod CTRL, Minus, splitratio, -0.1
+binde = $mainMod CTRL, Equal, splitratio, 0.1
 #+end_src
 
 ** Tab Cycle
 To switch between windows in a floating workspace
 
 #+begin_src conf
-bind = SUPER,Tab,cyclenext,          # change focus to another window
-bind = SUPER,Tab,bringactivetotop,   # bring it to the top
+bind = $mainMod, Tab, cyclenext,          # change focus to another window
+bind = $mainMod, Tab, bringactivetotop,   # bring it to the top
 #+end_src
 
 ** Focus
 #+begin_src conf
-bind = SUPER,H,movefocus,l
-bind = SUPER,H,bringactivetotop
-bind = SUPER,L,movefocus,r
-bind = SUPER,L,bringactivetotop
-bind = SUPER,K,movefocus,u
-bind = SUPER,K,bringactivetotop
-bind = SUPER,J,movefocus,d
-bind = SUPER,J,bringactivetotop
+bind = $mainMod, H, movefocus, l
+bind = $mainMod, H, bringactivetotop
+
+bind = $mainMod, L, movefocus, r
+bind = $mainMod, L, bringactivetotop
+
+bind = $mainMod, K, movefocus, u
+bind = $mainMod, K, bringactivetotop
+
+bind = $mainMod, J, movefocus, d
+bind = $mainMod, J, bringactivetotop
 #+end_src
 
 ** Move
 #+begin_src conf
-bind = SUPERSHIFT,H,movewindow,l
-bind = SUPERSHIFT,L,movewindow,r
-bind = SUPERSHIFT,K,movewindow,u
-bind = SUPERSHIFT,J,movewindow,d
+bind = $mainMod SHIFT, H, movewindow, l
+bind = $mainMod SHIFT, L, movewindow, r
+bind = $mainMod SHIFT, K, movewindow, u
+bind = $mainMod SHIFT, J, movewindow, d
 #+end_src
 
 ** Resize
 #+begin_src conf
-bind = SUPERCTRL,H,resizeactive,-20 0
-bind = SUPERCTRL,L,resizeactive,20 0
-bind = SUPERCTRL,K,resizeactive,0 -20
-bind = SUPERCTRL,J,resizeactive,0 20
+bind = $mainMod CTRL, H, resizeactive, -20 0
+bind = $mainMod CTRL, L, resizeactive, 20 0
+bind = $mainMod CTRL, K, resizeactive, 0 -20
+bind = $mainMod CTRL, J, resizeactive, 0 20
 #+end_src
 
 ** Workspaces
 #+begin_src conf
-bind = SUPER,ampersand,workspace,1
-bind = SUPER,eacute,workspace,2
-bind = SUPER,quotedbl,workspace,3
-bind = SUPER,apostrophe,workspace,4
-bind = SUPER,parenleft,workspace,5
-bind = SUPER,minus,workspace,6
-bind = SUPER,egrave,workspace,7
-bind = SUPER,underscore,workspace,8
+bind = $mainMod, ampersand, workspace, 1
+bind = $mainMod, eacute, workspace, 2
+bind = $mainMod, quotedbl, workspace, 3
+bind = $mainMod, apostrophe, workspace, 4
+bind = $mainMod, parenleft, workspace, 5
+bind = $mainMod, minus, workspace, 6
+bind = $mainMod, egrave, workspace, 7
+bind = $mainMod, underscore, workspace, 8
 #+end_src
 
 ** Send to Workspaces
 #+begin_src conf
-bind = ALT,ampersand,movetoworkspace,1
-bind = ALT,eacute,movetoworkspace,2
-bind = ALT,quotedbl,movetoworkspace,3
-bind = ALT,apostrophe,movetoworkspace,4
-bind = ALT,parenleft,movetoworkspace,5
-bind = ALT,minus,movetoworkspace,6
-bind = ALT,egrave,movetoworkspace,7
-bind = ALT,underscore,movetoworkspace,8
+bind = ALT, ampersand, movetoworkspace, 1
+bind = ALT, eacute, movetoworkspace, 2
+bind = ALT, quotedbl, movetoworkspace, 3
+bind = ALT, apostrophe, movetoworkspace, 4
+bind = ALT, parenleft, movetoworkspace, 5
+bind = ALT, minus, movetoworkspace, 6
+bind = ALT, egrave, movetoworkspace, 7
+bind = ALT, underscore, movetoworkspace, 8
 #+end_src
 
 ** Scroll Through Existing Workspaces
 #+begin_src conf
-bind = SUPER,mouse_down,workspace,e+1
-bind = SUPER,mouse_up,workspace,e-1
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
 
-bind = ControlSuper, mouse_up, workspace, +1
-bind = ControlSuper, mouse_down, workspace, -1
+bind = $mainMod CTRL, mouse_up, workspace, +1
+bind = $mainMod CTRL, mouse_down, workspace, -1
 #+end_src
 
 
