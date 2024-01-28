@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 home="/home/croy"
-wallpaper_directory="$home/Pictures/wallpapers"
+wallpaper_directory="$home/.config/hypr/wallpapers"
 
 find_wallpaper_in_directory() {
   image=$(ls "$wallpaper_directory" | wofi --dmenu --prompt 'Select wallpaper')
