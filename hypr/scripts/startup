@@ -16,6 +16,6 @@ done
 # Custom start
 flatpak run app.tuple.app &
 discord &
+emacs_start &
 slack_start &
 teams_start &
-emacs_start &
