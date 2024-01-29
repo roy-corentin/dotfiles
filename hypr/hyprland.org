@@ -107,8 +107,8 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 
 ** Wallpaper (SWWW)
 #+begin_src conf
+exec-once = swww init
 exec-once = swww img ~/.config/hypr/wallpapers/nature-blue-simplist.jpg
-exec-once = swww init; swww kill; swww init
 #+end_src
 
 ** Notifications
@@ -200,8 +200,8 @@ general {
     # main_mod = SUPER
 
     gaps_in = 2
-    gaps_out = 7
-    border_size = 4
+    gaps_out = 4
+    border_size = 3
 
     layout = dwindle
 
@@ -252,7 +252,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 decoration {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-    rounding = 4       # Original: 10
+    rounding = 2       # Original: 10
 
     # Shadow
     drop_shadow = yes
