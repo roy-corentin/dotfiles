@@ -4,7 +4,8 @@
 
 # THEME='Dracula'
 # THEME='Nordic'
-THEME='adw-gtk3-dark'
+# THEME='adw-gtk3-dark'
+THEME='Adwaita-dark'
 
 ICONS='Papirus-Dark'
 FONT='Noto Sans 9'
