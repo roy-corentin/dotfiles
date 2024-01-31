@@ -139,9 +139,9 @@ exec-once = blueman-applet
 #+end_src
 
 ** Swayidle
-+ Dim after 240sec decrease brightness
-+ Send notification about the pc going to sleep after 300sec
-+ Lock the screen after 360sec
++ Dim primary screen, after 240sec decrease brightness
++ Send notification about the pc going to sleep, after 300sec
++ Sleep, after 360sec
 + Before sleep lock screen
 #+begin_src conf
 exec-once = swayidle -w \
