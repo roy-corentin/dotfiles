@@ -479,7 +479,7 @@ bind = ,Print, exec, $screenshot --now
 bind = CTRL, Print, exec, $screenshot --in5
 bind = SHIFT, Print, exec, $screenshot --in10
 bind = $mainMod, Print, exec, $screenshot --win
-bind = $mainMod, Print, exec, $screenshot --area
+bind = $mainMod CTRL, Print, exec, $screenshot --area
 #+end_src
 
 ** Image To Text
