@@ -107,8 +107,8 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 
 ** Wallpaper (SWWW)
 #+begin_src conf
-exec-once = swww init
 exec-once = swww img ~/.config/hypr/wallpapers/nature-blue-simplist.jpg
+exec-once = swww init; swww kill; swww init
 #+end_src
 
 ** Notifications
