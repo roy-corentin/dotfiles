@@ -146,9 +146,10 @@ exec-once = blueman-applet
 #+begin_src conf
 exec-once = swayidle -w \
             timeout 240 'brightnessctl --save; brightnessctl set 20%' \
-            timeout 300 'notify-send "Going to sleep in less a minute"' \
-            timeout 360 '~/.config/hypr/scripts/sleep' \
                 resume 'brightnessctl --restore' \
+            timeout 300 'notify-send "Going to sleep in less a minute"' \
+            before-sleep '~/.config/hypr/scripts/lockscreen'
+            timeout 360 '~/.config/hypr/scripts/sleep' \
             before-sleep '~/.config/hypr/scripts/lockscreen'
 #+end_src
 
