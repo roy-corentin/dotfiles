@@ -449,7 +449,7 @@ bind = $mainMod, T, exec,$thememenu
 ** Misc
 #+begin_src conf
 bind = $mainMod, N, exec,nm-connection-editor
-bind = $mainMod, P, exec,$colorpicker
+bind = $mainMod, C, exec,$colorpicker
 bind = CTRL ALT,L, exec, $suspend
 #+end_src
 
@@ -490,7 +490,7 @@ bind = $mainMod SHIFT CTRL, S, exec,grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 
 ** Hyprland
 #+begin_src conf
 bind = $mainMod, Q, killactive,
-bind = CTRL ALT, Delete,exit,
+bind = CTRL ALT, Delete, exit,
 bind = $mainMod, F, fullscreen, 0
 bind = $mainMod SHIFT, F, fullscreen,1
 bind = $mainMod, Space, togglefloating,
