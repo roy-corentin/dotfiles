@@ -8,7 +8,7 @@
     "width": 1800, // Waybar width
     "spacing": 8, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "cpu", "memory", "temperature", "tray", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "cpu", "memory", "temperature", "tray"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "network", "battery", "battery#bat2","custom/vpn", "custom/pacman", "custom/power-menu"],
     // Modules configuration
@@ -127,27 +127,14 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "󱈘",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
 
     "custom/power-menu": {
