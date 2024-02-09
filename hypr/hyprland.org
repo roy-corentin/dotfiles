@@ -49,8 +49,8 @@
   - [[#window-split-ratio][Window Split Ratio]]
   - [[#tab-cycle][Tab Cycle]]
   - [[#focus][Focus]]
-  - [[#move][Move]]
-  - [[#resize][Resize]]
+  - [[#move-window][Move Window]]
+  - [[#resize-window][Resize Window]]
   - [[#workspaces][Workspaces]]
   - [[#send-to-workspaces][Send to Workspaces]]
   - [[#scroll-through-existing-workspaces][Scroll Through Existing Workspaces]]
@@ -541,7 +541,7 @@ bind = $mainMod, J, movefocus, d
 bind = $mainMod, J, bringactivetotop
 #+end_src
 
-** Move
+** Move Window
 #+begin_src conf
 bind = $mainMod SHIFT, H, movewindow, l
 bind = $mainMod SHIFT, L, movewindow, r
@@ -549,7 +549,7 @@ bind = $mainMod SHIFT, K, movewindow, u
 bind = $mainMod SHIFT, J, movewindow, d
 #+end_src
 
-** Resize
+** Resize Window
 #+begin_src conf
 bind = $mainMod CTRL, H, resizeactive, -20 0
 bind = $mainMod CTRL, L, resizeactive, 20 0
