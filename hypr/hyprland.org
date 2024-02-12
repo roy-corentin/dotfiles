@@ -364,7 +364,7 @@ windowrule = float,xfce4-appfinder
 windowrulev2 = float,class:^()$,title:^(Picture in picture)$
 windowrulev2 = float,class:^(brave)$,title:^(Save File)$
 windowrulev2 = float,class:^(brave)$,title:^(Open File)$
-windowrulev2 = float,class:^(brave-browser)$,title:^(Bitwarden - Brave)$
+windowrulev2 = float,class:^(brave.*)$,title:^(Bitwarden)$
 windowrulev2 = float,class:^(blueman-manager)$
 windowrulev2 = float,class:^(org.twosheds.iwgtk)$
 windowrulev2 = float,class:^(blueberry.py)$
@@ -378,7 +378,6 @@ windowrule = float,wlogout
 windowrule = move 0 0,wlogout
 windowrule = size 100% 100%,wlogout
 windowrule = animation slide,wlogout
-
 
 windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
 windowrulev2 = noanim,class:^(xwaylandvideobridge)$
