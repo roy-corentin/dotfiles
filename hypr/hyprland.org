@@ -125,7 +125,7 @@ exec-once = ~/.config/hypr/scripts/statusbar
 
 ** Startup Script
 #+begin_src conf
-exec-once = ~/.config/hypr/scripts/startup
+source = ~/.config/hypr/exec.conf
 #+end_src
 
 ** Blue-Light
