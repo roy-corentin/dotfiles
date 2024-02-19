@@ -1,0 +1,45 @@
+# Setups
+add_newline = true
+
+format="$time in $directory$all"
+
+# Prompt symbols
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+[username]
+disabled = true
+show_always = true
+format = "[  $user ](bg:#74c7ec fg:#1e1e2e bold)"
+
+[hostname]
+disabled = true
+ssh_only = false
+format = "[ 󰌽 $hostname ]( bg:#f5c2e7 fg:#1e1e2e bold)"
+
+[directory]
+disabled =false
+truncation_length = 3
+truncate_to_repo=false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = " "
+"iso" = "󰌽 "
+".config" = ""
+
+[git_branch]
+disabled = false
+# format = '[  $branch ](bg:#f5c2e7 fg:#1e1e2e bold)'
+
+[cmd_duration]
+disabled = false
+format = 'took [󱑆 $duration](bold yellow)'
+
+[time]
+disabled = false
+format = '[$time](fg:bold yellow)'
