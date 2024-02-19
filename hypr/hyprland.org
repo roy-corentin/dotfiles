@@ -50,6 +50,7 @@
   - [[#tab-cycle][Tab Cycle]]
   - [[#focus][Focus]]
   - [[#move-window][Move Window]]
+  - [[#focus-group-window][Focus Group Window]]
   - [[#resize-window][Resize Window]]
   - [[#workspaces][Workspaces]]
   - [[#send-to-workspaces][Send to Workspaces]]
@@ -240,6 +241,12 @@ group {
     # Theme from pywal
     col.border_active = $color1
     col.border_inactive = $color0
+
+    groupbar {
+       enabled = true
+       col.active = $color1
+       col.inactive = $color0
+    }
 }
 #+end_src
 
@@ -499,6 +506,7 @@ bind = $mainMod SHIFT, Space, togglesplit,
 bind = $mainMod, P, pseudo,
 bind = $mainMod, O, toggleopaque
 bind = $mainMod CTRL, Space, pin
+bind = $mainMod, G, togglegroup
 
 # Example special workspace (scratchpad)
 bind = $mainMod, S, togglespecialworkspace, magic
@@ -536,10 +544,16 @@ bind = $mainMod, J, bringactivetotop
 
 ** Move Window
 #+begin_src conf
-bind = $mainMod SHIFT, H, movewindow, l
-bind = $mainMod SHIFT, L, movewindow, r
-bind = $mainMod SHIFT, K, movewindow, u
-bind = $mainMod SHIFT, J, movewindow, d
+bind = $mainMod SHIFT, H, movewindoworgroup, l
+bind = $mainMod SHIFT, L, movewindoworgroup, r
+bind = $mainMod SHIFT, K, movewindoworgroup, u
+bind = $mainMod SHIFT, J, movewindoworgroup, d
+#+end_src
+
+** Focus Group Window
+#+begin_src conf
+bind = $mainMod, B, changegroupactive, b
+bind = $mainMod SHIFT, B, changegroupactive, f
 #+end_src
 
 ** Resize Window
@@ -560,6 +574,21 @@ bind = $mainMod, parenleft, workspace, 5
 bind = $mainMod, minus, workspace, 6
 bind = $mainMod, egrave, workspace, 7
 bind = $mainMod, underscore, workspace, 8
+
+# Move workspace to diffrent monitor
+bind=$mainMod ALT,h,movecurrentworkspacetomonitor,l
+bind=$mainMod ALT,j,movecurrentworkspacetomonitor,p
+bind=$mainMod ALT,k,movecurrentworkspacetomonitor,u
+bind=$mainMod ALT,l,movecurrentworkspacetomonitor,r
+
+# bind = $mainMod, ampersand, focusworkspaceoncurrentmonitor, 1
+# bind = $mainMod, eacute, focusworkspaceoncurrentmonitor, 2
+# bind = $mainMod, quotedbl, focusworkspaceoncurrentmonitor, 3
+# bind = $mainMod, apostrophe, focusworkspaceoncurrentmonitor, 4
+# bind = $mainMod, parenleft, focusworkspaceoncurrentmonitor, 5
+# bind = $mainMod, minus, focusworkspaceoncurrentmonitor, 6
+# bind = $mainMod, egrave, focusworkspaceoncurrentmonitor, 7
+# bind = $mainMod, underscore, focusworkspaceoncurrentmonitor, 8
 #+end_src
 
 ** Send to Workspaces
