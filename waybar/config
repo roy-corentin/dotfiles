@@ -10,7 +10,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "cpu", "memory", "temperature", "tray"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "battery#bat2","custom/vpn", "custom/pacman", "custom/power-menu"],
+    "modules-right": ["pulseaudio", "network", "battery", "custom/vpn", "custom/pacman", "custom/power-menu"],
     // Modules configuration
 
     "hyprland/workspaces": {
@@ -21,6 +21,7 @@
             "1": "󰍪",
             "2": "",
             "3": "󰖟",
+            "4": "󰋎",
             "urgent": "",
             "active": "",
             "default": ""
@@ -104,10 +105,6 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
-
-    "battery#bat2": {
-        "bat": "BAT2"
     },
 
     "network": {
