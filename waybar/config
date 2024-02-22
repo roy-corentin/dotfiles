@@ -81,12 +81,6 @@
         "format-icons": ["", "", "󰈸"]
     },
 
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-
     "battery": {
         "states": {
             "good": 85,
