@@ -247,10 +247,9 @@ group {
        gradients = false
        render_titles = false
 
-       # Wait for 0.35 version
-       # height = 20
+       height = 40
 
-       col.active = $color1
+       col.active = $color4
        col.inactive = $color0
     }
 }
@@ -322,7 +321,7 @@ dwindle {
 #+begin_src conf
 master {
     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    new_is_master = true
+    new_is_master = false
 }
 #+end_src
 
@@ -581,16 +580,18 @@ bind = $mainMod, parenleft, workspace, 5
 bind = $mainMod, minus, workspace, 6
 bind = $mainMod, egrave, workspace, 7
 bind = $mainMod, underscore, workspace, 8
+#+end_src
 
-# Wait for 0.35 version
-# bind = $mainMod, ampersand, focusworkspaceoncurrentmonitor, 1
-# bind = $mainMod, eacute, focusworkspaceoncurrentmonitor, 2
-# bind = $mainMod, quotedbl, focusworkspaceoncurrentmonitor, 3
-# bind = $mainMod, apostrophe, focusworkspaceoncurrentmonitor, 4
-# bind = $mainMod, parenleft, focusworkspaceoncurrentmonitor, 5
-# bind = $mainMod, minus, focusworkspaceoncurrentmonitor, 6
-# bind = $mainMod, egrave, focusworkspaceoncurrentmonitor, 7
-# bind = $mainMod, underscore, focusworkspaceoncurrentmonitor, 8
+*** Focus On Current Monitor
+#+begin_src conf :tangle no
+bind = $mainMod, ampersand, focusworkspaceoncurrentmonitor, 1
+bind = $mainMod, eacute, focusworkspaceoncurrentmonitor, 2
+bind = $mainMod, quotedbl, focusworkspaceoncurrentmonitor, 3
+bind = $mainMod, apostrophe, focusworkspaceoncurrentmonitor, 4
+bind = $mainMod, parenleft, focusworkspaceoncurrentmonitor, 5
+bind = $mainMod, minus, focusworkspaceoncurrentmonitor, 6
+bind = $mainMod, egrave, focusworkspaceoncurrentmonitor, 7
+bind = $mainMod, underscore, focusworkspaceoncurrentmonitor, 8
 #+end_src
 
 *** Move
