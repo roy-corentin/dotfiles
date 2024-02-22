@@ -16,12 +16,22 @@
     "hyprland/workspaces": {
         "all-outputs": true,
         "on-click": "activate",
-        "format": "{name}: {icon}",
+        "format": "{icon}",
         "format-icons": {
+            "1": "󰍪",
+            "2": "",
+            "3": "󰖟",
             "urgent": "",
             "active": "",
             "default": ""
         },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        }
        },
 
     "keyboard-state": {
