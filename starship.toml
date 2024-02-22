@@ -38,7 +38,7 @@ disabled = false
 
 [cmd_duration]
 disabled = false
-format = 'took [󱑆 $duration](bold yellow)'
+format = 'took [$duration](bold yellow)'
 
 [time]
 disabled = false
