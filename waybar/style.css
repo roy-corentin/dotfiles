@@ -14,8 +14,23 @@
 
 window#waybar {
   border-radius: 20px;
-  background: @background;
+  background: transparent;
   color: @foreground;
+}
+
+.modules-left {
+  border-radius: 20px;
+  background: @background;
+}
+
+.modules-center {
+  border-radius: 20px;
+  background: @background;
+}
+
+.modules-right {
+  border-radius: 20px;
+  background: @background;
 }
 
 tooltip {
