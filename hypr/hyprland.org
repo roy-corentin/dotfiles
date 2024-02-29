@@ -402,6 +402,9 @@ windowrule = workspace 1,^(discord)$
 # Slack
 windowrule = workspace 1,^(slack)$
 
+# Slack
+windowrule = workspace 1,^(slack)$
+
 # All
 windowrule = opacity 0.90 override 0.90 override, .*
 
