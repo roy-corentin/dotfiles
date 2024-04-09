@@ -2,8 +2,10 @@
 All my dotfiles for Hyprland config
 
 ** Screenshots
+#+attr_org: :width 400
 [[./screenshots/screenshot1.png]]
 
+#+attr_org: :width 400
 [[./screenshots/screenshot2.png]]
 
 ** Utils

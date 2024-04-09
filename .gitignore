@@ -1,33 +1,8 @@
 # Ignore everything by default
-*
-
-!.gitignore
-
-!README.org
-
-# Keep these directories/files
-!wofi/
-!waybar/
-!hypr/
-!mako/
-!screenshots/
-!colors/
-!swaync/
-!starship.toml
-
-# Allow screenshots
-!screenshots/**
-
-# Allow files inside the specified directories
-!wofi/**
-!waybar/**
-!hypr/**
-!mako/**
-!colors/**
-!swaync/**
 
 hypr/hyprland-bkp.conf
 
 waybar/style.old.css
 wofi/style.old.css
 
+.secret
