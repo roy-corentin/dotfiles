@@ -14,17 +14,18 @@ All my dotfiles for Hyprland config
 - [[https://github.com/Alexays/Waybar][waybar]]
 - [[https://github.com/Horus645/swww][sww]]
 - [[https://github.com/ErikReider/SwayNotificationCenter][SwayNotificationCenter]]
-- [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
+- [[https://github.com/doomemacs/doomemacs][Doom Emacs]] / [[https://github.com/roy-corentin/EmacsVanilla][EmacsVanilla]]
 - Blueman
 - NetworkMarnager-Applet
 
 ** Dependencies
-- [[https://github.com/dylanaraps/pywal][pywal]] (Create theme based on your background)
+- [[https://github.com/dylanaraps/pywal][pywal]] Create theme based on your background
+- [[https://github.com/ajeetdsouza/zoxide][zoxide]] A smarter cd command
 
 ** Themes
 + Nord
 + Dracula
-+ Background based (pywal, see screenshots)
++ Background/Theme based (pywal, see screenshots)
 
   For theme based on you background you need to install =pywal= and add a custom template for Hyprland
 
