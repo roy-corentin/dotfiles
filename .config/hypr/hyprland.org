@@ -89,6 +89,7 @@ monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
 ** Home Setup
 #+begin_src conf
 monitor = desc:Iiyama North America PL2390 11298JH100680, preferred, 1920x0, 1
+monitor = desc:Iiyama North America PL2390 11298JH100788, preferred, -1920x0, 1
 #+end_src
 
 ** Default Setup
