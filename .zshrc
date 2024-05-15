@@ -85,8 +85,8 @@ plugins=(git)
 # source $ZSH/oh-my-zsh.sh
 
 # fzf 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND='fd'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Source manjaro-zsh-configuration
 if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
@@ -145,7 +145,6 @@ alias l="exa -l -g --icons"
 alias neo=neofetch
 alias eserv="emacs --daemon"
 alias eclient="emacsclient -c -n"
-alias zf="cd \$( z | fzf | grep -Po '/home/.*')"
 alias e="emacsclient -c -n -a 'emacs' $1"
 alias et="emacsclient -t -a 'emacs -nw' $1"
 alias es="emacs_start"
@@ -159,9 +158,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# fzf
-export FZF_DEFAULT_COMMAND='fd'
 
 # rbenv
 export PATH="/home/croy/.rbenv/shims:${PATH}"
