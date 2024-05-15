@@ -128,7 +128,7 @@ export GEM_PATH="$HOME/.local/share/gem/ruby/gems:$HOME/.local/share/gem/ruby/bu
 # else
 #   export EDITOR='mvim'
 # fi
-
+export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
