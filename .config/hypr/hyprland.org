@@ -341,78 +341,78 @@ misc {
 
 * WINDOW RULES
 #+begin_src conf
-# Float Necessary Windows
-windowrule = float,Wofi
-windowrule = float,rofi
-windowrule = float,waypaper
-windowrule = float,pavucontrol
-windowrule = float,foot-float
-windowrule = float,yad|nm-connection-editor|pavucontrolk
-windowrule = float,polkit-gnome|kvantummanager|qt5ct
-windowrule = float,feh|Viewnior|Gpicview|Gimp|nomacs
-windowrule = float,VirtualBox Manager|qemu|Qemu-system-x86_64
-windowrule = float,xfce4-appfinder
+  # Float Necessary Windows
+  windowrule = float,Wofi
+  windowrule = float,rofi
+  windowrule = float,waypaper
+  windowrule = float,pavucontrol
+  windowrule = float,foot-float
+  windowrule = float,yad|nm-connection-editor|pavucontrolk
+  windowrule = float,polkit-gnome|kvantummanager|qt5ct
+  windowrule = float,feh|Viewnior|Gpicview|Gimp|nomacs
+  windowrule = float,VirtualBox Manager|qemu|Qemu-system-x86_64
+  windowrule = float,xfce4-appfinder
 
-# Tuple
-windowrule = float,Tuple
-windowrule = workspace 4,Tuple
+  # Tuple
+  windowrule = float,Tuple
+  windowrule = workspace 4,Tuple
 
-# Dolphin
-windowrule = float,^(org.kde.dolphin)$
-windowrulev2 = size 1280 720,class:^(org.kde.dolphin)$
-windowrulev2 = center, class:^(org.kde.dolphin)$
+  # Dolphin
+  windowrule = float,^(org.kde.dolphin)$
+  windowrulev2 = size 1280 720,class:^(org.kde.dolphin)$
+  windowrulev2 = center, class:^(org.kde.dolphin)$
 
-# Gnome Settings
-windowrule=float,^(org.gnome.Settings)$
-windowrulev2=center,class:^(org.gnome.Settings)$
-windowrulev2=size 1280 720,class:^(org.gnome.Settings)$
+  # Gnome Settings
+  windowrule=float,^(org.gnome.Settings)$
+  windowrulev2=center,class:^(org.gnome.Settings)$
+  windowrulev2=size 1280 720,class:^(org.gnome.Settings)$
 
-# Bitwarden
-windowrule = float,bitwarden
-windowrulev2 = float,class:^brave-(.*),title:Bitwarden
+  # Bitwarden
+  windowrule = float,bitwarden
+  windowrulev2 = float,class:^brave-(.*),title:Bitwarden
 
-# Browser
-windowrulev2 = float,class:^()$,title:^(Picture in picture)$
-windowrulev2 = float,class:^(brave)$,title:^(Save File)$
-windowrulev2 = float,class:^(brave)$,title:^(Open File)$
-windowrule = workspace 3,brave-browser
+  # Browser
+  windowrulev2 = float,class:^()$,title:^(Picture in picture)$
+  windowrulev2 = float,class:^(brave)$,title:^(Save File)$
+  windowrulev2 = float,class:^(brave)$,title:^(Open File)$
+  windowrule = workspace 3,brave-browser
 
-windowrulev2 = float,class:^(blueman-manager)$
-windowrulev2 = float,class:^(org.twosheds.iwgtk)$
-windowrulev2 = float,class:^(blueberry.py)$
-windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
+  windowrulev2 = float,class:^(blueman-manager)$
+  windowrulev2 = float,class:^(org.twosheds.iwgtk)$
+  windowrulev2 = float,class:^(blueberry.py)$
+  windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
 
-# XwaylandBridge
-windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
-windowrulev2 = noanim,class:^(xwaylandvideobridge)$
-windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
-windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
-windowrulev2 = noblur,class:^(xwaylandvideobridge)$
+  # XwaylandBridge
+  windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
+  windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+  windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+  windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
+  windowrulev2 = noblur,class:^(xwaylandvideobridge)$
 
-# Emacs
-windowrule = workspace 2,^(emacs)$
+  # Emacs
+  windowrule = workspace 2,^(emacs)$
 
-# Teams
-windowrule = workspace 1,^(microsoft teams)
+  # Teams
+  windowrule = workspace 1,^(microsoft teams)
 
-# Discord
-windowrule = workspace 1,^(discord)$
+  # Discord
+  windowrule = workspace 1,^(discord)$
 
-# Slack
-windowrule = workspace 1,^(Slack)$
+  # Slack
+  windowrule = workspace 1,^(Slack)$
 
-# All
-windowrule = opacity 0.90 override 0.90 override, .*
+  # All
+  windowrule = opacity 0.90 override 0.90 override, .*
 
-#windowrule = move 69 420,abc
-#windowrule = size 420 69,abc
-#windowrule = tile,xyz
-#windowrule = pseudo,abc
-#windowrule = monitor 0,xyz
-#windowrule = workspace 12,abc
-#windowrule = opacity 1.0,abc
-#windowrule = animation slide left,abc
-#windowrule = rounding 10,abc
+  #windowrule = move 69 420,abc
+  #windowrule = size 420 69,abc
+  #windowrule = tile,xyz
+  #windowrule = pseudo,abc
+  #windowrule = monitor 0,xyz
+  #windowrule = workspace 12,abc
+  #windowrule = opacity 1.0,abc
+  #windowrule = animation slide left,abc
+  #windowrule = rounding 10,abc
 #+end_src
 
 * KEYBINDINGS
