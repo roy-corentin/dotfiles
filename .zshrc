@@ -114,6 +114,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # export local gem
 export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/3.3.0+0/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/gems/bin:$PATH"
 export GEM_HOME="$HOME/.local/share/gem/ruby/gems"
 export GEM_PATH="$HOME/.local/share/gem/ruby/gems:$HOME/.local/share/gem/ruby/bundler/gems"
