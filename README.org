@@ -2,7 +2,7 @@
 All my dotfiles for Hyprland config
 
 ** Installation
-#+begin_src ssh
+#+begin_src bash
 cd ~/
 git clone git@github.com:roy-corentin/dotfiles.git
 cd dotfiles
