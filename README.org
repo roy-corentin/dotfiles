@@ -1,6 +1,13 @@
 * DOTFILES
 All my dotfiles for Hyprland config
 
+** Use
+#+begin_src ssh
+cd ~
+git clone git@github.com:roy-corentin/dotfiles.git
+stow .
+#+end_src
+
 ** Screenshots
 #+attr_org: :width 400
 [[./screenshots/screenshot1.png]]
