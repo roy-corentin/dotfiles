@@ -1,10 +1,11 @@
 * DOTFILES
 All my dotfiles for Hyprland config
 
-** Use
+** Installation
 #+begin_src ssh
-cd ~
+cd ~/
 git clone git@github.com:roy-corentin/dotfiles.git
+cd dotfiles
 stow .
 #+end_src
 
