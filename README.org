@@ -35,30 +35,5 @@ stow .
 + Dracula
 + Background/Theme based (pywal, see screenshots)
 
-  For theme based on you background you need to install =pywal= and add a custom template for Hyprland
+  For theme based on you background you need to install =pywal= and use my custom template for Hyprland
 
-*** Pywal Custom Template
-Create your template in =~/.config/wal/templates= not =.cache=
-It will create the file with the same name in the =~/.cache/wal/=
-
-=~/.config/wal/templates/colors-hyprland.conf=
-
-#+begin_src conf
-$foreground = rgb({foreground.strip})
-$color0 = rgb({color0.strip})
-$color1 = rgb({color1.strip})
-$color2 = rgb({color2.strip})
-$color3 = rgb({color3.strip})
-$color4 = rgb({color4.strip})
-$color5 = rgb({color5.strip})
-$color6 = rgb({color6.strip})
-$color7 = rgb({color7.strip})
-$color8 = rgb({color8.strip})
-$color9 = rgb({color9.strip})
-$color10 = rgb({color10.strip})
-$color11 = rgb({color11.strip})
-$color12 = rgb({color12.strip})
-$color13 = rgb({color13.strip})
-$color14 = rgb({color14.strip})
-$color15 = rgb({color15.strip})
-#+end_src
