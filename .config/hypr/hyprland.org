@@ -25,6 +25,7 @@
   - [[#xwaylandvideobridge][XWaylandVideoBridge]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
+- [[#cursor][CURSOR]]
 - [[#group][GROUP]]
 - [[#decoration][DECORATION]]
 - [[#anmations][ANMATIONS]]
@@ -43,6 +44,7 @@
   - [[#function-keys][Function keys]]
   - [[#screenshots][Screenshots]]
   - [[#image-to-text][Image To Text]]
+  - [[#image-to-drawapp][Image To DrawApp]]
   - [[#hyprland][Hyprland]]
   - [[#window-split-ratio][Window Split Ratio]]
   - [[#tab-cycle][Tab Cycle]]
@@ -174,56 +176,59 @@ exec-once = xwaylandvideobridge
 * INPUT
 Configure mouse and touchpad here
 #+begin_src conf
-input {
-    kb_layout = fr
-    kb_variant =
-    kb_model =
-    kb_options =
-    kb_rules =
+  input {
+      kb_layout = fr
+      # kb_variant =
+      # kb_model =
+      # kb_options =
+      # kb_rules =
 
-    follow_mouse = 1
+      follow_mouse = 1
 
-    force_no_accel = 0
-    numlock_by_default = 1
+      numlock_by_default = 1
 
-    touchpad {
-        natural_scroll = no
-    }
+      touchpad {
+          natural_scroll = no
+      }
 
-    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-}
+      sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+  }
 #+end_src
 
 * GENERAL
 #+begin_src conf
-source = ~/.cache/wal/colors-hyprland.conf
+  source = ~/.cache/wal/colors-hyprland.conf
 
-general {
-    # main_mod = SUPER
+  general {
+      gaps_in = 2
+      gaps_out = 4
+      border_size = 2
 
-    gaps_in = 2
-    gaps_out = 4
-    border_size = 3
+      layout = dwindle
 
-    layout = dwindle
+      # Dracula Theme
+      # col.active_border = rgb(bd93f9)
+      # col.inactive_border = rgba(44475aaa)
 
-    # Dracula Theme
-    # col.active_border = rgb(bd93f9)
-    # col.inactive_border = rgba(44475aaa)
+      # Nord Theme
+      # col.active_border = rgb(88c0d0)
+      # col.inactive_border = rgba(44475aaa)
 
-    # Nord Theme
-    # col.active_border = rgb(88c0d0)
-    # col.inactive_border = rgba(44475aaa)
+      # Theme from pywal
+      col.active_border = $color4
+      col.inactive_border = $color0
 
-    # Theme from pywal
-    col.active_border = $color1
-    col.inactive_border = $color0
 
-    # Make the cursor disappear after 3 seconds
-    cursor_inactive_timeout = 3
+      allow_tearing = false
+  }
+#+end_src
 
-    allow_tearing = false
-}
+* CURSOR
+#+begin_src conf
+  # Make the cursor disappear after 3 seconds
+  cursor {
+    inactive_timeout = 3
+  }
 #+end_src
 
 * GROUP
@@ -242,8 +247,9 @@ group {
     col.border_inactive = $color0
 
     groupbar {
+       render_titles = false
        gradients = true
-       height = 5
+       height = 4
        col.active = $color4
        col.inactive = $color0
     }
@@ -284,7 +290,7 @@ decoration {
     }
 
     dim_inactive = true
-    dim_strength = 0.1
+    dim_strength = 0.05
 }
 #+end_src
 
@@ -393,7 +399,7 @@ misc {
   windowrule = workspace 2,^(emacs)$
 
   # Teams
-  windowrule = workspace 1,^(microsoft teams)
+  windowrule = workspace 1,^(.*Microsoft Teams.*)
 
   # Discord
   windowrule = workspace 1,^(discord)$
@@ -404,6 +410,7 @@ misc {
   # All
   windowrule = opacity 0.90 override 0.90 override, .*
 
+  # List of options
   #windowrule = move 69 420,abc
   #windowrule = size 420 69,abc
   #windowrule = tile,xyz
@@ -421,9 +428,8 @@ misc {
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
 
-$term = terminator
-$term1 = kitty
-$term2 = alacritty
+$term = alacritty
+$term2 = terminator
 $wallpapermenu = ~/.config/wofi/wallpaper.sh
 $thememenu = ~/.config/wofi/theme.sh
 $appmenu = ~/.config/hypr/scripts/menu
@@ -438,15 +444,14 @@ $wlogout = ~/.config/hypr/scripts/wlogout
 $colorpicker = ~/.config/hypr/scripts/colorpicker
 $files = dolphin
 $editor = emacsclient -c -n -a 'emacs'
-# $editor-everywhere = emacsclient --eval "(emacs-everywhere)" -a "doom +everywhere"
 $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
 $browser = brave
 #+end_src
 
 ** Terminal
 #+begin_src conf
-bind = $mainMod,Return,exec,$term2
-bind = $mainMod SHIFT,Return,exec,$term1
+bind = $mainMod,Return,exec,$term
+bind = $mainMod SHIFT,Return,exec,$term2
 bind = $mainMod ALT,Return,exec,$term
 #+end_src
 
@@ -507,6 +512,10 @@ bind = $mainMod CTRL, Print, exec, $screenshot --area
 ** Image To Text
 #+begin_src conf
   bind = $mainMod SHIFT CTRL, S, exec, grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+#+end_src
+
+** Image To DrawApp
+#+begin_src conf
   bind = $mainMod SHIFT, P, exec, grim -g "$(slurp)" - | swappy -f -
 #+end_src
 
