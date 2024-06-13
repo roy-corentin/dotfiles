@@ -582,11 +582,12 @@ bind = $mainMod SHIFT, B, changegroupactive, f
 #+end_src
 
 ** Resize Window
+Flag e is used to repeat cmd when hold
 #+begin_src conf
-bind = $mainMod CTRL, H, resizeactive, -20 0
-bind = $mainMod CTRL, L, resizeactive, 20 0
-bind = $mainMod CTRL, K, resizeactive, 0 -20
-bind = $mainMod CTRL, J, resizeactive, 0 20
+binde = $mainMod CTRL, H, resizeactive, -20 0
+binde = $mainMod CTRL, L, resizeactive, 20 0
+binde = $mainMod CTRL, K, resizeactive, 0 -20
+binde = $mainMod CTRL, J, resizeactive, 0 20
 #+end_src
 
 ** Workspaces
