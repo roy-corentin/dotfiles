@@ -452,7 +452,7 @@ $browser = brave
 #+begin_src conf
 bind = $mainMod,Return,exec,$term
 bind = $mainMod SHIFT,Return,exec,$term2
-bind = $mainMod ALT,Return,exec,$term
+bind = $mainMod CTRL,Return,exec,[float] $term
 #+end_src
 
 ** Apps
