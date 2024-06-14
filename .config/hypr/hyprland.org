@@ -487,11 +487,12 @@ bindm = SUPER,mouse:273,resizewindow
 #+end_src
 
 ** Function keys
+- E flag is used to repeat cmd when hold
 #+begin_src conf
-bind = ,XF86MonBrightnessUp, exec, $backlight --inc
-bind = ,XF86MonBrightnessDown, exec, $backlight --dec
-bind = ,XF86AudioRaiseVolume, exec, $volume --inc
-bind = ,XF86AudioLowerVolume, exec, $volume --dec
+binde = ,XF86MonBrightnessUp, exec, $backlight --inc
+binde = ,XF86MonBrightnessDown, exec, $backlight --dec
+binde = ,XF86AudioRaiseVolume, exec, $volume --inc
+binde = ,XF86AudioLowerVolume, exec, $volume --dec
 bind = ,XF86AudioMute, exec, $volume --toggle
 bind = ,XF86AudioMicMute, exec, $volume --toggle-mic
 bind = ,XF86AudioNext, exec, playerctl next
@@ -548,8 +549,8 @@ bind = $mainMod CTRL, Equal, splitratio, 0.1
 To switch between windows in a floating workspace
 
 #+begin_src conf
-bind = $mainMod, Tab, cyclenext,          # change focus to another window
-bind = $mainMod, Tab, bringactivetotop,   # bring it to the top
+bind = $mainMod, Tab, cyclenext,        # change focus to another window
+bind = $mainMod, Tab, bringactivetotop, # bring it to the top
 #+end_src
 
 ** Focus
@@ -582,7 +583,7 @@ bind = $mainMod SHIFT, B, changegroupactive, f
 #+end_src
 
 ** Resize Window
-Flag e is used to repeat cmd when hold
+- E flag is used to repeat cmd when hold
 #+begin_src conf
 binde = $mainMod CTRL, H, resizeactive, -20 0
 binde = $mainMod CTRL, L, resizeactive, 20 0
