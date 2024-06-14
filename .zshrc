@@ -34,9 +34,9 @@ HISTDUP=erase
 setopt appendhistory        # Immediately append history instead of overwriting
 setopt sharehistory         # History shared between term
 setopt hist_ignore_space    # Ignore command with spaces
+setopt hist_ignore_dups     # Ignore duplicates
 setopt hist_ignore_all_dups # Ignore all duplicate commands
-setopt hist_save_no_dups
-setopt hist_ignore_dups
+setopt hist_save_no_dups    # Do not save duplicates
 setopt hist_find_no_dups
 
 # File and Dir colors for ls and other outputs
