@@ -436,6 +436,7 @@ $term2 = terminator
 $wallpapermenu = ~/.config/wofi/wallpaper.sh
 $thememenu = ~/.config/wofi/theme.sh
 $appmenu = ~/.config/hypr/scripts/menu
+$appmenu2 = ~/.config/hypr/scripts/menu2
 $menu3 = xfce4-appfinder
 $powermenu = ~/.config/hypr/scripts/powermenu
 $volume = ~/.config/hypr/scripts/volume
@@ -471,6 +472,7 @@ bind = $mainMod CTRL, S, exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
 ** Wofi
 #+begin_src conf
 bind = $mainMod, D, exec,$appmenu
+bind = $mainMod SHIFT, D, exec,$appmenu2
 bind = $mainMod, X, exec,$powermenu
 bind = $mainMod, W, exec,$wallpapermenu
 bind = $mainMod, T, exec,$thememenu

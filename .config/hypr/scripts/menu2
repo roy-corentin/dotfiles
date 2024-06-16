@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+STYLE="$HOME/.config/rofi/config.rasi"
+
+if [[ $(pidof rofi) ]]; then
+	pkill rofi
+	exit 1
+fi
+rofi -show run -show-icons -config  "${STYLE}"
