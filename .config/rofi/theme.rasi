@@ -1,7 +1,8 @@
 /**
  * rofi -dump-theme output.
  * Rofi version: 1.7.5
- **/
+**/
+
 * {
     red:                         rgba ( 220, 50, 47, 100 % );
     selected-active-foreground:  var(background);
