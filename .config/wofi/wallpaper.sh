@@ -3,24 +3,24 @@
 wallpaper_directory="$HOME/.config/hypr/wallpapers"
 
 chose_wallpaper() {
-  image=$(ls "$wallpaper_directory" | wofi --dmenu --prompt 'Select wallpaper')
-  wallpaper_path="$wallpaper_directory/$image"
+    image=$(ls "$wallpaper_directory" | wofi --dmenu --prompt 'Select wallpaper')
+    wallpaper_path="$wallpaper_directory/$image"
 
-  if [[ -d $wallpaper_path ]]; then
-    echo "$wallpaper_path is a directory"
-    wallpaper_directory="$wallpaper_path"
-    chose_wallpaper
-  elif [[ -f $wallpaper_path ]]; then
-    echo "$wallpaper_path is a file"
-  else
-    echo "$wallpaper_path is not valid"
-    exit 1
-  fi
+    if [[ -d $wallpaper_path ]]; then
+        echo "$wallpaper_path is a directory"
+        wallpaper_directory="$wallpaper_path"
+        chose_wallpaper
+    elif [[ -f $wallpaper_path ]]; then
+        echo "$wallpaper_path is a file"
+    else
+        echo "$wallpaper_path is not valid"
+        exit 1
+    fi
 }
 
 if [[ $(pidof wofi) ]]; then
-  pkill wofi
-  exit 1
+    pkill wofi
+    exit 1
 fi
 
 chose_wallpaper
@@ -33,6 +33,6 @@ swww img "$wallpaper_path" --transition-type grow --transition-fps 60 --transiti
 
 sleep 1.25
 
-wal -i "$wallpaper_path" --backend "$backend" --saturate 0.6
+wal --cols16 -i "$wallpaper_path" --backend "$backend" --saturate 0.6
 
 swaync-client -rs
