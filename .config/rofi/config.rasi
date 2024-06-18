@@ -44,7 +44,6 @@ configuration {
     max-history-size: 25;
     combi-hide-mode-prefix: false;
     combi-display-format: "{mode} {text}";
-    matching-negate-char: '-' /* unsupported */;
     window-thumbnail: false;
     drun-use-desktop-cache: false;
     drun-reload-desktop-cache: false;
@@ -75,9 +74,8 @@ configuration {
     kb-delete-entry: "Shift+Delete";
     kb-mode-next: "Shift+Right,Control+Tab";
     kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";
-    kb-mode-complete: "Control+c";
     kb-row-left: "Control+Page_Up,Control+h";
-    kb-row-right: "Control+Page_Down,Control+l";
+    kb-row-right: "Control+Page_Down";
     kb-row-up: "Up,Control+p,Control+k";
     kb-row-down: "Down,Control+n,Control+j";
     kb-row-tab: "";
