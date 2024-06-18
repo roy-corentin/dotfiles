@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-if [[ $(pidof wofi) ]]; then
-    pkill wofi
+if [[ $(pidof rofi) ]]; then
+    pkill rofi
     exit 1
 fi
 
-theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | wofi --dmenu --prompt 'Select theme')
+if theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | rofi -dmenu -mesg 'Select theme'); then
+    echo "$theme"
+    wal --cols16 --theme "$theme"
 
-echo "$theme"
-
-wal --cols16 --theme "$theme"
-
-swaync-client -rs
+    swaync-client -rs
+else
+    echo "$theme"
+fi
