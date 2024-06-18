@@ -322,7 +322,7 @@ dwindle {
 #+begin_src conf
 master {
     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    new_is_master = false
+    new_on_top = false
 }
 #+end_src
 
