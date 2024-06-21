@@ -359,6 +359,11 @@ misc {
   windowrule = float,VirtualBox Manager|qemu|Qemu-system-x86_64
   windowrule = float,xfce4-appfinder
 
+  windowrulev2 = float,class:^(blueman-manager)$
+  windowrulev2 = float,class:^(org.twosheds.iwgtk)$
+  windowrulev2 = float,class:^(blueberry.py)$
+  windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
+
   # Tuple
   windowrule = float,Tuple
   windowrule = workspace 4,Tuple
@@ -373,20 +378,12 @@ misc {
   windowrulev2=center,class:^(org.gnome.Settings)$
   windowrulev2=size 1280 720,class:^(org.gnome.Settings)$
 
-  # Bitwarden
-  windowrule = float,bitwarden
-  windowrulev2 = float,class:^brave-(.*),title:Bitwarden
-
   # Browser
   windowrulev2 = float,class:^()$,title:^(Picture in picture)$
   windowrulev2 = float,class:^(brave)$,title:^(Save File)$
   windowrulev2 = float,class:^(brave)$,title:^(Open File)$
+  windowrulev2 = float,class:^brave-.*$
   windowrule = workspace 3,brave-browser
-
-  windowrulev2 = float,class:^(blueman-manager)$
-  windowrulev2 = float,class:^(org.twosheds.iwgtk)$
-  windowrulev2 = float,class:^(blueberry.py)$
-  windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
 
   # Rofi
   windowrule = float,Rofi
@@ -402,7 +399,7 @@ misc {
   windowrule = workspace 2,^(emacs)$
 
   # Teams
-  windowrule = workspace 1,^(.*Microsoft Teams.*)
+  windowrule = workspace 1,^(.*Microsoft Teams.*)$
 
   # Discord
   windowrule = workspace 1,^(discord)$
