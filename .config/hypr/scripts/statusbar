@@ -2,8 +2,8 @@
 
 ## launch waybar with alt config
 
-CONFIG="$HOME/.config/waybar/config"
-STYLE="$HOME/.config/waybar/style.css"
+CONFIG="$HOME/.config/waybar/config_hyprland"
+STYLE="$HOME/.config/waybar/style_hyprland.css"
 COLORS="$HOME/.cache/wal/colors-waybar.css"
 
 # Kill already running process
