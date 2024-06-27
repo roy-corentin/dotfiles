@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+emacs --init-directory ~/.config/emacs_vanilla/ --daemon
+emacsclient -c -n -a 'emacs'

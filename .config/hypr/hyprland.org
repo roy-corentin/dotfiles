@@ -148,7 +148,7 @@ exec-once = blueman-applet
 + Sleep, after 360sec
 + Before sleep lock screen
 #+begin_src conf
-exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 20%' resume 'brightnessctl --restore' timeout 300 'notify-send "Going to sleep in less a minute"' timeout 360 'systemctl sleep' before-sleep '~/.config/hypr/scripts/lockscreen'
+exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 20%' resume 'brightnessctl --restore' timeout 360 'systemctl sleep' before-sleep '/home/croy/.config/hypr/scripts/lockscreen'
 #+end_src
 
 ** Polkit
@@ -379,11 +379,11 @@ misc {
   windowrulev2=size 1280 720,class:^(org.gnome.Settings)$
 
   # Browser
+  windowrule = workspace 3,brave-browser
   windowrulev2 = float,class:^()$,title:^(Picture in picture)$
   windowrulev2 = float,class:^(brave)$,title:^(Save File)$
   windowrulev2 = float,class:^(brave)$,title:^(Open File)$
-  windowrulev2 = float,class:^brave-.*$
-  windowrule = workspace 3,brave-browser
+  windowrulev2 = float,class:^brave-.*-Default$
 
   # Rofi
   windowrule = float,Rofi

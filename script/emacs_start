@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+emacs --daemon
+emacsclient -c -n -a 'emacs'
