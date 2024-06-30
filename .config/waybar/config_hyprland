@@ -68,8 +68,11 @@
     },
 
     "clock": {
-        "format-alt": "{:%d-%m-%Y %H:%M}",
+        "interval": 60,
+        "format":"{:%e %b %Y %H:%M}",
+        "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "calcurse"
     },
 
     "cpu": {
@@ -84,12 +87,14 @@
     },
 
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{icon}{temperatureC}°C",
-        "format": "{temperatureC}°C({icon})",
-        "format-icons": ["", "", "󰈸"]
+        "critical-threshold": 90,
+        "interval": 5,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format-icons": ["", "", "󰈸"],
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format": "{temperatureC}°C({icon})",
+        "format-alt": "{temperatureC}°C({icon})",
     },
 
     "battery": {
@@ -119,7 +124,7 @@
     },
 
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 5, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -142,4 +147,18 @@
         "format": " <span color='#6a92d7'>⏻ </span>",
         "on-click": "bash ~/.config/hypr/scripts/powermenu",
     },
+
+    "custom/idle_inhibitor": {
+        "interval": 60,
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "on": "󰒳",
+            "off": "󰒲"
+        },
+        "exec": "inhibit-idle",
+        "on-click": "inhibit-idle off; inhibit-idle interactive",
+        "on-click-middle": "inhibit-idle off",
+        "signal": 15
+    }
 }

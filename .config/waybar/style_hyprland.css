@@ -110,7 +110,7 @@ tooltip {
 }
 
 #network {
-  color: @color4;
+  color: @foreground;
 }
 
 #bluetooth {

@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'securerandom'
-
-(ARGV.first&.to_i || 1).times do
-  puts SecureRandom.uuid
-end

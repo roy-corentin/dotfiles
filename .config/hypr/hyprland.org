@@ -77,8 +77,9 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Laptop Screen
 #+begin_src conf
-monitor = eDP-1, 1920x1080@60, 0x0,1
-workspace = eDP-1, 1
+  # monitor = eDP-1, 1920x1080@60, 0x0,1
+  monitor = eDP-1, 2880x1800@60, 0x0,1.5
+  workspace = eDP-1, 1
 #+end_src
 
 ** Syadem Setup
@@ -353,7 +354,7 @@ misc {
   windowrule = float,waypaper
   windowrule = float,pavucontrol
   windowrule = float,foot-float
-  windowrule = float,yad|nm-connection-editor|pavucontrolk
+  windowrule = float,yad|nm-connection-editor|pavucontrol|pulsemixer
   windowrule = float,polkit-gnome|kvantummanager|qt5ct
   windowrule = float,feh|Viewnior|Gpicview|Gimp|nomacs
   windowrule = float,VirtualBox Manager|qemu|Qemu-system-x86_64
@@ -432,8 +433,8 @@ $term = alacritty
 $term2 = terminator
 $wallpapermenu = ~/.config/wofi/wallpaper.sh
 $thememenu = ~/.config/wofi/theme.sh
-$appmenu = ~/.config/hypr/scripts/menu
-$appmenu2 = ~/.config/hypr/scripts/menu2
+$appmenu = ~/.config/hypr/scripts/menu2
+$appmenu2 = ~/.config/hypr/scripts/menu
 $menu3 = xfce4-appfinder
 $powermenu = ~/.config/hypr/scripts/powermenu
 $volume = ~/.config/hypr/scripts/volume

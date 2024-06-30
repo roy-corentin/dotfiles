@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-git config user.email "croy@mesvaccins.net"
-git config user.name "Corentin Roy"

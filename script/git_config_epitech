@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-git config user.email "corentin.roy@epitech.eu"
-git config user.name "roy-corentin"

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# launch slack only if we are wednesday, thursday or friday. Not the week-end.
-if [[ $(date +%u) -ge 3 ]] && [[ $(date +%u) -lt 6 ]]; then
-    slack &
-    flatpak run app.tuple.app
-fi

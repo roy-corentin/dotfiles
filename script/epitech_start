@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# launch teams only if we are monday or tuesday
-if [[ $(date +%u) -le 2 ]]; then
-    teams
-fi

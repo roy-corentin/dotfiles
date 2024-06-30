@@ -1,20 +1,14 @@
 #!/usr/bin/env bash
 
 ## launch waybar with alt config
+CONFIG_FILES="$HOME/.config/waybar/config_hyprland $HOME/.config/waybar/style_hyprland.css"
 
-CONFIG="$HOME/.config/waybar/config_hyprland"
-STYLE="$HOME/.config/waybar/style_hyprland.css"
-COLORS="$HOME/.cache/wal/colors-waybar.css"
-
-# Kill already running process
-killall inotifywait
-killall inotifywatch
-killall waybar
+trap "killall waybar" EXIT
 
 while true; do
     waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE" &
-    inotifywait -e create,modify "$CONFIG" "$STYLE" "$COLORS"
-    pkill waybar
+    inotifywait -e create,modify $CONFIG_FILES
+    killall waybar
 done
 
 trap "killall waybar" EXIT
