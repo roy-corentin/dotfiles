@@ -3,7 +3,7 @@
 ## launch waybar with alt config
 CONFIG="$HOME/.config/waybar/config_hyprland"
 STYLE="$HOME/.config/waybar/style_hyprland.css"
-CONFIG_FILES="$HOME/.config/waybar/config_hyprland $HOME/.config/waybar/style_hyprland.css"
+CONFIG_FILES="$HOME/.config/waybar/config_hyprland $HOME/.config/waybar/style_hyprland.css $HOME/.cache/wal/colors-waybar.css"
 
 trap "killall waybar" EXIT
 
