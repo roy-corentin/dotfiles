@@ -32,9 +32,10 @@ echo "$wallpaper_path"
 
 swww img "$wallpaper_path" --transition-type grow --transition-fps 60 --transition-duration 0.5 --transition-bezier 0.65,0,0.35,1 --transition-step 1
 
-if backend=$(echo -e "wal\nhaishoku\ncolorthief" | rofi -dmenu -mesg 'Select backend'); then
-    echo "$backend"
-
+if backend=$(echo -e "none\nwal\nhaishoku\ncolorthief" | rofi -dmenu -mesg 'Select backend'); then
+    if [[ "$backend" == *none* ]]; then
+        exit
+    fi
     wal --cols16 -i "$wallpaper_path" --backend "$backend" --saturate 0.6
 
     swaync-client -rs
