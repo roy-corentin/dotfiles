@@ -6,4 +6,4 @@ if [[ $(pidof rofi) ]]; then
     pkill rofi
     exit 1
 fi
-rofi -show drun -modes "window,drun,filebrowser" -show-icons -config "${CONFIG}"
+rofi -show combi -combi-modes "drun,window,run" -modes "combi,window,filebrowser" -show-icons -config "${CONFIG}"
