@@ -1,11 +1,10 @@
-
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "output": "eDP-1",
-    // "height": 30, // Waybar height (to be removed for auto height)
+    "height": 30, // Waybar height (to be removed for auto height)
     "margin-top": 3,
-    "width": 1800, // Waybar width
+    "width": 1800, // Waybar width (to be removed for auto width)
     "spacing": 8, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "cpu", "memory", "temperature", "tray"],
