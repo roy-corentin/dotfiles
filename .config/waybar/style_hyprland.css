@@ -2,35 +2,38 @@
 /* @import "/home/croy/.config/colors/dracula.css"; */
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
-@define-color background #010409;
+@define-color background-bar black;
+/* @define-color foreground #a6adc8; */
 
 * {
   border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
   font-family: "JetBrainsMonoNerdFont";
   font-weight: bold;
-  font-size: 16px;
-  min-height: 0;
+  font-size: x-large;
 }
 
 window#waybar {
-  border-radius: 20px;
-  background: transparent;
+  background: @background-bar;
   color: @foreground;
 }
 
 .modules-left {
-  border-radius: 20px;
-  background: @background;
+  margin-left: 20px;
+  background: @background-bar;
 }
 
 .modules-center {
   border-radius: 20px;
-  background: @background;
+  background: @background-bar;
 }
 
 .modules-right {
   border-radius: 20px;
-  background: @background;
+  background: @background-bar;
 }
 
 tooltip {
@@ -39,17 +42,18 @@ tooltip {
 }
 
 #workspaces button {
-  padding: 5px;
+  margin: 5px;
+  padding-right: 5px;
   color: @color8;
-  margin-right: 5px;
 }
 
 #workspaces button.active {
-  color: #a6adc8;
+  background: @foreground;
+    color: black;
 }
 
 #workspaces button.focused {
-  color: #a6adc8;
+  color: @foreground;
   background: @background;
 }
 
@@ -64,14 +68,13 @@ tooltip {
 }
 
 #window,
-#clock,
 #battery,
 #pulseaudio,
 #network,
 #bluetooth,
-#temperature,
-#workspaces,
 #tray,
+#memory,
+#cpu,
 #backlight {
   padding: 0px 10px;
 }
@@ -89,16 +92,6 @@ tooltip {
   color: @color6;
 }
 
-#tray {
-  margin-right: 10px;
-}
-
-#workspaces {
-  margin-left: 10px;
-  padding-right: 0px;
-  padding-left: 5px;
-}
-
 #window {
   margin-left: 60px;
   margin-right: 60px;
@@ -110,7 +103,7 @@ tooltip {
 }
 
 #network {
-  color: @foreground;
+  color: @color4;
 }
 
 #bluetooth {
@@ -129,7 +122,6 @@ tooltip {
 
 #battery {
   color: @color5;
-  margin-right: 10px;
 }
 
 #battery.charging,
