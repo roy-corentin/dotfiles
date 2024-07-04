@@ -33,16 +33,24 @@ notify_user() {
 
 # Increase Volume
 inc_volume() {
+	# amixer -Mq set Master,0 5%+ unmute && notify_user
 	pulsemixer --change-volume +5 && notify_user
 }
 
 # Decrease Volume
 dec_volume() {
+	# amixer -Mq set Master,0 5%- unmute && notify_user
 	pulsemixer --change-volume -5 && notify_user
 }
 
 # Toggle Mute
 toggle_mute() {
+	# amixer get Master | grep '\[on\]' &>/dev/null
+	# if [[ "$?" == 0 ]]; then
+	# 	amixer set Master toggle && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$DIR/volume-mute.png" "Mute"
+	# else
+	# 	amixer set Master toggle && get_icon && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Unmute"
+	# fi
 	pulsemixer --toggle-mute
 }
 
