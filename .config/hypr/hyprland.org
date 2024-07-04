@@ -150,7 +150,7 @@ exec-once = blueman-applet
 + Sleep, after 360sec
 + Before sleep lock screen
 #+begin_src conf
-exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 20%' resume 'brightnessctl --restore' timeout 360 'systemctl sleep' before-sleep '/home/croy/.config/hypr/scripts/lockscreen'
+exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 20%' resume 'brightnessctl --restore' timeout 360 'systemctl sleep' before-sleep '$HOME/.config/hypr/scripts/lockscreen'
 #+end_src
 
 ** Polkit
