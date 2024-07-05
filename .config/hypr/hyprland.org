@@ -87,7 +87,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 ** Syadem Setup
 #+begin_src conf
 monitor = desc:AOC Q3279WG5B 0x0000652C, preferred, 1920x0, 1
-monitor = desc:AOC U32E2WG6 QELM5JA000186, 2560x1440@60, 1920x0, 1
+monitor = desc:AOC U32E2WG6 QELM5JA000186, 3840x2160@30, 1920x0, 1.5
 monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
 #+end_src
 
@@ -263,9 +263,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
 decoration {
-    # See https://wiki.hyprland.org/Configuring/Variables/ for more
     rounding = 2       # Original: 10
-    # Shadow
     drop_shadow = yes
     shadow_range = 8
     shadow_offset = 1 2
