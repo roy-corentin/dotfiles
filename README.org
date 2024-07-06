@@ -18,17 +18,18 @@ stow .
 
 ** Utils
 - [[https://github.com/hyprwm/Hyprland][Hyprland]]
-- [[https://hg.sr.ht/~scoopta/wofi][wofi]]
+- [[https://github.com/davatorium/rofi][rofi]]
 - [[https://github.com/Alexays/Waybar][waybar]]
-- [[https://github.com/Horus645/swww][sww]]
+- [[https://github.com/hyprwm/hyprpaper][hyprpaper]]
 - [[https://github.com/ErikReider/SwayNotificationCenter][SwayNotificationCenter]]
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]] / [[https://github.com/roy-corentin/EmacsVanilla][EmacsVanilla]]
 - Blueman
 - NetworkMarnager-Applet
 
 ** Dependencies
-- [[https://github.com/dylanaraps/pywal][pywal]] Create theme based on your background
+- [[https://github.com/eylles/pywal16][pywal16]] Create theme based on your background
 - [[https://github.com/ajeetdsouza/zoxide][zoxide]] A smarter cd command
+- [[https://github.com/junegunn/fzf][fzf]] A command line fuzzy finder
 
 ** Themes
 + Nord
@@ -37,3 +38,9 @@ stow .
 
   For theme based on you background you need to install =pywal= and use my custom template for Hyprland
 
+
+#+begin_src shell :noeval
+  sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim mako wget unzip gum rsync figlet git network-manager-applet xwaylandvideobridge discord webcord ripgrep exa btop tldr waypaper cliphist calcurse swappy grim slurp tesseract tree-sitter imagemagick swayidle swaylock pavucontrol zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ruby
+
+  yay -S libgccjit rbenv ruby-build
+#+end_src
