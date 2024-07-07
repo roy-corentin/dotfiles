@@ -76,7 +76,9 @@ alias et="emacsclient -t -a 'emacs -nw' $1"
 alias es="emacs_start"
 
 source "$HOME/.git_alias.zsh"
-source "$HOME/.secret"
+if [ -f  "$HOME/.secret" ]; then
+   source "$HOME/.secret"
+fi
 
 # pnpm
 export PNPM_HOME="/home/croy/.local/share/pnpm"
