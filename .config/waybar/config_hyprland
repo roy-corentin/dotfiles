@@ -97,7 +97,7 @@
 
     "clock": {
         "interval": 30,
-        "format":"󰃭{:%e%b  %H:%M}",
+        "format":"󰃭 {:%e%b  %H:%M}",
         "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "on-click": "calcurse",
