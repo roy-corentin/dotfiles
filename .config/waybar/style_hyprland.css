@@ -92,11 +92,6 @@ tooltip {
   color: @color6;
 }
 
-#window {
-  margin-left: 60px;
-  margin-right: 60px;
-}
-
 #clock {
   margin-left: 5px;
   color: @foreground;
