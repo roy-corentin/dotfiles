@@ -40,7 +40,7 @@ stow .
 
 
 #+begin_src shell :noeval
-  sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim mako wget unzip gum rsync figlet git network-manager-applet xwaylandvideobridge discord webcord ripgrep exa btop tldr waypaper cliphist calcurse swappy grim slurp tesseract tree-sitter imagemagick swayidle swaylock pavucontrol zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ruby postgresql-libs
+  sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim mako wget unzip gum rsync figlet git network-manager-applet xwaylandvideobridge discord webcord ripgrep eza btop tldr waypaper cliphist calcurse swappy grim slurp tesseract tree-sitter imagemagick swayidle swaylock pavucontrol zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ruby postgresql-libs
 
   yay -S libgccjit rbenv ruby-build
 #+end_src
