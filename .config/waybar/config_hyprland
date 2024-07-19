@@ -8,12 +8,13 @@
     "spacing": 1, // Gaps between modules
     // Choose the order of the modules
     "modules-left": [
+        "battery",
+        "clock",
         "custom/clipboard",
         "temperature",
         "cpu",
         "memory",
-        "battery",
-        "clock"
+        "hyprland/window"
     ],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
@@ -156,7 +157,7 @@
 
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -177,6 +178,16 @@
     "backlight": {
         "format": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"],
+    },
+
+    "hyprland/window":{
+        "icon": true,
+        "icon-size": 18,
+        "format": "󰍟 {title}",
+        "rewrite": {
+           ".*emacs -nw.*": "EmacsTTY",
+           "(.*) - .*": "$1",
+        }
     },
 
     "custom/power-menu": {
