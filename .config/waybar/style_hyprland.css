@@ -2,7 +2,7 @@
 /* @import "/home/croy/.config/colors/dracula.css"; */
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
-@define-color background-bar black;
+@define-color background-bar rgba(0,0,0,0.85);
 /* @define-color foreground #a6adc8; */
 
 * {
@@ -23,17 +23,14 @@ window#waybar {
 
 .modules-left {
   margin-left: 20px;
-  background: @background-bar;
 }
 
 .modules-center {
   border-radius: 20px;
-  background: @background-bar;
 }
 
 .modules-right {
   border-radius: 20px;
-  background: @background-bar;
 }
 
 tooltip {
@@ -49,7 +46,7 @@ tooltip {
 
 #workspaces button.active {
   background: @foreground;
-    color: black;
+  color: @background;
 }
 
 #workspaces button.focused {
