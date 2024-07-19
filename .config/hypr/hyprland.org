@@ -158,7 +158,8 @@ exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 5%'
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src conf
-exec-once=/usr/lib/polkit-1/polkitd
+# exec-once=/usr/lib/polkit-1/polkitd
+exec-once=/usr/lib/polkit-kde-authentication-agent-1
 #+end_src
 
 ** Wal
