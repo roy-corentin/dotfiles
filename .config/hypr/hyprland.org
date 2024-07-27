@@ -391,6 +391,7 @@ misc {
 
   # Teams
   windowrule = workspace 1,^(.*Microsoft Teams.*)$
+  windowrule = workspace 1,^(teams-for-linux)$
 
   # Discord
   windowrule = workspace 1,^(discord)$
