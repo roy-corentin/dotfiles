@@ -75,6 +75,17 @@ alias e="emacsclient -c -n -a 'emacs' $1"
 alias et="emacsclient -t -a 'emacs -nw' $1"
 alias es="emacs_start"
 
+# Yazi
+alias y=yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 source "$HOME/.git_alias.zsh"
 if [ -f  "$HOME/.secret" ]; then
    source "$HOME/.secret"
