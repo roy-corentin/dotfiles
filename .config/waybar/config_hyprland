@@ -19,7 +19,8 @@
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         // informational
-      // connecting
+        // connecting
+        "backlight",
         "network",
         "custom/vpn",
         "pulseaudio",
@@ -31,8 +32,11 @@
 
     // Modules configuration
     "hyprland/workspaces": {
-        "all-outputs": true,
+        "on-scroll-up": "hyprctl dispatch workspace r-1",
+        "on-scroll-down": "hyprctl dispatch workspace r+1",
         "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
             "1": "󰍪",
@@ -44,20 +48,17 @@
             "default": ""
         },
         "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
+            "*": 4
         }
-       },
+    },
 
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
-        "format": "{icon}{name} ",
+        "format": "{name} {icon}",
         "format-icons": {
-            "locked": "󰌾",
-            "unlocked": ""
+            "locked": "",
+            "unlocked": ""
         }
     },
 
@@ -96,11 +97,11 @@
     },
 
     "clock": {
-        "interval": 30,
         "format":"󰃭 {:%e%b  %H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
         "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "calcurse",
+        //"on-click": "calcurse",
     },
 
     "cpu": {
@@ -126,17 +127,17 @@
     },
 
     "battery": {
-        "interval": 30,
+        //"interval": 30,
         "states": {
-            "good": 85,
+            // "good": 90,
             "warning": 30,
             "critical": 20
         },
         "format": "{icon} {capacity}%",
-        "format-alt": "{icon} {time}",
         "format-charging": "󱐋{capacity}%",
         // "format-charging": "󰂄 {capacity}%",
         "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""],
@@ -146,18 +147,20 @@
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
+        //"format-wifi": "{essid} ({signalStrength}%) ",
         "format-wifi": "{essid} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "({signalStrength}%) {ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        //"format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "({signalStrength}%) {ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "on-click": "nm-connection-editor"
     },
 
     "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
-        "format": "{volume}% {icon}  {format_source}",
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -165,8 +168,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "󱈘",
-            "headset": "󰋎",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -185,14 +188,16 @@
         "icon-size": 18,
         "format": "󰍟 {title}",
         "rewrite": {
+           "(.*) - Brave": "$1",
            ".*emacs -nw.*": "EmacsTTY",
            "(.*) - .*": "$1",
-        }
+        },
+        "separate-outputs": false
     },
 
     "custom/power-menu": {
         "format": " <span color='#6a92d7'>⏻ </span>",
-        "on-click": "bash ~/.config/hypr/scripts/powermenu",
+        "on-click": "wlogout",
     },
 
     "custom/idle_inhibitor": {
@@ -207,5 +212,34 @@
         "on-click": "inhibit-idle off; inhibit-idle interactive",
         "on-click-middle": "inhibit-idle off",
         "signal": 15
+    },
+
+    "custom/wallpaper": {
+      "format": "",
+      "on-click": "waypaper",
+      //"on-click-right": "~/dotfiles/hypr/scripts/wallpaper-effects.sh",
+      "tooltip-format": "Left: Select a wallpaper\nRight: Select wallpaper effect"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+        ],
+        "scroll-step": 1
     }
 }
