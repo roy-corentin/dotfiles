@@ -13,7 +13,7 @@
   padding: 0;
   font-family: "JetBrainsMonoNerdFont";
   font-weight: bold;
-  font-size: x-large;
+  font-size: large;
 }
 
 window#waybar {
@@ -95,7 +95,8 @@ tooltip {
 }
 
 #network {
-  color: @color4;
+  /* color: @color4; */
+  color: @foreground;
 }
 
 #bluetooth {
@@ -104,7 +105,8 @@ tooltip {
 }
 
 #pulseaudio {
-  color: @color1;
+  /* color: @color1; */
+  color: @foreground;
 }
 
 #pulseaudio.microphone {
