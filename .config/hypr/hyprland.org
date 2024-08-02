@@ -288,23 +288,26 @@ decoration {
 
 * ANMATIONS
 #+begin_src conf
-animations {
-  # enabled = yes
-  # bezier=overshot,0.13,0.99,0.29,1.1
-  # animation=border,1,10,default
-  # animation=fade,1,10,default
-  # animation=windows,1,4,overshot,slide
-  # animation=workspaces,1,6,overshot,slide
+  animations {
+    # enabled = yes
+    # bezier=overshot,0.13,0.99,0.29,1.1
+    # animation=border,1,10,default
+    # animation=fade,1,10,default
+    # animation=windows,1,4,overshot,slide
+    # animation=workspaces,1,6,overshot,slide
 
-  bezier    = overshot, 0.13, 0.99, 0.29, 1.1
-  animation = windows, 1, 6, overshot, slide
-  animation = windowsIn, 1, 6, overshot, slide
-  animation = windowsOut, 1, 6, overshot, slide
-  animation = windowsMove, 1, 6, overshot, slide
-  animation = border, 1, 10, default
-  animation = fade, 1, 6, overshot,
-  animation = workspaces, 1, 5, overshot, slide
-}
+    bezier    = fast     , 0   , 0.99, 0    , 0.99
+    bezier    = smooth   , 0.1 , 0.99, 0.29 , 1.1
+    bezier    = overshot , 0.05,0.9  ,0.1   ,1.1
+
+    animation = windows    , 1 , 6  , overshot , slide
+    animation = windowsIn  , 1 , 6  , smooth   , slide
+    animation = windowsOut , 1 , 6  , fast     , slide
+    animation = windowsMove, 1 , 6  , overshot , slide
+    animation = border     , 1 , 10 , default
+    animation = fade       , 1 , 6  , overshot ,
+    animation = workspaces , 1 , 5  , overshot , slide
+  }
 #+end_src
 
 * DWINDLE
