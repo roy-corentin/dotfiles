@@ -1,0 +1,245 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "output": "eDP-1",
+  // "margin-top": 3,
+  // "height": 30, // Waybar height (to be removed for auto height)
+  // "width": 1800, // Waybar width (to be removed for auto width)
+  "spacing": 1, // Gaps between modules
+  // Choose the order of the modules
+  "modules-left": [
+    "battery",
+    "clock",
+    "custom/clipboard",
+    "temperature",
+    "cpu",
+    "memory",
+    "hyprland/window"
+  ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": [
+    // informational
+    // connecting
+    "network",
+    "custom/vpn",
+    "pulseaudio",
+    "backlight",
+    "custom/pacman",
+    "tray",
+    "custom/power-menu"
+  ],
+
+  // Modules configuration
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰍪",
+      "2": "",
+      "3": "󰖟",
+      "4": "󰋎",
+      "urgent": "",
+      // "active": "",
+      "default": ""
+    },
+    "persistent_workspaces": {
+      "*": 4
+    }
+  },
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+
+  "custom/vpn": {
+    "format": "VPN ",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "return-type": "json",
+    "interval": 5
+  },
+
+  "custom/clipboard": {
+    "format": " 󰨸 ",
+    "interval": "once",
+    "return-type": "json",
+    "on-click": "swaymsg -q exec '$clipboard'; waybar-signal clipboard",
+    "on-click-right": "swaymsg -q exec '$clipboard-del'; waybar-signal clipboard",
+    "on-click-middle": "rm -f ~/.cache/cliphist/db; waybar-signal clipboard",
+    "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)' item(s) in the clipboard\r(Mid click to clear)'",
+    "exec-if": "[ -x \"$(command -v cliphist)\" ] && [ $(cliphist list | wc -l) -gt 0 ]",
+    "signal": 9
+  },
+
+  "custom/pacman": {
+    "format": "{} 󰢰 ",
+    "interval": 3600, // every hour
+    "exec": "checkupdates | wc -l", // check for updates
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "on-click": "checkupdates | wc -l", // update system
+    "signal": 8
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+
+  "clock": {
+    "format": "󰃭 {:%e%b  %H:%M}",
+    "format-alt": "{:%Y-%m-%d}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    //"on-click": "calcurse",
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true
+  },
+
+  "memory": {
+    "format": " {}%",
+    "format-alt": " {used:0.1f}G",
+    "tooltip": true
+  },
+
+  "temperature": {
+    "critical-threshold": 90,
+    "interval": 5,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "format-icons": ["", "", "󰈸"],
+    "format": "{icon}",
+    "tooltip": true,
+    "tooltip-format": "{temperatureC}°C({icon})",
+    "format-alt": "{temperatureC}°C({icon})"
+  },
+
+  "battery": {
+    //"interval": 30,
+    "states": {
+      // "good": 90,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󱐋{capacity}%",
+    // "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""],
+    //"format-icons": ["󱃍", "󰁺", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip": true
+  },
+
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    //"format-wifi": "{essid} ({signalStrength}%) ",
+    "format-wifi": "{essid} ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format": "({signalStrength}%) {ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "on-click": "nm-connection-editor"
+  },
+
+  "pulseaudio": {
+    "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
+  },
+
+  "hyprland/window": {
+    "icon": true,
+    "icon-size": 18,
+    "format": "󰍟 {title}",
+    "rewrite": {
+      "(.*) - Brave": "$1",
+      ".*emacs -nw.*": "EmacsTTY",
+      "(.*) - .*": "$1"
+    },
+    "separate-outputs": false,
+    "max-length": 20
+  },
+
+  "custom/power-menu": {
+    "format": " <span color='#6a92d7'>⏻ </span>",
+    "on-click": "wlogout"
+  },
+
+  "custom/idle_inhibitor": {
+    "interval": 60,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "on": "󰒳",
+      "off": "󰒲"
+    },
+    "exec": "inhibit-idle",
+    "on-click": "inhibit-idle off; inhibit-idle interactive",
+    "on-click-middle": "inhibit-idle off",
+    "signal": 15
+  },
+
+  "custom/wallpaper": {
+    "format": "",
+    "on-click": "waypaper",
+    //"on-click-right": "~/dotfiles/hypr/scripts/wallpaper-effects.sh",
+    "tooltip-format": "Left: Select a wallpaper\nRight: Select wallpaper effect"
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "scroll-step": 1
+  }
+}
