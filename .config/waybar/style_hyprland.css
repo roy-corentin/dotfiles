@@ -6,62 +6,74 @@
 /* @define-color foreground #a6adc8; */
 
 * {
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
-  font-family: "JetBrainsMonoNerdFont";
-  font-weight: bold;
-  font-size: large;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "JetBrainsMonoNerdFont";
+    font-weight: bold;
+    font-size: large;
 }
 
 window#waybar {
-  background: @background-bar;
-  color: @foreground;
+    background: @background-bar;
+    color: @foreground;
 }
 
 .modules-left {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .modules-center {
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
 .modules-right {
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
 tooltip {
-  background: @background;
-  border-radius: 10px;
+    background: @background;
+    border-radius: 10px;
+}
+
+/* -----------------------------------------------------
+ * Workspaces
+ * ----------------------------------------------------- */
+
+#workspaces {
+    margin: 5px 1px 6px 1px;
+    padding: 0px 1px;
+    border-radius: 15px;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 16px;
+    color: @foreground;
 }
 
 #workspaces button {
-  margin: 5px;
-  padding-right: 5px;
-  color: @color8;
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-radius: 15px;
+    border: 0px;
+    color: @color8;
+    transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active {
-  background: @foreground;
-  color: @background;
-}
-
-#workspaces button.focused {
-  color: @foreground;
-  background: @background;
-}
-
-#workspaces button.urgent {
-  color: #11111b;
-  background: @background;
+    color: @color2;
+    background: @color2;
+    border-radius: 15px;
+    min-width: 40px;
+    transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
-  background: @background;
-  color: @foreground;
+    color: @color2;
+    background: grey;
+    border-radius: 15px;
 }
 
 #window,
@@ -73,74 +85,74 @@ tooltip {
 #memory,
 #cpu,
 #backlight {
-  padding: 0px 10px;
+    padding: 0px 10px;
 }
 
 /*close to the right */
 #bluetooth {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 #temperature {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 #temperature.critical {
-  color: @color6;
+    color: @color6;
 }
 
 #clock {
-  margin-left: 5px;
-  color: @foreground;
+    margin-left: 5px;
+    color: @foreground;
 }
 
 #network {
-  /* color: @color4; */
-  color: @foreground;
+    /* color: @color4; */
+    color: @foreground;
 }
 
 #bluetooth {
-  color: @color1;
-  margin-right: 10px;
+    color: @color1;
+    margin-right: 10px;
 }
 
 #pulseaudio {
-  /* color: @color1; */
-  color: @foreground;
+    /* color: @color1; */
+    color: @foreground;
 }
 
 #pulseaudio.microphone {
-  color: #cba6f7;
-  margin-right: 10px;
+    color: #cba6f7;
+    margin-right: 10px;
 }
 
 #battery {
-  color: @color5;
+    color: @color5;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #26a65b;
+    color: #26a65b;
 }
 
 @keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
 
 #battery.critical:not(.charging) {
-  background-color: @color2;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+    background-color: @color2;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #keyboard-state {
-  padding: 0 0px;
-  margin: 0 5px;
+    padding: 0 0px;
+    margin: 0 5px;
 }
