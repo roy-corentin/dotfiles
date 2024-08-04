@@ -153,7 +153,7 @@ exec-once = blueman-applet
 + Sleep, after 360sec
 + Before sleep lock screen
 #+begin_src conf
-exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 5%' resume 'brightnessctl --restore' timeout 360 'systemctl sleep' before-sleep '$HOME/.config/hypr/scripts/lockscreen'
+exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 5%' resume 'brightnessctl --restore' timeout 360 '~/.config/hypr/scripts/sleep' before-sleep 'hyprlock'
 #+end_src
 
 ** Polkit
@@ -444,7 +444,9 @@ $powermenu = ~/.config/hypr/scripts/powermenu
 $volume = ~/.config/hypr/scripts/volume
 $backlight = ~/.config/hypr/scripts/brightness
 $screenshot = ~/.config/hypr/scripts/screenshot
-$lockscreen = ~/.config/hypr/scripts/lockscreen
+# $lockscreen = ~/.config/hypr/scripts/lockscreen
+$lockscreen = hyprlock
+$sleep = ~/.config/hypr/scripts/sleep
 $suspend = ~/.config/hypr/scripts/suspend
 $wlogout = ~/.config/hypr/scripts/wlogout
 $colorpicker = ~/.config/hypr/scripts/colorpicker
