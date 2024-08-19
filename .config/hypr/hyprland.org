@@ -458,9 +458,9 @@ $browser = brave
 
 ** Terminal
 #+begin_src conf
-bind = $mainMod,Return,exec,$term
-bind = $mainMod SHIFT,Return,exec,$term2
-bind = $mainMod CTRL,Return,exec,[float] $term
+  bind = $mainMod,Return,exec,$term
+  bind = $mainMod SHIFT,Return,exec,$term2
+  bind = $mainMod CTRL,Return,exec,[float; size 50%, 60%] $term
 #+end_src
 
 ** Apps
