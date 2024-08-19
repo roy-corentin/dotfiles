@@ -39,7 +39,7 @@
   - [[#variable][Variable]]
   - [[#terminal][Terminal]]
   - [[#apps][Apps]]
-  - [[#wofi][Wofi]]
+  - [[#rofi][Rofi]]
   - [[#misc-1][Misc]]
   - [[#some-nice-mouse-binds][Some nice mouse binds]]
   - [[#function-keys][Function keys]]
@@ -430,30 +430,31 @@ misc {
 * KEYBINDINGS
 ** Variable
 #+begin_src conf
-# See https://wiki.hyprland.org/Configuring/Keywords/ for more
-$mainMod = SUPER
+  # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+  $mainMod = SUPER
 
-$term = kitty
-$term2 = alacritty
-$wallpapermenu = ~/.config/rofi/wallpaper.sh
-$thememenu = ~/.config/rofi/theme.sh
-$appmenu = ~/.config/hypr/scripts/menu2
-$appmenu2 = ~/.config/hypr/scripts/menu
-$menu3 = xfce4-appfinder
-$powermenu = ~/.config/hypr/scripts/powermenu
-$volume = ~/.config/hypr/scripts/volume
-$backlight = ~/.config/hypr/scripts/brightness
-$screenshot = ~/.config/hypr/scripts/screenshot
-# $lockscreen = ~/.config/hypr/scripts/lockscreen
-$lockscreen = hyprlock
-$sleep = ~/.config/hypr/scripts/sleep
-$suspend = ~/.config/hypr/scripts/suspend
-$wlogout = ~/.config/hypr/scripts/wlogout
-$colorpicker = ~/.config/hypr/scripts/colorpicker
-$files = dolphin
-$editor = emacsclient -c -n -a 'emacs'
-$editor-everywhere = emacsclient --eval "(emacs-everywhere)"
-$browser = brave
+  $term = kitty
+  $term2 = alacritty
+  $wallpapermenu = ~/.config/rofi/wallpaper.sh
+  $thememenu = ~/.config/rofi/theme.sh
+  $appmenu = ~/.config/hypr/scripts/menu2
+  $appmenu2 = ~/.config/hypr/scripts/menu
+  $menu3 = xfce4-appfinder
+  $powermenu = ~/.config/hypr/scripts/powermenu
+  $volume = ~/.config/hypr/scripts/volume
+  $backlight = ~/.config/hypr/scripts/brightness
+  $screenshot = ~/.config/hypr/scripts/screenshot
+  # $lockscreen = ~/.config/hypr/scripts/lockscreen
+  $lockscreen = hyprlock
+  $sleep = ~/.config/hypr/scripts/sleep
+  $suspend = ~/.config/hypr/scripts/suspend
+  $wlogout = ~/.config/hypr/scripts/wlogout
+  $colorpicker = ~/.config/hypr/scripts/colorpicker
+  $files = dolphin
+  $editor = emacsclient -c -n -a 'emacs'
+  $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
+  $browser = brave
+  $help_keybind = ~/.config/rofi/keybinding.sh
 #+end_src
 
 ** Terminal
@@ -465,21 +466,22 @@ $browser = brave
 
 ** Apps
 #+begin_src conf
-bind = $mainMod, E ,exec,$files
-bind = $mainMod SHIFT, E ,exec,$editor
-bind = $mainMod SHIFT, I ,exec,$editor-everywhere
-bind = $mainMod SHIFT, W ,exec,$browser
-bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
-bind = $mainMod CTRL, S, exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
+  bind = $mainMod, E ,exec,$files
+  bind = $mainMod SHIFT, E ,exec,$editor
+  bind = $mainMod SHIFT, I ,exec,$editor-everywhere
+  bind = $mainMod SHIFT, W ,exec,$browser
+  bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
+  bind = $mainMod CTRL, S, exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
 #+end_src
 
-** Wofi
+** Rofi
 #+begin_src conf
-bind = $mainMod, D, exec,$appmenu
-bind = $mainMod SHIFT, D, exec,$appmenu2
-bind = $mainMod, X, exec,$powermenu
-bind = $mainMod, W, exec,$wallpapermenu
-bind = $mainMod, T, exec,$thememenu
+  bind = $mainMod, D, exec,$appmenu
+  bind = $mainMod SHIFT, D, exec,$appmenu2
+  bind = $mainMod, X, exec,$powermenu
+  bind = $mainMod, W, exec,$wallpapermenu
+  bind = $mainMod, T, exec,$thememenu
+  bind = $mainMod SHIFT, Comma, exec, $help_keybind
 #+end_src
 
 ** Misc
