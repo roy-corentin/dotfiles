@@ -66,8 +66,8 @@ alias df='df -h'     # Human-readable sizes
 alias free='free -m' # Show sizes in MB
 alias cl="clear"
 alias ls='ls $LS_OPTIONS'
-alias la="eza -l -g -a --icons"
-alias l="eza -l -g --icons"
+alias la="eza -l -g -a --icons=always"
+alias l="eza -l -g --icons=always"
 alias neo=fastfetch
 alias eserv="emacs --daemon"
 alias eclient="emacsclient -c -n"
