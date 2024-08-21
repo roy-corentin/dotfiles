@@ -1,6 +1,6 @@
 # Wal
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors.sh
+# (cat ~/.cache/wal/sequences &)
+# source ~/.cache/wal/colors.sh
 
 # p10k config
 # source ~/.zshrc_p10k

@@ -82,7 +82,7 @@
     "interval": 3600, // every hour
     "exec": "checkupdates | wc -l", // check for updates
     "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "kitty --config ~/.cache/wal/colors-kitty.conf --title float-system-update --hold --detach yay -Syyu",
+    "on-click": "kitty --title float-system-update --hold --detach yay -Syyu",
     "signal": 8
   },
 
@@ -96,7 +96,7 @@
     // "format-alt": "{:%Y-%m-%d}",
     "tooltip": true,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click": "kitty --config ~/.cache/wal/colors-kitty.conf --title float-calcurse calcurse"
+    "on-click": "kitty --title float-calcurse calcurse"
   },
 
   "cpu": {
