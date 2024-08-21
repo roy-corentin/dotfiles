@@ -50,7 +50,6 @@ tooltip {
     font-weight: bold;
     font-style: normal;
     font-size: 16px;
-    color: @foreground;
 }
 
 #workspaces button {
@@ -58,21 +57,24 @@ tooltip {
     margin: 4px 3px;
     border-radius: 15px;
     border: 0px;
-    color: @color8;
+    color: @color2;
+    background-color: @color2;
     transition: all 0.3s ease-in-out;
+    opacity: 0.4;
 }
 
 #workspaces button.active {
     color: @color2;
-    background: @color2;
+    background-color: @color2;
     border-radius: 15px;
     min-width: 40px;
     transition: all 0.3s ease-in-out;
+    opacity: 1;
 }
 
 #workspaces button:hover {
-    color: @color2;
-    background: grey;
+    color: #cdd6f4;
+    background-color: #cdd6f4;
     border-radius: 15px;
 }
 
