@@ -411,6 +411,7 @@ misc {
 
   # Discord
   windowrule = workspace 1,^(discord)$
+  windowrule = workspace 1,^(WebCord)$
 
   # Slack
   windowrule = workspace 1,^(Slack)$
