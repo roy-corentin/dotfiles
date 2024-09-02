@@ -12,7 +12,7 @@
   - [[#default-setup][Default Setup]]
 - [[#startup][STARTUP]]
   - [[#desktop-portals][Desktop-Portals]]
-  - [[#wallpaper-swww][Wallpaper (SWWW)]]
+  - [[#wallpaper][Wallpaper]]
   - [[#notifications][Notifications]]
   - [[#status-bar-waybar][Status-Bar (Waybar)]]
   - [[#startup-script][Startup Script]]
@@ -114,7 +114,7 @@ workspace = HDMI-A-1, 2
 exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 #+end_src
 
-** Wallpaper (SWWW)
+** Wallpaper
 #+begin_src conf
 #exec-once = swww-daemon
 exec-once = hyprpaper
