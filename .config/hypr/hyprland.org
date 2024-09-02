@@ -441,8 +441,7 @@ misc {
   $term2 = alacritty
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
-  $appmenu = ~/.config/hypr/scripts/menu2
-  $appmenu2 = ~/.config/hypr/scripts/menu
+  $appmenu = ~/.config/rofi/appmenu.sh
   $menu3 = xfce4-appfinder
   $powermenu = ~/.config/hypr/scripts/powermenu
   $volume = ~/.config/hypr/scripts/volume
@@ -481,7 +480,6 @@ misc {
 ** Rofi
 #+begin_src conf
   bind = $mainMod, D, exec,$appmenu
-  bind = $mainMod SHIFT, D, exec,$appmenu2
   bind = $mainMod, X, exec,$powermenu
   bind = $mainMod, W, exec,$wallpapermenu
   bind = $mainMod, T, exec,$thememenu
