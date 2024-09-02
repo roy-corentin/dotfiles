@@ -3,7 +3,10 @@
 wallpaper_directory="$HOME/.config/hypr/wallpapers"
 
 chose_wallpaper() {
-    if image=$(ls "$wallpaper_directory" | rofi -dmenu -mesg 'Select wallpaper'); then
+    if image=$(for file_path in $(ls $wallpaper_directory/*); do
+                   file_name=$(echo $file_path | sed 's/.*\/\(.*\)/\1/')
+                   echo -en "$file_name\0icon\x1f$file_path\n"
+               done | rofi -dmenu -p " " -theme '~/.config/rofi/wallpaper.rasi'  -mesg 'Select wallpaper'); then
         wallpaper_path="$wallpaper_directory/$image"
 
         if [[ -d $wallpaper_path ]]; then
