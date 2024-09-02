@@ -33,6 +33,8 @@ hyprctl hyprpaper unload all
 hyprctl hyprpaper preload "$wallpaper_path"
 hyprctl hyprpaper wallpaper ",$wallpaper_path" # Empty first argument to enable wallpaper on every monitor
 
+cat $wallpaper_path > ~/.cache/hyprpaper/current-wallpaper
+
 if backend=$(echo -e "none\nwal\nhaishoku\ncolorthief" | rofi -dmenu -mesg 'Select backend'); then
     if [[ "$backend" == *none* ]]; then
         exit
