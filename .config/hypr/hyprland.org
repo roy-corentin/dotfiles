@@ -442,6 +442,7 @@ misc {
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
   $appmenu = ~/.config/rofi/appmenu.sh
+  $clipboardlist = ~/.config/rofi/clipboardlist.sh
   $menu3 = xfce4-appfinder
   $powermenu = ~/.config/hypr/scripts/powermenu
   $volume = ~/.config/hypr/scripts/volume
@@ -664,7 +665,7 @@ bind = $mainMod CTRL, mouse_down, workspace, -1
 
 ** Clipboard
 #+begin_src conf
-bind = SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
+bind = SUPER, V, exec, $clipboardlist
 #+end_src
 
 * HYPRCURSOR
