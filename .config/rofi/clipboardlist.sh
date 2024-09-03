@@ -5,4 +5,4 @@ if [[ $(pidof rofi) ]]; then
     exit 1
 fi
 
-cliphist list | rofi -dmenu -display-columns 2 -p "" -width 200 | cliphist decode | wl-copy
+cliphist list | rofi -dmenu -display-columns 2 -p "" | cliphist decode | wl-copy
