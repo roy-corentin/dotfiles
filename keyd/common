@@ -1,0 +1,3 @@
+capslock = overload(control, esc)
+leftshift+capslock = capslock
+rightshift+capslock = capslock
