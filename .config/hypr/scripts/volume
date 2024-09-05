@@ -7,7 +7,7 @@ DIR="$HOME/.config/mako/icons"
 # Get Volume
 get_volume() {
 	# volume=$(amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]')
-	volume=$(pulsemixer --get-volume)
+	volume=$(pulsemixer --get-volume | awk '{print $1}')
 	echo "$volume"
 }
 
