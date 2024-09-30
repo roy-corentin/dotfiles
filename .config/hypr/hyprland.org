@@ -22,7 +22,6 @@
   - [[#polkit][Polkit]]
   - [[#wal][Wal]]
   - [[#network-manager][Network-Manager]]
-  - [[#xwaylandvideobridge][XWaylandVideoBridge]]
   - [[#clipboard][Clipboard]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
@@ -172,11 +171,6 @@ exec-once = wal -R
 Make sure you havc installed =network-manager-applet=
 #+begin_src conf
 exec-once = nm-applet --indicator
-#+end_src
-
-** XWaylandVideoBridge
-#+begin_src conf
-exec-once = xwaylandvideobridge
 #+end_src
 
 ** Clipboard
