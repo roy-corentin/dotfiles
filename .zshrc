@@ -26,7 +26,7 @@ source "$HOME/.zsh-keybinding"
 # Use 256 colors and UNICODE.
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
-# History 
+# History
 HISTSIZE=5000
 HISTFILE=~/.zhistory
 SAVEHIST=$HISTSIZE
