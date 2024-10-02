@@ -224,7 +224,7 @@ Configure mouse and touchpad here
 * GROUP
 #+begin_src conf
 group {
-    col.border_active = $color1
+    col.border_active = $color4
     col.border_inactive = $color0
     groupbar {
        render_titles = false
