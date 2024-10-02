@@ -367,6 +367,7 @@ misc {
 
   # Browser
   windowrule = workspace 3,brave-browser
+  windowrule = workspace 3,zen-alpha
   windowrulev2 = float,class:^()$,title:^(Picture in picture)$
   windowrulev2 = float,class:^(brave)$,title:^(Save File)$
   windowrulev2 = float,class:^(brave)$,title:^(Open File)$
