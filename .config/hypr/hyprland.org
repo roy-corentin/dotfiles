@@ -115,7 +115,6 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 
 ** Wallpaper
 #+begin_src conf
-#exec-once = swww-daemon
 exec-once = hyprpaper
 #+end_src
 
