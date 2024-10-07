@@ -7,7 +7,7 @@
 - [[#output][OUTPUT]]
   - [[#example][Example]]
   - [[#laptop-screen][Laptop Screen]]
-  - [[#syadem-setup][Syadem Setup]]
+  - [[#work-setup][Work Setup]]
   - [[#home-setup][Home Setup]]
   - [[#default-setup][Default Setup]]
 - [[#startup][STARTUP]]
@@ -84,10 +84,10 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   workspace = eDP-1, 1
 #+end_src
 
-** Syadem Setup
+** Work Setup
 #+begin_src conf
 monitor = desc:AOC Q3279WG5B 0x0000652C, preferred, 1920x0, 1
-monitor = desc:AOC U32E2WG6 QELM5JA000186, 3840x2160@30, 1920x0, 1.5
+monitor = desc:AOC U32E2WG6 QELM5JA000186, 3840x2160@60, 1920x0, 1.5
 monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
 #+end_src
 
