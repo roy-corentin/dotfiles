@@ -19,6 +19,7 @@
   - [[#blue-light][Blue-Light]]
   - [[#bluetooth][Bluetooth]]
   - [[#swayidle][Swayidle]]
+  - [[#hypridle][Hypridle]]
   - [[#polkit][Polkit]]
   - [[#wal][Wal]]
   - [[#network-manager][Network-Manager]]
@@ -148,18 +149,25 @@ exec-once = blueman-applet
 
 ** Swayidle
 + Dim primary screen, after 240sec decrease brightness
-+ Send notification about the pc going to sleep, after 300sec
 + Sleep, after 360sec
 + Before sleep lock screen
-#+begin_src conf
+#+begin_src conf :tangle no
 exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 5%' resume 'brightnessctl --restore' timeout 360 '~/.config/hypr/scripts/sleep' before-sleep 'hyprlock'
+#+end_src
+
+** Hypridle
+#+begin_src conf
+exec-once = hypridle
 #+end_src
 
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
+#+begin_src conf :tangle no
+  # exec-once=/usr/lib/polkit-1/polkitd
+#+end_src
+
 #+begin_src conf
-# exec-once=/usr/lib/polkit-1/polkitd
-exec-once=/usr/lib/polkit-kde-authentication-agent-1
+  exec-once=/usr/lib/polkit-kde-authentication-agent-1
 #+end_src
 
 ** Wal
