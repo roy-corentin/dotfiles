@@ -5,11 +5,10 @@
 # THEME='Dracula'
 # THEME='Nordic'
 # THEME='adw-gtk3-dark'
-THEME='Adwaita-dark'
-
+THEME='Orchis-Dark-Compact'
 ICONS='Papirus-Dark'
-FONT='Noto Sans 9'
-CURSOR='Bibata-Modern-Classic'
+FONT='Noto Sans 10'
+CURSOR='Qogir-dark'
 
 SCHEMA='gsettings set org.gnome.desktop.interface'
 
