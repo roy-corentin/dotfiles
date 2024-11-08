@@ -24,6 +24,7 @@
   - [[#wal][Wal]]
   - [[#network-manager][Network-Manager]]
   - [[#clipboard][Clipboard]]
+  - [[#gtk][Gtk]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#cursor][CURSOR]]
@@ -35,7 +36,6 @@
 - [[#gesture][GESTURE]]
 - [[#misc][MISC]]
 - [[#window-rules][WINDOW RULES]]
-- [[#xwayland][XWayland]]
 - [[#keybindings][KEYBINDINGS]]
   - [[#variable][Variable]]
   - [[#terminal][Terminal]]
@@ -184,8 +184,12 @@ exec-once = nm-applet --indicator
 ** Clipboard
 #+begin_src conf
 exec-once = wl-paste --type text --watch cliphist store #Stores only text data
-
 exec-once = wl-paste --type image --watch cliphist store #Stores only image data
+#+end_src
+
+** Gtk
+#+begin_src conf
+exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
 #+end_src
 
 * INPUT
@@ -436,13 +440,6 @@ misc {
   #windowrule = opacity 1.0,abc
   #windowrule = animation slide left,abc
   #windowrule = rounding 10,abc
-#+end_src
-
-* XWayland
-#+begin_src conf
-xwayland {
-    enabled = true
-}
 #+end_src
 
 * KEYBINDINGS
