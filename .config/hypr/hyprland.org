@@ -362,6 +362,17 @@ misc {
 #+end_src
 
 * WINDOW RULES
+# List of options
+windowrule = move 69 420,abc
+windowrule = size 420 69,abc
+windowrule = tile,xyz
+windowrule = pseudo,abc
+windowrule = monitor 0,xyz
+windowrule = workspace 12,abc
+windowrule = opacity 1.0,abc
+windowrule = animation slide left,abc
+windowrule = rounding 10,abc
+
 #+begin_src conf
   # Float Necessary Windows
   windowrule = float,Wofi
@@ -379,6 +390,7 @@ misc {
   windowrulev2 = float,class:^(org.twosheds.iwgtk)$
   windowrulev2 = float,class:^(blueberry.py)$
   windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
+  windowrulev2 = float,class:^(org.kde.gwenview)$
 
   windowrulev2 = float,class:^kitty$ title:^(float-.*)$
   windowrulev2 = size 50% 50%,class:^kitty$ title:^(float-.*)$
@@ -394,6 +406,11 @@ misc {
   windowrule = float,^(org.kde.dolphin)$
   windowrulev2 = size 1280 720,class:^(org.kde.dolphin)$
   windowrulev2 = center, class:^(org.kde.dolphin)$
+
+  # Thunar
+  windowrule = float,^(thunar)$
+  windowrulev2 = size 1280 720,class:^(thunar)$
+  windowrulev2 = center, class:^(thunar)$
 
   # Gnome Settings
   windowrule=float,^(org.gnome.Settings)$
@@ -435,17 +452,6 @@ misc {
   # All
   windowrule = opacity 1 override 0.90 override, .*
   windowrule = opacity 0.90 override 0.90 override, ^(emacs|kitty|Alacritty)$
-
-  # List of options
-  #windowrule = move 69 420,abc
-  #windowrule = size 420 69,abc
-  #windowrule = tile,xyz
-  #windowrule = pseudo,abc
-  #windowrule = monitor 0,xyz
-  #windowrule = workspace 12,abc
-  #windowrule = opacity 1.0,abc
-  #windowrule = animation slide left,abc
-  #windowrule = rounding 10,abc
 #+end_src
 
 * KEYBINDINGS
@@ -471,7 +477,7 @@ misc {
   $suspend = ~/.config/hypr/scripts/suspend
   $wlogout = ~/.config/hypr/scripts/wlogout
   $colorpicker = ~/.config/hypr/scripts/colorpicker
-  $files = dolphin
+  $files = thunar
   $editor = emacsclient -c -n -a 'emacs'
   $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
   $browser = brave
