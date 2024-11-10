@@ -469,7 +469,7 @@ windowrule = rounding 10,abc
   $menu3 = xfce4-appfinder
   $powermenu = ~/.config/hypr/scripts/powermenu
   $volume = ~/.config/hypr/scripts/volume
-  $backlight = ~/.config/hypr/scripts/brightness
+  $brightness = ~/.config/hypr/scripts/brightness
   $screenshot = ~/.config/hypr/scripts/screenshot
   # $lockscreen = ~/.config/hypr/scripts/lockscreen
   $lockscreen = hyprlock
@@ -526,8 +526,8 @@ bindm = SUPER,mouse:273,resizewindow
 ** Function keys
 - E flag is used to repeat cmd when hold
 #+begin_src conf
-binde = ,XF86MonBrightnessUp, exec, $backlight --inc
-binde = ,XF86MonBrightnessDown, exec, $backlight --dec
+binde = ,XF86MonBrightnessUp, exec, $brightness --inc
+binde = ,XF86MonBrightnessDown, exec, $brightness --dec
 binde = ,XF86AudioRaiseVolume, exec, $volume --inc
 binde = ,XF86AudioLowerVolume, exec, $volume --dec
 bind = ,XF86AudioMute, exec, $volume --toggle
