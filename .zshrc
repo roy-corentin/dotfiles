@@ -71,9 +71,8 @@ alias l="eza -l -g --icons=always"
 alias neo=fastfetch
 alias eserv="emacs --daemon"
 alias eclient="emacsclient -c -n"
-alias e="emacsclient -c -n -a 'emacs' $1"
-alias et="emacsclient -t -a 'emacs -nw' $1"
-alias es="emacs_start"
+
+source "$HOME/.emacs_alias.zsh"
 
 # Yazi
 alias y=yazi
