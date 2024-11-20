@@ -8,8 +8,8 @@ fi
 if theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | rofi -dmenu -mesg 'Select theme' | sed "s/ (last used)//"); then
     echo "$theme"
     wal --cols16 --theme "$theme"
-
-    swaync-client -rs
+    emacsclient -e "(load-theme '$theme t)"
+    # swaync-client -rs
 else
     echo "$theme"
 fi
