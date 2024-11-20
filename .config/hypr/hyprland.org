@@ -229,8 +229,8 @@ Configure mouse and touchpad here
 #+end_src
 
 * CURSOR
+Make the cursor disappear after 3 seconds
 #+begin_src conf
-  # Make the cursor disappear after 3 seconds
   cursor {
     inactive_timeout = 3
     enable_hyprcursor = true
@@ -265,17 +265,14 @@ the more passes, the more you can up the blur_size without noticing artifacts.
       fullscreen_opacity=0.9
       blur {
           enabled = true
-          size = 5 # minimum 1
-          passes = 2 # minimum 1, more passes = more resource intensive.
-          ignore_opacity = false
+          size = 1 # minimum 1
+          passes = 3 # minimum 1, more passes = more resource intensive.
       }
       shadow {
-          #drop_shadow = yes
-          enabled = true
+          enabled = false
           range = 8
           offset = 1 2
           scale = 0.97
-          render_power = 3
           color = rgba(1E202966)
           color_inactive = 0x50000000
       }
@@ -355,16 +352,16 @@ misc {
 #+end_src
 
 * WINDOW RULES
-# List of options
-windowrule = move 69 420,abc
-windowrule = size 420 69,abc
-windowrule = tile,xyz
-windowrule = pseudo,abc
-windowrule = monitor 0,xyz
-windowrule = workspace 12,abc
-windowrule = opacity 1.0,abc
-windowrule = animation slide left,abc
-windowrule = rounding 10,abc
+List of options
+- windowrule = move 69 420,abc
+- windowrule = size 420 69,abc
+- windowrule = tile,xyz
+- windowrule = pseudo,abc
+- windowrule = monitor 0,xyz
+- windowrule = workspace 12,abc
+- windowrule = opacity 1.0,abc
+- windowrule = animation slide left,abc
+- windowrule = rounding 10,abc
 
 #+begin_src conf
   # Float Necessary Windows
@@ -443,8 +440,9 @@ windowrule = rounding 10,abc
   windowrule = workspace 1,^(Slack)$
 
   # All
-  windowrule = opacity 1 override 0.90 override, .*
-  windowrule = opacity 0.90 override 0.90 override, ^(emacs|kitty|Alacritty)$
+  windowrule = opacity 0.9 override 0.9 override, .*
+  windowrule = opaque on, .*
+  windowrule = opaque off, ^(emacs|kitty|Alacritty)$
 #+end_src
 
 * KEYBINDINGS
