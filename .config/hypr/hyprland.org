@@ -25,6 +25,7 @@
   - [[#network-manager][Network-Manager]]
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
+  - [[#hyprcursor][Hyprcursor]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#cursor][CURSOR]]
@@ -58,7 +59,6 @@
   - [[#send-to-workspaces][Send to Workspaces]]
   - [[#scroll-through-existing-workspaces][Scroll Through Existing Workspaces]]
   - [[#clipboard-1][Clipboard]]
-- [[#hyprcursor][HYPRCURSOR]]
 - [[#screen-sharing][SCREEN-SHARING]]
 
 * OUTPUT
@@ -190,6 +190,11 @@ exec-once = wl-paste --type image --watch cliphist store #Stores only image data
 ** Gtk
 #+begin_src conf
 exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
+#+end_src
+
+** Hyprcursor
+#+begin_src conf
+exec-once = hyprctl setcursor Qogir-dark 24 #19
 #+end_src
 
 * INPUT
@@ -680,11 +685,6 @@ bind = $mainMod CTRL, mouse_down, workspace, -1
 ** Clipboard
 #+begin_src conf
 bind = SUPER, V, exec, $clipboardlist
-#+end_src
-
-* HYPRCURSOR
-#+begin_src conf
-env = HYPRCURSOR_SIZE,19
 #+end_src
 
 * SCREEN-SHARING
