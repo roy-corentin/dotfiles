@@ -220,8 +220,8 @@ Configure mouse and touchpad here
   source = ~/.cache/wal/colors-hyprland.conf
 
   general {
-      gaps_in = 4
-      gaps_out = 4
+      gaps_in = 8
+      gaps_out = 20
       border_size = 2
       layout = dwindle
       col.active_border = $color4
@@ -267,10 +267,9 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 #+begin_src conf
   decoration {
       rounding = 2       # Original: 10
-      fullscreen_opacity=0.9
       blur {
           enabled = true
-          size = 1 # minimum 1
+          size = 3 # minimum 1
           passes = 3 # minimum 1, more passes = more resource intensive.
       }
       shadow {
