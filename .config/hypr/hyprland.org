@@ -448,9 +448,9 @@ List of options
   windowrule = workspace 1,^(Slack)$
 
   # All
-  windowrule = opacity 0.9 override 0.9 override, .*
-  windowrule = opaque on, .*
-  windowrule = opaque off, ^(emacs|kitty|Alacritty)$
+  windowrule = opacity 0.9 override 0.9 override, ^(.*)$
+  windowrule = opaque 1, ^(.*)$
+  windowrule = opaque 0, ^(emacs|kitty|Alacritty)$
 #+end_src
 
 * KEYBINDINGS
