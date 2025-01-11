@@ -434,7 +434,7 @@ List of options
   windowrulev2 = noblur,class:^(xwaylandvideobridge)$
 
   # Emacs
-  windowrule = workspace 2,^(emacs)$
+  windowrule = workspace 3,^(emacs)$
 
   # Teams
   windowrule = workspace 1,^(.*Microsoft Teams.*)$
