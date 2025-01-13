@@ -622,7 +622,7 @@ bind = $mainMod SHIFT, B, changegroupactive, f
 #+end_src
 
 ** Resize Window
-- E flag is used to repeat cmd when hold
+- 'e' flag is used to repeat cmd when hold
 #+begin_src conf
 binde = $mainMod CTRL, H, resizeactive, -20 0
 binde = $mainMod CTRL, L, resizeactive, 20 0
