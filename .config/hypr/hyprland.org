@@ -221,8 +221,8 @@ Configure mouse and touchpad here
   source = ~/.cache/wal/colors-hyprland.conf
 
   general {
-      gaps_in = 8
-      gaps_out = 20
+      gaps_in = 2
+      gaps_out = 4
       border_size = 2
       layout = dwindle
       col.active_border = $color4
