@@ -1,1 +1,7 @@
 window-decoration = false
+
+font-family = JetBrainsMonoNerdFont
+font-size   = 11.0
+
+command = cat ~/.cache/wal/sequences & zsh
+keybind = ctrl+shift+f=write_screen_file:open
