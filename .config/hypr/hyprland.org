@@ -26,6 +26,7 @@
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
   - [[#hyprcursor][Hyprcursor]]
+  - [[#ghostty][Ghostty]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#cursor][CURSOR]]
@@ -195,6 +196,11 @@ exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
 ** Hyprcursor
 #+begin_src conf
 exec-once = hyprctl setcursor Qogir-dark 24 #19
+#+end_src
+
+** Ghostty
+#+begin_src conf
+exec-once = ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 #+end_src
 
 * INPUT
@@ -450,37 +456,37 @@ List of options
   # All
   windowrule = opacity 0.9 override 0.9 override, ^(.*)$
   windowrule = opaque 1, ^(.*)$
-  windowrule = opaque 0, ^(emacs|kitty|Alacritty)$
+  windowrule = opaque 0, ^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
 #+end_src
 
 * KEYBINDINGS
 ** Variable
 #+begin_src conf
-  # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-  $mainMod = SUPER
+    # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+    $mainMod = SUPER
 
-  $term = kitty
-  $term2 = alacritty
-  $wallpapermenu = ~/.config/rofi/wallpaper.sh
-  $thememenu = ~/.config/rofi/theme.sh
-  $appmenu = ~/.config/rofi/appmenu.sh
-  $clipboardlist = ~/.config/rofi/clipboardlist.sh
-  $menu3 = xfce4-appfinder
-  $powermenu = ~/.config/hypr/scripts/powermenu
-  $volume = ~/.config/hypr/scripts/volume
-  $brightness = ~/.config/hypr/scripts/brightness
-  $screenshot = ~/.config/hypr/scripts/screenshot
-  # $lockscreen = ~/.config/hypr/scripts/lockscreen
-  $lockscreen = hyprlock
-  $sleep = ~/.config/hypr/scripts/sleep
-  $suspend = ~/.config/hypr/scripts/suspend
-  $wlogout = ~/.config/hypr/scripts/wlogout
-  $colorpicker = ~/.config/hypr/scripts/colorpicker
-  $files = thunar
-  $editor = emacsclient -c -n -a 'emacs'
-  $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
-  $browser = brave
-  $help_keybind = ~/.config/rofi/keybinding.sh
+    $term = kitty
+    $term2 = ghostty --gtk-single-instance=true
+    $wallpapermenu = ~/.config/rofi/wallpaper.sh
+    $thememenu = ~/.config/rofi/theme.sh
+    $appmenu = ~/.config/rofi/appmenu.sh
+    $clipboardlist = ~/.config/rofi/clipboardlist.sh
+    $menu3 = xfce4-appfinder
+    $powermenu = ~/.config/hypr/scripts/powermenu
+    $volume = ~/.config/hypr/scripts/volume
+    $brightness = ~/.config/hypr/scripts/brightness
+    $screenshot = ~/.config/hypr/scripts/screenshot
+    # $lockscreen = ~/.config/hypr/scripts/lockscreen
+    $lockscreen = hyprlock
+    $sleep = ~/.config/hypr/scripts/sleep
+    $suspend = ~/.config/hypr/scripts/suspend
+    $wlogout = ~/.config/hypr/scripts/wlogout
+    $colorpicker = ~/.config/hypr/scripts/colorpicker
+    $files = thunar
+    $editor = emacsclient -c -n -a 'emacs'
+    $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
+    $browser = brave
+    $help_keybind = ~/.config/rofi/keybinding.sh
 #+end_src
 
 ** Terminal
