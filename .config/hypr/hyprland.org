@@ -189,7 +189,7 @@ exec-once = wl-paste --type image --watch cliphist store #Stores only image data
 #+end_src
 
 ** Gtk
-#+begin_src conf
+#+begin_src conf :tangle no
 exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
 #+end_src
 
