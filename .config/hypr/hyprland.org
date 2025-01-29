@@ -57,8 +57,6 @@
   - [[#focus-group-window][Focus Group Window]]
   - [[#resize-window][Resize Window]]
   - [[#workspaces][Workspaces]]
-  - [[#send-to-workspaces][Send to Workspaces]]
-  - [[#scroll-through-existing-workspaces][Scroll Through Existing Workspaces]]
   - [[#clipboard-1][Clipboard]]
 - [[#screen-sharing][SCREEN-SHARING]]
 
@@ -267,7 +265,7 @@ group {
 * DECORATION
 Decoration settings like Rounded Corners, Opacity, Blur, etc.
 
-Your blur ="amount"= is =blur_size * blur_passes= , but high blur_size (over around 5-ish) will produce artifacts.
+Your blur =amount= is =blur_size * blur_passes= , but high blur_size (over around 5-ish) will produce artifacts.
 if you want heavy blur, you need to up the blur_passes.
 the more passes, the more you can up the blur_size without noticing artifacts.
 
@@ -376,8 +374,6 @@ List of options
 
 #+begin_src conf
   # Float Necessary Windows
-  windowrule = float,Wofi
-  windowrule = float,rofi
   windowrule = float,waypaper
   windowrule = float,pavucontrol
   windowrule = float,foot-float
@@ -396,22 +392,13 @@ List of options
   windowrulev2 = float,class:^kitty$ title:^(float-.*)$
   windowrulev2 = size 50% 50%,class:^kitty$ title:^(float-.*)$
 
-  # Tuple
-  windowrule = float,Tuple
-  windowrule = workspace 4,Tuple
-
   # Pop
   windowrule = workspace 4,Pop
 
-  # Dolphin
-  windowrule = float,^(org.kde.dolphin)$
-  windowrulev2 = size 1280 720,class:^(org.kde.dolphin)$
-  windowrulev2 = center, class:^(org.kde.dolphin)$
-
-  # Thunar
-  windowrule = float,^(thunar)$
-  windowrulev2 = size 1280 720,class:^(thunar)$
-  windowrulev2 = center, class:^(thunar)$
+  # File Managers
+  windowrule = float,^(org.kde.dolphin|thunar)$
+  windowrulev2 = size 1280 720,class:^(org.kde.dolphin|thunar)$
+  windowrulev2 = center, class:^(org.kde.dolphin|thunar)$
 
   # Gnome Settings
   windowrule=float,^(org.gnome.Settings)$
@@ -429,9 +416,6 @@ List of options
   windowrulev2 = float,class:^(brave)$,title:^(Open File)$
   windowrulev2 = float,class:^brave-.*-Default$
 
-  # Rofi
-  windowrule = float,Rofi
-
   # XwaylandBridge
   windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
   windowrulev2 = noanim,class:^(xwaylandvideobridge)$
@@ -447,8 +431,7 @@ List of options
   windowrule = workspace 1,^(teams-for-linux)$
 
   # Discord
-  windowrule = workspace 1,^(discord)$
-  windowrule = workspace 1,^(WebCord)$
+  windowrule = workspace 1,^(discord|WebCord)$
 
   # Slack
   windowrule = workspace 1,^(Slack)$
@@ -465,8 +448,8 @@ List of options
     # See https://wiki.hyprland.org/Configuring/Keywords/ for more
     $mainMod = SUPER
 
-    $term = kitty
-    $term2 = ghostty --gtk-single-instance=true
+    $term = ghostty --gtk-single-instance=true
+    $term2 = kitty
     $wallpapermenu = ~/.config/rofi/wallpaper.sh
     $thememenu = ~/.config/rofi/theme.sh
     $appmenu = ~/.config/rofi/appmenu.sh
@@ -492,40 +475,40 @@ List of options
 ** Terminal
 #+begin_src conf
   bind = $mainMod, Return, exec, $term
-  bind = $mainMod SHIFT, Return, exec,$term2
-  bind = $mainMod CTRL, Return, exec, [float; size 50% 60%] $term
+  bind = $mainMod SHIFT, Return, exec, $term2
+  bind = $mainMod CTRL, Return, exec, [float; size 50% 60%] $term2
 #+end_src
 
 ** Apps
 #+begin_src conf
-  bind = $mainMod, E ,exec,$files
-  bind = $mainMod SHIFT, E ,exec,$editor
-  bind = $mainMod SHIFT, I ,exec,$editor-everywhere
-  bind = $mainMod SHIFT, W ,exec,$browser
+  bind = $mainMod, E, exec,$files
+  bind = $mainMod SHIFT, E, exec,$editor
+  bind = $mainMod SHIFT, I, exec,$editor-everywhere
+  bind = $mainMod SHIFT, W, exec,$browser
   bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
   bind = $mainMod CTRL, S, exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
 #+end_src
 
 ** Rofi
 #+begin_src conf
-  bind = $mainMod, D, exec,$appmenu
-  bind = $mainMod, X, exec,$powermenu
-  bind = $mainMod, W, exec,$wallpapermenu
-  bind = $mainMod, T, exec,$thememenu
+  bind = $mainMod, D, exec, $appmenu
+  bind = $mainMod, X, exec, $powermenu
+  bind = $mainMod, W, exec, $wallpapermenu
+  bind = $mainMod, T, exec, $thememenu
   bind = $mainMod SHIFT, Comma, exec, pkill rofi || $help_keybind
 #+end_src
 
 ** Misc
 #+begin_src conf
-bind = $mainMod, N, exec,nm-connection-editor
-bind = $mainMod, C, exec,$colorpicker
+bind = $mainMod, N, exec, nm-connection-editor
+bind = $mainMod, C, exec, $colorpicker
 bind = CTRL ALT,L, exec, $suspend
 #+end_src
 
 ** Some nice mouse binds
 #+begin_src conf
-bindm = SUPER,mouse:272,movewindow
-bindm = SUPER,mouse:273,resizewindow
+bindm = SUPER, mouse:272, movewindow
+bindm = SUPER, mouse:273, resizewindow
 #+end_src
 
 ** Function keys
@@ -669,7 +652,7 @@ bind=$mainMod ALT,k,movecurrentworkspacetomonitor,u
 bind=$mainMod ALT,l,movecurrentworkspacetomonitor,r
 #+end_src
 
-** Send to Workspaces
+*** Send to Workspaces
 #+begin_src conf
 bind = ALT, ampersand, movetoworkspace, 1
 bind = ALT, eacute, movetoworkspace, 2
@@ -681,7 +664,7 @@ bind = ALT, egrave, movetoworkspace, 7
 bind = ALT, underscore, movetoworkspace, 8
 #+end_src
 
-** Scroll Through Existing Workspaces
+*** Scroll Through Existing Workspaces
 #+begin_src conf
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
