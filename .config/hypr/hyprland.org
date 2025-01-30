@@ -548,21 +548,22 @@ bind = $mainMod CTRL, Print, exec, $screenshot --area
 
 ** Hyprland
 #+begin_src conf
-bind = $mainMod, Q, killactive,
-bind = CTRL ALT, Delete, exit,
-bind = $mainMod, F, fullscreen, 2
-bind = $mainMod CTRL, F, fullscreen, 0
-bind = $mainMod SHIFT, F, fullscreen, 1
-bind = $mainMod, Space, togglefloating,
-bind = $mainMod SHIFT, Space, togglesplit,
-bind = $mainMod, P, pseudo,
-bind = $mainMod, O, exec, hyprctl dispatch setprop active opaque toggle
-bind = $mainMod CTRL, Space, pin
-bind = $mainMod, G, togglegroup
+  bind = $mainMod, Q, killactive,
+  bind = CTRL ALT, Delete, exit,
+  bind = $mainMod, F, fullscreen, 2
+  bind = $mainMod CTRL, F, fullscreen, 0
+  bind = $mainMod SHIFT, F, fullscreen, 1
+  bind = $mainMod, Space, togglefloating,
+  bind = $mainMod SHIFT, Space, togglesplit,
+  bind = $mainMod, P, pseudo,
+  bind = $mainMod, O, exec, hyprctl dispatch setprop active opaque toggle
+  bind = $mainMod CTRL, Space, pin
+  bind = $mainMod, G, togglegroup
+  bind = $mainMod SHIFT, C, exec, ~/.config/hypr/scripts/compactmode.sh
 
-# Example special workspace (scratchpad)
-bind = $mainMod, S, togglespecialworkspace, magic
-bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+  # Example special workspace (scratchpad)
+  bind = $mainMod, S, togglespecialworkspace, magic
+  bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 #+end_src
 
 ** Window Split Ratio
