@@ -2,7 +2,7 @@
 /* @import "/home/croy/.config/colors/dracula.css"; */
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
-@define-color background-bar rgba(0,0,0,0.85);
+@define-color background-bar @background;
 /* @define-color foreground #a6adc8; */
 
 * {
@@ -34,7 +34,7 @@ window#waybar {
 }
 
 tooltip {
-    background: @background;
+    background: @theme_bg_color;
     border-radius: 10px;
 }
 
@@ -109,13 +109,19 @@ tooltip {
 }
 
 #network {
-    /* color: @color4; */
     color: @foreground;
 }
 
+#tray {
+    /* background-color: @foreground; */
+}
+
 #bluetooth {
-    color: @color1;
-    margin-right: 10px;
+    color: @foreground;
+}
+
+#blueman-manager {
+    color: @foreground;
 }
 
 #pulseaudio {
