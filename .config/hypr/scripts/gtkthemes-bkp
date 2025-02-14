@@ -9,6 +9,7 @@ THEME='Graphite-green'
 ICONS='Papirus-Dark'
 FONT='Noto Sans 10'
 CURSOR='Qogir-dark'
+SCHEME="prefer-light"
 
 SCHEMA='gsettings set org.gnome.desktop.interface'
 
@@ -17,6 +18,7 @@ apply_themes () {
 	${SCHEMA} icon-theme "$ICONS"
 	${SCHEMA} cursor-theme "$CURSOR"
 	${SCHEMA} font-name "$FONT"
+	${SCHEMA} color-scheme "$SCHEME"
 }
 
 apply_themes
