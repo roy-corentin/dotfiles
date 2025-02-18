@@ -2,7 +2,7 @@
     process-unmapped-keys yes
 )
 
-(defsrcm
+(defsrc
     caps a s d f j k l ;
 )
 
