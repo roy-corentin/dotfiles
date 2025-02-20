@@ -25,6 +25,7 @@ stow .
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]] / [[https://github.com/roy-corentin/EmacsVanilla][EmacsVanilla]]
 - Blueman
 - NetworkMarnager-Applet
+- Kanata
 
 ** Dependencies
 - [[https://github.com/eylles/pywal16][pywal16]] Create theme based on your background
@@ -39,7 +40,7 @@ stow .
   For theme based on you background you need to install =pywal= and use my custom template for Hyprland
 
 #+begin_src shell :noeval
-  sudo pacman -S hyprland waybar rofi-wayland kitty ghostty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock hypridle hyprshade chromium ttf-font-awesome vim mako wget unzip rsync figlet git network-manager-applet discord ripgrep exa btop tldr waypaper cliphist calcurse swappy grim slurp tesseract tree-sitter imagemagick pavucontrol zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ruby postgresql-libs
+  sudo pacman -S hyprland waybar rofi-wayland kitty ghostty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock hypridle hyprshade chromium ttf-font-awesome vim mako wget unzip rsync figlet git network-manager-applet discord ripgrep exa btop tldr waypaper cliphist calcurse swappy grim slurp tesseract tree-sitter imagemagick pavucontrol zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ruby postgresql-libs kanata
 
   yay -S libgccjit rbenv ruby-build
 #+end_src
