@@ -150,7 +150,7 @@
     "tooltip-format": "({signalStrength}%) {ifname} via {gwaddr} ",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
-    "on-click": "nm-connection-editor"
+    "on-click-right": "nm-connection-editor"
   },
 
   "pulseaudio": {
