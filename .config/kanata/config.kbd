@@ -8,21 +8,22 @@
 
 (defvar
     tap-time 200
-    hold-time 300
+    hold-time 200
+    long-hold-time 300
 )
 
 (defalias
     escctrl (tap-hold-press-timeout 100 350 esc lctrl caps)
     capslock (one-shot 100 caps)
     q-mod (tap-hold $tap-time $hold-time a lalt)
-    s-mod (tap-hold $tap-time $hold-time s lmet)
+    s-mod (tap-hold $tap-time $long-hold-time s lmet)
     d-mod (tap-hold $tap-time $hold-time d lsft)
     f-mod (tap-hold $tap-time $hold-time f lctl)
 
     j-mod (tap-hold $tap-time $hold-time j rctl)
     k-mod (tap-hold $tap-time $hold-time k rsft)
     l-mod (tap-hold $tap-time $hold-time l rmet)
-    m-mod (tap-hold $tap-time $hold-time ; ralt)
+    m-mod (tap-hold $tap-time $hold-time ; lalt)
 )
 
 (deflayer base
