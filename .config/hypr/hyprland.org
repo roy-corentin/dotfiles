@@ -686,5 +686,4 @@ env = XDG_SESSION_TYPE=wayland
 env = XDG_SESSION_DESKTOP=Hyprland
 
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec-once = systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #+end_src
