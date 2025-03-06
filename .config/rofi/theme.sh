@@ -9,6 +9,7 @@ if theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | rofi -d
     echo "$theme"
     wal --cols16 --theme "$theme"
     emacsclient -e "(cr/switch-theme '$theme)"
+    killall -SIGUSR2 waybar
 else
     echo "$theme"
 fi
