@@ -10,6 +10,7 @@
     tap-time 200
     hold-time 200
     long-hold-time 300
+    short-hold-time 150
 )
 
 (defalias
@@ -21,7 +22,7 @@
     f-mod (tap-hold $tap-time $hold-time f lctl)
 
     j-mod (tap-hold $tap-time $hold-time j rctl)
-    k-mod (tap-hold $tap-time $hold-time k rsft)
+    k-mod (tap-hold $tap-time $short-hold-time k rsft)
     l-mod (tap-hold $tap-time $hold-time l rmet)
     m-mod (tap-hold $tap-time $hold-time ; lalt)
 )
