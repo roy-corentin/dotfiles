@@ -14,7 +14,7 @@
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
   - [[#notifications][Notifications]]
-  - [[#status-bar-waybar][Status-Bar (Waybar)]]
+  - [[#status-bar][Status-Bar]]
   - [[#startup-script][Startup Script]]
   - [[#blue-light][Blue-Light]]
   - [[#bluetooth][Bluetooth]]
@@ -90,6 +90,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   monitor = desc:AOC Q3279WG5B 0x0000652C, preferred, 1920x0, 1
   monitor = desc:AOC U32E2WG6 QELM5JA000186, 3840x2160@60, 1920x0, 1.5
   monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
+  monitor = desc:LG Electronics LG TV SSCR2 0x01010101, preferred, 1920x0, 1.5
 #+end_src
 
 ** Home Setup
@@ -124,9 +125,9 @@ exec-once = hyprpaper
 exec = ~/.config/hypr/scripts/notifications
 #+end_src
 
-** Status-Bar (Waybar)
+** Status-Bar
 #+begin_src conf
-exec-once = ~/.config/hypr/scripts/statusbar
+  exec-once = ~/.config/hypr/scripts/status_bar
 #+end_src
 
 ** Startup Script
