@@ -558,6 +558,7 @@ bind = $mainMod CTRL, Print, exec, $screenshot --area
   bind = $mainMod CTRL, Space, pin
   bind = $mainMod, G, togglegroup
   bind = $mainMod SHIFT, C, exec, ~/.config/hypr/scripts/compactmode.sh
+  bind = $mainMod, F1, exec, ~/.config/hypr/scripts/gamemode.sh
 
   # Example special workspace (scratchpad)
   bind = $mainMod, S, togglespecialworkspace, magic
