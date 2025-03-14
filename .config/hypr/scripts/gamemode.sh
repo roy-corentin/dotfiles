@@ -2,7 +2,7 @@
 HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
 if [ "$HYPRGAMEMODE" = 1 ] ; then
     systemctl --user stop kanata.service
-    hyprctl keyword monitor DP-1, 1920x1080@60, 2000, 1
+    hyprctl keyword monitor DP-1, 1920x1080@60, 2000x0 1
     hyprctl --batch "\
         keyword animations:enabled 0;\
         keyword decoration:shadow:enabled 0;\
