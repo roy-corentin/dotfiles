@@ -38,6 +38,7 @@
 - [[#gesture][GESTURE]]
 - [[#misc][MISC]]
 - [[#window-rules][WINDOW RULES]]
+- [[#layerrules][LAYERRULES]]
 - [[#keybindings][KEYBINDINGS]]
   - [[#variable][Variable]]
   - [[#terminal][Terminal]]
@@ -439,6 +440,11 @@ List of options
   windowrule = opacity 0.9 override 0.9 override, ^(.*)$
   windowrule = opaque 1, ^(.*)$
   windowrule = opaque 0, ^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
+#+end_src
+
+* LAYERRULES
+#+begin_src conf
+layerrule = noanim, selection
 #+end_src
 
 * KEYBINDINGS
