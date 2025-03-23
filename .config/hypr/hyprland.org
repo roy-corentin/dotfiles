@@ -59,6 +59,7 @@
   - [[#resize-window][Resize Window]]
   - [[#workspaces][Workspaces]]
   - [[#clipboard-1][Clipboard]]
+  - [[#zoom][Zoom]]
 - [[#screen-sharing][SCREEN-SHARING]]
 
 * OUTPUT
@@ -278,7 +279,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
       blur {
           enabled = true
           size = 3 # minimum 1
-          passes = 3 # minimum 1, more passes = more resource intensive.
+          passes = 1 # minimum 1, more passes = more resource intensive.
       }
       shadow {
           enabled = false
@@ -374,14 +375,11 @@ List of options
 
 #+begin_src conf
   # Float Necessary Windows
-  windowrule = float,waypaper
-  windowrule = float,pavucontrol
-  windowrule = float,foot-float
-  windowrule = float,yad|nm-connection-editor|pavucontrol|pulsemixer
-  windowrule = float,polkit-gnome|kvantummanager|qt5ct
-  windowrule = float,feh|Viewnior|Gpicview|Gimp|nomacs
-  windowrule = float,VirtualBox Manager|qemu|Qemu-system-x86_64
-  windowrule = float,xfce4-appfinder
+  windowrulev2 = float,class:^waypaper$
+  windowrulev2 = float,class:^org.pulseaudio.pavucontrol$
+  windowrulev2 = float,class:^foot-float$
+  windowrulev2 = float,class:^nm-connection-editor$
+  windowrulev2 = float,class:^Gimp$
 
   windowrulev2 = float,class:^(blueman-manager)$
   windowrulev2 = float,class:^(org.twosheds.iwgtk)$
@@ -392,59 +390,52 @@ List of options
   windowrulev2 = float,class:^kitty$ title:^(float-.*)$
   windowrulev2 = size 50% 50%,class:^kitty$ title:^(float-.*)$
 
-  # Pop
-  windowrule = workspace 4,Pop
+  windowrulev2 = workspace 4,class:^Pop$
 
   # File Managers
-  windowrule = float,^(org.kde.dolphin|thunar)$
-  windowrulev2 = size 1280 720,class:^(org.kde.dolphin|thunar)$
+  windowrulev2 = float,class:^(org.kde.dolphin|thunar)$
   windowrulev2 = center, class:^(org.kde.dolphin|thunar)$
+  windowrulev2 = size 1280 720,class:^(org.kde.dolphin|thunar)$
 
   # Gnome Settings
-  windowrule=float,^(org.gnome.Settings)$
-  windowrulev2=center,class:^(org.gnome.Settings)$
-  windowrulev2=size 1280 720,class:^(org.gnome.Settings)$
+  windowrulev2 = float,class:^(org.gnome.Settings)$
+  windowrulev2 = center,class:^(org.gnome.Settings)$
+  windowrulev2 = size 1280 720,class:^(org.gnome.Settings)$
 
   # Browser
-  windowrule = workspace 2,brave-browser
-  windowrule = workspace 2,zen
+  windowrulev2 = workspace 2,class:^brave-browser$
+  windowrulev2 = workspace 2,class:^zen$
   windowrulev2 = float,class:^()$,title:^(Picture in picture)$
   windowrulev2 = float,class:^(zen)$,title:^(Picture-in-Picture)$
   windowrulev2 = size 740 440,class:^(zen)$,title:^(Picture-in-Picture)$
   windowrulev2 = float,class:^(brave)$,title:^(Save File)$
-  windowrulev2 = move onscreen 100%-w-10,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrulev2 = move onscreen 100%-w-20,class:^(zen)$,title:^(Picture-in-Picture)$
   windowrulev2 = float,class:^(brave)$,title:^(Open File)$
   windowrulev2 = float,class:^brave-.*-Default$
 
-  # XwaylandBridge
-  windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
-  windowrulev2 = noanim,class:^(xwaylandvideobridge)$
-  windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
-  windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
-  windowrulev2 = noblur,class:^(xwaylandvideobridge)$
-
   # Emacs
-  windowrule = workspace 3,^(emacs)$
+  windowrulev2 = workspace 3,class:^(emacs)$
 
   # Teams
-  windowrule = workspace 1,^(.*Microsoft Teams.*)$
-  windowrule = workspace 1,^(teams-for-linux)$
+  windowrulev2 = workspace 1,class:^(.*Microsoft Teams.*)$
+  windowrulev2 = workspace 1,class:^(teams-for-linux)$
 
   # Discord
-  windowrule = workspace 1,^(discord|WebCord)$
+  windowrulev2 = workspace 1,class:^(discord|WebCord)$
 
   # Slack
-  windowrule = workspace 1,^(Slack)$
+  windowrulev2 = workspace 1,class:^(Slack)$
 
   # All
-  windowrule = opacity 0.9 override 0.9 override, ^(.*)$
-  windowrule = opaque 1, ^(.*)$
-  windowrule = opaque 0, ^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
+  windowrulev2 = opacity 0.94 override 0.94 override,class:^(.*)$
+  windowrulev2 = opaque 1,class:^(.*)$
+  windowrulev2 = opaque 0,class:^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
 #+end_src
 
 * LAYERRULES
 #+begin_src conf
 layerrule = noanim, selection
+layerrule = dimaround, rofi
 #+end_src
 
 * KEYBINDINGS
@@ -459,12 +450,10 @@ layerrule = noanim, selection
     $thememenu = ~/.config/rofi/theme.sh
     $appmenu = ~/.config/rofi/appmenu.sh
     $clipboardlist = ~/.config/rofi/clipboardlist.sh
-    $menu3 = xfce4-appfinder
     $powermenu = ~/.config/hypr/scripts/powermenu
     $volume = ~/.config/hypr/scripts/volume
     $brightness = ~/.config/hypr/scripts/brightness
     $screenshot = ~/.config/hypr/scripts/screenshot
-    # $lockscreen = ~/.config/hypr/scripts/lockscreen
     $lockscreen = hyprlock
     $sleep = ~/.config/hypr/scripts/sleep
     $suspend = ~/.config/hypr/scripts/suspend
@@ -473,7 +462,7 @@ layerrule = noanim, selection
     $files = thunar
     $editor = emacsclient -c -n -a 'emacs'
     $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
-    $browser = brave
+    $browser = zen
     $help_keybind = ~/.config/rofi/keybinding.sh
 #+end_src
 
@@ -486,12 +475,10 @@ layerrule = noanim, selection
 
 ** Apps
 #+begin_src conf
-  bind = $mainMod, E, exec,$files
-  bind = $mainMod SHIFT, E, exec,$editor
-  bind = $mainMod SHIFT, I, exec,$editor-everywhere
-  bind = $mainMod SHIFT, W, exec,$browser
-  bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
-  bind = $mainMod CTRL, S, exec,XDG_CURRENT_DESKTOP="gnome" gnome-control-center
+  bind = $mainMod, E, exec, $files
+  bind = $mainMod SHIFT, E, exec, $editor
+  bind = $mainMod SHIFT, I, exec, $editor-everywhere
+  bind = $mainMod SHIFT, W, exec, $browser
 #+end_src
 
 ** Rofi
@@ -505,7 +492,6 @@ layerrule = noanim, selection
 
 ** Misc
 #+begin_src conf
-bind = $mainMod, N, exec, nm-connection-editor
 bind = $mainMod, C, exec, $colorpicker
 bind = CTRL ALT,L, exec, $suspend
 #+end_src
@@ -683,6 +669,16 @@ bind = $mainMod CTRL, mouse_down, workspace, -1
 ** Clipboard
 #+begin_src conf
 bind = SUPER, V, exec, $clipboardlist
+#+end_src
+
+** Zoom
+#+begin_src conf
+  bind = $mainMod SHIFT, mouse_down,exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
+  bind = $mainMod SHIFT, mouse_up,  exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
+
+  binde = $mainMod,       equal, exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
+  binde = $mainMod SHIFT, minus, exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
+  bind = $mainMod SHIFT,  equal,  exec,hyprctl -q keyword cursor:zoom_factor 1
 #+end_src
 
 * SCREEN-SHARING
