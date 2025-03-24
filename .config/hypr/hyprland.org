@@ -375,66 +375,67 @@ List of options
 
 #+begin_src conf
   # Float Necessary Windows
-  windowrulev2 = float,class:^waypaper$
-  windowrulev2 = float,class:^org.pulseaudio.pavucontrol$
-  windowrulev2 = float,class:^foot-float$
-  windowrulev2 = float,class:^nm-connection-editor$
-  windowrulev2 = float,class:^Gimp$
+  windowrule = float,class:^waypaper$
+  windowrule = float,class:^org.pulseaudio.pavucontrol$
+  windowrule = float,class:^foot-float$
+  windowrule = float,class:^nm-connection-editor$
+  windowrule = float,class:^Gimp$
 
-  windowrulev2 = float,class:^(blueman-manager)$
-  windowrulev2 = float,class:^(org.twosheds.iwgtk)$
-  windowrulev2 = float,class:^(blueberry.py)$
-  windowrulev2 = float,class:^(xdg-desktop-portal-gtk)$
-  windowrulev2 = float,class:^(org.kde.gwenview)$
+  windowrule = float,class:^(blueman-manager)$
+  windowrule = float,class:^(org.twosheds.iwgtk)$
+  windowrule = float,class:^(blueberry.py)$
+  windowrule = float,class:^(xdg-desktop-portal-gtk)$
+  windowrule = float,class:^(org.kde.gwenview)$
 
-  windowrulev2 = float,class:^kitty$ title:^(float-.*)$
-  windowrulev2 = size 50% 50%,class:^kitty$ title:^(float-.*)$
+  windowrule = float,class:^kitty$ title:^(float-.*)$
+  windowrule = size 50% 50%,class:^kitty$ title:^(float-.*)$
 
-  windowrulev2 = workspace 4,class:^Pop$
+  windowrule = workspace 4,class:^Pop$
 
   # File Managers
-  windowrulev2 = float,class:^(org.kde.dolphin|thunar)$
-  windowrulev2 = center, class:^(org.kde.dolphin|thunar)$
-  windowrulev2 = size 1280 720,class:^(org.kde.dolphin|thunar)$
+  windowrule = float,class:^(org.kde.dolphin|thunar)$
+  windowrule = center, class:^(org.kde.dolphin|thunar)$
+  windowrule = size 1280 720,class:^(org.kde.dolphin|thunar)$
 
   # Gnome Settings
-  windowrulev2 = float,class:^(org.gnome.Settings)$
-  windowrulev2 = center,class:^(org.gnome.Settings)$
-  windowrulev2 = size 1280 720,class:^(org.gnome.Settings)$
+  windowrule = float,class:^(org.gnome.Settings)$
+  windowrule = center,class:^(org.gnome.Settings)$
+  windowrule = size 1280 720,class:^(org.gnome.Settings)$
 
   # Browser
-  windowrulev2 = workspace 2,class:^brave-browser$
-  windowrulev2 = workspace 2,class:^zen$
-  windowrulev2 = float,class:^()$,title:^(Picture in picture)$
-  windowrulev2 = float,class:^(zen)$,title:^(Picture-in-Picture)$
-  windowrulev2 = size 740 440,class:^(zen)$,title:^(Picture-in-Picture)$
-  windowrulev2 = float,class:^(brave)$,title:^(Save File)$
-  windowrulev2 = move onscreen 100%-w-20,class:^(zen)$,title:^(Picture-in-Picture)$
-  windowrulev2 = float,class:^(brave)$,title:^(Open File)$
-  windowrulev2 = float,class:^brave-.*-Default$
+  windowrule = workspace 2,class:^brave-browser$
+  windowrule = workspace 2,class:^zen$
+  windowrule = float,class:^()$,title:^(Picture in picture)$
+  windowrule = float,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrule = size 740 440,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrule = float,class:^(brave)$,title:^(Save File)$
+  windowrule = move onscreen 100%-w-20,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrule = float,class:^(brave)$,title:^(Open File)$
+  windowrule = float,class:^brave-.*-Default$
 
   # Emacs
-  windowrulev2 = workspace 3,class:^(emacs)$
+  windowrule = workspace 3,class:^(emacs)$
 
   # Teams
-  windowrulev2 = workspace 1,class:^(.*Microsoft Teams.*)$
-  windowrulev2 = workspace 1,class:^(teams-for-linux)$
+  windowrule = workspace 1,class:^(.*Microsoft Teams.*)$
+  windowrule = workspace 1,class:^(teams-for-linux)$
 
   # Discord
-  windowrulev2 = workspace 1,class:^(discord|WebCord)$
+  windowrule = workspace 1,class:^(discord|WebCord)$
 
   # Slack
-  windowrulev2 = workspace 1,class:^(Slack)$
+  windowrule = workspace 1,class:^(Slack)$
 
   # All
-  windowrulev2 = opacity 0.94 override 0.94 override,class:^(.*)$
-  windowrulev2 = opaque 1,class:^(.*)$
-  windowrulev2 = opaque 0,class:^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
+  windowrule = opacity 0.94 override 0.94 override,class:^(.*)$
+  windowrule = opaque 1,class:^(.*)$
+  windowrule = opaque 0,class:^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
 #+end_src
 
 * LAYERRULES
 #+begin_src conf
 layerrule = noanim, selection
+layerrule = noanim, hyprpicker
 layerrule = dimaround, rofi
 #+end_src
 
