@@ -405,12 +405,12 @@ List of options
   # Browser
   windowrule = workspace 2,class:^brave-browser$
   windowrule = workspace 2,class:^zen$
-  windowrule = float,class:^()$,title:^(Picture in picture)$
+  windowrule = float,class:^(brave)$,title:^(Open File)$
+  windowrule = float,class:^(brave)$,title:^(Save File)$
+  windowrule = float,class:^(brave)$,title:^(Picture in picture)$
   windowrule = float,class:^(zen)$,title:^(Picture-in-Picture)$
   windowrule = size 740 440,class:^(zen)$,title:^(Picture-in-Picture)$
-  windowrule = float,class:^(brave)$,title:^(Save File)$
   windowrule = move onscreen 100%-w-20,class:^(zen)$,title:^(Picture-in-Picture)$
-  windowrule = float,class:^(brave)$,title:^(Open File)$
   windowrule = float,class:^brave-.*-Default$
 
   # Emacs
