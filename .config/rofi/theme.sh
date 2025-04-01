@@ -6,6 +6,10 @@ if [[ $(pidof rofi) ]]; then
 fi
 
 if theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | rofi -dmenu -mesg 'Select theme' | sed "s/ (last used)//"); then
+    if [[ "$theme" == "" ]]; then
+        echo "No theme selected. Exit program..."
+        exit
+    fi
     echo "$theme"
     wal --cols16 --theme "$theme"
     emacsclient -e "(cr/switch-theme '$theme)"
