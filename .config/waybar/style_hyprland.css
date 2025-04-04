@@ -74,7 +74,6 @@ tooltip {
 }
 
 #workspaces button {
-    color: @color1;
     min-width: 25px;
     margin: 2px 4px;
     /* circle */
@@ -93,11 +92,11 @@ tooltip {
 
 #workspaces button:hover {
     opacity: 0.8;
-    color: @color3;
 }
 
 #workspaces button.active {
-    color: @color3;
+    background-color: @color2;
+    border-radius: 20px;
     min-width: 50px;
     opacity: 0.9;
 }
@@ -169,10 +168,10 @@ tooltip {
 }
 
 #pulseaudio {
-    color: @color3;
+    color: @color5;
 }
 #battery {
-    color: @color2;
+    color: @color6;
 }
 #pulseaudio,
 #battery {

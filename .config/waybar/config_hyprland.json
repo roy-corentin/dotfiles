@@ -56,7 +56,7 @@
   // Quicklinks
   "group/quicklinks-left": {
     "orientation": "horizontal",
-    "modules": ["image", "custom/settings", "custom/clipboard"]
+    "modules": ["image", "custom/settings", "custom/clipboard", "tray"]
   },
   "image": {
     "path": "/usr/share/endeavouros/EndeavourOS-icon.png",
@@ -126,6 +126,26 @@
     "tooltip": true,
     "tooltip-format": " Change Wallpaper!"
   },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{} {icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
   "custom/power-menu": {
     "format": " ",
     "tooltip": true,
@@ -188,8 +208,8 @@
     },
     "format": "{icon} {capacity}%",
     // "format-charging": "󱐋{capacity}%",
-    "format-charging": "󰂄 {capacity}",
-    "format-plugged": " {capacity}",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
     // "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
@@ -201,8 +221,8 @@
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
     "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume} {format_source}",
-    "format-bluetooth-muted": "{icon}  {format_source}",
+    "format-bluetooth": "{icon} {volume}% {format_source}",
+    "format-bluetooth-muted": "{icon}  {format_source}",
     "format-muted": "󰝟 {format_source}",
     "format-source": "{volume}%",
     "format-source-muted": "",
