@@ -55,10 +55,9 @@ tooltip {
 
 #clock:hover,
 #hardware:hover,
+#info:hover,
 #network:hover,
 #custom-keyboard:hover,
-#pulseaudio:hover,
-#battery:hover,
 #taskbar:hover {
     background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
 }

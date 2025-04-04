@@ -186,10 +186,10 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "{capacity}% {icon}",
+    "format": "{icon} {capacity}%",
     // "format-charging": "󱐋{capacity}%",
-    "format-charging": "{capacity}% 󰂄",
-    "format-plugged": "{capacity}% ",
+    "format-charging": "󰂄 {capacity}",
+    "format-plugged": " {capacity}",
     // "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
@@ -200,9 +200,9 @@
 
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume} {format_source}",
+    "format-bluetooth-muted": "{icon}  {format_source}",
     "format-muted": "󰝟 {format_source}",
     "format-source": "{volume}%",
     "format-source-muted": "",
@@ -221,12 +221,12 @@
     "modules": ["cpu", "memory"]
   },
   "cpu": {
-    "format": "{usage}%  ",
+    "format": " {usage}% ",
     "interval": 5,
     "tooltip": false
   },
   "memory": {
-    "format": " {}%  ",
+    "format": " {}%",
     "format-alt": " {used:0.1f}G",
     "interval": 5
   },
