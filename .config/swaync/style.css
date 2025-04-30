@@ -87,6 +87,7 @@
 
 .control-center {
     background: @background;
+    border: 1px solid @foreground;
     border-radius: 15px;
 }
 

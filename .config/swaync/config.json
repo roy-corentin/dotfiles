@@ -52,7 +52,7 @@
       "actions": [
         {
           "label": "󰐥",
-          "command": "bash -c $HOME/.config/hypr/scripts/power-menu.sh"
+          "command": "bash -c $HOME/.config/hypr/scripts/powermenu"
         },
         {
           "label": "󰌾",
