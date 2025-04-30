@@ -5,8 +5,8 @@ format="$time in $directory$all"
 
 # Prompt symbols
 [character]
-success_symbol = "[➜ ](bold green)"
-error_symbol = "[➜ ](bold red)"
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
 
 [username]
 disabled = true
