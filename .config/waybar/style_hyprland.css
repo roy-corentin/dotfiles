@@ -74,6 +74,7 @@ tooltip {
 }
 
 #workspaces button {
+    color: @foreground;
     min-width: 25px;
     margin: 2px 4px;
     /* circle */
@@ -95,14 +96,14 @@ tooltip {
 }
 
 #workspaces button.active {
-    background-color: @color2;
+    color: white;
+    background: linear-gradient(0deg, @color2 0%, alpha(@background, 0.6) 20%);
     border-radius: 20px;
     min-width: 50px;
     opacity: 0.9;
 }
 
 #workspaces button.urgent {
-    color: @foreground;
     transition: all 0.2s ease-in-out;
 }
 
@@ -225,4 +226,9 @@ tooltip {
 
 #custom-keyboard {
     padding: 0px 3px 0px 10px;
+}
+
+#power-profiles-daemon {
+    padding: 0px 15px 0px 0px;
+    min-width: 20px;
 }
