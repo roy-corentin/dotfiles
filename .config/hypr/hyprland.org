@@ -60,6 +60,7 @@
   - [[#workspaces][Workspaces]]
   - [[#clipboard-1][Clipboard]]
   - [[#zoom][Zoom]]
+  - [[#notification][Notification]]
 - [[#screen-sharing][SCREEN-SHARING]]
 
 * OUTPUT
@@ -440,29 +441,30 @@ layerrule = dimaround, rofi
 * KEYBINDINGS
 ** Variable
 #+begin_src conf
-    # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-    $mainMod = SUPER
+  # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+  $mainMod = SUPER
 
-    $term = ghostty --gtk-single-instance=true
-    $term2 = kitty
-    $wallpapermenu = ~/.config/rofi/wallpaper.sh
-    $thememenu = ~/.config/rofi/theme.sh
-    $appmenu = ~/.config/rofi/appmenu.sh
-    $clipboardlist = ~/.config/rofi/clipboardlist.sh
-    $powermenu = ~/.config/hypr/scripts/powermenu
-    $volume = ~/.config/hypr/scripts/volume
-    $brightness = ~/.config/hypr/scripts/brightness
-    $screenshot = ~/.config/hypr/scripts/screenshot
-    $lockscreen = hyprlock
-    $sleep = ~/.config/hypr/scripts/sleep
-    $suspend = ~/.config/hypr/scripts/suspend
-    $wlogout = ~/.config/hypr/scripts/wlogout
-    $colorpicker = ~/.config/hypr/scripts/colorpicker
-    $files = thunar
-    $editor = emacsclient -c -n -a 'emacs'
-    $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
-    $browser = zen
-    $help_keybind = ~/.config/rofi/keybinding.sh
+  $term = ghostty --gtk-single-instance=true
+  $term2 = kitty
+  $wallpapermenu = ~/.config/rofi/wallpaper.sh
+  $thememenu = ~/.config/rofi/theme.sh
+  $appmenu = ~/.config/rofi/appmenu.sh
+  $clipboardlist = ~/.config/rofi/clipboardlist.sh
+  $powermenu = ~/.config/hypr/scripts/powermenu
+  $volume = ~/.config/hypr/scripts/volume
+  $notificationmenu = swaync-client -t
+  $brightness = ~/.config/hypr/scripts/brightness
+  $screenshot = ~/.config/hypr/scripts/screenshot
+  $lockscreen = hyprlock
+  $sleep = ~/.config/hypr/scripts/sleep
+  $suspend = ~/.config/hypr/scripts/suspend
+  $wlogout = ~/.config/hypr/scripts/wlogout
+  $colorpicker = ~/.config/hypr/scripts/colorpicker
+  $files = thunar
+  $editor = emacsclient -c -n -a 'emacs'
+  $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
+  $browser = zen
+  $help_keybind = ~/.config/rofi/keybinding.sh
 #+end_src
 
 ** Terminal
@@ -678,6 +680,11 @@ bind = SUPER, V, exec, $clipboardlist
   binde = $mainMod,       equal, exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
   binde = $mainMod SHIFT, minus, exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
   bind = $mainMod SHIFT,  equal,  exec,hyprctl -q keyword cursor:zoom_factor 1
+#+end_src
+
+** Notification
+#+begin_src conf
+bind = $mainMod, N, exec, $notificationmenu
 #+end_src
 
 * SCREEN-SHARING
