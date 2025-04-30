@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## launch waybar with hyprland config
-CONFIG="$HOME/.config/waybar/config_hyprland.json"
+CONFIG="$HOME/.config/waybar/config_hyprland.jsonc"
 STYLE="$HOME/.config/waybar/style_hyprland.css"
 
 waybar --bar main-bar --log-level error --config "$CONFIG" --style "$STYLE"
