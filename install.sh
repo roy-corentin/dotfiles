@@ -33,3 +33,5 @@ gem install --user erb irb ruby-lsp
 gum confirm "Have you fingerprint reader?" && ./install-fprint.sh
 
 gum confirm "Install docker?" && ./install-docker.sh
+
+exit 0
