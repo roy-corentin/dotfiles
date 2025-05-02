@@ -33,20 +33,16 @@ stow .
 - [[https://github.com/junegunn/fzf][fzf]] A command line fuzzy finder
 
 ** Themes
-+ Nord
-+ Dracula
 + Background/Theme based (pywal, see screenshots)
 
   For theme based on you background you need to install =pywal= and use my custom template for Hyprland
 
 #+begin_src shell :noeval
-  sudo pacman -S hyprland waybar rofi-wayland kitty ghostty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock hypridle hyprshade chromium ttf-font-awesome vim mako wget unzip rsync figlet git network-manager-applet discord ripgrep exa btop tldr waypaper cliphist calcurse swappy grim slurp tesseract tree-sitter imagemagick pavucontrol zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions ruby postgresql-libs kanata
-
-  yay -S libgccjit rbenv ruby-build
+  yay -S gum
 #+end_src
 
-For latex support
+Use script
 
 #+begin_src shell :noeval
-sudo pacman -S extra/texlive-latex extra/texlive-latexextra extra/texlive-plaingeneric
+  ./install.sh
 #+end_src
