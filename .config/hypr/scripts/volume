@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
-## Script To Manage Speaker Volume For Archcraft (in Wayland).
+DIR="$HOME/.config/icons"
 
-DIR="$HOME/.config/mako/icons"
-
-# Get Volume
 get_volume() {
 	# volume=$(amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]')
 	volume=$(pulsemixer --get-volume | awk '{print $1}')
 	echo "$volume"
 }
 
-# Get icons
 get_icon() {
 	vol="$(get_volume)"
 	current="${vol%%%}"
@@ -26,24 +22,20 @@ get_icon() {
 	fi
 }
 
-# Notify
 notify_user() {
 	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "Volume : $(get_volume)"
 }
 
-# Increase Volume
 inc_volume() {
 	# amixer -Mq set Master,0 5%+ unmute && notify_user
 	pulsemixer --unmute --change-volume +5 && notify_user
 }
 
-# Decrease Volume
 dec_volume() {
 	# amixer -Mq set Master,0 5%- unmute && notify_user
 	pulsemixer --unmute --change-volume -5 && notify_user
 }
 
-# Toggle Mute
 toggle_mute() {
 	# amixer get Master | grep '\[on\]' &>/dev/null
 	# if [[ "$?" == 0 ]]; then
@@ -54,11 +46,10 @@ toggle_mute() {
 	pulsemixer --toggle-mute
 }
 
-# Toggle Mic
 toggle_mic() {
 	amixer get Capture | grep '\[on\]' &>/dev/null
 	if [[ "$?" == 0 ]]; then
-		amixer -D pulse sset Capture toggle && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$DIR/microphone-mute.png" "Microphone Switched OFF"
+		amixer -D pulse sset Capture toggle && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$DIR/mute.png" "Microphone Switched OFF"
 	else
 		amixer -D pulse sset Capture toggle && get_icon && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$DIR/microphone.png" "Microphone Switched ON"
 	fi
