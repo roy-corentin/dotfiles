@@ -18,4 +18,4 @@ ExecStart=/usr/bin/sh -c 'exec /usr/bin/kanata --cfg $${HOME}/.config/kanata/con
 Restart=no
 
 [Install]
-WantedBy=default.targett
+WantedBy=default.target
