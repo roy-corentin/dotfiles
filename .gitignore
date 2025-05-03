@@ -6,3 +6,4 @@ waybar/style.old.css
 wofi/style.old.css
 
 .secret
+/.cache/wal/*
