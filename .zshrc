@@ -50,12 +50,9 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # export local gem
-export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
-export PATH="$HOME/.local/share/gem/ruby/3.3.0+0/bin:$PATH"
-export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
-export PATH="$HOME/.local/share/gem/ruby/gems/bin:$PATH"
-export GEM_HOME="$HOME/.local/share/gem/ruby/gems"
-export GEM_PATH="$HOME/.local/share/gem/ruby/gems:$HOME/.local/share/gem/ruby/bundler/gems"
+# export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
+# export GEM_PATH="$GEM_HOME:$HOME/.local/share/gem/ruby/gems/gems"
+# export PATH="$GEM_HOME/bin:$PATH"
 
 export EDITOR=/usr/bin/nano
 export VISUAL=/usr/bin/nano
@@ -86,6 +83,7 @@ function yy() {
 }
 
 source "$HOME/.git_alias.zsh"
+
 if [ -f  "$HOME/.secret" ]; then
    source "$HOME/.secret"
 fi
