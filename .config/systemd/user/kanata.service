@@ -14,7 +14,6 @@ Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 # IOSchedulingClass=realtime
 # Nice=-20
 Type=simple
-ExecStartPre=/sbin/modprobe uinput
 ExecStart=/usr/bin/sh -c 'exec /usr/bin/kanata --cfg $${HOME}/.config/kanata/config.kbd'
 Restart=no
 
