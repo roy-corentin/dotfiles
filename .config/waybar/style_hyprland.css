@@ -97,7 +97,7 @@ tooltip {
 
 #workspaces button.active {
     color: white;
-    background: linear-gradient(0deg, @color2 0%, alpha(@background, 0.6) 20%);
+    background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
     border-radius: 20px;
     min-width: 50px;
     opacity: 0.9;
