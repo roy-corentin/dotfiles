@@ -99,22 +99,8 @@ esac
 # rbenv
 export PATH="/home/croy/.rbenv/shims:${PATH}"
 export RBENV_SHELL=zsh
-# source /usr/lib/rbenv/completions/rbenv.zsh
-command rbenv rehash 2>/dev/null
-rbenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  rehash|shell)
-    eval "$(rbenv "sh-$command" "$@")";;
-  *)
-    command rbenv "$command" "$@";;
-  esac
-}
+[ -s "/usr/lib/rbenv/completions/rbenv.zsh" ] && source "/usr/lib/rbenv/completions/rbenv.zsh"
+eval "$(rbenv init - zsh)"
 
 # bun completions
 [ -s "/home/croy/.bun/_bun" ] && source "/home/croy/.bun/_bun"
