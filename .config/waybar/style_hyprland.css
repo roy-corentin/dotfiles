@@ -7,27 +7,15 @@
     font-family: "JetBrainsMono Nerd Font";
     font-size: 15px;
     font-weight: normal;
-    color: @foreground;
 }
 
-/* COLORS USED */
-/* font-color: @foreground */
-/* widgets-background: @background */
-/* quicklinks-background: @color1 */
-/* workspaces-background: @color1 */
-/* workspaces-acticve: @color11 */
-/* workspaces-inactive: @color3 */
-/* all-hovers: @color11 */
-
-/* TOOLTIP */
 tooltip {
-    background: alpha(@background, 0.6);
+    background: alpha(@background, 0.7);
     border: 1.5px solid @color4;
     border-radius: 8px;
     padding: 2px 100px;
 }
 
-/* COMMON CONFIGS */
 #image,
 #mpd *,
 #taskbar *,
@@ -62,9 +50,6 @@ tooltip {
     background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
 }
 
-/* CUSTOM CONFIGS */
-
-/* workspaces */
 #workspaces {
     background: alpha(@background, 0.7);
     margin: 4px 0px;
@@ -96,7 +81,7 @@ tooltip {
 }
 
 #workspaces button.active {
-    color: white;
+    color: @color4;
     background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
     border-radius: 20px;
     min-width: 50px;
@@ -151,6 +136,10 @@ tooltip {
 #taskbar * {
     transition: all 0.2s ease-in-out;
     margin: 2px 3px;
+}
+
+#taskbar button.active {
+    background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
 }
 
 #taskbar *:hover {
@@ -215,9 +204,13 @@ tooltip {
     margin-left: 15px;
 }
 
-/*#waybar {*/
-/*    background: alpha(@background, 0.8);*/
-/*}*/
+/* #waybar { */
+/*     background: alpha(@background, 0.8); */
+/* } */
+
+#tray {
+    background-color: @background;
+}
 
 #custom-clipboard {
     padding: 0px 0px 0px 0px;
