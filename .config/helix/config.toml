@@ -1,0 +1,6 @@
+theme = "modus_vivendi"
+[editor]
+line-number = "relative"
+# [editor.whitespace.render]
+# space = "all"
+# tab = "all"
