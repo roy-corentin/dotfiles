@@ -94,6 +94,7 @@ tooltip {
 
 /* quicklinks  */
 #info,
+#workspaces,
 #quicklinks-right,
 #quicklinks-left {
     padding: 0px 4px;
@@ -105,7 +106,7 @@ tooltip {
     margin-right: 9px;
 }
 
-#quicklinks-left {
+#workspaces {
     margin-left: 9px;
 }
 
@@ -114,10 +115,6 @@ tooltip {
     padding: 0px 3px;
     margin: 0px 2px;
     transition: all 0.2s ease-in-out;
-}
-
-#quicklinks-left * {
-    padding: 0px 0px 0px 5px;
     font-size: 16px;
 }
 
@@ -126,7 +123,6 @@ tooltip {
     background: @color8;
 }
 
-/* taskbar */
 #taskbar {
     background: alpha(@background, 0.7);
     margin: 4px 8px 4px 5px;
