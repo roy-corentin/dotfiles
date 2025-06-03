@@ -9,8 +9,8 @@
   "width": 1920, // Waybar width
   "spacing": 7, // Gaps between modules (4px)
   "modules-left": [
-    "group/quicklinks-left",
     "hyprland/workspaces",
+    "group/quicklinks-left",
     "wlr/taskbar"
   ],
   "modules-center": ["clock"],
