@@ -135,3 +135,6 @@ esac
 }
 # Starship
 eval "$(starship init zsh)"
+
+# Docker
+export COMPOSE_BAKE=true
