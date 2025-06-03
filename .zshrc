@@ -69,6 +69,7 @@ alias l="eza -l -g --icons=always"
 alias neo=fastfetch
 alias eserv="emacs --daemon"
 alias eclient="emacsclient -c -n"
+alias hx="helix"
 
 source "$HOME/.emacs_alias.zsh"
 
