@@ -280,7 +280,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
       blur {
           enabled = true
           size = 3 # minimum 1
-          passes = 1 # minimum 1, more passes = more resource intensive.
+          passes = 3 # minimum 1, more passes = more resource intensive.
       }
       shadow {
           enabled = false
@@ -426,9 +426,9 @@ List of options
   windowrule = workspace 1,class:^(Slack)$
 
   # All
-  windowrule = opacity 0.94 override 0.94 override,class:^(.*)$
+  windowrule = opacity 0.90 override 0.90 override,class:^(.*)$
   windowrule = opaque 1,class:^(.*)$
-  windowrule = opaque 0,class:^(emacs|kitty|Alacritty|com.mitchellh.ghostty)$
+  windowrule = opaque 0,class:^(kitty|Alacritty|com.mitchellh.ghostty)$
 #+end_src
 
 * LAYERRULES
