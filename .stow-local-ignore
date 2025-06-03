@@ -4,4 +4,7 @@ keyd/*
 screenshots/*
 README.org
 LICENSE
-install*
+install.sh
+install-docker.sh
+install-fprint.sh
+install-kanata.sh
