@@ -1,0 +1,8 @@
+[language-server.ruby-lsp]
+command = "ruby-lsp"
+timeout = 60
+args = ["--debug"]
+
+[[language]]
+name = "ruby"
+language-servers = [{ name = "ruby-lsp", except-features = ["format", "rename-symbol"] }]
