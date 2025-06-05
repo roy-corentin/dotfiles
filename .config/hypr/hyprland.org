@@ -62,6 +62,7 @@
   - [[#zoom][Zoom]]
   - [[#notification][Notification]]
 - [[#screen-sharing][SCREEN-SHARING]]
+- [[#defaul_apps][DEFAUL_APPS]]
 
 * OUTPUT
 Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
@@ -232,13 +233,14 @@ Configure mouse and touchpad here
       gaps_in = 12
       gaps_out = 20
       border_size = 2
-      layout = dwindle
-      col.active_border = $color4
+      layout = master
+      col.active_border = $color4 $color6 60deg
       col.inactive_border = $color8
       allow_tearing = false
       snap {
           enabled = true
       }
+      resize_on_border = true
   }
 #+end_src
 
@@ -327,8 +329,8 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 * DWINDLE
 #+begin_src conf
 dwindle {
-    pseudotile = yes # enable pseudotiling on dwindle
-    preserve_split = yes
+    pseudotile = true # enable pseudotiling on dwindle
+    preserve_split = true
     smart_split = false
 }
 #+end_src
@@ -336,7 +338,6 @@ dwindle {
 * MASTER
 #+begin_src conf
 master {
-    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
     new_on_top = false
 }
 #+end_src
@@ -379,12 +380,13 @@ List of options
   windowrule = float,class:^foot-float$
   windowrule = float,class:^nm-connection-editor$
   windowrule = float,class:^Gimp$
+  windowrule = float,class:^blueman-manager$
+  windowrule = float,class:^org.twosheds.iwgtk$
+  windowrule = float,class:^blueberry.py$
+  windowrule = float,class:^xdg-desktop-portal-gtk$
 
-  windowrule = float,class:^(blueman-manager)$
-  windowrule = float,class:^(org.twosheds.iwgtk)$
-  windowrule = float,class:^(blueberry.py)$
-  windowrule = float,class:^(xdg-desktop-portal-gtk)$
-  windowrule = float,class:^(org.kde.gwenview)$
+  windowrule = float,class:^org.kde.gwenview$
+  windowrule = size 65% 65%,class:^org.kde.gwenview$
 
   windowrule = float,class:^kitty$ title:^(float-.*)$
   windowrule = size 50% 50%,class:^kitty$ title:^(float-.*)$
@@ -460,7 +462,7 @@ layerrule = dimaround, rofi
   $suspend = ~/.config/hypr/scripts/suspend
   $wlogout = ~/.config/hypr/scripts/wlogout
   $colorpicker = ~/.config/hypr/scripts/colorpicker
-  $files = thunar
+  $files = dolphin
   $editor = emacsclient -c -n -a 'emacs'
   $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
   $browser = zen
@@ -504,7 +506,7 @@ bindm = SUPER, mouse:273, resizewindow
 #+end_src
 
 ** Function keys
-- E flag is used to repeat cmd when hold
+- ~e~ flag is used to repeat cmd when hold
 #+begin_src conf
 binde = ,XF86MonBrightnessUp, exec, $brightness --inc
 binde = ,XF86MonBrightnessDown, exec, $brightness --dec
@@ -689,11 +691,18 @@ bind = $mainMod, N, exec, $notificationmenu
 
 * SCREEN-SHARING
 #+begin_src conf
-env = GDK_BACKEND=wayland,x11
-env = QT_QPA_PLATFORM="wayland;xcb"
-env = XDG_CURRENT_DESKTOP=Hyprland
-env = XDG_SESSION_TYPE=wayland
-env = XDG_SESSION_DESKTOP=Hyprland
+  env = GDK_BACKEND=wayland,x11
+  env = QT_QPA_PLATFORM="wayland;xcb"
+  env = XDG_CURRENT_DESKTOP=Hyprland
+  env = XDG_SESSION_TYPE=wayland
+  env = XDG_SESSION_DESKTOP=Hyprland
+  env = XDG_MENU_PREFIX,arch-
 
-exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+  exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#+end_src
+
+* DEFAUL_APPS
+To activate default app for dolphin
+#+begin_src conf
+  env = XDG_MENU_PREFIX,arch-
 #+end_src
