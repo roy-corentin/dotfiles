@@ -388,7 +388,9 @@ List of options
   windowrule = float,class:^blueman-manager$
   windowrule = float,class:^org.twosheds.iwgtk$
   windowrule = float,class:^blueberry.py$
-  windowrule = float,class:^xdg-desktop-portal-gtk$
+  windowrule = float,class:^(xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde)$
+  windowrule = center, class:^(org.freedesktop.impl.portal.desktop.kde)$
+  windowrule = size 1280 720,class:^(org.freedesktop.impl.portal.desktop.kde)$
 
   windowrule = float,class:^org.kde.gwenview$
   windowrule = size 65% 65%,class:^org.kde.gwenview$
@@ -397,11 +399,6 @@ List of options
   windowrule = size 50% 50%,class:^kitty$ title:^(float-.*)$
 
   windowrule = workspace 4,class:^Pop$
-
-  # File Managers
-  windowrule = float,class:^(org.kde.dolphin|thunar|org.freedesktop.impl.portal.desktop.kde)$
-  windowrule = center, class:^(org.kde.dolphin|thunar|org.freedesktop.impl.portal.desktop.kde)$
-  windowrule = size 1280 720,class:^(org.kde.dolphin|thunar|org.freedesktop.impl.portal.desktop.kde)$
 
   # Gnome Settings
   windowrule = float,class:^(org.gnome.Settings)$
@@ -422,15 +419,9 @@ List of options
   # Emacs
   windowrule = workspace 3,class:^(emacs)$
 
-  # Teams
-  windowrule = workspace 1,class:^(.*Microsoft Teams.*)$
-  windowrule = workspace 1,class:^(teams-for-linux)$
-
-  # Discord
-  windowrule = workspace 1,class:^(discord|WebCord)$
-
-  # Slack
-  windowrule = workspace 1,class:^(Slack)$
+  # Message App
+  windowrule = workspace 1,class:^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|Slack)$
+  windowrule = workspace 1,class:^()$
 
   # All
   windowrule = opacity 0.90 override 0.90 override,class:^(.*)$
