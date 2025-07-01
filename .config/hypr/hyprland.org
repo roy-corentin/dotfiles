@@ -48,9 +48,9 @@
   - [[#some-nice-mouse-binds][Some nice mouse binds]]
   - [[#function-keys][Function keys]]
   - [[#screenshots][Screenshots]]
+  - [[#image-to-drawapp][Image To DrawApp]]
   - [[#screencapture][Screencapture]]
   - [[#image-to-text][Image To Text]]
-  - [[#image-to-drawapp][Image To DrawApp]]
   - [[#hyprland][Hyprland]]
   - [[#window-split-ratio][Window Split Ratio]]
   - [[#tab-cycle][Tab Cycle]]
@@ -528,26 +528,21 @@ bind = ,XF86AudioStop, exec, playerctl stop
 
 ** Screenshots
 #+begin_src conf
-bind = ,Print, exec, $screenshot --now
-bind = CTRL, Print, exec, $screenshot --in5
-bind = SHIFT, Print, exec, $screenshot --in10
-bind = $mainMod, Print, exec, $screenshot --win
-bind = $mainMod CTRL, Print, exec, $screenshot --area
+  bind = ,PRINT, exec, hyprshot -m region
+  bind = SHIFT, PRINT, exec, hyprshot -m window
+  bind = CTRL, PRINT, exec, hyprshot -m output
 #+end_src
-
+** Image To DrawApp
+#+begin_src conf
+  bind = $mainMod SHIFT, P, exec, grim -g "$(slurp)" - | swappy -f -
+#+end_src
 ** Screencapture
 #+begin_src conf
   bind = $mainMod CTRL, S, exec, ~/.config/hypr/scripts/screen-capture.sh
 #+end_src
-
 ** Image To Text
 #+begin_src conf
   bind = $mainMod SHIFT, T, exec, grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
-#+end_src
-
-** Image To DrawApp
-#+begin_src conf
-  bind = $mainMod SHIFT, P, exec, grim -g "$(slurp)" - | swappy -f -
 #+end_src
 
 ** Hyprland
