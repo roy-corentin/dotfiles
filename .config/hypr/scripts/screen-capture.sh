@@ -11,7 +11,8 @@ if [ -f /tmp/wf-recorder.pid ] && [ -f /tmp/wf-recorder.timestamp ]; then
     rm /tmp/wf-recorder.pid /tmp/wf-recorder.timestamp
 
     # Send a notification
-    notify-send "Recording Finished"
+    notify-send "Recording Finished" \
+                "Saved to $DIR"
 else
     # Generate a timestamp
     timestamp=$(date +"%Y%m%d_%H%M%S")
@@ -28,5 +29,5 @@ else
 
     # Send a notification
     notify-send "Recording Started" \
-                "Saved to $DIR/recording_${timestamp}.mkv"
+                "Named recording_${timestamp}.mkv"
 fi
