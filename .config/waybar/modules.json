@@ -167,27 +167,32 @@
     "tooltip-format": "Power profile: {profile} Driver: {driver}",
     "tooltip": true,
     "format-icons": {
-      "performance": "󱐋",
-      "balanced": "",
-      "power-saver": "󱂓"
+      "power-saver": "󰡳",
+      "balanced": "󰊚",
+      "performance": "󰡴"
     }
   },
 
   // Quicklinks
   "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 20
-    },
-    "format": "{icon} {capacity}%",
-    // "format-charging": "󱐋{capacity}%",
-    "format-charging": "󰂄 {capacity}%",
+    "format": "{capacity}% {icon}",
     "format-plugged": " {capacity}%",
+    // "format-charging": "󱐋{capacity}%",
     // "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""],
-    //"format-icons": ["󱃍", "󰁺", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    // "format-icons": ["", "", "", "", ""],
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "Charged ",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
     "tooltip": true
   },
 
