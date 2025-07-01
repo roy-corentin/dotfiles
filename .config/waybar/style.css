@@ -204,8 +204,9 @@ tooltip {
 /*     background: alpha(@background, 0.8); */
 /* } */
 
-#tray {
-    background-color: @background;
+#tray,
+#tray menu {
+    background: alpha(@background, 0.7);
 }
 
 #custom-clipboard {
