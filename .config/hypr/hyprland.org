@@ -564,6 +564,7 @@ bind = ,XF86AudioStop, exec, playerctl stop
   # Example special workspace (scratchpad)
   bind = $mainMod, S, togglespecialworkspace, magic
   bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+  bind = $mainMod SHIFT, apostrophe, exec, hyprctl keyword general:layout "$(hyprctl getoption general:layout | grep -q 'dwindle' && echo 'master' || echo 'dwindle')" #! @description: "Toggle between dwindle and master layout"; @windows;
 #+end_src
 
 ** Window Split Ratio
