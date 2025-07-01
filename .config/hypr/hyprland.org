@@ -236,7 +236,7 @@ Configure mouse and touchpad here
       gaps_out = 20
       border_size = 2
       layout = master
-      col.active_border = $color4 $color6 60deg
+      col.active_border = $color4 $color6 45deg
       col.inactive_border = $color8
       allow_tearing = false
       snap {
@@ -257,17 +257,18 @@ Make the cursor disappear after 3 seconds
 
 * GROUP
 #+begin_src conf
-group {
-    col.border_active = $color4
-    col.border_inactive = $color0
-    groupbar {
-       render_titles = false
-       gradients = true
-       height = 4
-       col.active = $color4
-       col.inactive = $color0
-    }
-}
+  group {
+      col.border_active = $color4 $color6 45deg
+      col.border_inactive = $color8
+
+      groupbar {
+         render_titles = false
+         gradients = true
+         height = 4
+         col.active = $color4
+         col.inactive = $color0
+      }
+  }
 #+end_src
 
 * DECORATION
