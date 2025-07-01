@@ -450,6 +450,7 @@ layerrule = dimaround, rofi
   $mainMod = SUPER
 
   $term = ghostty --gtk-single-instance=true
+  $termapp = $term -e
   $term2 = kitty
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
@@ -485,6 +486,8 @@ layerrule = dimaround, rofi
   bind = $mainMod SHIFT, E, exec, $editor
   bind = $mainMod SHIFT, I, exec, $editor-everywhere
   bind = $mainMod SHIFT, W, exec, $browser
+  bind = $mainMod, ccedilla, exec, $termapp k9s
+  bind = $mainMod, m, exec, $termapp btop
 #+end_src
 
 ** Rofi
