@@ -691,12 +691,16 @@ bind = $mainMod, N, exec, $notificationmenu
 
 * SCREEN-SHARING
 #+begin_src conf
-  env = GDK_BACKEND=wayland,x11
-  env = QT_QPA_PLATFORM="wayland;xcb"
-  env = XDG_CURRENT_DESKTOP=Hyprland
-  env = XDG_SESSION_TYPE=wayland
-  env = XDG_SESSION_DESKTOP=Hyprland
-  env = XDG_MENU_PREFIX,arch-
+  env = GDK_BACKEND,wayland
+  env = QT_QPA_PLATFORM,"wayland;xcb"
+  env = XDG_CURRENT_DESKTOP,Hyprland
+  env = XDG_SESSION_TYPE,wayland
+  env = XDG_SESSION_DESKTOP,Hyprland
+  env = QT_STYLE_OVERRIDE,kvantum
+  env = SDL_VIDEODRIVER,wayland
+  env = MOZ_ENABLE_WAYLAND,1
+  env = ELECTRON_OZONE_PLATFORM_HINT,wayland
+  env = OZONE_PLATFORM,wayland
 
   exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #+end_src
