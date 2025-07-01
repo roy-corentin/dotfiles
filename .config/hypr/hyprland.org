@@ -221,6 +221,7 @@ Configure mouse and touchpad here
       touchpad {
           natural_scroll = no
           scroll_factor = 0.8
+          clickfinger_behavior = 1
       }
       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
   }
