@@ -1,211 +1,223 @@
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
+/* Colors file */
+@import "/home/croy/.cache/wal/colors-waybar.css";
 
-/* import css definitions for current theme */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-@keyframes blink-warning {
-    70% {
-        color: @wm_icon_bg;
-    }
-
-    to {
-        color: @wm_icon_bg;
-        background-color: @warning_color;
-    }
-}
-
-@keyframes blink-critical {
-    70% {
-        color: @wm_icon_bg;
-    }
-
-    to {
-        color: @wm_icon_bg;
-        background-color: @error_color;
-    }
-}
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-family: "JetBrainsMono NF", "Roboto Mono", sans-serif;
+    all: unset;
+    /*this is really important to isolate waybar from gtk*/
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 15px;
+    font-weight: normal;
 }
 
-/* The whole bar */
-window#waybar {
-    background: @theme_bg_color;
-    color: @wm_icon_bg;
-    font-size: 14px;
+tooltip {
+    background: alpha(@background, 0.7);
+    border: 1.5px solid @color4;
+    border-radius: 8px;
+    padding: 2px 100px;
 }
 
-/* Each module */
-#custom-pacman,
-#custom-menu,
-#custom-help,
-#custom-scratchpad,
-#custom-github,
-#custom-clipboard,
-#custom-zeit,
-#custom-dnd,
-#custom-valent,
-#custom-idle_inhibitor,
-#bluetooth,
-#battery,
+#image,
+#mpd *,
+#taskbar *,
+#quicklinks-right *,
+#quicklinks-left * {
+    border-radius: 8px;
+    color: @foreground;
+}
+
 #clock,
-#cpu,
-#memory,
-#mode,
+#hardware,
 #network,
-#pulseaudio,
-#temperature,
-#backlight,
-#language,
-#custom-adaptive-light,
-#custom-sunset,
-#custom-playerctl,
-#custom-weather,
-#tray {
-    padding-left: 10px;
-    padding-right: 10px;
+#info,
+#custom-keyboard,
+#taskbar,
+#quicklinks-right,
+#quicklinks-left {
+    border-radius: 12px;
+    padding: 3px 7px;
+    margin: 4px;
+    background: alpha(@background, 0.7);
+    opacity: 0.9;
+    transition: all 0.2s ease-in-out;
 }
 
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-#custom-scratchpad,
-#custom-menu,
-#workspaces button.focused,
-#clock {
-    color: @theme_bg_color;
-    background-color: @theme_selected_bg_color;
+#clock:hover,
+#hardware:hover,
+#info:hover,
+#network:hover,
+#custom-keyboard:hover,
+#taskbar:hover {
+    background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
 }
 
-#custom-zeit.tracking {
-    background-color: @warning_color;
-}
-
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning {
-    color: @warning_color;
-}
-
-#battery.critical {
-    color: @error_color;
-}
-
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#cpu.warning {
-    color: @warning_color;
-}
-
-#cpu.critical {
-    color: @error_color;
-}
-
-#custom-menu {
-    padding-left: 8px;
-    padding-right: 13px;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#memory.warning {
-    color: @warning_color;
-}
-
-#memory.critical {
-    color: @error_color;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#mode {
-    background: @background_color;
-}
-
-#network.disconnected {
-    color: @warning_color;
-}
-
-#pulseaudio.muted {
-    color: @warning_color;
-}
-
-#temperature.critical {
-    color: @error_color;
+#workspaces {
+    background: alpha(@background, 0.7);
+    margin: 4px 0px;
+    padding: 1px 0px;
+    border-radius: 15px;
+    opacity: 0.9;
 }
 
 #workspaces button {
-    border-top: 2px solid transparent;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: @theme_selected_bg_color;
+    color: @foreground;
+    min-width: 25px;
+    margin: 2px 4px;
+    /* circle */
+    transition: all 0.2s ease-in-out;
+    padding: 1px;
+    opacity: 0.6;
 }
 
-#workspaces button.focused {
-    border-color: @theme_selected_bg_color;
+#workspaces button:first-child {
+    margin-left: 3px;
+}
+
+#workspaces button:last-child {
+    margin-right: 3px;
+}
+
+#workspaces button:hover {
+    opacity: 0.8;
+}
+
+#workspaces button.active {
+    color: @color4;
+    background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
+    border-radius: 20px;
+    min-width: 50px;
+    opacity: 0.9;
 }
 
 #workspaces button.urgent {
-    border-color: @error_color;
-    color: @error_color;
+    transition: all 0.2s ease-in-out;
 }
 
-#custom-pacman {
-    color: @warning_color;
+/* quicklinks  */
+#info,
+#workspaces,
+#quicklinks-right,
+#quicklinks-left {
+    padding: 0px 4px;
+    background: alpha(@background, 0.7);
 }
 
-#bluetooth.disabled {
-    color: @warning_color;
+#quicklinks-right {
+    padding: 0px 3px 0px 6px;
+    margin-right: 9px;
 }
 
-#custom-wf-recorder {
-    color: @error_color;
-    padding-right: 10px;
+#workspaces {
+    margin-left: 9px;
 }
 
-#custom-valent.dangerously-empty {
-    color: @warning_color;
+#quicklinks-right *,
+#quicklinks-left * {
+    padding: 0px 3px;
+    margin: 0px 2px;
+    transition: all 0.2s ease-in-out;
+    font-size: 16px;
+}
+
+#quicklinks-right *:hover,
+#quicklinks-left *:hover {
+    background: @color8;
+}
+
+#taskbar {
+    background: alpha(@background, 0.7);
+    margin: 4px 8px 4px 5px;
+    padding: 0px;
+}
+
+#taskbar * {
+    transition: all 0.2s ease-in-out;
+    margin: 2px 3px;
+}
+
+#taskbar button.active {
+    background: linear-gradient(0deg, @color4 0%, alpha(@background, 0.6) 20%);
+}
+
+#taskbar *:hover {
+    background: @color8;
+}
+
+/* power-menu */
+#custom-power-menu {
+    color: #6a92d7;
+    /* red clor */
+}
+
+/* notification */
+#custom-notification {
+    padding: 0px 7px 0px 2px;
+}
+
+#pulseaudio {
+    color: @color5;
+}
+#battery {
+    color: @color6;
+}
+#pulseaudio,
+#battery {
+    padding: 2px 7px;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #26a65b;
+}
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @color2;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* wallpaper */
+#custom-wallpaper {
+    padding-right: 2px;
+}
+
+/* image */
+#image {
+    margin: 0px;
+    padding: 0px;
+}
+
+#window {
+    margin-left: 15px;
+}
+
+/* #waybar { */
+/*     background: alpha(@background, 0.8); */
+/* } */
+
+#tray {
+    background-color: @background;
+}
+
+#custom-clipboard {
+    padding: 0px 0px 0px 0px;
+    font-size: 18px;
+}
+
+#custom-keyboard {
+    padding: 0px 3px 0px 10px;
+}
+
+#power-profiles-daemon {
+    padding: 0px 15px 0px 0px;
+    min-width: 20px;
 }

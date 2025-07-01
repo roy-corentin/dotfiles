@@ -1,171 +1,263 @@
 // Waybar modules configuration
 {
-  // waybar-backlight
-  "backlight": {
-    "interval": 2,
-    "align": 0,
-    "rotate": 0,
-    //"device": "amdgpu_bl0",
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", ""],
-    // Commands to execute on events
-    "on-click": "",
-    "on-click-middle": "",
-    "on-click-right": "",
-    "on-update": "",
-    "on-scroll-up": "light -A 5%",
-    "on-scroll-down": "light -U 5%",
-    "smooth-scrolling-threshold": 1
+  //Taskbar
+  "wlr/taskbar": {
+    "all-outputs": false,
+    "format": "{icon}",
+    "icon-size": "20",
+    "on-click": "activate",
+    "on-click-right": "close",
+    "tooltip-format": "Go to {title}",
+    "ignore-list": ["kitty", "kitty-scratchpad"]
   },
 
-  "wlr/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "sort-by": "number",
     "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "ﭮ",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "﮼",
-      "focused": "",
-      "default": ""
+      "1": "󰍪",
+      "2": "󰖟",
+      "3": "",
+      "4": "󰋎",
+      "default": ""
+    },
+    "persistent_workspaces": {
+      "*": 3
+    }
+    // "format-icons": {
+    //   "urgent": "",
+    //   // "active": "",
+    //   "default": ""
+    // },
+  },
+  // Quicklinks
+  "image": {
+    "path": "/usr/share/endeavouros/EndeavourOS-icon.png",
+    "on-click": "~/.config/rofi/appmenu.sh",
+    "size": 18
+  },
+  "custom/settings": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": "Open Settings!",
+    "on-click": "systemsettings"
+  },
+
+  "custom/vpn": {
+    "format": "VPN ",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "return-type": "json",
+    "interval": 5
+  },
+
+  "custom/clipboard": {
+    "format": "󰨸",
+    "interval": "once",
+    "tooltip": true,
+    "tooltip-format": "Open Clipboard Manager!",
+    "return-type": "json",
+    "on-click": "~/.config/rofi/clipboardlist.sh",
+    "on-click-middle": "rm -f ~/.cache/cliphist/db; waybar-signal clipboard",
+    "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)' item(s) in the clipboard\r(Mid click to clear)'",
+    "exec-if": "[ -x \"$(command -v cliphist)\" ] && [ $(cliphist list | wc -l) -gt 0 ]",
+    "signal": 9
+  },
+
+  "hyprland/window": {
+    "icon": true,
+    "icon-size": 18,
+    "format": "󰍟 {title}",
+    "rewrite": {
+      "(.*) - Brave": "$1",
+      ".*emacs -nw.*": "EmacsTTY",
+      "(.*) - .*": "$1"
+    },
+    "separate-outputs": false,
+    "max-length": 20
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+  "custom/wallpaper": {
+    "format": " ",
+    "on-click": "~/.config/rofi/wallpaper.sh",
+    "tooltip": true,
+    "tooltip-format": " Change Wallpaper!"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{} {icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/power-menu": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": " Open Wlogout!",
+    "on-click": "wlogout"
+  },
+
+  "custom/pacman": {
+    "format": "󰦗 {}",
+    "interval": 3600, // every hour
+    "exec": "checkupdates | wc -l", // check for updates
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "on-click": "kitty --title float-system-update --hold --detach yay -Syyu",
+    "signal": 8
+  },
+
+  "tray": {
+    "icon-size": 21
+  },
+
+  "clock": {
+    "format": "{:%e %b 󰃭 %H:%M } ",
+    // "format-alt": "{:%Y-%m-%d}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "kitty --title float-calcurse calcurse"
+  },
+
+  // Temperature
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C {icon}",
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/nvme/nvme0/hwmon1/temp1_input",
+    "format-icons": ["", "", ""]
+  },
+
+  // Network setup
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "  {essid} {bandwidthDownBytes}",
+    "format-ethernet": "  {bandwidthDownBytes}",
+    "format-disconnected": "󱍢 No Internet",
+    "tooltip-format": "󰊗 {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "  {ifname} {ipaddr} ({signalStrength}%)",
+    "tooltip-format-ethernet": "  {ifname}",
+    "max-length": 50,
+    "interval": 5
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile} Driver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "󱐋",
+      "balanced": "",
+      "power-saver": "󱂓"
     }
   },
 
-  // waybar-battery
+  // Quicklinks
   "battery": {
-    "interval": 60,
-    "align": 0,
-    "rotate": 0,
-    //"bat": "BAT1",
-    //"adapter": "ACAD",
-    "full-at": 100,
-    "design-capacity": false,
     "states": {
-      "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 20
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
+    // "format-charging": "󱐋{capacity}%",
+    "format-charging": "󰂄 {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-full": "{icon} Full",
-    //"format-good": "",
-    "format-alt": "{icon} {time}",
+    // "format-alt": "{icon} {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
     "format-icons": ["", "", "", "", ""],
-    "format-time": "{H}h {M}min",
+    //"format-icons": ["󱃍", "󰁺", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip": true
   },
 
-  // waybar-clock
-  "clock": {
-    "interval": 60,
-    "align": 0,
-    "rotate": 0,
-    //"timezone": "America/New_York",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": " {:%H:%M}",
-    "format-alt": " {:%a %b %d, %G}"
-  },
-
-  // waybar-cpu
-  "cpu": {
-    "interval": 5,
-    "format": " LOAD: {usage}%"
-  },
-
-  // waybar-custom
-  "custom/menu": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "$HOME/.config/hypr/scripts/menu"
-  },
-
-  "custom/power": {
-    "format": "襤",
-    "tooltip": false,
-    "on-click": "$HOME/.config/hypr/scripts/wlogout"
-  },
-
-  // waybar-disk
-  "disk": {
-    "interval": 30,
-    "format": " FREE: {free}"
-  },
-
-  // waybar-memory
-  "memory": {
-    "interval": 10,
-    "format": " USED: {used:0.1f}G"
-  },
-
-  // waybar-network
-  "network": {
-    "interval": 5,
-    //"interface": "wlan*", // (Optional) To force the use of this interface, set it for netspeed to work
-    "format-wifi": " {essid}",
-    "format-ethernet": " {ipaddr}/{cidr}",
-    "format-linked": " {ifname} (No IP)",
-    "format-disconnected": "睊 Disconnected",
-    "format-disabled": "睊 Disabled",
-    "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
-    "tooltip-format": " {ifname} via {gwaddr}"
-  },
-
-  // weather-custom
-  "custom/weather": {
-    "format": "{}",
-    "format-alt": "{alt}: {}",
-    "format-alt-click": "click-right",
-    "interval": 1800,
-    "return-type": "json",
-    "exec": "~/.config/hypr/scripts/weather.sh",
-    "exec-if": "ping wttr.in -c1"
-  },
-
-  // updater-custom
-  "custom/updater": {
-    "format": "  {} ",
-    "exec": "checkupdates | wc -l",
-    "exec-if": "[[ $(checkupdates | wc -l) ]]",
-    "interval": 15,
-    "on-click": "foot -e yay -Syu && notify-send 'The system has been updated' "
-  },
-
-  // waybar-pulseaudio
   "pulseaudio": {
-    //"format": "{volume}% {icon} {format_source}",
+    "scroll-step": 1, // %, can be a float
     "format": "{icon} {volume}%",
     "format-muted": " Mute",
     "format-bluetooth": " {volume}% {format_source}",
     "format-bluetooth-muted": " Mute",
-    "format-source": " {volume}%",
+    "format-source": "{volume}%",
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "hands-free": "",
+      "headset": "",
       "default": ["", "", ""]
     },
-    "scroll-step": 5.0,
-    // Commands to execute on events
-    "on-click": "amixer set Master toggle",
-    "on-click-right": "pavucontrol",
-    "smooth-scrolling-threshold": 1
+    "max-volume": 150,
+    "on-click": "pavucontrol"
+  },
+  // Hardware info
+  "cpu": {
+    "format": " {usage}% ",
+    "interval": 5,
+    "tooltip": false
+  },
+  "memory": {
+    "format": " {}%",
+    "format-alt": " {used:0.1f}G",
+    "interval": 5
   },
 
-  // waybar-tray
-  "tray": {
-    "icon-size": 16,
-    "spacing": 10
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
+  },
+
+  "custom/idle_inhibitor": {
+    "interval": 60,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "on": "󰒳",
+      "off": "󰒲"
+    },
+    "exec": "inhibit-idle",
+    "on-click": "inhibit-idle off; inhibit-idle interactive",
+    "on-click-middle": "inhibit-idle off",
+    "signal": 15
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "scroll-step": 1
   }
 }
