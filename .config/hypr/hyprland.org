@@ -53,6 +53,7 @@
   - [[#image-to-text][Image To Text]]
   - [[#status-bar-1][Status Bar]]
   - [[#hyprland][Hyprland]]
+  - [[#end-active-session][End Active Session]]
   - [[#window-split-ratio][Window Split Ratio]]
   - [[#tab-cycle][Tab Cycle]]
   - [[#focus][Focus]]
