@@ -2,10 +2,9 @@
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
 * {
-    all: unset;
-    /*this is really important to isolate waybar from gtk*/
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 15px;
+    background: alpha(@background, 0);
+    font-family: CaskaydiaMono Nerd Font;
+    font-size: 14px;
     font-weight: normal;
 }
 
@@ -36,7 +35,7 @@ tooltip {
     border-radius: 12px;
     padding: 3px 7px;
     margin: 4px;
-    background: alpha(@background, 0.7);
+    background: alpha(@background, 0.6);
     opacity: 0.9;
     transition: all 0.2s ease-in-out;
 }
@@ -115,7 +114,6 @@ tooltip {
     padding: 0px 3px;
     margin: 0px 2px;
     transition: all 0.2s ease-in-out;
-    font-size: 16px;
 }
 
 #quicklinks-right *:hover,
