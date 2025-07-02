@@ -555,8 +555,8 @@ bind = ,XF86AudioStop, exec, playerctl stop
   bind = $mainMod CTRL, F, fullscreen, 0
   bind = $mainMod SHIFT, F, fullscreen, 1
   bind = $mainMod, Space, togglefloating,
-  bind = $mainMod SHIFT, Space, togglesplit,
-  bind = $mainMod, P, pseudo,
+  bind = $mainMod SHIFT, Space, togglesplit, # dwindle
+  bind = $mainMod, P, pseudo, # dwindle
   bind = $mainMod, O, exec, hyprctl dispatch setprop active opaque toggle
   bind = $mainMod CTRL, Space, pin
   bind = $mainMod, G, togglegroup
@@ -580,57 +580,57 @@ bind = ,XF86AudioStop, exec, playerctl stop
 
 ** Window Split Ratio
 #+begin_src conf
-bind = $mainMod CTRL, Minus, splitratio, -0.1
-bind = $mainMod CTRL, Equal, splitratio, 0.1
+  bind = $mainMod CTRL, Minus, splitratio, -0.1
+  bind = $mainMod CTRL, Equal, splitratio, 0.1
 #+end_src
 
 ** Tab Cycle
 To switch between windows in a floating workspace
 
 #+begin_src conf
-bind = $mainMod, Tab, cyclenext,        # change focus to another window
-bind = $mainMod, Tab, bringactivetotop, # bring it to the top
+  bind = $mainMod, Tab, cyclenext,        # change focus to another window
+  bind = $mainMod, Tab, bringactivetotop, # bring it to the top
 #+end_src
 
 ** Focus
 #+begin_src conf
-bind = $mainMod, H, movefocus, l
-bind = $mainMod, H, bringactivetotop
+  bind = $mainMod, H, movefocus, l
+  bind = $mainMod, H, bringactivetotop
 
-bind = $mainMod, L, movefocus, r
-bind = $mainMod, L, bringactivetotop
+  bind = $mainMod, L, movefocus, r
+  bind = $mainMod, L, bringactivetotop
 
-bind = $mainMod, K, movefocus, u
-bind = $mainMod, K, bringactivetotop
+  bind = $mainMod, K, movefocus, u
+  bind = $mainMod, K, bringactivetotop
 
-bind = $mainMod, J, movefocus, d
-bind = $mainMod, J, bringactivetotop
+  bind = $mainMod, J, movefocus, d
+  bind = $mainMod, J, bringactivetotop
 
-bind = $mainMod, Comma, focusmonitor, -1
-bind = $mainMod, Semicolon, focusmonitor, +1
+  bind = $mainMod, Comma, focusmonitor, -1
+  bind = $mainMod, Semicolon, focusmonitor, +1
 #+end_src
 
 ** Move Window
 #+begin_src conf
-bind = $mainMod SHIFT, H, movewindoworgroup, l
-bind = $mainMod SHIFT, L, movewindoworgroup, r
-bind = $mainMod SHIFT, K, movewindoworgroup, u
-bind = $mainMod SHIFT, J, movewindoworgroup, d
+  bind = $mainMod SHIFT, H, movewindoworgroup, l
+  bind = $mainMod SHIFT, L, movewindoworgroup, r
+  bind = $mainMod SHIFT, K, movewindoworgroup, u
+  bind = $mainMod SHIFT, J, movewindoworgroup, d
 #+end_src
 
 ** Focus Group Window
 #+begin_src conf
-bind = $mainMod, B, changegroupactive, b
-bind = $mainMod SHIFT, B, changegroupactive, f
+  bind = $mainMod, B, changegroupactive, b
+  bind = $mainMod SHIFT, B, changegroupactive, f
 #+end_src
 
 ** Resize Window
 - 'e' flag is used to repeat cmd when hold
 #+begin_src conf
-binde = $mainMod CTRL, H, resizeactive, -20 0
-binde = $mainMod CTRL, L, resizeactive, 20 0
-binde = $mainMod CTRL, K, resizeactive, 0 -20
-binde = $mainMod CTRL, J, resizeactive, 0 20
+  binde = $mainMod CTRL, H, resizeactive, -20 0
+  binde = $mainMod CTRL, L, resizeactive, 20 0
+  binde = $mainMod CTRL, K, resizeactive, 0 -20
+  binde = $mainMod CTRL, J, resizeactive, 0 20
 #+end_src
 
 ** Workspaces
