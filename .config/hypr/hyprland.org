@@ -568,6 +568,15 @@ bind = ,XF86AudioStop, exec, playerctl stop
   bind = $mainMod SHIFT, apostrophe, exec, hyprctl keyword general:layout "$(hyprctl getoption general:layout | grep -q 'dwindle' && echo 'master' || echo 'dwindle')" #! @description: "Toggle between dwindle and master layout"; @windows;
 #+end_src
 
+** End Active Session
+#+begin_src conf
+  bind = $mainMod, ESCAPE, exec, hyprlock
+  bind = $mainMod SHIFT, ESCAPE, exec, systemctl suspend
+  bind = $mainMod ALT, ESCAPE, exit,
+  bind = $mainMod CTRL, ESCAPE, exec, reboot
+  bind = $mainMod SHIFT CTRL, ESCAPE, exec, systemctl poweroff
+#+end_src
+
 ** Window Split Ratio
 #+begin_src conf
 bind = $mainMod CTRL, Minus, splitratio, -0.1
