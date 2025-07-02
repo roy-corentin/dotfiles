@@ -4,7 +4,7 @@
 #+STARTUP: showeverything
 
 * TABLE OF CONTENT :TOC:
-- [[#output][OUTPUT]]
+- [[#monitor][MONITOR]]
   - [[#example][Example]]
   - [[#laptop-screen][Laptop Screen]]
   - [[#work-setup][Work Setup]]
@@ -65,7 +65,7 @@
 - [[#screen-sharing][SCREEN-SHARING]]
 - [[#defaul_apps][DEFAUL_APPS]]
 
-* OUTPUT
+* MONITOR
 Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
 
 ~monitor = name,resolution,position,scale~
@@ -106,8 +106,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Default Setup
 #+begin_src conf
-  monitor = ,1920x1080@60, 1920x0, 1
-  # monitor = ,preferred, auto, 1
+  monitor = ,preferred, auto, 1
   # monitor = ,preferred, auto, 1, mirror, eDP-1 # Mirror
   workspace = 2, monitor:HDMI-A-1
 #+end_src
