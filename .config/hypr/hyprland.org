@@ -51,6 +51,7 @@
   - [[#image-to-drawapp][Image To DrawApp]]
   - [[#screencapture][Screencapture]]
   - [[#image-to-text][Image To Text]]
+  - [[#status-bar-1][Status Bar]]
   - [[#hyprland][Hyprland]]
   - [[#window-split-ratio][Window Split Ratio]]
   - [[#tab-cycle][Tab Cycle]]
@@ -524,17 +525,25 @@ bind = ,XF86AudioStop, exec, playerctl stop
   bind = SHIFT, PRINT, exec, hyprshot -m window
   bind = CTRL, PRINT, exec, hyprshot -m output
 #+end_src
+
 ** Image To DrawApp
 #+begin_src conf
   bind = $mainMod SHIFT, P, exec, grim -g "$(slurp)" - | swappy -f -
 #+end_src
+
 ** Screencapture
 #+begin_src conf
   bind = $mainMod CTRL, S, exec, ~/.config/hypr/scripts/screen-capture.sh
 #+end_src
+
 ** Image To Text
 #+begin_src conf
   bind = $mainMod SHIFT, T, exec, grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+#+end_src
+
+** Status Bar
+#+begin_src conf
+  bind = $mainMod SHIFT, SPACE, exec, pkill -SIGUSR1 waybar
 #+end_src
 
 ** Hyprland
