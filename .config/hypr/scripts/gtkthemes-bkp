@@ -2,9 +2,6 @@
 
 ## Set GTK Themes, Icons, Cursor and Fonts
 
-# THEME='Dracula'
-# THEME='Nordic'
-# THEME='adw-gtk3-dark'
 THEME='Graphite-green'
 ICONS='Papirus-Dark'
 FONT='Noto Sans 10'
