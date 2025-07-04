@@ -2,34 +2,29 @@
 
 ## Script To Manage Brightness For Archcraft (in Wayland).
 
-# Get brightness
-get_backlight() {
-	LIGHT=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4))}')
-	echo "${LIGHT}"
+get_brightness() {
+    LIGHT=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4))}')
+    echo "${LIGHT}"
 }
 
-# Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "Brightness : $(get_backlight)"
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "Brightness : $(get_brightness)"
 }
 
-# Increase brightness
-inc_backlight() {
-	brightnessctl -e4 -n2 set 5%+ && notify_user
+inc_brightness() {
+    brightnessctl -e4 -n2 set 5%+ && notify_user
 }
 
-# Decrease brightness
-dec_backlight() {
-	brightnessctl -e4 -n2 set 5%- && notify_user
+dec_brightness() {
+    brightnessctl -e4 -n2 set 5%- && notify_user
 }
 
-# Execute accordingly
 if [[ "$1" == "--get" ]]; then
-	get_backlight
+    get_brightness
 elif [[ "$1" == "--inc" ]]; then
-	inc_backlight
+    inc_brightness
 elif [[ "$1" == "--dec" ]]; then
-	dec_backlight
+    dec_brightness
 else
-	get_backlight
+    get_brightness
 fi

@@ -11,13 +11,13 @@ get_icon() {
     vol="$(get_volume)"
     current="${vol%%%}"
     if [[ "$current" -eq "0" ]]; then
-	icon="$DIR/volume-mute.png"
+        icon="$DIR/volume-mute.png"
     elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
-	icon="$DIR/volume-low.png"
+        icon="$DIR/volume-low.png"
     elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
-	icon="$DIR/volume-mid.png"
+        icon="$DIR/volume-mid.png"
     elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
-	icon="$DIR/volume-high.png"
+        icon="$DIR/volume-high.png"
     fi
 }
 
