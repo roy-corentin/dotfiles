@@ -25,6 +25,10 @@ tooltip {
     color: @foreground;
 }
 
+#taskbar * {
+    padding: 0px 0px 0px 0px;
+}
+
 #clock,
 #hardware,
 #network,
