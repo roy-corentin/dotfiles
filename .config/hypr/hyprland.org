@@ -463,7 +463,7 @@ layerrule = dimaround, rofi
   $editor = emacsclient -c -n -a 'emacs'
   $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
   $browser = zen
-  $help_keybind = ~/.config/rofi/keybinding.sh
+  $help_keybind = ~/.config/hypr/scripts/show_keybind
 #+end_src
 
 ** Terminal
