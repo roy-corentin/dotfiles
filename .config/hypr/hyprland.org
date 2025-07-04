@@ -281,6 +281,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
   decoration {
+      active_opacity = 0.95
       rounding = 0         # original 10
       # rounding_power = 2.0  # original 2.0
       blur {
@@ -425,7 +426,6 @@ List of options
   windowrule = workspace 1,class:^()$
 
   # All
-  windowrule = opacity 0.90 override 0.90 override,class:^(.*)$
   windowrule = opaque 1,class:^(.*)$
   windowrule = opaque 0,class:^(kitty|Alacritty|com.mitchellh.ghostty)$
 #+end_src
