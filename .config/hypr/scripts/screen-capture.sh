@@ -21,7 +21,7 @@ else
     mkdir -p $DIR
 
     # Start recording with wf-recorder and save to a file with the timestamp
-    wf-recorder -g "$(slurp)" -f "$DIR/recording_${timestamp}.gif" -c gif &
+    wf-recorder -g "$(slurp)" -F fps=30 -f "$DIR/recording_${timestamp}.gif" -c gif &
 
     # Save the PID of wf-recorder and the timestamp
     echo $! > /tmp/wf-recorder.pid
