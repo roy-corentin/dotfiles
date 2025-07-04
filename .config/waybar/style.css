@@ -4,8 +4,9 @@
 * {
     background: alpha(@background, 0);
     font-family: CaskaydiaMono Nerd Font;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: normal;
+    padding: 2px 0px 2px 0px;
 }
 
 tooltip {
