@@ -209,8 +209,8 @@ tooltip {
     font-size: 18px;
 }
 
-#custom-keyboard {
-    padding: 0px 3px 0px 10px;
+#hardware * {
+    font-size: 18px;
 }
 
 #power-profiles-daemon {
