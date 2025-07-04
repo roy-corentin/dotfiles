@@ -336,7 +336,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 * DWINDLE
 #+begin_src conf
 dwindle {
-    pseudotile = true # enable pseudotiling on dwindle
+    pseudotile = true
     preserve_split = true
     smart_split = false
 }
