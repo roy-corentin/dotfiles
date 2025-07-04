@@ -265,5 +265,13 @@
       ""
     ],
     "scroll-step": 1
+  },
+
+  "custom/wf-recorder": {
+    "format": "",
+    "interval": 5,
+    "return-type": "json",
+    "exec": "echo '{\"class\": \"recording\"}'",
+    "exec-if": "[ -f /tmp/wf-recorder.pid ]"
   }
 }
