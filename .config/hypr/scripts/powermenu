@@ -19,55 +19,55 @@ logout="󰠚 Logout"
 
 # Ask for confirmation
 cdialog() {
-	yad --title='Confirm?' --borders=15 --center --fixed --undecorated --button=Yes:0 --button=No:1 --text="Are you sure?" --text-align=center
+    yad --title='Confirm?' --borders=15 --center --fixed --undecorated --button=Yes:0 --button=No:1 --text="Are you sure?" --text-align=center
 }
 
 # Variable passed to rofi
 open_menu() {
-	options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+    options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-	chosen="$(echo -e "$options" | $rofi_command --prompt "UP - $uptime")"
-	case $chosen in
-		"$shutdown")
-			cdialog
-			if [[ $? == 0 ]]; then
-				systemctl poweroff -i
-			else
-				exit
-			fi
-			;;
-		"$reboot")
-			cdialog
-			if [[ $? == 0 ]]; then
-				systemctl reboot
-			else
-				exit
-			fi
-			;;
-		"$lock")
-			~/.config/hypr/scripts/lockscreen
-			;;
-		"$suspend")
-			cdialog
-			if [[ $? == 0 ]]; then
-				~/.config/hypr/scripts/suspend
-			else
-				exit
-			fi
-			;;
-		"$logout")
-			cdialog
-			if [[ $? == 0 ]]; then
-				kill -9 -1
-			else
-				exit
-			fi
-			;;
-	esac
+    chosen="$(echo -e "$options" | $rofi_command --prompt "UP - $uptime")"
+    case $chosen in
+	"$shutdown")
+	    cdialog
+	    if [[ $? == 0 ]]; then
+		systemctl poweroff -i
+	    else
+		exit
+	    fi
+	    ;;
+	"$reboot")
+	    cdialog
+	    if [[ $? == 0 ]]; then
+		systemctl reboot
+	    else
+		exit
+	    fi
+	    ;;
+	"$lock")
+	    ~/.config/hypr/scripts/lockscreen
+	    ;;
+	"$suspend")
+	    cdialog
+	    if [[ $? == 0 ]]; then
+		~/.config/hypr/scripts/suspend
+	    else
+		exit
+	    fi
+	    ;;
+	"$logout")
+	    cdialog
+	    if [[ $? == 0 ]]; then
+		kill -9 -1
+	    else
+		exit
+	    fi
+	    ;;
+    esac
 }
 
 if [[ ! $(pidof rofi) ]]; then
-	open_menu
+    open_menu
 else
-	pkill rofi
+    pkill rofi
 fi
