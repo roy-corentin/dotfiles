@@ -16,6 +16,9 @@ stow .
 #+attr_org: :width 400
 [[./screenshots/screenshot2.png]]
 
+#+attr_org: :width 400
+[[./screenshots/screenshot3.png]]
+
 ** Utils
 - [[https://github.com/hyprwm/Hyprland][Hyprland]]
 - [[https://github.com/davatorium/rofi][rofi]]
@@ -25,7 +28,7 @@ stow .
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]] / [[https://github.com/roy-corentin/EmacsVanilla][EmacsVanilla]]
 - Blueman
 - NetworkMarnager-Applet
-- Kanata
+- [[https://github.com/jtroo/kanata/][Kanata]]
 
 ** Dependencies
 - [[https://github.com/eylles/pywal16][pywal16]] Create theme based on your background
