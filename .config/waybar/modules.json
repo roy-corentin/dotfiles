@@ -33,11 +33,6 @@
     // },
   },
 
-  "image": {
-    "path": "/usr/share/endeavouros/EndeavourOS-icon.png",
-    "on-click": "~/.config/rofi/appmenu.sh",
-    "size": 18
-  },
   "custom/settings": {
     "format": " ",
     "tooltip": true,
@@ -176,6 +171,7 @@
   "battery": {
     "format": "{capacity}% {icon}",
     "format-plugged": " {capacity}%",
+    "format-full": "󰂅",
     // "format-charging": "󱐋{capacity}%",
     // "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
@@ -184,7 +180,6 @@
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
       "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-    "format-full": "Charged ",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,

@@ -24,7 +24,7 @@
   ],
   "group/quicklinks-left": {
     "orientation": "horizontal",
-    "modules": ["image", "custom/settings", "custom/clipboard", "tray"]
+    "modules": ["custom/settings", "custom/clipboard", "tray"]
   },
   "group/info": {
     "orientation": "horizontal",
