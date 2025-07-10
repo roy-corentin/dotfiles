@@ -220,11 +220,15 @@ Configure mouse and touchpad here
       # kb_rules =
       follow_mouse = 1
       numlock_by_default = 1
+
       touchpad {
           natural_scroll = no
-          scroll_factor = 0.8
+          scroll_factor = 0.4
+          # Use two-finger clicks for right-click instead of lower-right corner
           clickfinger_behavior = 1
       }
+
+      # Sensitity for mouse/trackpack
       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
   }
 #+end_src
