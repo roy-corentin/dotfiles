@@ -32,6 +32,7 @@
 - [[#cursor][CURSOR]]
 - [[#group][GROUP]]
 - [[#decoration][DECORATION]]
+- [[#render][RENDER]]
 - [[#anmations][ANMATIONS]]
 - [[#dwindle][DWINDLE]]
 - [[#master][MASTER]]
@@ -95,7 +96,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 ** Work Setup
 #+begin_src conf
   monitor = desc:AOC Q3279WG5B 0x0000652C, preferred, 1920x0, 1
-  monitor = desc:AOC U32E2WG6 QELM5JA000186, 3840x2160@60, 1920x0, 1.5
+  monitor = desc:AOC U32E2WG6 QELM5JA000186, 3840x2160@60, 1920x0, 1.5, bitdepth, 10, cm, hdr, sdrbrightness, 1.2, sdrsaturation, 0.98
   monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
   monitor = desc:LG Electronics LG TV SSCR2 0x01010101, preferred, 1920x0, 1.5
 #+end_src
@@ -299,6 +300,13 @@ the more passes, the more you can up the blur_size without noticing artifacts.
       }
       dim_inactive = true
       dim_strength = 0.05
+  }
+#+end_src
+
+* RENDER
+#+begin_src conf
+  render {
+      cm_enabled = true # default value
   }
 #+end_src
 
