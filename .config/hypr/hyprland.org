@@ -477,6 +477,7 @@ List of options
   $colorpicker = ~/.config/hypr/scripts/colorpicker
   $files = dolphin
   $editor = emacsclient -c -n -a 'emacs'
+  $editor-term = $term -e emacsclient -t -a 'emacs -nw'
   $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
   $browser = zen
   $help_keybind = ~/.config/hypr/scripts/show_keybind
@@ -493,6 +494,7 @@ List of options
 #+begin_src conf
   bind = $mainMod, E, exec, $files
   bind = $mainMod SHIFT, E, exec, $editor
+  bind = $mainMod CTRL, E, exec, $editor-term
   bind = $mainMod SHIFT, I, exec, $editor-everywhere
   bind = $mainMod SHIFT, W, exec, $browser
   bind = $mainMod, ccedilla, exec, $termapp k9s
