@@ -286,13 +286,15 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
   decoration {
-      active_opacity = 0.95
+      active_opacity = 0.90
+      inactive_opacity = 0.90
       rounding = 0         # original 10
       # rounding_power = 2.0  # original 2.0
       blur {
           enabled = true
-          size = 3 # minimum 1
-          passes = 3 # minimum 1, more passes = more resource intensive.
+          new_optimizations = true
+          size = 6   # minimum 1
+          passes = 2 # minimum 1, more passes = more resource intensive.
       }
       shadow {
           enabled = false
