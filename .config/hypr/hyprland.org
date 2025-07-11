@@ -561,7 +561,7 @@ bind = ,XF86AudioStop, exec, playerctl stop
 
 ** Status Bar
 #+begin_src conf
-  bind = $mainMod ALT, SPACE, exec, pkill -SIGUSR1 waybar
+  bind = $mainMod SHIFT, W, exec, pkill -SIGUSR1 waybar
 #+end_src
 
 ** Hyprland
