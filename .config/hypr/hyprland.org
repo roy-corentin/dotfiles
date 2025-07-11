@@ -695,6 +695,18 @@ bind = $mainMod SHIFT, egrave, movetoworkspace, 7
 bind = $mainMod SHIFT, underscore, movetoworkspace, 8
 #+end_src
 
+*** Send to Worspace silently
+#+begin_src conf
+bind = $mainMod CTRL, ampersand, movetoworkspacesilent, 1
+bind = $mainMod CTRL, eacute, movetoworkspacesilent, 2
+bind = $mainMod CTRL, quotedbl, movetoworkspacesilent, 3
+bind = $mainMod CTRL, apostrophe, movetoworkspacesilent, 4
+bind = $mainMod CTRL, parenleft, movetoworkspacesilent, 5
+bind = $mainMod CTRL, minus, movetoworkspacesilent, 6
+bind = $mainMod CTRL, egrave, movetoworkspacesilent, 7
+bind = $mainMod CTRL, underscore, movetoworkspacesilent, 8
+#+end_src
+
 *** Scroll Through Existing Workspaces
 #+begin_src conf
 bind = $mainMod, mouse_down, workspace, e+1
