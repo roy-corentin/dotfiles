@@ -644,10 +644,10 @@ To switch between windows in a floating workspace
 ** Resize Window
 - 'e' flag is used to repeat cmd when hold
 #+begin_src conf
-  binde = $mainMod CTRL, H, resizeactive, -20 0
-  binde = $mainMod CTRL, L, resizeactive, 20 0
-  binde = $mainMod CTRL, K, resizeactive, 0 -20
-  binde = $mainMod CTRL, J, resizeactive, 0 20
+  binde = $mainMod CTRL, H, resizeactive, -40 0
+  binde = $mainMod CTRL, L, resizeactive, 40 0
+  binde = $mainMod CTRL, K, resizeactive, 0 -40
+  binde = $mainMod CTRL, J, resizeactive, 0 40
 #+end_src
 
 ** Workspaces
