@@ -17,6 +17,9 @@ open_menu() {
 #    - It prints everything in a nicely aligned format.
 # 4. The final `sed` cleans up any leftover commas from the end of lines.
 grep -h '^[[:space:]]*bind' "$USER_HYPRLAND_CONF" |
+  sed 's/#.*//' |
+  sed '/^[[:space:]]*$/d' |
+  sort -u |
   awk -F, '
 {
     # Strip trailing comments
