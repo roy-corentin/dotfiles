@@ -1,73 +1,35 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-## Wofi Powermenu
+# Power menu for Omarchy
+# Provides power off, restart, and sleep options
 
-## Files
-CONFIG=~/.config/rofi/config.rasi
-
-## rofi Command
-rofi_command="rofi -dmenu -conf ${CONFIG} -i"
-
-uptime=$(uptime -p | sed -e 's/up //g')
-
-## Entries
-shutdown="󰐥 Shutdown"
-reboot="󰜉 Restart"
-lock=" Lock"
-suspend="󰒲  Sleep"
-logout="󰠚 Logout"
-
-# Ask for confirmation
-cdialog() {
-    yad --title='Confirm?' --borders=15 --center --fixed --undecorated --button=Yes:0 --button=No:1 --text="Are you sure?" --text-align=center
-}
-
-# Variable passed to rofi
-open_menu() {
-    options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
-
-    chosen="$(echo -e "$options" | $rofi_command --prompt "UP - $uptime")"
-    case $chosen in
-	"$shutdown")
-	    cdialog
-	    if [[ $? == 0 ]]; then
-		systemctl poweroff -i
-	    else
-		exit
-	    fi
-	    ;;
-	"$reboot")
-	    cdialog
-	    if [[ $? == 0 ]]; then
-		systemctl reboot
-	    else
-		exit
-	    fi
-	    ;;
-	"$lock")
-	    ~/.config/hypr/scripts/lockscreen
-	    ;;
-	"$suspend")
-	    cdialog
-	    if [[ $? == 0 ]]; then
-		~/.config/hypr/scripts/suspend
-	    else
-		exit
-	    fi
-	    ;;
-	"$logout")
-	    cdialog
-	    if [[ $? == 0 ]]; then
-		kill -9 -1
-	    else
-		exit
-	    fi
-	    ;;
-    esac
-}
-
-if [[ ! $(pidof rofi) ]]; then
-    open_menu
-else
+if [[ $(pidof rofi) ]]; then
     pkill rofi
+    exit 1
 fi
+
+# Function to show power menu
+show_power_menu() {
+  local menu_options="\u200B Lock
+\u200C󰤄 Suspend
+\u200D Relaunch
+\u2060󰜉 Restart
+\u2063󰐥 Shutdown
+\u2063󰠚 Logout" # These first characters are invisible sort keys
+
+suspend="󰒲  Sleep"
+
+  local selection=$(echo -e "$menu_options" | rofi -dmenu --prompt "Power Options" -theme-str 'window { width: 20%; height: 40%; }' -O alphabetical -i)
+
+  case "$selection" in
+  *Lock*) hyprlock ;;
+  *Suspend*) systemctl suspend ;;
+  *Relaunch*) hyprctl dispatch exit ;;
+  *Restart*) systemctl reboot ;;
+  *Shutdown*) systemctl poweroff ;;
+  *Logout*) systemctl poweroff ;;
+  esac
+}
+
+# Main execution
+show_power_menu
