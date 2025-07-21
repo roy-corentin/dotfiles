@@ -44,4 +44,5 @@ if backend=$(echo -e "none\nwal\nhaishoku\ncolorthief" | rofi -dmenu -mesg 'Sele
     fi
     wal --cols16 -i "$wallpaper_path" --backend "$backend" --saturate 0.6
     emacsclient -e "(cr/switch-theme 'ewal-doom-vibrant)"
+    swaync-client -rs
 fi
