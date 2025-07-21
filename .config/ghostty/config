@@ -2,6 +2,11 @@ window-decoration = false
 
 font-family = IosevkaTerm
 font-size   = 12.0
+cursor-style = block
+adjust-cursor-thickness = 2
+shell-integration-features = no-cursor
+
+custom-shader = ./shaders/cursor_smear.glsl
 
 theme = /home/croy/.cache/wal/ghostty.conf
 keybind = ctrl+shift+f=write_screen_file:open
