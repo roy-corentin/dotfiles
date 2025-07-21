@@ -3,7 +3,7 @@
 
 * {
     background: alpha(@background, 0);
-    font-family: CaskaydiaMono Nerd Font;
+    font-family: CaskaydiaMono Nerd Font Propo;
     font-size: 15px;
     font-weight: normal;
     padding: 2px 0px 2px 0px;
@@ -141,13 +141,11 @@ tooltip {
     background: @color8;
 }
 
-/* power-menu */
 #custom-power-menu {
     color: #6a92d7;
     /* red clor */
 }
 
-/* notification */
 #custom-notification {
     padding: 0px 7px 0px 2px;
 }
@@ -184,12 +182,10 @@ tooltip {
     animation-direction: alternate;
 }
 
-/* wallpaper */
 #custom-wallpaper {
     padding-right: 2px;
 }
 
-/* image */
 #image {
     margin: 0px;
     padding: 0px;
@@ -202,10 +198,19 @@ tooltip {
 /* #waybar { */
 /*     background: alpha(@background, 0.8); */
 /* } */
+#tray {
+    min-width: 12px;
+    margin-right: 13px;
+}
 
 #tray,
+#custom-tray-expander,
 #tray menu {
     background: alpha(@background, 0.9);
+}
+
+#custom-expand-icon {
+    margin-right: 12px;
 }
 
 #custom-clipboard {

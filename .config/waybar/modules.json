@@ -90,7 +90,7 @@
 
   "custom/notification": {
     "tooltip": false,
-    "format": "{} {icon}",
+    "format": "{icon}",
     "format-icons": {
       "notification": "<span foreground='red'><sup></sup></span>",
       "none": "",
@@ -125,8 +125,14 @@
     "signal": 8
   },
 
+  "custom/expand-icon": {
+    "format": " ",
+    "tooltip": false
+  },
+
   "tray": {
-    "icon-size": 21
+    "icon-size": 18,
+    "spacing": 12
   },
 
   "clock": {
@@ -204,7 +210,7 @@
       "default": ["", "", ""]
     },
     "max-volume": 150,
-    "on-click": "pavucontrol"
+    "on-click": "kitty --class=Wiremix -e wiremix"
   },
 
   "cpu": {

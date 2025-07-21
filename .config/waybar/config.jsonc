@@ -24,7 +24,7 @@
   ],
   "group/quicklinks-left": {
     "orientation": "horizontal",
-    "modules": ["custom/settings", "custom/clipboard", "tray"]
+    "modules": ["custom/settings", "custom/clipboard", "group/tray-expander"]
   },
   "group/info": {
     "orientation": "horizontal",
@@ -43,5 +43,14 @@
       "custom/power-menu"
     ]
   },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+
   "include": ["~/.config/waybar/modules.json"]
 }
