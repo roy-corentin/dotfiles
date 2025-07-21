@@ -49,7 +49,6 @@
   - [[#some-nice-mouse-binds][Some nice mouse binds]]
   - [[#function-keys][Function keys]]
   - [[#screenshots][Screenshots]]
-  - [[#image-to-drawapp][Image To DrawApp]]
   - [[#screencapture][Screencapture]]
   - [[#image-to-text][Image To Text]]
   - [[#status-bar-1][Status Bar]]
@@ -481,6 +480,7 @@ List of options
   $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
   $browser = zen
   $help_keybind = ~/.config/hypr/scripts/show_keybind
+  $screenshot = ~/.config/hypr/scripts/screenshot
 #+end_src
 
 ** Terminal
