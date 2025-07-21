@@ -455,6 +455,8 @@ List of options
 #+end_src
 
 * KEYBINDINGS
+- ~d~ flag for description
+
 ** Variable
 #+begin_src conf
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -487,255 +489,245 @@ List of options
 
 ** Terminal
 #+begin_src conf
-  bind = $mainMod, Return, exec, $term
-  bind = $mainMod SHIFT, Return, exec, $term2
-  bind = $mainMod CTRL, Return, exec, [float; size 50% 60%] $term2
+  bindd = $mainMod, Return, Launch Terminal, exec, $term
+  bindd = $mainMod SHIFT, Return, Launch Second Terminal, exec, $term2
+  bindd = $mainMod CTRL, Return, Launch Floating Terminal, exec, [float; size 50% 60%] $term
 #+end_src
 
 ** Apps
 #+begin_src conf
-  bind = $mainMod, E, exec, $files
-  bind = $mainMod SHIFT, E, exec, $editor
-  bind = $mainMod CTRL, E, exec, $editor-term
-  bind = $mainMod SHIFT, I, exec, $editor-everywhere
-  bind = $mainMod SHIFT, W, exec, $browser
-  bind = $mainMod, ccedilla, exec, $termapp k9s
-  bind = $mainMod, m, exec, $termapp btop
+  bindd = $mainMod, E, Launch File Manager, exec, $files
+  bindd = $mainMod SHIFT, E, Launch Editor , exec, $editor
+  bindd = $mainMod CTRL, E, Launch Terminal Editor, exec, $editor-term
+  bindd = $mainMod SHIFT, I, Launch Editor Popup, exec, $editor-everywhere
+  bindd = $mainMod SHIFT, W, Launch Browser, exec, $browser
+  bindd = $mainMod, ccedilla, Launch K9s, exec, $termapp k9s
+  bindd = $mainMod, m, Launch Btop, exec, $termapp btop
 #+end_src
 
 ** Rofi
 #+begin_src conf
-  bind = $mainMod, D, exec, $appmenu
-  bind = $mainMod, X, exec, $powermenu
-  bind = $mainMod, W, exec, $wallpapermenu
-  bind = $mainMod, T, exec, $thememenu
-  bind = $mainMod SHIFT, Comma, exec, pkill rofi || $help_keybind
+  bindd = $mainMod, D, Launch AppMenu, exec, $appmenu
+  bindd = $mainMod, X, Launch PowerMenu, exec, $powermenu
+  bindd = $mainMod, W, Launch WallpaperMenu, exec, $wallpapermenu
+  bindd = $mainMod, T, Launch ThemeMenu, exec, $thememenu
+  bindd = $mainMod SHIFT, Comma, Launch HelpMenu, exec, pkill rofi || $help_keybind
 #+end_src
 
 ** Misc
 #+begin_src conf
-bind = $mainMod, C, exec, $colorpicker
-bind = CTRL ALT,L, exec, $suspend
+bindd = $mainMod, C, ColorPicker, exec, $colorpicker
+bindd = CTRL ALT,L, Suspend, exec, $suspend
 #+end_src
 
 ** Some nice mouse binds
 #+begin_src conf
-bindm = SUPER, mouse:272, movewindow
-bindm = SUPER, mouse:273, resizewindow
+bindmd = SUPER, mouse:272, MoveWindow, movewindow
+bindmd = SUPER, mouse:273, ResizeWindow, resizewindow
 #+end_src
 
 ** Function keys
 - ~e~ flag is used to repeat cmd when hold
 #+begin_src conf
-binde = ,XF86MonBrightnessUp, exec, $brightness --inc
-binde = ,XF86MonBrightnessDown, exec, $brightness --dec
-binde = ,XF86AudioRaiseVolume, exec, $volume --inc
-binde = ,XF86AudioLowerVolume, exec, $volume --dec
-bind = ,XF86AudioMute, exec, $volume --toggle
-bind = ,XF86AudioMicMute, exec, $volume --toggle-mic
-bind = ,XF86AudioNext, exec, playerctl next
-bind = ,XF86AudioPrev, exec, playerctl previous
-bind = ,XF86AudioPlay, exec, playerctl play-pause
-bind = ,XF86AudioStop, exec, playerctl stop
+  bindeld = ,XF86MonBrightnessUp, Raise Brightness, exec, $brightness --inc
+  bindeld = ,XF86MonBrightnessDown, Lower Brightness, exec, $brightness --dec
+
+  binded = , XF86AudioRaiseVolume, Raise Volume, exec, $volume --inc
+  binded = , XF86AudioLowerVolume, Lower Volume, exec, $volume --dec
+  bindd = , XF86AudioMute, Toggle Volume, exec, $volume --toggle
+  bindd = , XF86AudioMicMute, Toggle Mic , exec, $volume --toggle-mic
+
+  bindld = , XF86AudioNext, Next Track, exec, playerctl next
+  bindld = , XF86AudioPause, Pause Media, exec, playerctl play-pause
+  bindld = , XF86AudioPlay, Pause Media, exec, playerctl play-pause
+  bindld = , XF86AudioPrev, Previous Track, exec, playerctl previous
+  bindld = , XF86AudioStop, Stop Track, exec, playerctl stop
 #+end_src
 
 ** Screenshots
 #+begin_src conf
-  bind = ,PRINT, exec, hyprshot -m region
-  bind = SHIFT, PRINT, exec, hyprshot -m window
-  bind = CTRL, PRINT, exec, hyprshot -m output
-#+end_src
-
-** Image To DrawApp
-#+begin_src conf
-  bind = $mainMod SHIFT, P, exec, grim -g "$(slurp)" - | swappy -f -
+  bindd = , PRINT, Screenshot a Region, exec, $screenshot
+  bindd = SHIFT, PRINT, Screenshot a Window, exec, $screenshot window
+  bindd = CTRL, PRINT, Screenshot a Desktop, exec, $screenshot output
 #+end_src
 
 ** Screencapture
 #+begin_src conf
-  bind = $mainMod CTRL, S, exec, ~/.config/hypr/scripts/screen-capture.sh
+  bindd = $mainMod CTRL, S, Start Capture, exec, ~/.config/hypr/scripts/screen-capture.sh
 #+end_src
 
 ** Image To Text
 #+begin_src conf
-  bind = $mainMod SHIFT, T, exec, grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+  bindd = $mainMod SHIFT, T, Image to Text, exec, grim -g "$(slurp -d -c D1E5F4BB -b 1B232866 -s 00000000)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
 #+end_src
 
 ** Status Bar
 #+begin_src conf
-  bind = $mainMod SHIFT, W, exec, pkill -SIGUSR1 waybar
+  bindd = $mainMod SHIFT, W, Toggle Waybar, exec, pkill -SIGUSR1 waybar
 #+end_src
 
 ** Hyprland
 #+begin_src conf
-  bind = $mainMod, Q, killactive,
-  bind = CTRL ALT, Delete, exit,
-  bind = $mainMod, F, fullscreen, 2
-  bind = $mainMod CTRL, F, fullscreen, 0
-  bind = $mainMod SHIFT, F, fullscreen, 1
-  bind = $mainMod, SPACE, togglefloating,
-  bind = $mainMod SHIFT, SPACE, togglesplit, # dwindle
-  bind = $mainMod, P, pseudo, # dwindle
-  bind = $mainMod, O, exec, hyprctl dispatch setprop active opaque toggle
-  bind = $mainMod CTRL, SPACE, pin
-  bind = $mainMod, G, togglegroup
-  bind = $mainMod SHIFT, C, exec, ~/.config/hypr/scripts/compactmode.sh
-  bind = $mainMod, F1, exec, ~/.config/hypr/scripts/gamemode.sh
-  bind = $mainMod ALT, apostrophe, exec, hyprctl keyword general:layout "$(hyprctl getoption general:layout | grep -q 'dwindle' && echo 'master' || echo 'dwindle')" #! @description: "Toggle between dwindle and master layout"; @windows;
+  bindd = $mainMod, Q, Kill Active, killactive,
+  bindd = $mainMod, F, Fullscreen, fullscreen, 2
+  bindd = $mainMod CTRL, F, Fullscreen complete, fullscreen, 0
+  bindd = $mainMod SHIFT, F, Fullscreen Window in Workspace, fullscreen, 1
+  bindd = $mainMod, SPACE, Toggle Floating, togglefloating,
+  bindd = $mainMod SHIFT, SPACE, ToggleSplit, togglesplit, # dwindle
+  bindd = $mainMod, P, Pseudo Window, pseudo, # dwindle
+  bindd = $mainMod, O, Toggle Opacity, exec, hyprctl dispatch setprop active opaque toggle
+  bindd = $mainMod CTRL, SPACE, Pin Window, pin
+  bindd = $mainMod, G, Toggle Group, togglegroup
+  bindd = $mainMod SHIFT, C, Enable CompactMode, exec, ~/.config/hypr/scripts/compactmode.sh
+  bindd = $mainMod, F1, Enable GameMode, exec, ~/.config/hypr/scripts/gamemode.sh
+  bindd = $mainMod ALT, apostrophe, Switch Layout, exec, hyprctl keyword general:layout "$(hyprctl getoption general:layout | grep -q 'dwindle' && echo 'master' || echo 'dwindle')" #! @description: "Toggle between dwindle and master layout"; @windows;
 
   # Example special workspace (scratchpad)
-  bind = $mainMod, S, togglespecialworkspace, magic
-  bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+  bindd = $mainMod, S, Toggle Magic Workspace, togglespecialworkspace, magic
+  bindd = $mainMod SHIFT, S, Move Window to Magic Workspace, movetoworkspace, special:magic
 #+end_src
 
 ** End Active Session
 #+begin_src conf
-  bind = $mainMod, ESCAPE, exec, hyprlock
-  bind = $mainMod SHIFT, ESCAPE, exec, systemctl suspend
-  bind = $mainMod ALT, ESCAPE, exit,
-  bind = $mainMod CTRL, ESCAPE, exec, reboot
-  bind = $mainMod SHIFT CTRL, ESCAPE, exec, systemctl poweroff
+  bindd = $mainMod, ESCAPE, Lock, exec, hyprlock
+  bindd = $mainMod SHIFT, ESCAPE, Suspend, exec, systemctl suspend
+  bindd = $mainMod ALT, ESCAPE, Exit, exit,
+  bindd = $mainMod CTRL, ESCAPE, Reboot, exec, reboot
+  bindd = $mainMod SHIFT CTRL, ESCAPE, Poweroff, exec, systemctl poweroff
 #+end_src
 
 ** Window Split Ratio
 #+begin_src conf
-  bind = $mainMod CTRL, Minus, splitratio, -0.1
-  bind = $mainMod CTRL, Equal, splitratio, 0.1
+  bindd = $mainMod CTRL, Minus, Decrease ratio, splitratio, -0.1
+  bindd = $mainMod CTRL, Equal, Increase ratio, splitratio, 0.1
 #+end_src
 
 ** Tab Cycle
 To switch between windows in a floating workspace
 
 #+begin_src conf
-  bind = $mainMod, Tab, cyclenext,        # change focus to another window
-  bind = $mainMod, Tab, bringactivetotop, # bring it to the top
+  bindd = $mainMod, Tab, Cyclenext, cyclenext, # change focus to another window
+  bindd = $mainMod, Tab, Bring Active to Top, bringactivetotop, # bring it to the top
 #+end_src
 
 ** Focus
 #+begin_src conf
-  bind = $mainMod, H, movefocus, l
-  bind = $mainMod, H, bringactivetotop
+  bindd = $mainMod, H, Move Focus Left, movefocus, l
+  bindd = $mainMod, H, Bring Active to Top, bringactivetotop
 
-  bind = $mainMod, L, movefocus, r
-  bind = $mainMod, L, bringactivetotop
+  bindd = $mainMod, L, Move Focus Right, movefocus, r
+  bindd = $mainMod, L, Bring Active to Top, bringactivetotop
 
-  bind = $mainMod, K, movefocus, u
-  bind = $mainMod, K, bringactivetotop
+  bindd = $mainMod, K, Move Focus Up, movefocus, u
+  bindd = $mainMod, K, Bring Active to Top, bringactivetotop
 
-  bind = $mainMod, J, movefocus, d
-  bind = $mainMod, J, bringactivetotop
+  bindd = $mainMod, J, Move Focus Down, movefocus, d
+  bindd = $mainMod, J, Bring Active to Top, bringactivetotop
 
-  bind = $mainMod, Comma, focusmonitor, -1
-  bind = $mainMod, Semicolon, focusmonitor, +1
+  bindd = $mainMod, Semicolon, Focus Next Monitor, focusmonitor, +1
+  bindd = $mainMod, Comma, Focus Prev Monitor, focusmonitor, -1
 #+end_src
 
 ** Move Window
 #+begin_src conf
-  bind = $mainMod SHIFT, H, movewindoworgroup, l
-  bind = $mainMod SHIFT, L, movewindoworgroup, r
-  bind = $mainMod SHIFT, K, movewindoworgroup, u
-  bind = $mainMod SHIFT, J, movewindoworgroup, d
+  bindd = $mainMod SHIFT, H, Move window or group left, movewindoworgroup, l
+  bindd = $mainMod SHIFT, L, Move window or group right, movewindoworgroup, r
+  bindd = $mainMod SHIFT, K, Move window or group upper, movewindoworgroup, u
+  bindd = $mainMod SHIFT, J, Move window or group lower, movewindoworgroup, d
 #+end_src
 
 ** Focus Group Window
 #+begin_src conf
-  bind = $mainMod, B, changegroupactive, b
-  bind = $mainMod SHIFT, B, changegroupactive, f
+  bindd = $mainMod, B,Previous in group, changegroupactive, b
+  bindd = $mainMod SHIFT, B, Next in group, changegroupactive, f
 #+end_src
 
 ** Resize Window
 - 'e' flag is used to repeat cmd when hold
 #+begin_src conf
-  binde = $mainMod CTRL, H, resizeactive, -40 0
-  binde = $mainMod CTRL, L, resizeactive, 40 0
-  binde = $mainMod CTRL, K, resizeactive, 0 -40
-  binde = $mainMod CTRL, J, resizeactive, 0 40
+  binded = $mainMod CTRL, H, Shrink Window Horizontally, resizeactive, -40 0
+  binded = $mainMod CTRL, L, Grow Window Horizontally, resizeactive, 40 0
+  binded = $mainMod CTRL, K, Shrink Window Vertically, resizeactive, 0 -40
+  binded = $mainMod CTRL, J, Grow Window Vertically, resizeactive, 0 40
 #+end_src
 
 ** Workspaces
 *** Focus
 #+begin_src conf
-bind = $mainMod, ampersand, workspace, 1
-bind = $mainMod, eacute, workspace, 2
-bind = $mainMod, quotedbl, workspace, 3
-bind = $mainMod, apostrophe, workspace, 4
-bind = $mainMod, parenleft, workspace, 5
-bind = $mainMod, minus, workspace, 6
-bind = $mainMod, egrave, workspace, 7
-bind = $mainMod, underscore, workspace, 8
+  bindd = $mainMod, ampersand, Focus workspace 1, workspace, 1
+  bindd = $mainMod, eacute, Focus workspace 2, workspace, 2
+  bindd = $mainMod, quotedbl, Focus workspace 3, workspace, 3
+  bindd = $mainMod, apostrophe, Focus workspace 4, workspace, 4
+  bindd = $mainMod, parenleft, Focus workspace 5, workspace, 5
+  bindd = $mainMod, minus, Focus workspace 6, workspace, 6
+  bindd = $mainMod, egrave, Focus workspace 7, workspace, 7
+  bindd = $mainMod, underscore, Focus workspace 8, workspace, 8
 #+end_src
 
 *** Focus On Current Monitor
 #+begin_src conf :tangle no
-bind = $mainMod, ampersand, focusworkspaceoncurrentmonitor, 1
-bind = $mainMod, eacute, focusworkspaceoncurrentmonitor, 2
-bind = $mainMod, quotedbl, focusworkspaceoncurrentmonitor, 3
-bind = $mainMod, apostrophe, focusworkspaceoncurrentmonitor, 4
-bind = $mainMod, parenleft, focusworkspaceoncurrentmonitor, 5
-bind = $mainMod, minus, focusworkspaceoncurrentmonitor, 6
-bind = $mainMod, egrave, focusworkspaceoncurrentmonitor, 7
-bind = $mainMod, underscore, focusworkspaceoncurrentmonitor, 8
+  bindd = $mainMod, ampersand, Focus Workspace on Current Monitor 1, focusworkspaceoncurrentmonitor, 1
+  bindd = $mainMod, eacute, Focus Workspace on Current Monitor 2, focusworkspaceoncurrentmonitor, 2
+  bindd = $mainMod, quotedbl, Focus Workspace on Current Monitor 3, focusworkspaceoncurrentmonitor, 3
+  bindd = $mainMod, apostrophe, Focus Workspace on Current Monitor 4, focusworkspaceoncurrentmonitor, 4
+  bindd = $mainMod, parenleft, Focus Workspace on Current Monitor 5, focusworkspaceoncurrentmonitor, 5
+  bindd = $mainMod, minus, Focus Workspace on Current Monitor 6, focusworkspaceoncurrentmonitor, 6
+  bindd = $mainMod, egrave, Focus Workspace on Current Monitor 7, focusworkspaceoncurrentmonitor, 7
+  bindd = $mainMod, underscore, Focus Workspace on Current Monitor 8, focusworkspaceoncurrentmonitor, 8
 #+end_src
 
 *** Move workspace to different monitor
 #+begin_src conf
-bind=$mainMod ALT,h,movecurrentworkspacetomonitor,l
-bind=$mainMod ALT,j,movecurrentworkspacetomonitor,p
-bind=$mainMod ALT,k,movecurrentworkspacetomonitor,u
-bind=$mainMod ALT,l,movecurrentworkspacetomonitor,r
+  bindd = $mainMod ALT, h, Move workspace to right monitor, movecurrentworkspacetomonitor,l
+  bindd = $mainMod ALT, j, Move workspace to lower monitor, movecurrentworkspacetomonitor,p
+  bindd = $mainMod ALT, k, Move workspace to upper monitor, movecurrentworkspacetomonitor,u
+  bindd = $mainMod ALT, l, Move workspace to right monitor, movecurrentworkspacetomonitor,r
 #+end_src
 
 *** Send to Workspaces
 #+begin_src conf
-bind = $mainMod SHIFT, ampersand, movetoworkspace, 1
-bind = $mainMod SHIFT, eacute, movetoworkspace, 2
-bind = $mainMod SHIFT, quotedbl, movetoworkspace, 3
-bind = $mainMod SHIFT, apostrophe, movetoworkspace, 4
-bind = $mainMod SHIFT, parenleft, movetoworkspace, 5
-bind = $mainMod SHIFT, minus, movetoworkspace, 6
-bind = $mainMod SHIFT, egrave, movetoworkspace, 7
-bind = $mainMod SHIFT, underscore, movetoworkspace, 8
+  bindd = $mainMod SHIFT, ampersand, Move to workspace 1, movetoworkspace, 1
+  bindd = $mainMod SHIFT, eacute, Move to workspace 2, movetoworkspace, 2
+  bindd = $mainMod SHIFT, quotedbl, Move to workspace 3, movetoworkspace, 3
+  bindd = $mainMod SHIFT, apostrophe, Move to workspace 4, movetoworkspace, 4
+  bindd = $mainMod SHIFT, parenleft, Move to workspace 5, movetoworkspace, 5
+  bindd = $mainMod SHIFT, minus, Move to workspace 6, movetoworkspace, 6
+  bindd = $mainMod SHIFT, egrave, Move to workspace 7, movetoworkspace, 7
+  bindd = $mainMod SHIFT, underscore, Move to workspace 8, movetoworkspace, 8
 #+end_src
 
 *** Send to Worspace silently
 #+begin_src conf
-bind = $mainMod CTRL, ampersand, movetoworkspacesilent, 1
-bind = $mainMod CTRL, eacute, movetoworkspacesilent, 2
-bind = $mainMod CTRL, quotedbl, movetoworkspacesilent, 3
-bind = $mainMod CTRL, apostrophe, movetoworkspacesilent, 4
-bind = $mainMod CTRL, parenleft, movetoworkspacesilent, 5
-bind = $mainMod CTRL, minus, movetoworkspacesilent, 6
-bind = $mainMod CTRL, egrave, movetoworkspacesilent, 7
-bind = $mainMod CTRL, underscore, movetoworkspacesilent, 8
-#+end_src
-
-*** Scroll Through Existing Workspaces
-#+begin_src conf
-bind = $mainMod, mouse_down, workspace, e+1
-bind = $mainMod, mouse_up, workspace, e-1
-
-bind = $mainMod CTRL, mouse_up, workspace, +1
-bind = $mainMod CTRL, mouse_down, workspace, -1
+  bindd = $mainMod CTRL, ampersand, Move workspace 1 silently, movetoworkspacesilent, 1
+  bindd = $mainMod CTRL, eacute, Move workspace 2 silently, movetoworkspacesilent, 2
+  bindd = $mainMod CTRL, quotedbl, Move workspace 3 silently, movetoworkspacesilent, 3
+  bindd = $mainMod CTRL, apostrophe, Move workspace 4 silently, movetoworkspacesilent, 4
+  bindd = $mainMod CTRL, parenleft, Move workspace 5 silently, movetoworkspacesilent, 5
+  bindd = $mainMod CTRL, minus, Move workspace 6 silently, movetoworkspacesilent, 6
+  bindd = $mainMod CTRL, egrave, Move workspace 7 silently, movetoworkspacesilent, 7
+  bindd = $mainMod CTRL, underscore, Move workspace 8 silently, movetoworkspacesilent, 8
 #+end_src
 
 ** Clipboard
 #+begin_src conf
-bind = SUPER, V, exec, $clipboardlist
+  bindd = SUPER, V, Open clipboard, exec, $clipboardlist
 #+end_src
 
 ** Zoom
 #+begin_src conf
-  bind = $mainMod SHIFT, mouse_down,exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
-  bind = $mainMod SHIFT, mouse_up,  exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
+  bindd = $mainMod, mouse_down, Zoom in, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
+  bindd = $mainMod, mouse_up, Zoom out, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
 
-  binde = $mainMod,       equal, exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
-  binde = $mainMod SHIFT, minus, exec,hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
-  bind = $mainMod SHIFT,  equal,  exec,hyprctl -q keyword cursor:zoom_factor 1
+  binded = $mainMod, equal, Zoom in, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
+  binded = $mainMod SHIFT, equal, Zoom out, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
+  bindd = $mainMod, agrave, Zoom reset, exec, hyprctl -q keyword cursor:zoom_factor 1
+
 #+end_src
 
 ** Notification
 #+begin_src conf
-bind = $mainMod, N, exec, $notificationmenu
+  bindd = $mainMod, N, Open Notifications, exec, $notificationmenu
 #+end_src
 
 * SCREEN-SHARING
