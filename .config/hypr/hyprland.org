@@ -13,6 +13,7 @@
 - [[#startup][STARTUP]]
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
+  - [[#bluelight-filter][BlueLight Filter]]
   - [[#notifications][Notifications]]
   - [[#status-bar][Status-Bar]]
   - [[#startup-script][Startup Script]]
@@ -142,7 +143,12 @@ exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 
 ** Wallpaper
 #+begin_src conf
-exec-once = hyprpaper
+  exec-once = hyprpaper
+#+end_src
+
+** BlueLight Filter
+#+begin_src conf
+ exec-once = hyprsunset
 #+end_src
 
 ** Notifications
