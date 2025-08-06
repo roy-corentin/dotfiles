@@ -777,8 +777,8 @@ To switch between windows in a floating workspace
 
 * SCREEN-SHARING
 #+begin_src conf
-  env = GDK_BACKEND,wayland
-  env = QT_QPA_PLATFORM,wayland
+  env = GDK_BACKEND,wayland,x11,*
+  env = QT_QPA_PLATFORM,wayland;xcb
   env = XDG_CURRENT_DESKTOP,Hyprland
   env = XDG_SESSION_TYPE,wayland
   env = XDG_SESSION_DESKTOP,Hyprland
