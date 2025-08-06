@@ -495,6 +495,7 @@ List of options
   layerrule = noanim, selection
   layerrule = noanim, hyprpicker
   layerrule = dimaround, rofi
+  layerrule = dimaround, walker
   layerrule = animation slide, swaync-control-center
 #+end_src
 
