@@ -608,7 +608,7 @@ bindmd = SUPER, mouse:273, ResizeWindow, resizewindow
 
 ** Status Bar
 #+begin_src conf
-  bindd = $mainMod SHIFT, W, Toggle Waybar, exec, pkill -SIGUSR1 waybar
+  bindd = $mainMod CTRL, W, Toggle Waybar, exec, pkill -SIGUSR1 waybar
 #+end_src
 
 ** Hyprland
