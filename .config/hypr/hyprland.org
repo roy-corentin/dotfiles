@@ -138,7 +138,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Desktop-Portals
 #+begin_src conf
-exec-once = ~/.config/hypr/scripts/desktop-portals.sh
+  exec-once = ~/.config/hypr/scripts/desktop-portals.sh
 #+end_src
 
 ** Wallpaper
@@ -591,7 +591,7 @@ bindmd = SUPER, mouse:273, ResizeWindow, resizewindow
 
 ** Screenshots
 #+begin_src conf
-  bindd = , PRINT, Screenshot a Region, exec, $screenshot
+  bindd = , PRINT, Screenshot a Region, exec, $screenshot region
   bindd = SHIFT, PRINT, Screenshot a Window, exec, $screenshot window
   bindd = CTRL, PRINT, Screenshot a Desktop, exec, $screenshot output
 #+end_src
