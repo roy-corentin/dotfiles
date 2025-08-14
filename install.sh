@@ -21,9 +21,9 @@ yay -S extra/texlive-latex extra/texlive-latexextra extra/texlive-plaingeneric t
 
 echo "Install packages"
 yay -S hyprland waybar rofi-wayland dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland \
-    hyprpaper hyprpicker hyprlock hypridle hyprshade hyprcursor hyprshot waypaper cliphist grim slurp tesseract swappy gowall cava \
+    hyprpaper hyprpicker hyprlock hypridle hyprshade hyprcursor hyprshot waypaper cliphist grim slurp tesseract swappy satty gowall cava \
     brightnessctl mako wget unzip rsync figlet git network-manager-applet python-pywal16 power-profile-daemon \
-    pulsemixer ripgrep eza bat btop fd tldr calcurse tree-sitter imagemagick pavucontrol \
+    pulsemixer ripgrep eza bat btop fd tldr calcurse tree-sitter imagemagick pavucontrol wiremix \
     zsh zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions \
     postgresql-libs platformio libvips compiledb \
     emacs-lsp-booster zls \
