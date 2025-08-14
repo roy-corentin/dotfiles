@@ -44,8 +44,6 @@ export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 
 # Path
-# Doom bin
-export PATH="$HOME/.config/emacs/bin:$PATH"
 # local bin
 export PATH="$HOME/.local/bin:$PATH"
 
