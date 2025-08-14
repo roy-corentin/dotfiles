@@ -153,7 +153,7 @@
   "network": {
     "format": "{ifname}",
     "format-wifi": "  {essid} {bandwidthDownBytes}",
-    "format-ethernet": "  {bandwidthDownBytes}",
+    "format-ethernet": "󰈀 {bandwidthDownBytes}",
     "format-disconnected": "󱍢 No Internet",
     "tooltip-format": "󰊗 {ifname} via {gwaddr}",
     "tooltip-format-wifi": "  {ifname} {ipaddr} ({signalStrength}%)",
