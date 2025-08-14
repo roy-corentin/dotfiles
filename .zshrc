@@ -97,11 +97,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# rbenv
-export PATH="/home/croy/.rbenv/shims:${PATH}"
-export RBENV_SHELL=zsh
-[ -s "/usr/lib/rbenv/completions/rbenv.zsh" ] && source "/usr/lib/rbenv/completions/rbenv.zsh"
-eval "$(rbenv init - zsh)"
+# Mise
+eval "$(mise activate)"
 
 # bun completions
 [ -s "/home/croy/.bun/_bun" ] && source "/home/croy/.bun/_bun"
