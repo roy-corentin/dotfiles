@@ -1,7 +1,7 @@
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
 * {
-    font-family: JetBrainsMono Nerd Font;
+    font-family: Liberation Sans;
     font-size: 15px;
     color: @foreground;
     transition: 200ms;
@@ -77,7 +77,7 @@
 }
 .close-button:hover {
     box-shadow: none;
-    background: rgba(247, 118, 142, 0.5); /* TokyoNight Red color */
+    background: rgba(247, 118, 142, 0.5);
     transition: all 0.2s ease-in-out;
 }
 
