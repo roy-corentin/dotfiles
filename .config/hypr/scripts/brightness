@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-## Script To Manage Brightness For Archcraft (in Wayland).
-
 get_brightness() {
     LIGHT=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4))}')
     echo "${LIGHT}"
