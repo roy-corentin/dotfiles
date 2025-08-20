@@ -122,7 +122,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Home Setup
 #+begin_src conf
-  monitor = desc:Iiyama North America PL2390 11298JH100680, preferred, 1920x0, 1
+  monitor = desc:Iiyama North America PL2390 11298JH100680, preferred, -1920x0, 1
   monitor = desc:Iiyama North America PL2390 11298JH100788, preferred, -1920x0, 1
 #+end_src
 
