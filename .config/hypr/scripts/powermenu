@@ -1,23 +1,20 @@
 #!/bin/bash
 
-# Power menu for Omarchy
-# Provides power off, restart, and sleep options
-
 if [[ $(pidof rofi) ]]; then
     pkill rofi
     exit 1
 fi
 
-# Function to show power menu
 show_power_menu() {
+  # The first characters are invisible sort keys.
   local menu_options="\u200B Lock
 \u200C󰤄 Suspend
 \u200D Relaunch
 \u2060󰜉 Restart
 \u2063󰐥 Shutdown
-\u2063󰠚 Logout" # These first characters are invisible sort keys
+\u2063󰠚 Logout"
 
-suspend="󰒲  Sleep"
+# suspend="󰒲  Sleep"
 
   local selection=$(echo -e "$menu_options" | rofi -dmenu --prompt "Power Options" -theme-str 'window { width: 20%; height: 40%; }' -O alphabetical -i)
 
@@ -31,5 +28,4 @@ suspend="󰒲  Sleep"
   esac
 }
 
-# Main execution
 show_power_menu
