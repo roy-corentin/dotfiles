@@ -480,6 +480,9 @@ List of options
 
   # Emacs
   windowrule = workspace 3,class:^(emacs)$
+  windowrule = float,class:^(emacs)$,title:^(Ediff)$
+  windowrule = size 780 410,class:^(emacs)$,title:^(Ediff)$
+  windowrule = move onscreen 100%-w-20,class:^(emacs)$,title:^(Ediff)$
 
   # Message App
   windowrule = workspace 1,class:^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|Slack)$
