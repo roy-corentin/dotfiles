@@ -11,3 +11,4 @@ custom-shader = ./shaders/cursor_smear.glsl
 theme = /home/croy/.cache/wal/ghostty.conf
 keybind = ctrl+shift+f=write_screen_file:open
 keybind = ctrl+,=unbind
+keybind = ctrl+enter=unbind
