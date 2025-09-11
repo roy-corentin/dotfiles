@@ -402,11 +402,10 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 * GESTURE
 #+begin_src conf
-gestures {
-    workspace_swipe = yes
-    workspace_swipe_fingers = 3
-    workspace_swipe_create_new = true
-}
+  gestures {
+      workspace_swipe_create_new = true
+      gesture = 3, horizontal, workspace
+   }
 #+end_src
 
 * MISC
