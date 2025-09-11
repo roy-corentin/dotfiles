@@ -490,6 +490,7 @@ List of options
   # All
   windowrule = opaque 1,class:^(.*)$
   windowrule = opaque 0,class:^(kitty|Alacritty|com.mitchellh.ghostty)$
+  windowrule = idleinhibit fullscreen, class:.*
 #+end_src
 
 * LAYERRULES
