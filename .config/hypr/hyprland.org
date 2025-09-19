@@ -313,8 +313,8 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
   decoration {
-      active_opacity = 0.90
-      inactive_opacity = 0.90
+      active_opacity = 0.95
+      inactive_opacity = 0.95
       rounding = 0         # original 10
       # rounding_power = 2.0  # original 2.0
       blur {
@@ -460,6 +460,10 @@ List of options
   windowrule = size 50% 50%,class:^kitty$ title:^(float-.*)$
 
   windowrule = workspace 4,class:^Pop$
+
+
+  # No Screen share windows
+  windowrule = noscreenshare, class:^(Bitwarden)$
 
   # Gnome Settings
   windowrule = float,class:^(org.gnome.Settings)$
@@ -782,14 +786,15 @@ To switch between windows in a floating workspace
 #+begin_src conf
   env = GDK_BACKEND,wayland,x11,*
   env = QT_QPA_PLATFORM,wayland;xcb
-  env = XDG_CURRENT_DESKTOP,Hyprland
-  env = XDG_SESSION_TYPE,wayland
-  env = XDG_SESSION_DESKTOP,Hyprland
   env = QT_STYLE_OVERRIDE,kvantum
   env = SDL_VIDEODRIVER,wayland
   env = MOZ_ENABLE_WAYLAND,1
   env = ELECTRON_OZONE_PLATFORM_HINT,wayland
   env = OZONE_PLATFORM,wayland
+  env = XDG_SESSION_TYPE,wayland
+
+  env = XDG_CURRENT_DESKTOP,Hyprland
+  env = XDG_SESSION_DESKTOP,Hyprland
 
   exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #+end_src
