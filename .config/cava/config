@@ -20,7 +20,7 @@
 # 200 means double height. Accepts only non-negative values.
 ; sensitivity = 100
 
-# The number of bars (0-512). 0 sets it to auto (fill up console).
+# The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
 ; bars = 0
 ; bar_width = 2
@@ -31,10 +31,6 @@
 # For SDL width and space between bars is in pixels, defaults are:
 ; bar_width = 20
 ; bar_spacing = 5
-
-# sdl_glsl have these default values, they are only used to calulate max number of bars.
-; bar_width = 1
-; bar_spacing = 0
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -90,6 +86,8 @@
 
 ; method = fifo
 ; source = /tmp/mpd.fifo
+; sample_rate = 44100
+; sample_bits = 16
 
 ; method = shmem
 ; source = /squeezelite-AA:BB:CC:DD:EE:FF
@@ -97,40 +95,12 @@
 ; method = portaudio
 ; source = auto
 
-; method = sndio
-; source = default
-
-; method = oss
-; source = /dev/dsp
-
-; method = jack
-; source = default
-
-# The options 'sample_rate', 'sample_bits', 'channels' and 'autoconnect' can be configured for some input methods:
-#   sample_rate: fifo, pipewire, sndio, oss
-#   sample_bits: fifo, pipewire, sndio, oss
-#   channels:    sndio, oss, jack
-#   autoconnect: jack
-# Other methods ignore these settings.
-#
-# For 'sndio' and 'oss' they are only preferred values, i.e. if the values are not supported
-# by the chosen audio device, the device will use other supported values instead.
-# Example: 48000, 32 and 2, but the device only supports 44100, 16 and 1, then it
-# will use 44100, 16 and 1.
-#
-; sample_rate = 44100
-; sample_bits = 16
-; channels = 2
-; autoconnect = 2
-
 
 [output]
 
-# Output method. Can be 'ncurses', 'noncurses', 'raw', 'noritake', 'sdl'
-# or 'sdl_glsl'.
-# 'noncurses' (default) uses a buffer and cursor movements to only print
-# changes from frame to frame in the terminal. Uses less resources and is less
-# prone to tearing (vsync issues) than 'ncurses'.
+# Output method. Can be 'ncurses', 'noncurses', 'raw', 'noritake' or 'sdl'.
+# 'noncurses' uses a custom framebuffer technique and prints only changes
+# from frame to frame in the terminal. 'ncurses' is default if supported.
 #
 # 'raw' is an 8 or 16 bit (configurable via the 'bit_format' option) data
 # stream of the bar heights that can be used to send to other applications.
@@ -140,9 +110,7 @@
 #  in graphic mode. It only support the 3000 series graphical VFDs for now.
 #
 # 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
-# 'sdl_glsl' uses SDL to create an OpenGL context. Write your own shaders or
-# use one of the predefined ones.
-; method = noncurses
+; method = ncurses
 
 # Orientation of the visualization. Can be 'bottom', 'top', 'left' or 'right'.
 # Default is 'bottom'. Other orientations are only supported on sdl and ncruses
@@ -181,7 +149,6 @@
 ; sdl_height = 500
 ; sdl_x = -1
 ; sdl_y= -1
-; sdl_full_screen = 0
 
 # set label on bars on the x-axis. Can be 'frequency' or 'none'. Default: 'none'
 # 'frequency' displays the lower cut off frequency of the bar above.
@@ -189,26 +156,9 @@
 ; xaxis = none
 
 # enable alacritty synchronized updates. 1 = on, 0 = off
-# removes flickering in alacritty terminal emulator.
+# removes flickering in alacritty terminal emeulator.
 # defaults to off since the behaviour in other terminal emulators is unknown
 ; alacritty_sync = 0
-
-# Shaders for sdl_glsl, located in $HOME/.config/cava/shaders
-; vertex_shader = pass_through.vert
-; fragment_shader = bar_spectrum.frag
-
-; for glsl output mode, keep rendering even if no audio
-; continuous_rendering = 0
-
-# disable console blank (screen saver) in tty
-# (Not supported on FreeBSD)
-; disable_blanking = 0
-
-# show a flat bar at the bottom of the screen when idle, 1 = on, 0 = off
-; show_idle_bar_heads = 1
-
-# show waveform instead of frequency spectrum, 1 = on, 0 = off
-; waveform = 0
 
 [color]
 
@@ -219,25 +169,25 @@
 ; background = default
 ; foreground = default
 
-
-# SDL and sdl_glsl only support hex code colors, these are the default:
+# SDL only support hex code colors, these are the default:
 ; background = '#111111'
-; foreground = '#33ffff'
+; foreground = '#33cccc'
 
 
 # Gradient mode, only hex defined colors are supported,
 # background must also be defined in hex or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
- gradient = 1
- gradient_count = 2
- gradient_color_1 = '#2864FF'
- gradient_color_2 = '#C620FF'
-; gradient_color_3 = '#a6cc33'
-; gradient_color_4 = '#cccc33'
-; gradient_color_5 = '#cca633'
-; gradient_color_6 = '#cc8033'
-; gradient_color_7 = '#cc5933'
-; gradient_color_8 = '#cc3333'
+gradient = 1
+gradient_count = 8
+gradient_color_1 = '#94e2d5'
+gradient_color_2 = '#89dceb'
+gradient_color_3 = '#74c7ec'
+gradient_color_4 = '#89b4fa'
+gradient_color_5 = '#cba6f7'
+gradient_color_6 = '#f5c2e7'
+gradient_color_7 = '#eba0ac'
+gradient_color_8 = '#f38ba8'
+
 
 
 [smoothing]
