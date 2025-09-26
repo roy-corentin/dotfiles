@@ -51,22 +51,10 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "󰐥",
-          "command": "bash -c $HOME/.config/hypr/scripts/powermenu"
-        },
-        {
-          "label": "󰌾",
-          "command": "loginctl lock-session"
-        },
-        {
-          "label": "󰍃",
-          "command": "hyprctl dispatch exit"
-        },
-        {
-          "active": false,
+          "label": "󰂛",
           "command": "swaync-client -d",
-          "label": "",
-          "type": "toggle"
+          "type": "toggle",
+          "active": false
         }
       ]
     }
