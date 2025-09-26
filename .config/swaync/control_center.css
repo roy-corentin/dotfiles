@@ -1,7 +1,7 @@
 @import "/home/croy/.cache/wal/colors-waybar.css";
 
 /* === Derived dynamic colors === */
-@define-color base alpha(@background, 0.9);
+@define-color base @background;
 @define-color surface_custom alpha(@color2, 0.9);
 @define-color hovercolor alpha(@color4, 0.9);
 @define-color activecolor @color6;
