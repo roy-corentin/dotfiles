@@ -1,5 +1,3 @@
-@import "/home/croy/.cache/wal/colors-waybar.css";
-
 /* === Derived dynamic colors === */
 @define-color base alpha(@surface, 0.5); /* translucent blurred base */
 @define-color surface_custom alpha(@surface_container_high,0.8);

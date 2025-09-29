@@ -1,18 +1,16 @@
-@import "/home/croy/.cache/wal/colors-waybar.css";
-
 /* === Derived dynamic colors === */
-@define-color base @background;
-@define-color surface_custom alpha(@color2, 0.9);
-@define-color hovercolor alpha(@color4, 0.9);
-@define-color activecolor @color6;
+@define-color base @surface; /* translucent blurred base */
+@define-color surface_custom alpha(@surface_container_high,0.8);
+@define-color hovercolor alpha(@surface_container_high,0.8);
+@define-color activecolor @primary_container;
 
-@define-color buttoncolor alpha(@color0, 0.3);
-@define-color hoverbutton alpha(@color8, 0.5);
-@define-color activebutton alpha(@color6, 0.5);
+@define-color buttoncolor alpha(@inverse_primary,0.3);
+@define-color hoverbutton alpha(@inverse_primary,0.5);
+@define-color activebutton @inverse_primary;
 
-@define-color bordercolor @color7;
-@define-color fontcolor @foreground;
-@define-color text @foreground;
+@define-color bordercolor @primary;
+@define-color fontcolor @on_surface;
+@define-color text @on_surface;
 
 /* === Global Reset === */
 * {
@@ -90,7 +88,7 @@
 
 .widget-mpris button {
     background: @surface_custom;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 4px;
     margin: 20px 2px;
     color: alpha(#000000, 0.8);
