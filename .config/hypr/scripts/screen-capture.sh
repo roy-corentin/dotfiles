@@ -1,33 +1,51 @@
 #!/usr/bin/env bash
 
-DIR="/home/croy/Videos/screen-capture"
+OUTPUT_DIR="/home/croy/Videos/screen-capture"
 
-# Check whether to start or stop the recording (if wf-recorder is running)
-if [ -f /tmp/wf-recorder.pid ] && [ -f /tmp/wf-recorder.timestamp ]; then
-    # Read the PID and timestamp of wf-recorder
-    pid=$(cat /tmp/wf-recorder.pid)
-    timestamp=$(cat /tmp/wf-recorder.timestamp)
-    kill $pid
-    rm /tmp/wf-recorder.pid /tmp/wf-recorder.timestamp
+# Create output dir if not exists
+mkdir -p $OUTPUT_DIR
 
-    # Send a notification
-    notify-send "Recording Finished" \
-                "Saved to $DIR"
+# Selects region or output
+SCOPE="$1"
+
+# Selects audio inclusion or not
+AUDIO=$([[ $2 == "audio" ]] && echo "--audio")
+
+start_screenrecording() {
+  filename="$OUTPUT_DIR/screenrecording-$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+
+  if lspci | grep -qi 'nvidia'; then
+    wf-recorder $AUDIO -f "$filename" -c libx264 -p crf=23 -p preset=medium -p movflags=+faststart "$@" &
+  else
+    wl-screenrec $AUDIO -f "$filename" --ffmpeg-encoder-options="-c:v libx264 -crf 23 -preset medium -movflags +faststart" "$@" &
+  fi
+
+  toggle_screenrecording_indicator
+}
+
+stop_screenrecording() {
+  pkill -x wl-screenrec
+  pkill -x wf-recorder
+
+  notify-send "Screen recording saved to $OUTPUT_DIR" -t 2000
+
+  sleep 0.2 # ensures the process is actually dead before we check
+  toggle_screenrecording_indicator
+}
+
+toggle_screenrecording_indicator() {
+  pkill -RTMIN+8 waybar
+}
+
+screenrecording_active() {
+  pgrep -x wl-screenrec >/dev/null || pgrep -x wf-recorder >/dev/null
+}
+
+if screenrecording_active; then
+  stop_screenrecording
+elif [[ "$SCOPE" == "output" ]]; then
+  start_screenrecording
 else
-    # Generate a timestamp
-    timestamp=$(date +"%Y%m%d_%H%M%S")
-
-    # Create output dir if not exists
-    mkdir -p $DIR
-
-    # Start recording with wf-recorder and save to a file with the timestamp
-    wf-recorder -g "$(slurp)" -F fps=30 -f "$DIR/recording_${timestamp}.gif" -c gif &
-
-    # Save the PID of wf-recorder and the timestamp
-    echo $! > /tmp/wf-recorder.pid
-    echo $timestamp > /tmp/wf-recorder.timestamp
-
-    # Send a notification
-    notify-send "Recording Started" \
-                "Named recording_${timestamp}.mkv"
+  region=$(slurp) || exit 1
+  start_screenrecording -g "$region"
 fi

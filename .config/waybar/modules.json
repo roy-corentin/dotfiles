@@ -270,9 +270,9 @@
 
   "custom/wf-recorder": {
     "format": "",
-    "interval": 5,
+    "interval": 3,
     "return-type": "json",
     "exec": "echo '{\"class\": \"recording\"}'",
-    "exec-if": "[ -f /tmp/wf-recorder.pid ]"
+    "exec-if": "pgrep -x wl-screenrec"
   }
 }
