@@ -48,10 +48,9 @@ eval "$(dircolors -b)"
 export PATH="$HOME/.local/bin:$PATH"
 
 # export local gem
-export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
-export GEM_PATH="$GEM_HOME:$HOME/.local/share/gem/ruby/3.4.0/gems"
+# export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
+# export GEM_PATH="$GEM_HOME/gems:$HOME/.local/share/gem/ruby/3.3.0/gems"
 # export PATH="$GEM_HOME/bin:$PATH"
-export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 
 export EDITOR=/usr/bin/nano
 export VISUAL=/usr/bin/nano
