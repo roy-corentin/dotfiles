@@ -14,7 +14,7 @@
 
 * {
     color: @text;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 900;
     all: unset;
     font-family:
@@ -105,11 +105,16 @@
 
 .summary {
     font-weight: 800;
-    font-size: 1rem;
 }
 
 .body {
-    font-size: 0.8rem;
+    font-weight: 300;
+    padding-top: 4px;
+}
+
+.image,
+.body-image {
+    margin-right: 5px;
 }
 
 .floating-notifications.background
