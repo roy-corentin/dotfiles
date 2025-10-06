@@ -3,7 +3,7 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "output": "eDP-1",
+  "output": ["eDP-1", "DP-4"],
   "reload_style_on_change": true,
   "width": 1920, // Waybar width
   "spacing": 7, // Gaps between modules (4px)
