@@ -265,7 +265,7 @@ Configure mouse and touchpad here
       gaps_in = 5
       gaps_out = 10
       border_size = 2
-      layout = master
+      layout = dwindle
       col.active_border = $color4 $color6 45deg
       col.inactive_border = $color8
       allow_tearing = false
@@ -383,7 +383,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 * DWINDLE
 #+begin_src conf
   dwindle {
-      pseudotile = true
+      force_split = 2
       preserve_split = true
       smart_split = false
       precise_mouse_move = true
@@ -514,8 +514,8 @@ List of options
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
   $mainMod = SUPER
 
-  $term = uwsm app -- kitty
-  $term2 = uwsm app -- ghostty --gtk-single-instance=true
+  $term = uwsm-app -- kitty
+  $term2 = uwsm-app -- ghostty --gtk-single-instance=true
   $termapp = $term -e
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
@@ -531,11 +531,11 @@ List of options
   $suspend = ~/.config/hypr/scripts/suspend
   $wlogout = ~/.config/hypr/scripts/wlogout
   $colorpicker = ~/.config/hypr/scripts/colorpicker
-  $files = uwsm app -- dolphin
-  $editor = uwsm app -- emacsclient -c -n -a 'emacs'
+  $files = uwsm-app -- dolphin
+  $editor = uwsm-app -- emacsclient -c -n -a 'emacs'
   $editor-term = $term -e emacsclient -t -a 'emacs -nw'
   $editor-everywhere = emacsclient --eval "(emacs-everywhere)"
-  $browser = uwsm app -- zen-browser
+  $browser = uwsm-app -- zen-browser
   $help_keybind = ~/.config/hypr/scripts/show_keybind
   $screenshot = ~/.config/hypr/scripts/screenshot
 #+end_src
