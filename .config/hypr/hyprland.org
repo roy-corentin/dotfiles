@@ -519,7 +519,8 @@ List of options
   $termapp = $term -e
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
-  $appmenu = ~/.config/rofi/appmenu.sh
+  $appmenu2 = ~/.config/rofi/appmenu.sh
+  $appmenu = walker
   $clipboardlist = ~/.config/rofi/clipboardlist.sh
   $powermenu = ~/.config/hypr/scripts/powermenu
   $volume = ~/.config/hypr/scripts/volume
@@ -560,6 +561,7 @@ List of options
 ** Rofi
 #+begin_src conf
   bindd = $mainMod, D, Launch AppMenu, exec, $appmenu
+  bindd = $mainMod SHIFT, D, Launch AppMenu, exec, $appmenu2
   bindd = $mainMod, X, Launch PowerMenu, exec, $powermenu
   bindd = $mainMod, W, Launch WallpaperMenu, exec, $wallpapermenu
   bindd = $mainMod, T, Launch ThemeMenu, exec, $thememenu
