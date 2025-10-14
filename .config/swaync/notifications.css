@@ -24,10 +24,6 @@
     transition: 200ms;
 }
 
-.widget-mpris {
-    all: unset;
-}
-
 .notification-row {
     outline: none;
     margin: 0;

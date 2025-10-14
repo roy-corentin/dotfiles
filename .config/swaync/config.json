@@ -39,8 +39,9 @@
       "text": "Do Not Disturb"
     },
     "mpris": {
-      "image-size": 100,
-      "image-radius": 0
+      "image-size": 96,
+      "image-radius": 12,
+      "blur": true
     },
     "volume": {
       "label": " ",
