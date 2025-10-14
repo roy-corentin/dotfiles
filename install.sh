@@ -28,7 +28,10 @@ yay -S hyprland waybar rofi-wayland dunst dolphin xdg-desktop-portal-hyprland qt
     postgresql-libs platformio libvips compiledb \
     emacs-lsp-booster zls \
     v4l2loopback-dkms intel-ipu6-dkms intel-npu-driver \
-    localsend-bin impala
+    localsend-bin impala \
+    elephant elephant-calc elephant-clipboard elephant-bluetooth elephant-desktopapplications elephant-files \
+    elephant-menus elephant-providerlist elephant-runner elephant-symbols elephant-unicode elephant-websearch \
+    elephant-todo
 
 gum confirm 'Would you like to install kanata?' && ./install-kanata.sh
 gum confirm "Would you like to install fonts" && echo "Install fonts" && yay -S ttc-iosevka ttc-iosevka-etoile ttc-iosevka-term ttf-iosevka-nerd
