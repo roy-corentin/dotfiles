@@ -40,7 +40,6 @@
       "idle_inhibitor",
       "custom/wallpaper",
       "custom/notification",
-      "custom/power-menu"
     ]
   },
   "group/tray-expander": {

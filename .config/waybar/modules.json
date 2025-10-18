@@ -109,13 +109,6 @@
     "escape": true
   },
 
-  "custom/power-menu": {
-    "format": " ",
-    "tooltip": true,
-    "tooltip-format": " Open Wlogout!",
-    "on-click": "wlogout"
-  },
-
   "custom/pacman": {
     "format": "󰦗 {}",
     "interval": 3600, // every hour
