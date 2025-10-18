@@ -14,7 +14,7 @@
   ],
   "modules-center": ["clock"],
   "modules-right": [
-    "custom/wf-recorder",
+    "custom/screen-recording",
     "mpd",
     "group/info",
     "group/hardware",

@@ -261,11 +261,10 @@
     "scroll-step": 1
   },
 
-  "custom/wf-recorder": {
-    "format": "",
-    "interval": 3,
-    "return-type": "json",
-    "exec": "echo '{\"class\": \"recording\"}'",
-    "exec-if": "pgrep -x wl-screenrec"
-  }
+  "custom/screen-recording": {
+    "on-click": "$HOME/.config/hypr/scripts/screenrecord.sh",
+    "exec": "$HOME/.config/waybar/indicators/screen-recording.sh",
+    "signal": 8,
+    "return-type": "json"
+  },
 }
