@@ -266,5 +266,5 @@
     "exec": "$HOME/.config/waybar/indicators/screen-recording.sh",
     "signal": 8,
     "return-type": "json"
-  },
+  }
 }
