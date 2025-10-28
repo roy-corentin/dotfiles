@@ -497,6 +497,7 @@ List of options
 * LAYERRULES
 #+begin_src conf
   layerrule = noanim, selection
+  layerrule = noanim, wayfreeze
   layerrule = noanim, hyprpicker
   layerrule = dimaround, rofi
   layerrule = dimaround, walker
