@@ -19,7 +19,6 @@
   - [[#startup-script][Startup Script]]
   - [[#blue-light][Blue-Light]]
   - [[#bluetooth][Bluetooth]]
-  - [[#swayidle][Swayidle]]
   - [[#hypridle][Hypridle]]
   - [[#polkit][Polkit]]
   - [[#wal][Wal]]
@@ -158,43 +157,35 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Status-Bar
 #+begin_src conf
-  exec-once = ~/.config/hypr/scripts/status_bar
+  exec-once = ~/.config/hypr/scripts/status_bar.sh
 #+end_src
 
 ** Startup Script
 #+begin_src conf
-source = ~/.config/hypr/exec.conf
+  source = ~/.config/hypr/exec.conf
 #+end_src
 
 ** Blue-Light
 Make sure you have installed =hyprshade=
 #+begin_src conf
-exec-once = hyprshade auto
+  exec-once = hyprshade auto
 #+end_src
 
 ** Bluetooth
 Make sure you have installed =blueman=
 #+begin_src conf
-exec-once = blueman-applet
-#+end_src
-
-** Swayidle
-+ Dim primary screen, after 240sec decrease brightness
-+ Sleep, after 360sec
-+ Before sleep lock screen
-#+begin_src conf :tangle no
-exec-once = swayidle -w timeout 240 'brightnessctl --save; brightnessctl set 5%' resume 'brightnessctl --restore' timeout 360 '~/.config/hypr/scripts/sleep' before-sleep 'hyprlock'
+  exec-once = blueman-applet
 #+end_src
 
 ** Hypridle
 #+begin_src conf
-exec-once = hypridle
+  exec-once = hypridle
 #+end_src
 
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src conf :tangle no
-  # exec-once=/usr/lib/polkit-1/polkitd
+  exec-once=/usr/lib/polkit-1/polkitd
 #+end_src
 
 #+begin_src conf
@@ -459,7 +450,6 @@ List of options
   windowrule = float,class:^kitty$ title:^(float-.*)$
   windowrule = size 50% 50%,class:^kitty$ title:^(float-.*)$
 
-  windowrule = workspace 4,class:^Pop$
 
 
   # No Screen share windows
