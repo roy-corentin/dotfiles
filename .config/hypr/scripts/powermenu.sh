@@ -9,7 +9,6 @@ show_power_menu() {
   # The first characters are invisible sort keys.
   local menu_options="\u200B Lock
 \u200C󰤄 Suspend
-\u200D Relaunch
 \u2060󰜉 Restart
 \u2063󰐥 Shutdown
 \u2063󰠚 Logout"
@@ -21,7 +20,6 @@ show_power_menu() {
   case "$selection" in
   *Lock*) hyprlock ;;
   *Suspend*) systemctl suspend ;;
-  *Relaunch*) hyprctl dispatch exit ;;
   *Restart*) systemctl reboot ;;
   *Shutdown*) systemctl poweroff ;;
   *Logout*) systemctl poweroff ;;
