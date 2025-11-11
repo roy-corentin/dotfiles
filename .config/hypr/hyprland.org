@@ -429,75 +429,77 @@ List of options
 - windowrule = rounding 10,abc
 
 #+begin_src conf
-    # Float Necessary Windows
-    windowrule = float,class:^waypaper$
-    windowrule = float,class:^org.pulseaudio.pavucontrol$
-    windowrule = float,class:^Wiremix$
-    windowrule = float,class:^foot-float$
-    windowrule = float,class:^nm-connection-editor$
-    windowrule = float,class:^Gimp$
-    windowrule = float,class:^blueman-manager$
-    windowrule = float,class:^org.twosheds.iwgtk$
-    windowrule = float,class:^blueberry.py$
-    windowrule = float,class:^(xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde)$
-    windowrule = center, class:^(org.freedesktop.impl.portal.desktop.kde)$
-    windowrule = size 1280 720,class:^(org.freedesktop.impl.portal.desktop.kde)$
-    windowrule = size 700 500, class:^(org.pulseaudio.pavucontrol|Wiremix)$
+  # Float Necessary Windows
+  windowrule = float, class:^waypaper$
+  windowrule = float, class:^org.pulseaudio.pavucontrol$
+  windowrule = float, class:^Wiremix$
+  windowrule = float, class:^foot-float$
+  windowrule = float, class:^nm-connection-editor$
+  windowrule = float, class:^Gimp$
+  windowrule = float, class:^blueman-manager$
+  windowrule = float, class:^org.twosheds.iwgtk$
+  windowrule = float, class:^blueberry.py$
+  windowrule = float, class:^(xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde)$
+  windowrule = center, class:^(org.freedesktop.impl.portal.desktop.kde)$
+  windowrule = size 1280 720, class:^(org.freedesktop.impl.portal.desktop.kde)$
+  windowrule = size 700 500, class:^(org.pulseaudio.pavucontrol|Wiremix)$
 
-    windowrule = float,class:^org.kde.gwenview$
-    windowrule = size 65% 65%,class:^org.kde.gwenview$
+  windowrule = float, class:^org.kde.gwenview$
+  windowrule = size 65% 65%, class:^org.kde.gwenview$
 
-    windowrule = float,class:^kitty$ title:^(float-.*)$
-    windowrule = size 50% 50%,class:^kitty$ title:^(float-.*)$
+  windowrule = float, class:^kitty$, title:^(float-.*)$
+  windowrule = size 50% 50%, class:^kitty$, title:^(float-.*)$
+  windowrule = tag +floating-window, class:^kitty$, title:^(float-.*)$
 
-    # Floating windows
-    windowrule = float, tag:floating-window
-    windowrule = center, tag:floating-window
-    windowrule = size 800 600, tag:floating-window
+  # Floating windows
+  windowrule = float, tag:floating-window
+  windowrule = center, tag:floating-window
+  windowrule = size 875 600, tag:floating-window
 
-    windowrule = tag +floating-window, class:(blueberry.py|Impala|Wiremix|org.gnome.NautilusPreviewer|com.gabm.satty|Omarchy|About|TUI.float)
-    windowrule = tag +floating-window, class:(xdg-desktop-portal-gtk|sublime_text|DesktopEditors|org.gnome.Nautilus), title:^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)
+  windowrule = tag +floating-window, class:(blueberry.py|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float)
+  windowrule = tag +floating-window, class:(xdg-desktop-portal-gtk|sublime_text|DesktopEditors|org.gnome.Nautilus), title:^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)
 
-    # No Screen share windows
-    windowrule = noscreenshare, class:^(Bitwarden)$
+  # No Screen share windows
+  windowrule = float, title:^(.*Bitwarden.*)$
+  windowrule = noscreenshare, title:^(.*Bitwarden.*)$
 
-    # Gnome Settings
-    windowrule = float,class:^(org.gnome.Settings)$
-    windowrule = center,class:^(org.gnome.Settings)$
-    windowrule = size 1280 720,class:^(org.gnome.Settings)$
+  # Gnome Settings
+  windowrule = float,class:^(org.gnome.Settings)$
+  windowrule = center,class:^(org.gnome.Settings)$
+  windowrule = size 1280 720,class:^(org.gnome.Settings)$
 
-    # Browser
-    windowrule = workspace 2,class:^brave-browser$
-    windowrule = workspace 2,class:^zen$
-    windowrule = float,class:^(brave)$,title:^(Open File)$
-    windowrule = float,class:^(brave)$,title:^(Save File)$
-    windowrule = float,class:^(brave)$,title:^(Picture in picture)$
-    windowrule = float,class:^(zen)$,title:^(Picture-in-Picture)$
-    windowrule = size 740 440,class:^(zen)$,title:^(Picture-in-Picture)$
-    windowrule = move onscreen 100%-w-20,class:^(zen)$,title:^(Picture-in-Picture)$
-    windowrule = float,class:^brave-.*-Default$
+  # Browser
+  windowrule = workspace 2,class:^brave-browser$
+  windowrule = workspace 2,class:^zen$
+  windowrule = float,class:^(brave)$,title:^(Open File)$
+  windowrule = float,class:^(brave)$,title:^(Save File)$
+  windowrule = float,class:^(brave)$,title:^(Picture in picture)$
+  windowrule = float,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrule = size 740 440,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrule = move onscreen 100%-w-20,class:^(zen)$,title:^(Picture-in-Picture)$
+  windowrule = float,class:^brave-.*-Default$
 
-    # Emacs
-    windowrule = float,class:^(emacs)$,title:^(Ediff.*)$
-    windowrule = size 780 410,class:^(emacs)$,title:^(Ediff.*)$
-    windowrule = move onscreen 100%-w-20,class:^(emacs)$,title:^(Ediff.*)$
-    windowrule = float,class:^(emacs)$,title:^(emacs-float)$
+  # Emacs
+  windowrule = float,class:^(emacs)$,title:^(Ediff.*)$
+  windowrule = size 780 410,class:^(emacs)$,title:^(Ediff.*)$
+  windowrule = move onscreen 100%-w-20,class:^(emacs)$,title:^(Ediff.*)$
+  windowrule = float,class:^(emacs)$,title:^(emacs-float)$
 
-    # Message App
-    windowrule = workspace 1,class:^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|Slack)$
-    windowrule = workspace 1,class:^()$
+  # Message App
+  windowrule = workspace 1,class:^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|Slack)$
+  windowrule = workspace 1,class:^()$
 
-    # Webcam overlay for screen recording
-    windowrule = float, title:WebcamOverlay
-    windowrule = pin, title:WebcamOverlay
-    windowrule = noinitialfocus, title:WebcamOverlay
-    windowrule = nodim, title:WebcamOverlay
-    windowrule = move 100%-w-70 100%-w-45, title:WebcamOverlay # There's a typo in the hyprland rule so 100%-w on the height param is actually correct here
+  # Webcam overlay for screen recording
+  windowrule = float, title:WebcamOverlay
+  windowrule = pin, title:WebcamOverlay
+  windowrule = noinitialfocus, title:WebcamOverlay
+  windowrule = nodim, title:WebcamOverlay
+  windowrule = move 100%-w-70 100%-w-45, title:WebcamOverlay # There's a typo in the hyprland rule so 100%-w on the height param is actually correct here
 
-    # All
-    windowrule = opaque 1,class:^(.*)$
-    # windowrule = opaque 0,class:^(kitty|Alacritty|com.mitchellh.ghostty)$
-    windowrule = idleinhibit fullscreen, class:.*
+  # All
+  windowrule = opaque 1,class:^(.*)$
+  # windowrule = opaque 0,class:^(kitty|Alacritty|com.mitchellh.ghostty)$
+  windowrule = idleinhibit fullscreen, class:.*
 #+end_src
 
 * LAYERRULES
