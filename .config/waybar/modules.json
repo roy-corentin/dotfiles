@@ -151,7 +151,7 @@
     "tooltip-format": "󰊗 {ifname} via {gwaddr}",
     "tooltip-format-wifi": "  {ifname} {ipaddr} ({signalStrength}%)",
     "tooltip-format-ethernet": "  {ifname}",
-    "on-click": "kitty --title float-calcurse impala",
+    "on-click": "kitty --title float-impala impala",
     "max-length": 50,
     "interval": 5
   },
