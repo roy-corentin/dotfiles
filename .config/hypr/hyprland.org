@@ -568,7 +568,7 @@ List of options
   bindd = $mainMod CTRL, E, Launch Terminal Editor, exec, $editor-term
   bindd = $mainMod SHIFT, I, Launch Editor Popup, exec, $editor-everywhere
   bindd = $mainMod SHIFT, W, Launch Browser, exec, $browser
-  bindd = $mainMod, ccedilla, Launch K9s, exec, $termapp k9s
+  bindd = $mainMod, ccedilla, Launch K9s, exec, $termapp k9s --logoless
   bindd = $mainMod, m, Launch Btop, exec, $termapp btop
 #+end_src
 
