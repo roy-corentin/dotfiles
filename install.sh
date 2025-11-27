@@ -23,7 +23,7 @@ echo "Install packages"
 yay -S hyprland waybar rofi-wayland dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland wtype \
     hyprpaper hyprpicker hyprlock hypridle hyprshade hyprcursor hyprshot waypaper cliphist grim slurp tesseract swappy satty gowall cava \
     brightnessctl mako wget unzip rsync figlet git network-manager-applet python-pywal16 power-profile-daemon \
-    pulsemixer ripgrep eza bat btop fd tldr calcurse tree-sitter imagemagick pavucontrol wiremix \
+    pulsemixer ripgrep eza bat btop fd tldr calcurse tree-sitter imagemagick pavucontrol wiremix bluetui \
     zsh zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions \
     postgresql-libs platformio libvips compiledb \
     emacs-lsp-booster zls \
