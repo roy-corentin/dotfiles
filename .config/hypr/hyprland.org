@@ -514,6 +514,7 @@ List of options
   layerrule = dimaround, walker
   layerrule = animation slide, swaync-control-center
   layerrule = blur, swaync-control-center
+  layerrule = noscreenshare, swaync-control-center
 #+end_src
 
 * KEYBINDINGS
