@@ -5,7 +5,7 @@
 THEME='Graphite-green'
 ICONS='Papirus-Dark'
 FONT='Noto Sans 10'
-CURSOR='Qogir-dark'
+CURSOR='Qogir-Dark'
 SCHEME="prefer-light"
 
 SCHEMA='gsettings set org.gnome.desktop.interface'

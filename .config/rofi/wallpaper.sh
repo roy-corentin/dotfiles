@@ -32,9 +32,7 @@ fi
 chose_wallpaper
 
 # swww img "$wallpaper_path" --transition-type grow --transition-fps 60 --transition-duration 0.5 --transition-bezier 0.65,0,0.35,1 --transition-step 1
-hyprctl hyprpaper unload all
-hyprctl hyprpaper preload "$wallpaper_path"
-hyprctl hyprpaper wallpaper ",$wallpaper_path" # Empty first argument to enable wallpaper on every monitor
+hyprctl hyprpaper wallpaper ",$wallpaper_path,cover" # Empty first argument to enable wallpaper on every monitor
 
 cat $wallpaper_path > ~/.cache/hyprpaper/current-wallpaper
 
