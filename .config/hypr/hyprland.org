@@ -216,7 +216,7 @@ exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
 
 ** Hyprcursor
 #+begin_src conf
-exec-once = hyprctl setcursor Qogir-dark 24 #19
+exec-once = hyprctl setcursor Qogir-Dark 24
 #+end_src
 
 ** Ghostty
