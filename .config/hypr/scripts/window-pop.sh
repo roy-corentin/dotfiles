@@ -2,12 +2,43 @@
 
 # Toggle to pop-out a tile to stay fixed on a display basis.
 
-active=$(hyprctl activewindow -j)
-addr=$(echo "$active" | jq -r  ".address")
-[ -z "$addr" ] && { echo "No active window"; exit 0; }
+# Usage:
+# omarchy-hyprland-window-pop [width height [x y]]
+#
+# Arguments:
+#   width   Optional. Width of the floating window. Default: 1300
+#   height  Optional. Height of the floating window. Default: 900
+#   x       Optional. X position of the window. Must provide both X and Y to take effect.
+#   y       Optional. Y position of the window. Must provide both X and Y to take effect.
+#
+# Behavior:
+#   - If the window is already floating, it will be removed from the pop layer.
+#   - If the window is not floating, it will be floated, resized, moved/centered, brought to top, and popped.
 
-hyprctl -q --batch \
-"dispatch togglefloating address:$addr;" \
-"dispatch centerwindow address:$addr;" \
-"dispatch alterzorder top address:$addr;" \
-"dispatch tagwindow +pop address:$addr;"
+width=${1:-1300}
+height=${2:-900}
+x=${3:-}
+y=${4:-}
+
+active=$(hyprctl activewindow -j)
+floating=$(echo "$active" | jq ".floating")
+addr=$(echo "$active" | jq -r ".address")
+
+if [[ $floating == "true" ]]; then
+  hyprctl -q --batch \
+    "dispatch togglefloating address:$addr;" \
+    "dispatch tagwindow -pop address:$addr;"
+elif [[ -n $addr ]]; then
+  hyprctl dispatch togglefloating address:$addr
+  hyprctl dispatch resizeactive exact $width $height address:$addr
+
+  if [[ -n $x && -n $y ]]; then
+    hyprctl dispatch moveactive $x $y address:$addr
+  else
+    hyprctl dispatch centerwindow address:$addr
+  fi
+
+  hyprctl -q --batch \
+    "dispatch alterzorder top address:$addr;" \
+    "dispatch tagwindow +pop address:$addr;"
+fi
