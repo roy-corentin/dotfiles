@@ -429,42 +429,23 @@ List of options
 - windowrule = rounding 10,abc
 
 #+begin_src conf
-  # Float Necessary Windows
-  windowrule = float on, match:class ^waypaper$
-  windowrule = float on, match:class ^org.pulseaudio.pavucontrol$
-  windowrule = float on, match:class ^Wiremix$
-  windowrule = float on, match:class ^foot-float$
-  windowrule = float on, match:class ^nm-connection-editor$
-  windowrule = float on, match:class ^Gimp$
-  windowrule = float on, match:class ^blueman-manager$
-  windowrule = float on, match:class ^org.twosheds.iwgtk$
-  windowrule = float on, match:class ^blueberry.py$
-  windowrule = float on, match:class ^(xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde)$
-  windowrule = center on, match:class ^(org.freedesktop.impl.portal.desktop.kde)$
-  windowrule = size 1280 720, match:class ^(org.freedesktop.impl.portal.desktop.kde)$
-  windowrule = size 700 500, match:class ^(org.pulseaudio.pavucontrol|Wiremix)$
-
-  windowrule = float on, match:class ^org.kde.gwenview$
-  windowrule = size 65% 65%, match:class ^org.kde.gwenview$
-
+  # Floating windows
   windowrule = float on, match:title ^(float-.*)$
   windowrule = size 50% 50%, match:title ^(float-.*)$
   windowrule = tag +floating-window, match:title ^(float-.*)$
 
-  # Floating windows
   windowrule = float on, match:tag floating-window
   windowrule = center on, match:tag floating-window
   windowrule = size 875 600, match:tag floating-window
 
-  windowrule = tag +floating-window, match:class (blueberry.py|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float)
-  windowrule = tag +floating-window, match:class (xdg-desktop-portal-gtk|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|Wiremix), match:title ^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)
+  windowrule = tag +floating-window, match:class (blueberry.py|blueman-manager|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper)
+  windowrule = tag +floating-window, match:class (xdg-desktop-portal-gtk|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen), match:title ^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)
+
+  windowrule = no_screen_share on, match:class ^(Bitwarden)$
+  windowrule = tag +floating-window, match:class ^(Bitwarden)$
 
   # Popped window rounding
   windowrule = rounding 8, match:tag pop
-
-  # No Screen share windows
-  windowrule = float on, match:title ^(.*Bitwarden.*)$
-  windowrule = no_screen_share on, match:title ^(.*Bitwarden.*)$
 
   # Gnome Settings
   windowrule = float on, match:class ^(org.gnome.Settings)$
@@ -472,25 +453,25 @@ List of options
   windowrule = size 1280 720, match:class ^(org.gnome.Settings)$
 
   # Browser
-  windowrule = workspace 2, match:class ^brave-browser$
-  windowrule = workspace 2, match:class ^zen$
-  windowrule = float on, match:class ^(brave)$, match:title ^(Open File)$
-  windowrule = float on, match:class ^(brave)$, match:title ^(Save File)$
-  windowrule = float on, match:class ^(brave)$, match:title ^(Picture in picture)$
-  windowrule = float on, match:class ^(zen)$, match:title ^(Picture-in-Picture)$
-  windowrule = size 740 440, match:class ^(zen)$, match:title ^(Picture-in-Picture)$
-  windowrule = move onscreen 100%-w-20, match:class ^(zen)$, match:title ^(Picture-in-Picture)$
-  windowrule = float on, match:class ^brave-.*-Default$
+  windowrule = workspace 2, match:class (brave-browser|zen$)
+
+  # Picture-in-picture overlays
+  windowrule = tag +pip, match:title (Picture.?in.?[Pp]icture)
+  windowrule = float on, match:tag pip
+  windowrule = pin on, match:tag pip
+  windowrule = size 740 440, match:tag pip
+  windowrule = keep_aspect_ratio on, match:tag pip
+  windowrule = border_size 0, match:tag pip
+  windowrule = opacity 1 1, match:tag pip
+  windowrule = move onscreen 100%-w-40, match:tag pip
 
   # Emacs
-  windowrule = float on, match:class ^(emacs)$, match:title ^(Ediff.*)$
+  windowrule = float on, match:class ^(emacs)$, match:title ^(Ediff.*|emacs-float)$
   windowrule = size 780 410, match:class ^(emacs)$, match:title ^(Ediff.*)$
   windowrule = move onscreen 100%-w-20, match:class ^(emacs)$, match:title ^(Ediff.*)$
-  windowrule = float on, match:class ^(emacs)$, match:title ^(emacs-float)$
 
   # Message App
   windowrule = workspace 1, match:class ^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|Slack)$
-  windowrule = workspace 1, match:class ^()$
 
   # Webcam overlay for screen recording
   windowrule = float on, match:title WebcamOverlay
