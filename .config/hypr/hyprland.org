@@ -255,7 +255,7 @@ Configure mouse and touchpad here
   general {
       gaps_in = 5
       gaps_out = 10
-      border_size = 2
+      border_size = 1
       layout = dwindle
       col.active_border = $color4
       col.inactive_border = $color8
@@ -304,26 +304,24 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
   decoration {
-      active_opacity = 0.95
-      inactive_opacity = 0.95
-      rounding = 0         # original 10
-      # rounding_power = 2.0  # original 2.0
+      active_opacity = 0.75
+      inactive_opacity = 0.75
+      rounding = 2 # original 10
+      rounding_power = 4.0  # original 2.0
       blur {
           enabled = true
           new_optimizations = true
-          size = 6   # minimum 1
+          size = 10   # minimum 1
           passes = 2 # minimum 1, more passes = more resource intensive.
       }
       shadow {
           enabled = false
           range = 8
-          offset = 1 2
-          scale = 0.97
-          color = rgba(1E202966)
-          color_inactive = 0x50000000
+          offset = 0 0
+          render_power = 1
       }
       dim_inactive = true
-      dim_strength = 0.05
+      dim_strength = 0.08
   }
 #+end_src
 
@@ -417,17 +415,6 @@ misc {
 #+end_src
 
 * WINDOW RULES
-List of options
-- windowrule = move 69 420,abc
-- windowrule = size 420 69,abc
-- windowrule = tile,xyz
-- windowrule = pseudo,abc
-- windowrule = monitor 0,xyz
-- windowrule = workspace 12,abc
-- windowrule = opacity 1.0,abc
-- windowrule = animation slide left,abc
-- windowrule = rounding 10,abc
-
 #+begin_src conf
   # Floating windows
   windowrule = float on, match:title ^(float-.*)$
@@ -506,8 +493,8 @@ List of options
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
   $mainMod = SUPER
 
-  $term = uwsm-app -- kitty
-  $term2 = uwsm-app -- ghostty --gtk-single-instance=true
+  $term = uwsm-app -- ghostty --gtk-single-instance=true
+  $term2 = uwsm-app -- kitty
   $termapp = $term -e
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
@@ -525,7 +512,7 @@ List of options
   $colorpicker = ~/.config/hypr/scripts/colorpicker.sh
   $files = uwsm-app -- dolphin
   $editor = uwsm-app -- emacsclient -c -n -a 'emacs'
-  $editor-term = $term2 -e emacsclient -t -a 'emacs -nw'
+  $editor-term = $term -e emacsclient -t -a 'emacs -nw'
   $editor-everywhere = emacsclient --eval '(thanos/type)'
 
   $browser = uwsm-app -- zen-browser
@@ -539,7 +526,7 @@ List of options
 #+begin_src conf
   bindd = $mainMod, Return, Launch Terminal, exec, $term
   bindd = $mainMod SHIFT, Return, Launch Second Terminal, exec, $term2
-  bindd = $mainMod CTRL, Return, Launch Floating Terminal, exec, [float; size 50% 60%] $term
+  bindd = $mainMod CTRL, Return, Launch Floating Terminal, exec, [float] $term2
 #+end_src
 
 ** Apps
