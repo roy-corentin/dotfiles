@@ -28,6 +28,10 @@
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
+  "notification-visibility": {
+    "volume": { "state": "transient", "summary": "Volume.*" },
+    "brightness": { "state": "transient", "summary": "Brightness.*" }
+  },
   "widgets": ["buttons-grid", "mpris", "volume", "title", "notifications"],
   "widget-config": {
     "title": {
