@@ -450,12 +450,12 @@ misc {
   windowrule = keep_aspect_ratio on, match:tag pip
   windowrule = border_size 0, match:tag pip
   windowrule = opacity 1 1, match:tag pip
-  windowrule = move onscreen 100%-w-40, match:tag pip
+  windowrule = move (monitor_w-window_w-10) (monitor_h-window_h-10), match:tag pip
 
   # Emacs
   windowrule = float on, match:class ^(emacs)$, match:title ^(Ediff.*|emacs-float)$
   windowrule = size 780 410, match:class ^(emacs)$, match:title ^(Ediff.*)$
-  windowrule = move onscreen 100%-w-20, match:class ^(emacs)$, match:title ^(Ediff.*)$
+  windowrule = move (monitor_w-window_w-10) (monitor_h-window_h-10), match:class ^(emacs)$, match:title ^(Ediff.*)$
 
   # Message App
   windowrule = workspace 1, match:class ^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|Slack)$
@@ -465,7 +465,7 @@ misc {
   windowrule = pin on, match:title WebcamOverlay
   windowrule = no_initial_focus on, match:title WebcamOverlay
   windowrule = no_dim on, match:title WebcamOverlay
-  windowrule = move 100%-w-70 100%-h-45, match:title WebcamOverlay # There's a typo in the hyprland rule so 100%-w on the height param is actually correct here
+  windowrule = move (monitor_w-window_w-10) (monitor_h-window_h-10), match:title WebcamOverlay # There's a typo in the hyprland rule so 100%-w on the height param is actually correct here
 
   # All
   windowrule = opaque 1, match:class ^(.*)$
