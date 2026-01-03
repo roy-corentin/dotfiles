@@ -526,7 +526,7 @@ misc {
 #+begin_src conf
   bindd = $mainMod, Return, Launch Terminal, exec, $term
   bindd = $mainMod SHIFT, Return, Launch Second Terminal, exec, $term2
-  bindd = $mainMod CTRL, Return, Launch Floating Terminal, exec, [float] $term2
+  bindd = $mainMod CTRL, Return, Launch Floating Terminal, exec, [float; center; size 950 600] $term2
 #+end_src
 
 ** Apps
