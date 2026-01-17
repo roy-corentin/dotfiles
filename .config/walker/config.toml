@@ -29,7 +29,7 @@ prefix = "/"
 provider = "files"
 
 [[providers.prefixes]]
-prefix = ";"
+prefix = "~"
 provider = "symbols"
 
 [[providers.prefixes]]
@@ -45,5 +45,5 @@ prefix = ":"
 provider = "clipboard"
 
 [[providers.prefixes]]
-prefix = "$"
-provider = "windows"
+prefix = "."
+provider = "runner"
