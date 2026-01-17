@@ -69,7 +69,7 @@
 - [[#defaul_apps][DEFAUL_APPS]]
 
 * MONITOR
-Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
+Configure your Display resolution, offset, scale and Monitors here, use =hyprctl monitors= to get the info.
 
 ~monitor = name,resolution,position,scale~
 or
