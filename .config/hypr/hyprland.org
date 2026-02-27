@@ -26,7 +26,6 @@
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
   - [[#hyprcursor][Hyprcursor]]
-  - [[#ghostty][Ghostty]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#cursor][CURSOR]]
@@ -217,11 +216,6 @@ exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
 ** Hyprcursor
 #+begin_src conf
 exec-once = hyprctl setcursor Qogir-Dark 24
-#+end_src
-
-** Ghostty
-#+begin_src conf
-exec-once = ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 #+end_src
 
 * INPUT
@@ -493,9 +487,9 @@ misc {
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
   $mainMod = SUPER
 
-  $term = uwsm-app -- ghostty --gtk-single-instance=true
+  $term = uwsm-app -- ghostty +new-window
   $term2 = uwsm-app -- kitty
-  $termapp = $term -e
+  $termapp = ghostty -e +new-window
   $wallpapermenu = ~/.config/rofi/wallpaper.sh
   $thememenu = ~/.config/rofi/theme.sh
   $appmenu2 = ~/.config/rofi/appmenu.sh
