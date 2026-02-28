@@ -10,6 +10,7 @@
   - [[#work-setup][Work Setup]]
   - [[#home-setup][Home Setup]]
   - [[#default-setup][Default Setup]]
+  - [[#workspace-layouts][Workspace layouts]]
 - [[#startup][STARTUP]]
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
@@ -114,6 +115,11 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
     sdrbrightness = 1.2
     sdrsaturation = 0.98
   }
+  monitorv2 {
+    output = desc:LG Electronics LG TV
+    mode = preferred
+    position = auto-up
+  }
   monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
   monitor = desc:LG Electronics LG TV SSCR2 0x01010101, preferred, 1920x0, 1.5
 #+end_src
@@ -129,6 +135,12 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   monitor = ,preferred, auto, 1
   # monitor = ,preferred, auto, 1, mirror, eDP-1 # Mirror
   workspace = 2, monitor:HDMI-A-1
+#+end_src
+
+** Workspace layouts
+#+begin_src conf
+  workspace = 4, layout:scrolling
+  workspace = 5, layout:monocle
 #+end_src
 
 * STARTUP
@@ -298,8 +310,8 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
 #+begin_src conf
   decoration {
-      active_opacity = 0.75
-      inactive_opacity = 0.75
+      active_opacity = 0.85
+      inactive_opacity = 0.85
       rounding = 2 # original 10
       rounding_power = 4.0  # original 2.0
       blur {
@@ -388,6 +400,8 @@ the more passes, the more you can up the blur_size without noticing artifacts.
   gestures {
       workspace_swipe_create_new = true
       gesture = 3, horizontal, workspace
+      gesture = 3, up, cursorZoom, 1.6, mult
+      gesture = 3, down, cursorZoom, 0.625, mult
    }
 #+end_src
 
@@ -474,6 +488,7 @@ misc {
   layerrule = no_anim on, match:namespace hyprpicker
   layerrule = dim_around on, match:namespace rofi
   layerrule = dim_around on, match:namespace walker
+  layerrule = dim_around on, match:namespace vicinae
   layerrule = animation slide, match:namespace swaync-control-center
   layerrule = blur on, match:namespace swaync-control-center
   layerrule = no_screen_share on, match:namespace swaync-control-center
@@ -537,7 +552,7 @@ misc {
 ** Rofi
 #+begin_src conf
   bindd = $mainMod, D, Launch AppMenu, exec, $appmenu
-  bindd = $mainMod SHIFT, D, Launch AppMenu, exec, hyprlauncher
+  bindd = $mainMod SHIFT, D, Launch AppMenu, exec, vicinae open
   bindd = $mainMod, X, Launch PowerMenu, exec, $powermenu
   bindd = $mainMod, W, Launch WallpaperMenu, exec, $wallpapermenu
   bindd = $mainMod, T, Launch ThemeMenu, exec, $thememenu
@@ -577,6 +592,7 @@ bindmd = SUPER, mouse:273, ResizeWindow, resizewindow
 ** Screenshots
 #+begin_src conf
   bindd = , PRINT, Screenshot, exec, $screenshot smart
+  bindd = SHIFT, PRINT, Screenshot, exec, wayscriber -a
 #+end_src
 
 ** Screencapture
@@ -601,7 +617,7 @@ bindmd = SUPER, mouse:273, ResizeWindow, resizewindow
   bindd = $mainMod CTRL, F, Fullscreen complete, fullscreen, 0
   bindd = $mainMod SHIFT, F, Fullscreen Window in Workspace, fullscreen, 1
   bindd = $mainMod, SPACE, Pop window, exec, ~/.config/hypr/scripts/window-pop.sh
-  bindd = $mainMod SHIFT, SPACE, ToggleSplit, togglesplit, # dwindle
+  bindd = $mainMod SHIFT, SPACE, ToggleSplit, layoutmsg, togglesplit # dwindle
   bindd = $mainMod, P, Pseudo Window, pseudo, # dwindle
   bindd = $mainMod, O, Toggle Opacity, exec, hyprctl dispatch setprop active opaque toggle
   bindd = $mainMod CTRL, SPACE, Pin Window, pin
