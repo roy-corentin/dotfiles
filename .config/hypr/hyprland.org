@@ -9,6 +9,7 @@
   - [[#laptop-screen][Laptop Screen]]
   - [[#work-setup][Work Setup]]
   - [[#home-setup][Home Setup]]
+  - [[#bandung-setup][Bandung Setup]]
   - [[#default-setup][Default Setup]]
   - [[#workspace-layouts][Workspace layouts]]
 - [[#startup][STARTUP]]
@@ -88,14 +89,14 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Laptop Screen
 #+begin_src conf
-    # monitor = eDP-1, 1920x1080@60, 0x0,1
-    monitorv2 {
-      output = eDP-1
-      mode = 2880x1800@60
-      position = 0x0
-      scale = 1.5
+  # monitor = eDP-1, 1920x1080@60, 0x0,1
+  monitorv2 {
+    output = eDP-1
+    mode = 2880x1800@60
+    position = 0x0
+    scale = 1.5
   }
-    workspace = 1, monitor:eDP-1
+  workspace = 1, monitor:eDP-1
 #+end_src
 
 ** Work Setup
@@ -129,6 +130,14 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   monitor = desc:Iiyama North America PL2390 11298JH100680, preferred, -1920x0, 1
   monitor = desc:Iiyama North America PL2390 11298JH100788, preferred, -1920x0, 1
 #+end_src
+** Bandung Setup
+#+begin_src conf
+  monitorv2 {
+    output = desc:Xiaomi Corporation P27FBA-RAGL 5105400272188
+    mode = 1920x1080@60.00Hz
+    position = auto-right
+  }
+#+end_src
 
 ** Default Setup
 #+begin_src conf
@@ -139,7 +148,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 
 ** Workspace layouts
 #+begin_src conf
-  workspace = 4, layout:scrolling
+  workspace = 3, layout:scrolling
   workspace = 5, layout:monocle
 #+end_src
 
@@ -250,7 +259,7 @@ Configure mouse and touchpad here
       }
 
       # Sensitity for mouse/trackpack
-      sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+      sensitivity = 0.20 # -1.0 - 1.0, 0 means no modification.
   }
 #+end_src
 
@@ -260,7 +269,7 @@ Configure mouse and touchpad here
 
   general {
       gaps_in = 5
-      gaps_out = 10
+      gaps_out = 12
       border_size = 1
       layout = dwindle
       col.active_border = $color4
