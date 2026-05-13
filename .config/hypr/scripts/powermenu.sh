@@ -9,8 +9,9 @@ show_power_menu() {
   # The first characters are invisible sort keys.
   local menu_options="\u200B Lock
 \u2060󰜉 Restart
-\u2063󰐥 Shutdown
-\u2063󰠚 Logout"
+\u2060󰐥 Shutdown
+\u2060󰍹 Toggle laptop monitor
+\u2060󰠚 Logout"
 
 # suspend="󰒲  Sleep"
 
@@ -20,6 +21,7 @@ show_power_menu() {
   *Lock*) hyprlock ;;
   *Restart*) systemctl reboot ;;
   *Shutdown*) systemctl poweroff ;;
+  *Toggle*) ~/.config/hypr/scripts/laptop-monitor-toggle.sh ;;
   *Logout*) systemctl poweroff ;;
   esac
 }
