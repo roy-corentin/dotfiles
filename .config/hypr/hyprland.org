@@ -51,7 +51,7 @@
   - [[#apps][Apps]]
   - [[#menu][Menu]]
   - [[#misc-1][Misc]]
-  - [[#some-nice-mouse-binds][Some nice mouse binds]]
+  - [[#mouse][Mouse]]
   - [[#function-keys][Function keys]]
   - [[#screenshots][Screenshots]]
   - [[#screencapture][Screencapture]]
@@ -842,14 +842,20 @@ misc {
 #+end_src
 
 #+begin_src lua :tangle hyprland.lua
-  hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {875, 600} })
+  hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {1276, 750} })
 
-  hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
-  hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen"}, tag = "+floating-window" })
-  hl.window_rule({ match = { class= "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
+  hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin|org.gnome.Nautilus|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
+  hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
+  hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
+  hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = true, size = {1400, 400}, move = { "(window_w*0.5)", "(monitor_h-window_h-50)" }})
 
   hl.window_rule({ match = { title = "(Picture.?in.?[Pp]icture)" }, tag = "+pip" })
   hl.window_rule({ match = { tag = "pip" }, float = true, pin = true, size = {740, 440}, keep_aspect_ratio = true, opacity = "1 1", move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)" } })
+
+  hl.window_rule({ workspace = 1, match = { class = "^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$" } })
+  hl.window_rule({ workspace = 2, match = { class = "(brave-browser|zen$)" } })
+  hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" } })
+  hl.window_rule({ workspace = "special:scratchpad", match = { class = "deezer-desktop" }, tag = "+floating-window" })
 
   hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, no_initial_focus = true, no_dim = true, move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)"  } })
 
@@ -977,6 +983,7 @@ misc {
   hl.bind("SUPER + code:18", hl.dsp.exec_cmd(termapp .. " k9s --logoless"), { description = "K9S" })
   hl.bind("SUPER + M", hl.dsp.exec_cmd(termapp .. " btop"), { description = "Btop" })
   hl.bind("SUPER + V", hl.dsp.exec_cmd(clipboardlist), { description = "Open clipboard" })
+  hl.bind("SUPER + SHIFT + I", hl.dsp.exec_cmd(editorEverywhere), { description = "Editor for every text" })
 #+end_src
 
 ** Menu
@@ -1025,7 +1032,7 @@ misc {
   hl.bind("SUPER + CTRL + W", hl.dsp.exec_cmd(termapp2 .. " impala"), { description = "Wifi controls" })
 #+end_src
 
-** Some nice mouse binds
+** Mouse
 #+begin_src conf
 bindmd = $mainMod, mouse:272, MoveWindow, movewindow
 bindmd = $mainMod, mouse:273, ResizeWindow, resizewindow
@@ -1153,6 +1160,7 @@ bindmd = $mainMod, mouse:273, ResizeWindow, resizewindow
   hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("scratchpad"), { description = "Toggle scratchpad" })
   hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:scratchpad" }), { description = "Move window to scratchpad" })
 #+end_src
+
 ** End Active Session
 #+begin_src conf
   bindd = $mainMod, ESCAPE, Lock, exec, hyprlock
@@ -1209,6 +1217,9 @@ To switch between windows in a floating workspace
   hl.bind("SUPER + L", hl.dsp.focus( { direction = "r" }), { description = "Focus Right" })
   hl.bind("SUPER + K", hl.dsp.focus( { direction = "u" }), { description = "Focus Up" })
   hl.bind("SUPER + J", hl.dsp.focus( { direction = "d" }), { description = "Focus Down" })
+
+  hl.bind("SUPER + SEMICOLON", hl.dsp.focus({ monitor = "+1" }), { description = "Focus next monitor" })
+  hl.bind("SUPER + COMMA", hl.dsp.focus({ monitor = "-1" }), { description = "Focus prev monitor" })
 #+end_src
 
 ** Move Window
@@ -1250,6 +1261,7 @@ To switch between windows in a floating workspace
   hl.bind("SUPER + CTRL + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true, description = "Shrink Window Vertically"})
   hl.bind("SUPER + CTRL + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true, description = "Grow Window Vertically"})
 #+end_src
+
 ** Workspaces
 #+begin_src lua :tangle hyprland.lua
   for workspace = 1, 8 do
@@ -1261,10 +1273,10 @@ To switch between windows in a floating workspace
 #+end_src
 
 #+begin_src lua :tangle hyprland.lua
-  hl.bind("SUPER + SHIFT + ALT + H", hl.dsp.workspace.move({ monitor = "l" }), { description = "Move workspace to left monitor" })
-  hl.bind("SUPER + SHIFT + ALT + L", hl.dsp.workspace.move({ monitor = "r" }), { description = "Move workspace to right monitor" })
-  hl.bind("SUPER + SHIFT + ALT + K", hl.dsp.workspace.move({ monitor = "u" }), { description = "Move workspace to up monitor" })
-  hl.bind("SUPER + SHIFT + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { description = "Move workspace to down monitor" })
+  hl.bind("SUPER + ALT + H", hl.dsp.workspace.move({ monitor = "l" }), { description = "Move workspace to left monitor" })
+  hl.bind("SUPER + ALT + L", hl.dsp.workspace.move({ monitor = "r" }), { description = "Move workspace to right monitor" })
+  hl.bind("SUPER + ALT + K", hl.dsp.workspace.move({ monitor = "u" }), { description = "Move workspace to up monitor" })
+  hl.bind("SUPER + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { description = "Move workspace to down monitor" })
 #+end_src
 
 *** Focus

@@ -15,8 +15,8 @@
 #   - If the window is already floating, it will be removed from the pop layer.
 #   - If the window is not floating, it will be floated, resized, moved/centered, brought to top, and popped.
 
-width=${1:-1300}
-height=${2:-900}
+width=${1:-1276}
+height=${2:-750}
 x=${3:-}
 y=${4:-}
 

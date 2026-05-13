@@ -292,14 +292,20 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "a
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1.79, bezier = "easeOutQuint", style = "slide" })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
 
-hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {875, 600} })
+hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {1276, 750} })
 
-hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen"}, tag = "+floating-window" })
-hl.window_rule({ match = { class= "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
+hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin|org.gnome.Nautilus|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
+hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
+hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
+hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = true, size = {1400, 400}, move = { "(window_w*0.5)", "(monitor_h-window_h-50)" }})
 
 hl.window_rule({ match = { title = "(Picture.?in.?[Pp]icture)" }, tag = "+pip" })
 hl.window_rule({ match = { tag = "pip" }, float = true, pin = true, size = {740, 440}, keep_aspect_ratio = true, opacity = "1 1", move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)" } })
+
+hl.window_rule({ workspace = 1, match = { class = "^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$" } })
+hl.window_rule({ workspace = 2, match = { class = "(brave-browser|zen$)" } })
+hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" } })
+hl.window_rule({ workspace = "special:scratchpad", match = { class = "deezer-desktop" }, tag = "+floating-window" })
 
 hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, no_initial_focus = true, no_dim = true, move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)"  } })
 
@@ -351,6 +357,7 @@ hl.bind("SUPER + CTRL + E", hl.dsp.exec_cmd(editorTerm), { description = "Editor
 hl.bind("SUPER + code:18", hl.dsp.exec_cmd(termapp .. " k9s --logoless"), { description = "K9S" })
 hl.bind("SUPER + M", hl.dsp.exec_cmd(termapp .. " btop"), { description = "Btop" })
 hl.bind("SUPER + V", hl.dsp.exec_cmd(clipboardlist), { description = "Open clipboard" })
+hl.bind("SUPER + SHIFT + I", hl.dsp.exec_cmd(editorEverywhere), { description = "Editor for every text" })
 
 hl.bind("SUPER + D", hl.dsp.exec_cmd(appmenu), { description = "AppMenu" })
 hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(appmenu2), { description = "AppMenu2" })
@@ -432,6 +439,9 @@ hl.bind("SUPER + L", hl.dsp.focus( { direction = "r" }), { description = "Focus 
 hl.bind("SUPER + K", hl.dsp.focus( { direction = "u" }), { description = "Focus Up" })
 hl.bind("SUPER + J", hl.dsp.focus( { direction = "d" }), { description = "Focus Down" })
 
+hl.bind("SUPER + SEMICOLON", hl.dsp.focus({ monitor = "+1" }), { description = "Focus next monitor" })
+hl.bind("SUPER + COMMA", hl.dsp.focus({ monitor = "-1" }), { description = "Focus prev monitor" })
+
 hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l" }), { description = "Move Left"})
 hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r" }), { description = "Move Right"})
 hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u" }), { description = "Move Up"})
@@ -452,10 +462,10 @@ for workspace = 1, 8 do
   hl.bind("SUPER + SHIFT + ALT + " .. key, hl.dsp.window.move({ workspace = tostring(workspace), follow = false }), { description = "Move window silently to workspace " .. workspace })
 end
 
-hl.bind("SUPER + SHIFT + ALT + H", hl.dsp.workspace.move({ monitor = "l" }), { description = "Move workspace to left monitor" })
-hl.bind("SUPER + SHIFT + ALT + L", hl.dsp.workspace.move({ monitor = "r" }), { description = "Move workspace to right monitor" })
-hl.bind("SUPER + SHIFT + ALT + K", hl.dsp.workspace.move({ monitor = "u" }), { description = "Move workspace to up monitor" })
-hl.bind("SUPER + SHIFT + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { description = "Move workspace to down monitor" })
+hl.bind("SUPER + ALT + H", hl.dsp.workspace.move({ monitor = "l" }), { description = "Move workspace to left monitor" })
+hl.bind("SUPER + ALT + L", hl.dsp.workspace.move({ monitor = "r" }), { description = "Move workspace to right monitor" })
+hl.bind("SUPER + ALT + K", hl.dsp.workspace.move({ monitor = "u" }), { description = "Move workspace to up monitor" })
+hl.bind("SUPER + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { description = "Move workspace to down monitor" })
 
 hl.env("GDK_BACKEND","wayland,x11,*")
 hl.env("QT_QPA_PLATFORM","wayland;xcb")
