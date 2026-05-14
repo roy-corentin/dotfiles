@@ -41,6 +41,7 @@ if backend=$(echo -e "none\nwal\nhaishoku\ncolorthief" | rofi -dmenu -mesg 'Sele
         exit
     fi
     wal --cols16 -i "$wallpaper_path" --backend "$backend" --saturate 0.6
+    cp ~/.cache/wal/colors-hypr.lua ~/.config/hypr/colors.lua
     emacsclient -e "(cr/switch-theme 'ewal-doom-vibrant)"
     swaync-client -rs
 fi

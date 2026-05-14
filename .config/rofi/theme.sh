@@ -12,8 +12,8 @@ if theme=$(wal --theme | awk -F ' - ' '/^[[:space:]]*-/ { print $NF }' | rofi -d
     fi
     echo "$theme"
     wal --cols16 --theme "$theme"
+    cp ~/.cache/wal/colors-hypr.lua ~/.config/hypr/colors.lua
     emacsclient -e "(cr/switch-theme '$theme)"
-    killall -SIGUSR2 waybar
     swaync-client -rs
 else
     echo "$theme"
