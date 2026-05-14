@@ -1,0 +1,42 @@
+local wallpaper = "{{wallpaper}}"
+
+local background = "rgb({{background.strip}})"
+local foreground = "rgb({{foreground.strip}})"
+
+local color0 = "rgb({{color0.strip}})"
+local color1 = "rgb({{color1.strip}})"
+local color2 = "rgb({{color2.strip}})"
+local color3 = "rgb({{color3.strip}})"
+local color4 = "rgb({{color4.strip}})"
+local color5 = "rgb({{color5.strip}})"
+local color6 = "rgb({{color6.strip}})"
+local color7 = "rgb({{color7.strip}})"
+local color8 = "rgb({{color8.strip}})"
+local color9 = "rgb({{color9.strip}})"
+local color10 = "rgb({{color10.strip}})"
+local color11 = "rgb({{color11.strip}})"
+local color12 = "rgb({{color12.strip}})"
+local color13 = "rgb({{color13.strip}})"
+local color14 = "rgb({{color14.strip}})"
+local color15 = "rgb({{color15.strip}})"
+
+hl.config({
+    general = {
+        col = {
+            active_border = color4,
+            inactive_border = color8
+        }
+    },
+    group = {
+        col = {
+            border_active = color4,
+            border_inactive = color8
+        },
+        groupbar = {
+            col = {
+                active = color4,
+                inactive = color0
+            }
+        }
+    }
+})
