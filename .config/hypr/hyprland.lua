@@ -120,7 +120,7 @@ hl.config({
 
     touchpad = {
         natural_scroll = false,
-        scroll_factor = 0.8,
+        scroll_factor = 1,
         -- Use two-finger clicks for right-click instead of lower-right corner
         clickfinger_behavior = 1,
     },
@@ -164,8 +164,8 @@ hl.config({
     group = {
         groupbar = {
             render_titles = false,
-            gradients = true,
-            height = 4,
+            gradients = false,
+            height = 5,
         }
     }
 })
@@ -262,6 +262,7 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "a
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1.79, bezier = "easeOutQuint", style = "slide" })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
 
+hl.window_rule({ match = { title = "^float-.*$" }, tag = "+floating-window" })
 hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {1276, 750} })
 
 hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin|org.gnome.Nautilus|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
@@ -270,11 +271,12 @@ hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag
 hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = true, size = {1400, 400}, move = { "(window_w*0.5)", "(monitor_h-window_h-50)" }})
 
 hl.window_rule({ match = { title = "(Picture.?in.?[Pp]icture)" }, tag = "+pip" })
-hl.window_rule({ match = { tag = "pip" }, float = true, pin = true, size = {740, 440}, keep_aspect_ratio = true, opacity = "1 1", move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)" } })
+hl.window_rule({ match = { tag = "pip" }, float = true, pin = true, size = { 600, 338 }, keep_aspect_ratio = true, border_size = 0, opacity = "1 1", move = { "(monitor_w-window_w-10)", "(monitor_h-window_h-10)" } })
+
 
 hl.window_rule({ workspace = 1, match = { class = "^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$" } })
 hl.window_rule({ workspace = 2, match = { class = "(brave-browser|zen$)" } })
-hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" } })
+hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" }, no_initial_focus = false })
 hl.window_rule({ workspace = "special:scratchpad", match = { class = "deezer-desktop" }, tag = "+floating-window" })
 
 hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, no_initial_focus = true, no_dim = true, move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)"  } })
@@ -319,7 +321,7 @@ local screenrecordMenu = "~/.config/hypr/scripts/screenrecord-menu.sh"
 
 hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(term), { description = "Terminal" })
 hl.bind("SUPER + SHIFT + RETURN", hl.dsp.exec_cmd(term2), { description = "Second Terminal" })
-hl.bind("SUPER + CTRL + RETURN", hl.dsp.exec_cmd(term2, {float = true, center = true, size = {800, 500}}), { description = "Second Terminal" })
+hl.bind("SUPER + CTRL + RETURN", hl.dsp.exec_cmd(term2, {float = true, center = true, size = {950, 600}}), { description = "Second Terminal" })
 
 hl.bind("SUPER + E", hl.dsp.exec_cmd(files), { description = "File Manager" })
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd(editor), { description = "Editor" })
@@ -344,8 +346,8 @@ hl.bind("SUPER + CTRL + ALT + T", hl.dsp.exec_cmd([[notify-send -u low "    $
 hl.bind("SUPER + CTRL + ALT + B", hl.dsp.exec_cmd([[notify-send -u low "󰁹    Battery is at $(~/.config/hypr/scripts/battery-remaining.sh)%"]]), { description = "Show battery remaining" })
 
 hl.bind("SUPER + CTRL + A", hl.dsp.exec_cmd(termapp2 .. " wiremix", { float = true, center = true }), { description = "Audio controls" })
-hl.bind("SUPER + CTRL + B", hl.dsp.exec_cmd(termapp2 .. " bluetui", { float = true, center = true }), { description = "Bluetooth controls" })
-hl.bind("SUPER + CTRL + W", hl.dsp.exec_cmd(termapp2 .. " impala"), { description = "Wifi controls" })
+hl.bind("SUPER + CTRL + B", hl.dsp.exec_cmd(termapp2 .. " bluetui", { float = true, center = true, size = {800, 500} }), { description = "Bluetooth controls" })
+hl.bind("SUPER + CTRL + W", hl.dsp.exec_cmd(termapp2 .. " impala", { float = true, center = true }), { description = "Wifi controls" })
 
 hl.config({
     binds = {
@@ -412,10 +414,10 @@ hl.bind("SUPER + J", hl.dsp.focus( { direction = "d" }), { description = "Focus 
 hl.bind("SUPER + SEMICOLON", hl.dsp.focus({ monitor = "+1" }), { description = "Focus next monitor" })
 hl.bind("SUPER + COMMA", hl.dsp.focus({ monitor = "-1" }), { description = "Focus prev monitor" })
 
-hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l" }), { description = "Move Left"})
-hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r" }), { description = "Move Right"})
-hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u" }), { description = "Move Up"})
-hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d" }), { description = "Move Down"})
+hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l", group_aware = true }), { description = "Move Left"})
+hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r", group_aware = true }), { description = "Move Right"})
+hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u", group_aware = true }), { description = "Move Up"})
+hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d", group_aware = true }), { description = "Move Down"})
 
 hl.bind("SUPER + B", hl.dsp.group.prev(), { description = "Previous In Group" })
 hl.bind("SUPER + SHIFT + B", hl.dsp.group.next(), { description = "Next In Group" })
