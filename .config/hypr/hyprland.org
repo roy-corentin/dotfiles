@@ -29,6 +29,7 @@
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
   - [[#hyprcursor][Hyprcursor]]
+  - [[#noctalia][Noctalia]]
 - [[#color][Color]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
@@ -193,7 +194,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 #+end_src
 
 ** Status-Bar
-#+begin_src lua
+#+begin_src lua :tangle no
     hl.exec_cmd("~/.config/hypr/scripts/status_bar.sh")
 #+end_src
 
@@ -218,21 +219,25 @@ Make sure you have installed =hyprshade=
 #+begin_src lua
   hl.exec_cmd("hyprshade auto")
 #+end_src
+
 ** Bluetooth
 Make sure you have installed =blueman=
 #+begin_src lua
   hl.exec_cmd("blueman-applet")
 #+end_src
+
 ** Hypridle
 #+begin_src lua
   hl.exec_cmd("hypridle")
 #+end_src
+
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src lua
   -- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
   hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 #+end_src
+
 ** Wal
 #+begin_src lua
   hl.exec_cmd("wal -R")
@@ -240,7 +245,7 @@ Be careful to use the appropriate =polkit= and the right =path=
 
 ** Network-Manager
 Make sure you havc installed =network-manager-applet=
-#+begin_src lua
+#+begin_src lua :tangle no
   hl.exec_cmd("nm-applet --indicator")
 #+end_src
 
@@ -249,13 +254,20 @@ Make sure you havc installed =network-manager-applet=
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")
 #+end_src
+
 ** Gtk
-#+begin_src lua
+#+begin_src lua :tangle no
   hl.exec_cmd("~/.config/hypr/scripts/gtkthemes-bkp.sh")
 #+end_src
+
 ** Hyprcursor
 #+begin_src lua
   hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
+#+end_src
+
+** Noctalia
+#+begin_src lua
+  hl.exec_cmd("qs -c noctalia-shell")
 #+end_src
 
 #+begin_src lua
@@ -338,7 +350,8 @@ Configuration of grouped window
           groupbar = {
               render_titles = false,
               gradients = false,
-              height = 5,
+              height = 10,
+              indicator_height = 7
           }
       }
   })

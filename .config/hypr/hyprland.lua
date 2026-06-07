@@ -77,8 +77,6 @@ hl.exec_cmd("hyprpaper")
 
 hl.exec_cmd("hyprsunset")
 
-hl.exec_cmd("~/.config/hypr/scripts/status_bar.sh")
-
 require("exec")
 
 hl.exec_cmd("vicinae server")
@@ -96,14 +94,12 @@ hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 
 hl.exec_cmd("wal -R")
 
-hl.exec_cmd("nm-applet --indicator")
-
 hl.exec_cmd("wl-paste --type text --watch cliphist store")
 hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
-hl.exec_cmd("~/.config/hypr/scripts/gtkthemes-bkp.sh")
-
 hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
+
+hl.exec_cmd("qs -c noctalia-shell")
 
 end)
 
@@ -166,7 +162,8 @@ hl.config({
         groupbar = {
             render_titles = false,
             gradients = false,
-            height = 5,
+            height = 10,
+            indicator_height = 7
         }
     }
 })
