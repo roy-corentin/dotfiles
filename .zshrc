@@ -1,10 +1,3 @@
-# Wal
-# (cat ~/.cache/wal/sequences &)
-# source ~/.cache/wal/colors.sh
-
-# p10k config
-# source ~/.zshrc_p10k
-
 # Use powerline
 USE_POWERLINE="true"
 
@@ -48,39 +41,30 @@ eval "$(dircolors -b)"
 export PATH="$HOME/.local/bin:$PATH"
 
 # export local gem
-# export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
+export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
 # export GEM_PATH="$GEM_HOME/gems:$HOME/.local/share/gem/ruby/3.3.0/gems"
-# export PATH="$GEM_HOME/bin:$PATH"
+export PATH="$GEM_HOME/bin:$PATH"
 
 export EDITOR=/usr/bin/nano
 export VISUAL=/usr/bin/nano
 
-alias zshconfig="nvim ~/.zshrc"
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+alias cl="clear"
 alias cp="cp -i"     # Confirm before overwriting something
 alias df='df -h'     # Human-readable sizes
 alias free='free -m' # Show sizes in MB
-alias cl="clear"
-alias ls='ls $LS_OPTIONS'
-alias la="eza -l -g -a --icons=always"
-alias l="eza -l -g --icons=always"
-alias neo=fastfetch
-alias eserv="emacs --daemon"
-alias eclient="emacsclient -c -n"
 alias hx="helix"
+alias l="eza -l -g --icons=always"
+alias la="eza -l -g -a --icons=always"
+alias ls='ls $LS_OPTIONS'
+alias neo=fastfetch
+alias y=yazi
 alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
+alias zshconfig="nvim ~/.zshrc"
 
 source "$HOME/.emacs_alias.zsh"
-
-# Yazi
-alias y=yazi
-function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
 
 source "$HOME/.git_alias.zsh"
 
@@ -133,3 +117,6 @@ eval "$(starship init zsh)"
 
 # Docker
 export COMPOSE_BAKE=true
+
+# Emacs IGC
+export EMACS_IGC_GENS="256000 0.8 256000 0.6 256000 0.4 512000 0.2"
