@@ -1,6 +1,6 @@
 #+title: Hyprland
 #+AUTHOR Corentin ROY (JilkoniX)
-#+PROPERTY: header-args :tangle hyprland.conf
+#+PROPERTY: header-args :tangle hyprland.lua
 #+STARTUP: showeverything
 
 * TABLE OF CONTENT :TOC:
@@ -16,7 +16,6 @@
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
   - [[#bluelight-filter][BlueLight Filter]]
-  - [[#notifications][Notifications]]
   - [[#status-bar][Status-Bar]]
   - [[#startup-script][Startup Script]]
   - [[#runner][Runner]]
@@ -58,17 +57,12 @@
   - [[#image-to-text][Image To Text]]
   - [[#status-bar-1][Status Bar]]
   - [[#hyprland][Hyprland]]
-  - [[#end-active-session][End Active Session]]
-  - [[#window-split-ratio][Window Split Ratio]]
   - [[#tab-cycle][Tab Cycle]]
   - [[#focus][Focus]]
   - [[#move-window][Move Window]]
   - [[#focus-group-window][Focus Group Window]]
   - [[#resize-window][Resize Window]]
   - [[#workspaces][Workspaces]]
-  - [[#clipboard-1][Clipboard]]
-  - [[#zoom][Zoom]]
-  - [[#notification][Notification]]
 - [[#screen-sharing][SCREEN-SHARING]]
 - [[#defaul_apps][DEFAUL_APPS]]
 - [[#debug][DEBUG]]
@@ -92,18 +86,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 ~workspace = eDP-1,1~
 
 ** Laptop Screen
-#+begin_src conf
-  # monitor = eDP-1, 1920x1080@60, 0x0,1
-  monitorv2 {
-    output = eDP-1
-    mode = 2880x1800@60
-    position = 0x0
-    scale = 1.5
-  }
-  workspace = 1, monitor:eDP-1
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.monitor({
       output = "eDP-1",
       mode = "2880x1800@60",
@@ -114,31 +97,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 #+end_src
 
 ** Work Setup
-#+begin_src conf
-  monitorv2 {
-    output = desc:AOC Q3279WG5B 0x0000652C
-    mode = preferred
-    position = auto-right
-    scale = 1
-  }
-  monitorv2 {
-    output = desc:AOC U32E2WG6 QELM5JA000186
-    mode = 3840x2160@60
-    position = auto-right
-    scale = 1.5
-    cm = hdr
-    sdrbrightness = 1.2
-    sdrsaturation = 0.98
-  }
-  monitorv2 {
-    output = desc:LG Electronics LG TV
-    mode = preferred
-    position = auto-up
-  }
-  monitor = desc:AOC Q3279WG5B 0x000067FB, 2560x1440@60, 1920x0, 1
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.monitor({
     output = "desc:AOC Q3279WG5B 0x0000652C",
     mode = "preferred",
@@ -171,12 +130,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   })
 #+end_src
 ** Home Setup
-#+begin_src conf
-  monitor = desc:Iiyama North America PL2390 11298JH100680, preferred, -1920x0, 1
-  monitor = desc:Iiyama North America PL2390 11298JH100788, preferred, -1920x0, 1
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.monitor({
       output = "desc:Iiyama North America PL2390 11298JH100680",
       mode = "preferred",
@@ -192,15 +146,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   })
 #+end_src
 ** Bandung Setup
-#+begin_src conf
-  monitorv2 {
-    output = desc:Xiaomi Corporation P27FBA-RAGL 5105400272188
-    mode = 1920x1080@60.00Hz
-    position = auto-left
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.monitor({
     output = "desc:Xiaomi Corporation P27FBA-RAGL 5105400272188",
     mode = "1920x1080@60.00Hz",
@@ -210,13 +156,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 #+end_src
 
 ** Default Setup
-#+begin_src conf
-  monitor = ,preferred, auto, 1
-  # monitor = ,preferred, auto, 1, mirror, eDP-1 # Mirror
-  workspace = 2, monitor:HDMI-A-1
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.monitor({
       output = "",
       mode = "prefered",
@@ -226,12 +166,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", default = true })
 #+end_src
 ** Workspace layouts
-#+begin_src conf
-  workspace = 4, layout:scrolling
-  workspace = 5, layout:scrolling
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.workspace_rule({ workspace = "4", layout = "scrolling" })
   hl.workspace_rule({ workspace = "5", layout = "scrolling" })
 #+end_src
@@ -239,191 +174,100 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 * STARTUP
 =dbus-update-activation-environment...= , =--user import-environment...= and the script called =desktop-portals=  are found online and known to save time on laggy app on start and other good behaviors
 
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.on("hyprland.start", function ()
 #+end_src
 ** Desktop-Portals
-#+begin_src conf
-  exec-once = ~/.config/hypr/scripts/desktop-portals.sh
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
     hl.exec_cmd("~/.config/hypr/scripts/desktop-portals.sh")
 #+end_src
 
 ** Wallpaper
-#+begin_src conf
-  exec-once = hyprpaper
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
     hl.exec_cmd("hyprpaper")
 #+end_src
 
 ** BlueLight Filter
-#+begin_src conf
- exec-once = hyprsunset
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
     hl.exec_cmd("hyprsunset")
 #+end_src
 
-** Notifications
-#+begin_src conf
-  exec = ~/.config/hypr/scripts/notifications
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
-    hl.exec_cmd("~/.config/hypr/scripts/notifications")
-#+end_src
-
 ** Status-Bar
-#+begin_src conf
-  exec-once = ~/.config/hypr/scripts/status_bar.sh
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
     hl.exec_cmd("~/.config/hypr/scripts/status_bar.sh")
 #+end_src
 
 ** Startup Script
-#+begin_src conf
-  source = ~/.config/hypr/exec.conf
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   require("exec")
 #+end_src
 
 ** Runner
 Start =vicinae= server
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("vicinae server")
 #+end_src
 
 ** Emacs server
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("emacs --init-directory ~/.config/light_emacs --daemon")
 #+end_src
 
 ** Blue-Light
 Make sure you have installed =hyprshade=
-#+begin_src conf
-  exec-once = hyprshade auto
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("hyprshade auto")
 #+end_src
 ** Bluetooth
 Make sure you have installed =blueman=
-#+begin_src conf
-  exec-once = blueman-applet
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("blueman-applet")
 #+end_src
 ** Hypridle
-#+begin_src conf
-  exec-once = hypridle
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("hypridle")
 #+end_src
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
-#+begin_src conf :tangle no
-  exec-once=/usr/lib/polkit-1/polkitd
-#+end_src
-
-#+begin_src conf
-  exec-once=/usr/lib/polkit-kde-authentication-agent-1
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
+  -- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
   hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 #+end_src
 ** Wal
-#+begin_src conf
-exec-once = wal -R
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("wal -R")
 #+end_src
 
 ** Network-Manager
 Make sure you havc installed =network-manager-applet=
-#+begin_src conf
-exec-once = nm-applet --indicator
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("nm-applet --indicator")
 #+end_src
 
 ** Clipboard
-#+begin_src conf
-exec-once = wl-paste --type text --watch cliphist store #Stores only text data
-exec-once = wl-paste --type image --watch cliphist store #Stores only image data
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")
 #+end_src
 ** Gtk
-#+begin_src conf :tangle no
-exec-once = ~/.config/hypr/scripts/gtkthemes-bkp
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua :tangle no
+#+begin_src lua
   hl.exec_cmd("~/.config/hypr/scripts/gtkthemes-bkp.sh")
 #+end_src
 ** Hyprcursor
-#+begin_src conf
-exec-once = hyprctl setcursor Qogir-Dark 24
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
 #+end_src
 
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   end)
 #+end_src
 * Color
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   require("colors")
 #+end_src
 * INPUT
 Configure mouse and touchpad here
-#+begin_src conf
-  input {
-      kb_layout = fr
-      # kb_variant =
-      # kb_model =
-      # kb_options =
-      # kb_rules =
-      follow_mouse = 1
-      numlock_by_default = 1
-
-      touchpad {
-          natural_scroll = no
-          scroll_factor = 0.8
-          # Use two-finger clicks for right-click instead of lower-right corner
-          clickfinger_behavior = 1
-      }
-
-      # Sensitity for mouse/trackpack
-      sensitivity = 0.25 # -1.0 - 1.0, 0 means no modification.
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
     input = {
       kb_layout = "fr",
@@ -436,7 +280,7 @@ Configure mouse and touchpad here
 
       touchpad = {
           natural_scroll = false,
-          scroll_factor = 1,
+          scroll_factor = 1.5,
           -- Use two-finger clicks for right-click instead of lower-right corner
           clickfinger_behavior = 1,
       },
@@ -448,28 +292,7 @@ Configure mouse and touchpad here
 #+end_src
 
 * GENERAL
-#+begin_src conf
-  source = ~/.cache/wal/colors-hyprland.conf
-
-  general {
-      gaps_in = 5
-      gaps_out = 12
-      border_size = 1
-      layout = dwindle
-      col.active_border = $color4
-      col.inactive_border = $color8
-      allow_tearing = false
-      snap {
-          enabled = true
-          window_gap = 5
-          border_overlap = false
-          respect_gaps = true
-      }
-      resize_on_border = true
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       general = {
           gaps_in = 5,
@@ -489,7 +312,7 @@ Configure mouse and touchpad here
 #+end_src
 
 * GESTURES
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       gestures = {
           workspace_swipe_create_new = true
@@ -498,14 +321,7 @@ Configure mouse and touchpad here
 #+end_src
 * CURSOR
 Make the cursor disappear after 3 seconds
-#+begin_src conf
-  cursor {
-    inactive_timeout = 3
-    enable_hyprcursor = true
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       cursor = {
           inactive_timeout = 3,
@@ -516,23 +332,7 @@ Make the cursor disappear after 3 seconds
 
 * GROUP
 Configuration of grouped window
-
-#+begin_src conf
-  group {
-      col.border_active = $color4 $color6 45deg
-      col.border_inactive = $color8
-
-      groupbar {
-         render_titles = false
-         gradients = true
-         height = 4
-         col.active = $color4
-         col.inactive = $color0
-      }
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       group = {
           groupbar = {
@@ -551,30 +351,7 @@ Your blur =amount= is =blur_size * blur_passes= , but high blur_size (over aroun
 if you want heavy blur, you need to up the blur_passes.
 the more passes, the more you can up the blur_size without noticing artifacts.
 
-#+begin_src conf
-  decoration {
-      active_opacity = 0.90
-      inactive_opacity = 0.90
-      rounding = 2          # original 10
-      rounding_power = 2.0  # original 2.0
-      blur {
-          enabled = true
-          new_optimizations = true
-          size = 10  # minimum 1
-          passes = 2 # minimum 1, more passes = more resource intensive.
-      }
-      shadow {
-          enabled = false
-          range = 8
-          offset = 0 0
-          render_power = 1
-      }
-      dim_inactive = true
-      dim_strength = 0.08
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       decoration = {
           active_opacity = 0.9,
@@ -599,14 +376,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 #+end_src
 
 * RENDER
-#+begin_src conf
-  render {
-      cm_enabled = true # default value
-      cm_auto_hdr = 2
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       render = {
           cm_enabled = true,
@@ -618,16 +388,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 #+end_src
 
 * DWINDLE
-#+begin_src conf
-  dwindle {
-      force_split = 2
-      preserve_split = true
-      smart_split = false
-      precise_mouse_move = true
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       dwindle = {
           force_split = 2,
@@ -638,16 +399,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
   })
 #+end_src
 * MASTER
-#+begin_src conf
-  master {
-      new_on_top = false
-      orientation = left
-      center_master_fallback = left
-      always_keep_position = false
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       master = {
           new_on_top = false,
@@ -659,16 +411,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 #+end_src
 
 * MISC
-#+begin_src conf
-misc {
-  disable_hyprland_logo = true
-  disable_splash_rendering = true
-  mouse_move_enables_dpms = true
-  vfr = false
-}
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       misc = {
           disable_hyprland_logo = true,
@@ -682,7 +425,7 @@ misc {
 #+end_src
 
 * GESTURE
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       gestures = {
           workspace_swipe_create_new = true
@@ -695,41 +438,7 @@ misc {
 #+end_src
 
 * ANMATIONS
-#+begin_src conf
-   animations {
-    enabled = true
-
-    #        NAME,         X0,   Y0,   X1,   Y1
-    bezier = linear,        0,    0,    1,    1
-    bezier = md3_standard,  0.2,  0,    0,    1
-    bezier = md3_decel,     0.05, 0.7,  0.1,  1
-    bezier = md3_accel,     0.3,  0,    0.8,  0.15
-    bezier = overshot,      0.05, 0.9,  0.1,  1.1
-    bezier = crazyshot,     0.1,  1.5,  0.76, 0.92
-    bezier = hyprnostretch, 0.05, 0.9,  0.1,  1.0
-    bezier = menu_decel,    0.1,  1,    0,    1
-    bezier = menu_accel,    0.38, 0.04, 1,    0.07
-    bezier = easeInOutCirc, 0.85, 0,    0.15, 1
-    bezier = easeOutCirc,   0,    0.55, 0.45, 1
-    bezier = easeOutExpo,   0.16, 1,    0.3,  1
-    bezier = softAcDecel,   0.26, 0.26, 0.15, 1
-    bezier = md2,           0.4,  0,    0.2,  1 # use with .2s duration
-
-    #           NAME,             ONOFF, SPEED, CURVE,        [STYLE]
-    animation = windows,          1,     3,     softAcDecel
-    animation = windowsIn,        1,     3,     md3_decel,    popin 0%
-    animation = windowsOut,       1,     3,     md3_accel,    popin 0%
-    animation = border,           1,     10,    default
-    animation = fade,             1,     3,     md3_decel
-    animation = layersIn,         1,     3,     md2,          popin
-    animation = layersOut,        1,     3,     md2,          popin
-    animation = workspaces,       1,     2,     md3_standard, slide
-    animation = specialWorkspace, 1,     3,     md3_decel,    slidevert
-    animation = zoomFactor,       1,     10,    crazyshot
-  }
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
   hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
   hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
@@ -754,65 +463,7 @@ misc {
 #+end_src
 
 * WINDOW RULES
-#+begin_src conf
-  # Floating windows
-  windowrule = float on, match:title ^(float-.*)$
-  windowrule = size 50% 50%, match:title ^(float-.*)$
-  windowrule = tag +floating-window, match:title ^(float-.*)$
-
-  windowrule = float on, match:tag floating-window
-  windowrule = center on, match:tag floating-window
-  windowrule = size 875 600, match:tag floating-window
-
-  windowrule = tag +floating-window, match:class (blueberry.py|blueman-manager|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper)
-  windowrule = tag +floating-window, match:class (xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen), match:title ^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)
-
-  windowrule = no_screen_share on, match:class ^(Bitwarden)$
-  windowrule = tag +floating-window, match:class ^(Bitwarden)$
-
-  # Popped window rounding
-  windowrule = rounding 8, match:tag pop
-
-  # Gnome Settings
-  windowrule = float on, match:class ^(org.gnome.Settings)$
-  windowrule = center on, match:class ^(org.gnome.Settings)$
-  windowrule = size 1280 720, match:class ^(org.gnome.Settings)$
-
-  # Browser
-  windowrule = workspace 2, match:class (brave-browser|zen$)
-
-  # Picture-in-picture overlays
-  windowrule = tag +pip, match:title (Picture.?in.?[Pp]icture)
-  windowrule = float on, match:tag pip
-  windowrule = pin on, match:tag pip
-  windowrule = size 740 440, match:tag pip
-  windowrule = keep_aspect_ratio on, match:tag pip
-  windowrule = border_size 0, match:tag pip
-  windowrule = opacity 1 1, match:tag pip
-  windowrule = move (monitor_w-window_w-10) (monitor_h-window_h-10), match:tag pip
-
-  # Emacs
-  windowrule = float on, match:class ^(emacs)$, match:title ^(Ediff.*|emacs-float)$
-  windowrule = size 780 410, match:class ^(emacs)$, match:title ^(Ediff.*)$
-  windowrule = move (monitor_w-window_w-10) (monitor_h-window_h-10), match:class ^(emacs)$, match:title ^(Ediff.*)$
-
-  # Message App
-  windowrule = workspace 1, match:class ^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$
-
-  # Webcam overlay for screen recording
-  windowrule = float on, match:title WebcamOverlay
-  windowrule = pin on, match:title WebcamOverlay
-  windowrule = no_initial_focus on, match:title WebcamOverlay
-  windowrule = no_dim on, match:title WebcamOverlay
-  windowrule = move (monitor_w-window_w-10) (monitor_h-window_h-10), match:title WebcamOverlay # There's a typo in the hyprland rule so 100%-w on the height param is actually correct here
-
-  # All
-  windowrule = opaque 1, match:class ^(.*)$
-  windowrule = opaque 0, match:class ^(kitty|Alacritty|com.mitchellh.ghostty)$
-  windowrule = idle_inhibit fullscreen, match:class .*
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.window_rule({ match = { title = "^float-.*$" }, tag = "+floating-window" })
   hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {1276, 750} })
 
@@ -827,7 +478,7 @@ misc {
 
   hl.window_rule({ workspace = 1, match = { class = "^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$" } })
   hl.window_rule({ workspace = 2, match = { class = "(brave-browser|zen$)" } })
-  hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" }, no_initial_focus = false })
+  hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" } })
   hl.window_rule({ workspace = "special:scratchpad", match = { class = "deezer-desktop" }, tag = "+floating-window" })
 
   hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, no_initial_focus = true, no_dim = true, move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)"  } })
@@ -837,19 +488,7 @@ misc {
 #+end_src
 
 * LAYERRULES
-#+begin_src conf
-  layerrule = no_anim on, match:namespace selection
-  layerrule = no_anim on, match:namespace wayfreeze
-  layerrule = no_anim on, match:namespace hyprpicker
-  layerrule = dim_around on, match:namespace rofi
-  layerrule = dim_around on, match:namespace walker
-  layerrule = dim_around on, match:namespace vicinae
-  layerrule = animation slide, match:namespace swaync-control-center
-  layerrule = blur on, match:namespace swaync-control-center
-  layerrule = no_screen_share on, match:namespace swaync-control-center
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.layer_rule({ match = { namespace = "(selection|wayfreeze|hyprpicker)" }, no_anim = true })
   hl.layer_rule({ match = { namespace = "(rofi|walker|vicinae)" }, dim_around = true })
   hl.layer_rule({ match = { namespace = "swaync-control-center" }, animation = "slide", blur = true, no_screen_share = true })
@@ -859,40 +498,7 @@ misc {
 - ~d~ flag for description
 
 ** Variable
-#+begin_src conf
-  # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-  $mainMod = SUPER
-
-  $term = uwsm-app -- ghostty +new-window
-  $term2 = uwsm-app -- kitty
-  $termapp = ghostty -e +new-window
-  $wallpapermenu = ~/.config/rofi/wallpaper.sh
-  $thememenu = ~/.config/rofi/theme.sh
-  $appmenu = vicinae toggle
-  $appmenu2 = ~/.config/rofi/appmenu.sh
-  $clipboardlist = ~/.config/rofi/clipboardlist.sh
-  $powermenu = ~/.config/hypr/scripts/powermenu.sh
-  $volume = ~/.config/hypr/scripts/volume.sh
-  $notificationmenu = swaync-client -t
-  $brightness = ~/.config/hypr/scripts/brightness.sh
-  $lockscreen = hyprlock
-  $sleep = ~/.config/hypr/scripts/sleep.sh
-  $suspend = ~/.config/hypr/scripts/suspend.sh
-  $wlogout = ~/.config/hypr/scripts/wlogout.sh
-  $colorpicker = ~/.config/hypr/scripts/colorpicker.sh
-  $files = uwsm-app -- dolphin
-  $editor = uwsm-app -- emacsclient -c -n -a 'emacs'
-  $editor-term = $term -e emacsclient -t -a 'emacs -nw'
-  $editor-everywhere = emacsclient --eval '(thanos/type)'
-
-  $browser = uwsm-app -- zen-browser
-  $help_keybind = ~/.config/hypr/scripts/show_keybind.sh
-  $screenshot = ~/.config/hypr/scripts/screenshot.sh
-  $screenrecord = ~/.config/hypr/scripts/screenrecord.sh
-  $screenrecord-menu = ~/.config/hypr/scripts/screenrecord-menu.sh
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   local term = "uwsm-app -- ghostty"
   local term2 = "uwsm-app -- kitty"
   local termapp = "uwsm-app -- ghostty +new-window -e"
@@ -926,30 +532,14 @@ misc {
 #+end_src
 
 ** Terminal
-#+begin_src conf
-  bindd = $mainMod, Return, Launch Terminal, exec, $term
-  bindd = $mainMod SHIFT, Return, Launch Second Terminal, exec, $term2
-  bindd = $mainMod CTRL, Return, Launch Floating Terminal, exec, [float; center; size 950 600] $term2
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(term), { description = "Terminal" })
   hl.bind("SUPER + SHIFT + RETURN", hl.dsp.exec_cmd(term2), { description = "Second Terminal" })
   hl.bind("SUPER + CTRL + RETURN", hl.dsp.exec_cmd(term2, {float = true, center = true, size = {950, 600}}), { description = "Second Terminal" })
 #+end_src
 
 ** Apps
-#+begin_src conf
-  bindd = $mainMod, E, Launch File Manager, exec, $files
-  bindd = $mainMod SHIFT, E, Launch Editor , exec, $editor
-  bindd = $mainMod CTRL, E, Launch Terminal Editor, exec, $editor-term
-  bindd = $mainMod SHIFT, I, Launch Editor Popup, exec, $editor-everywhere
-  bindd = $mainMod SHIFT, W, Launch Browser, exec, $browser
-  bindd = $mainMod, ccedilla, Launch K9s, exec, $termapp k9s --logoless
-  bindd = $mainMod, m, Launch Btop, exec, $termapp btop
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + E", hl.dsp.exec_cmd(files), { description = "File Manager" })
   hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd(editor), { description = "Editor" })
   hl.bind("SUPER + CTRL + E", hl.dsp.exec_cmd(editorTerm), { description = "Editor in Term" })
@@ -960,16 +550,7 @@ misc {
 #+end_src
 
 ** Menu
-#+begin_src conf
-  bindd = $mainMod, D, Launch AppMenu, exec, $appmenu
-  bindd = $mainMod SHIFT, D, Launch AppMenu, exec, vicinae open
-  bindd = $mainMod, X, Launch PowerMenu, exec, $powermenu
-  bindd = $mainMod, W, Launch WallpaperMenu, exec, $wallpapermenu
-  bindd = $mainMod, T, Launch ThemeMenu, exec, $thememenu
-  bindd = $mainMod SHIFT, Comma, Launch HelpMenu, exec, pkill rofi || $help_keybind
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + D", hl.dsp.exec_cmd(appmenu), { description = "AppMenu" })
   hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(appmenu2), { description = "AppMenu2" })
   hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
@@ -980,20 +561,7 @@ misc {
 #+end_src
 
 ** Misc
-#+begin_src conf
-  bindd = $mainMod, C, ColorPicker, exec, $colorpicker
-  bindd = CTRL ALT,L, Suspend, exec, $suspend
-
-  bindd = $mainMod CTRL ALT, T, Show time, exec, notify-send "    $(date +"%A %H:%M  —  %d %B W%V %Y")"
-  bindd = $mainMod CTRL ALT, B, Show battery remaining, exec, notify-send "󰁹    Battery is at $(~/.config/hypr/scripts/battery-remaining.sh)%"
-
-  # Control panels
-  bindd = $mainMod CTRL, A, Audio controls, exec, [float; center; size 950 600] $termapp wiremix
-  bindd = $mainMod CTRL, B, Bluetooth controls, exec, [float; center; size 950 600] $termapp bluetui
-  bindd = $mainMod CTRL, W, Wifi controls, exec, [float; center; size 950 600] $termapp impala
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + C", hl.dsp.exec_cmd(colorpicker), { description = "ColorPicker" })
   hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd(suspend), { description = "Suspend" })
 
@@ -1006,12 +574,7 @@ misc {
 #+end_src
 
 ** Mouse
-#+begin_src conf
-bindmd = $mainMod, mouse:272, MoveWindow, movewindow
-bindmd = $mainMod, mouse:273, ResizeWindow, resizewindow
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.config({
       binds = {
           drag_threshold = 10 -- Fire a drag event only after dragging for more than 10px
@@ -1024,23 +587,7 @@ bindmd = $mainMod, mouse:273, ResizeWindow, resizewindow
 
 ** Function keys
 - ~e~ flag is used to repeat cmd when hold
-#+begin_src conf
-  bindeld = ,XF86MonBrightnessUp, Raise Brightness, exec, $brightness --inc
-  bindeld = ,XF86MonBrightnessDown, Lower Brightness, exec, $brightness --dec
-
-  binded = , XF86AudioRaiseVolume, Raise Volume, exec, $volume --inc
-  binded = , XF86AudioLowerVolume, Lower Volume, exec, $volume --dec
-  bindd = , XF86AudioMute, Toggle Volume, exec, $volume --toggle
-  bindd = , XF86AudioMicMute, Toggle Mic , exec, $volume --toggle-mic
-
-  bindld = , XF86AudioNext, Next Track, exec, playerctl next
-  bindld = , XF86AudioPause, Pause Media, exec, playerctl play-pause
-  bindld = , XF86AudioPlay, Pause Media, exec, playerctl play-pause
-  bindld = , XF86AudioPrev, Previous Track, exec, playerctl previous
-  bindld = , XF86AudioStop, Stop Track, exec, playerctl stop
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(brightness .. " --inc"), { locked = true, repeating = true, description = "Raise Brightness" })
   hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(brightness .. " --dec"), { locked = true, repeating = true, description = "Lower Brightness" })
 
@@ -1057,66 +604,27 @@ bindmd = $mainMod, mouse:273, ResizeWindow, resizewindow
 #+end_src
 
 ** Screenshots
-#+begin_src conf
-  bindd = , PRINT, Screenshot, exec, $screenshot smart
-  bindd = SHIFT, PRINT, Screenshot, exec, wayscriber -a
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("PRINT", hl.dsp.exec_cmd(screenshot .. " smart"), { description = "Screenshot Smart"})
   hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("wayscriber -a"), { description = "Screenshot Edit"})
 #+end_src
 
 ** Screencapture
-#+begin_src conf
-  bindd = $mainMod CTRL, S, Start Capture, exec, $screenrecord-menu
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + CTRL + S", hl.dsp.exec_cmd(screenrecordMenu), { description = "Start Capture" })
 #+end_src
 ** Image To Text
-#+begin_src conf
-  bindd = $mainMod SHIFT, T, Image to Text, exec, ~/.config/hypr/scripts/image-to-text.sh
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/image-to-text.sh"), { description = "Image To Text" })
 #+end_src
 
 ** Status Bar
-#+begin_src conf
-  bindd = $mainMod CTRL, W, Toggle Waybar, exec, pkill -SIGUSR1 waybar
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + SHIFT + CTRL + W", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"), { description = "Toggle Waybar" })
 #+end_src
 
 ** Hyprland
-#+begin_src conf
-  bindd = $mainMod, Q, Kill Active, killactive,
-  bindd = $mainMod, F, Fullscreen, fullscreen, 2
-  bindd = $mainMod CTRL, F, Fullscreen complete, fullscreen, 0
-  bindd = $mainMod SHIFT, F, Fullscreen Window in Workspace, fullscreen, 1
-  bindd = $mainMod, SPACE, Pop window, exec, ~/.config/hypr/scripts/window-pop.sh
-  bindd = $mainMod SHIFT, SPACE, ToggleSplit, layoutmsg, togglesplit # dwindle
-  bindd = $mainMod, P, Pseudo Window, pseudo, # dwindle
-  bindd = $mainMod, O, Toggle Opacity, exec, hyprctl dispatch setprop active opaque toggle
-  bindd = $mainMod CTRL, SPACE, Pin Window, pin
-  bindd = $mainMod, G, Toggle Group, togglegroup
-  bindd = SUPER ALT, G, Move active window out of group, moveoutofgroup
-  bindd = $mainMod SHIFT, C, Enable CompactMode, exec, ~/.config/hypr/scripts/compactmode.sh
-  bindd = $mainMod, F1, Enable GameMode, exec, ~/.config/hypr/scripts/gamemode.sh
-  bindd = $mainMod ALT, apostrophe, Switch Layout, exec, hyprctl keyword general:layout "$(hyprctl getoption general:layout | grep -q 'dwindle' && echo 'master' || echo 'dwindle')" #! @description: "Toggle between dwindle and master layout"; @windows;
-
-  # Example special workspace (scratchpad)
-
-  bindd = $mainMod, S, Toggle Magic Workspace, togglespecialworkspace, magic
-  bindd = $mainMod SHIFT, S, Move Window to Magic Workspace, movetoworkspace, special:magic
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + Q", hl.dsp.window.close(), { description = "Kill Active"})
   hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/window-pop.sh"), { description = "Pop window" })
   hl.bind("SUPER + SHIFT + SPACE", hl.dsp.layout("togglesplit"), { description = "Toggle window split" })
@@ -1134,30 +642,10 @@ bindmd = $mainMod, mouse:273, ResizeWindow, resizewindow
   hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:scratchpad" }), { description = "Move window to scratchpad" })
 #+end_src
 
-** End Active Session
-#+begin_src conf
-  bindd = $mainMod, ESCAPE, Lock, exec, hyprlock
-  bindd = $mainMod SHIFT, ESCAPE, Suspend, exec, systemctl suspend
-  bindd = $mainMod ALT, ESCAPE, Exit, exit,
-  bindd = $mainMod CTRL, ESCAPE, Reboot, exec, reboot
-  bindd = $mainMod SHIFT CTRL, ESCAPE, Poweroff, exec, systemctl poweroff
-#+end_src
-
-** Window Split Ratio
-#+begin_src conf
-  bindd = $mainMod CTRL, Minus, Decrease ratio, splitratio, -0.1
-  bindd = $mainMod CTRL, Equal, Increase ratio, splitratio, 0.1
-#+end_src
-
 ** Tab Cycle
 To switch between windows in a floating workspace
 
-#+begin_src conf
-  bindd = $mainMod, Tab, Cyclenext, cyclenext, # change focus to another window
-  bindd = $mainMod, Tab, Bring Active to Top, bringactivetotop, # bring it to the top
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + TAB", function()
       hl.dispatch(hl.dsp.window.cycle_next())   -- Change focus to another window
       hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
@@ -1168,24 +656,7 @@ To switch between windows in a floating workspace
   end)
 #+end_src
 ** Focus
-#+begin_src conf
-  bindd = $mainMod, H, Move Focus Left, movefocus, l
-  bindd = $mainMod, H, Bring Active to Top, bringactivetotop
-
-  bindd = $mainMod, L, Move Focus Right, movefocus, r
-  bindd = $mainMod, L, Bring Active to Top, bringactivetotop
-
-  bindd = $mainMod, K, Move Focus Up, movefocus, u
-  bindd = $mainMod, K, Bring Active to Top, bringactivetotop
-
-  bindd = $mainMod, J, Move Focus Down, movefocus, d
-  bindd = $mainMod, J, Bring Active to Top, bringactivetotop
-
-  bindd = $mainMod, Semicolon, Focus Next Monitor, focusmonitor, +1
-  bindd = $mainMod, Comma, Focus Prev Monitor, focusmonitor, -1
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + H", hl.dsp.focus( { direction = "l" }), { description = "Focus Left" })
   hl.bind("SUPER + L", hl.dsp.focus( { direction = "r" }), { description = "Focus Right" })
   hl.bind("SUPER + K", hl.dsp.focus( { direction = "u" }), { description = "Focus Up" })
@@ -1196,39 +667,20 @@ To switch between windows in a floating workspace
 #+end_src
 
 ** Move Window
-#+begin_src conf
-  bindd = $mainMod SHIFT, H, Move window or group left, movewindoworgroup, l
-  bindd = $mainMod SHIFT, L, Move window or group right, movewindoworgroup, r
-  bindd = $mainMod SHIFT, K, Move window or group upper, movewindoworgroup, u
-  bindd = $mainMod SHIFT, J, Move window or group lower, movewindoworgroup, d
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l", group_aware = true }), { description = "Move Left"})
   hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r", group_aware = true }), { description = "Move Right"})
   hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u", group_aware = true }), { description = "Move Up"})
   hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d", group_aware = true }), { description = "Move Down"})
 #+end_src
 ** Focus Group Window
-#+begin_src conf
-  bindd = $mainMod, B,Previous in group, changegroupactive, b
-  bindd = $mainMod SHIFT, B, Next in group, changegroupactive, f
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + B", hl.dsp.group.prev(), { description = "Previous In Group" })
   hl.bind("SUPER + SHIFT + B", hl.dsp.group.next(), { description = "Next In Group" })
 #+end_src
 ** Resize Window
 - 'e' flag is used to repeat cmd when hold
-#+begin_src conf
-  binded = $mainMod CTRL, H, Shrink Window Horizontally, resizeactive, -40 0
-  binded = $mainMod CTRL, L, Grow Window Horizontally, resizeactive, 40 0
-  binded = $mainMod CTRL, K, Shrink Window Vertically, resizeactive, 0 -40
-  binded = $mainMod CTRL, J, Grow Window Vertically, resizeactive, 0 40
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + CTRL + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true, description = "Shrink Window Horizontally" })
   hl.bind("SUPER + CTRL + L", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true, description = "Grow Window Horizontally" })
   hl.bind("SUPER + CTRL + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true, description = "Shrink Window Vertically"})
@@ -1236,7 +688,7 @@ To switch between windows in a floating workspace
 #+end_src
 
 ** Workspaces
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   for workspace = 1, 8 do
     local key = "code:" .. tostring(workspace + 9)
     hl.bind("SUPER + " .. key, hl.dsp.focus({ workspace = tostring(workspace) }), { description = "Switch to workspace " .. workspace })
@@ -1245,110 +697,18 @@ To switch between windows in a floating workspace
   end
 #+end_src
 
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.bind("SUPER + ALT + H", hl.dsp.workspace.move({ monitor = "l" }), { description = "Move workspace to left monitor" })
   hl.bind("SUPER + ALT + L", hl.dsp.workspace.move({ monitor = "r" }), { description = "Move workspace to right monitor" })
   hl.bind("SUPER + ALT + K", hl.dsp.workspace.move({ monitor = "u" }), { description = "Move workspace to up monitor" })
   hl.bind("SUPER + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { description = "Move workspace to down monitor" })
 #+end_src
 
-*** Focus
-#+begin_src conf
-  bindd = $mainMod, ampersand, Focus workspace 1, workspace, 1
-  bindd = $mainMod, eacute, Focus workspace 2, workspace, 2
-  bindd = $mainMod, quotedbl, Focus workspace 3, workspace, 3
-  bindd = $mainMod, apostrophe, Focus workspace 4, workspace, 4
-  bindd = $mainMod, parenleft, Focus workspace 5, workspace, 5
-  bindd = $mainMod, minus, Focus workspace 6, workspace, 6
-  bindd = $mainMod, egrave, Focus workspace 7, workspace, 7
-  bindd = $mainMod, underscore, Focus workspace 8, workspace, 8
-#+end_src
-
-*** Focus On Current Monitor
-#+begin_src conf :tangle no
-  bindd = $mainMod, ampersand, Focus Workspace on Current Monitor 1, focusworkspaceoncurrentmonitor, 1
-  bindd = $mainMod, eacute, Focus Workspace on Current Monitor 2, focusworkspaceoncurrentmonitor, 2
-  bindd = $mainMod, quotedbl, Focus Workspace on Current Monitor 3, focusworkspaceoncurrentmonitor, 3
-  bindd = $mainMod, apostrophe, Focus Workspace on Current Monitor 4, focusworkspaceoncurrentmonitor, 4
-  bindd = $mainMod, parenleft, Focus Workspace on Current Monitor 5, focusworkspaceoncurrentmonitor, 5
-  bindd = $mainMod, minus, Focus Workspace on Current Monitor 6, focusworkspaceoncurrentmonitor, 6
-  bindd = $mainMod, egrave, Focus Workspace on Current Monitor 7, focusworkspaceoncurrentmonitor, 7
-  bindd = $mainMod, underscore, Focus Workspace on Current Monitor 8, focusworkspaceoncurrentmonitor, 8
-#+end_src
-
-*** Move workspace to different monitor
-#+begin_src conf
-  bindd = $mainMod ALT, h, Move workspace to right monitor, movecurrentworkspacetomonitor,l
-  bindd = $mainMod ALT, j, Move workspace to lower monitor, movecurrentworkspacetomonitor,p
-  bindd = $mainMod ALT, k, Move workspace to upper monitor, movecurrentworkspacetomonitor,u
-  bindd = $mainMod ALT, l, Move workspace to right monitor, movecurrentworkspacetomonitor,r
-#+end_src
-
-*** Send to Workspaces
-#+begin_src conf
-  bindd = $mainMod SHIFT, ampersand, Move to workspace 1, movetoworkspace, 1
-  bindd = $mainMod SHIFT, eacute, Move to workspace 2, movetoworkspace, 2
-  bindd = $mainMod SHIFT, quotedbl, Move to workspace 3, movetoworkspace, 3
-  bindd = $mainMod SHIFT, apostrophe, Move to workspace 4, movetoworkspace, 4
-  bindd = $mainMod SHIFT, parenleft, Move to workspace 5, movetoworkspace, 5
-  bindd = $mainMod SHIFT, minus, Move to workspace 6, movetoworkspace, 6
-  bindd = $mainMod SHIFT, egrave, Move to workspace 7, movetoworkspace, 7
-  bindd = $mainMod SHIFT, underscore, Move to workspace 8, movetoworkspace, 8
-#+end_src
-
-*** Send to Worspace silently
-#+begin_src conf
-  bindd = $mainMod ALT, ampersand, Move workspace 1 silently, movetoworkspacesilent, 1
-  bindd = $mainMod ALT, eacute, Move workspace 2 silently, movetoworkspacesilent, 2
-  bindd = $mainMod ALT, quotedbl, Move workspace 3 silently, movetoworkspacesilent, 3
-  bindd = $mainMod ALT, apostrophe, Move workspace 4 silently, movetoworkspacesilent, 4
-  bindd = $mainMod ALT, parenleft, Move workspace 5 silently, movetoworkspacesilent, 5
-  bindd = $mainMod ALT, minus, Move workspace 6 silently, movetoworkspacesilent, 6
-  bindd = $mainMod ALT, egrave, Move workspace 7 silently, movetoworkspacesilent, 7
-  bindd = $mainMod ALT, underscore, Move workspace 8 silently, movetoworkspacesilent, 8
-#+end_src
-
-** Clipboard
-#+begin_src conf
-  bindd = SUPER, V, Open clipboard, exec, $clipboardlist
-#+end_src
-
-** Zoom
-#+begin_src conf
-  bindd = $mainMod, mouse_down, Zoom in, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
-  bindd = $mainMod, mouse_up, Zoom out, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
-
-  binded = $mainMod, equal, Zoom in, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 + 0.5}')
-  binded = $mainMod SHIFT, equal, Zoom out, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 - 0.5}')
-  bindd = $mainMod, agrave, Zoom reset, exec, hyprctl -q keyword cursor:zoom_factor 1
-
-#+end_src
-
-** Notification
-#+begin_src conf
-  bindd = $mainMod, N, Open Notifications, exec, $notificationmenu
-#+end_src
-
 * SCREEN-SHARING
-#+begin_src conf
-  env = GDK_BACKEND,wayland,x11,*
-  env = QT_QPA_PLATFORM,wayland;xcb
-  env = QT_STYLE_OVERRIDE,kvantum
-  env = SDL_VIDEODRIVER,wayland
-  env = MOZ_ENABLE_WAYLAND,1
-  env = ELECTRON_OZONE_PLATFORM_HINT,wayland
-  env = OZONE_PLATFORM,wayland
-  env = XDG_SESSION_TYPE,wayland
-
-  env = XDG_CURRENT_DESKTOP,Hyprland
-  env = XDG_SESSION_DESKTOP,Hyprland
-
-  exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.env("GDK_BACKEND","wayland,x11,*")
   hl.env("QT_QPA_PLATFORM","wayland;xcb")
+  hl.env("QT_QPA_PLATFORMTHEME","qt6ct")
   hl.env("QT_STYLE_OVERRIDE","kvantum")
   hl.env("SDL_VIDEODRIVER","wayland")
   hl.env("CLUTTER_BACKEND","wayland")
@@ -1364,18 +724,10 @@ To switch between windows in a floating workspace
 
 * DEFAUL_APPS
 To activate default app for dolphin
-#+begin_src conf
-  env = XDG_MENU_PREFIX,arch-
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.env("XDG_MENU_PREFIX", "arch-")
 #+end_src
 * DEBUG
-#+begin_src conf
-  env = DEBUGINFOD_URLS,https://debuginfod.archlinux.org
-#+end_src
-
-#+begin_src lua :tangle hyprland.lua
+#+begin_src lua
   hl.env("DEBUGINFOD_URLS", "https://debuginfod.archlinux.org")
 #+end_src

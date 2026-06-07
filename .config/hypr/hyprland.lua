@@ -77,8 +77,6 @@ hl.exec_cmd("hyprpaper")
 
 hl.exec_cmd("hyprsunset")
 
-hl.exec_cmd("~/.config/hypr/scripts/notifications")
-
 hl.exec_cmd("~/.config/hypr/scripts/status_bar.sh")
 
 require("exec")
@@ -93,6 +91,7 @@ hl.exec_cmd("blueman-applet")
 
 hl.exec_cmd("hypridle")
 
+-- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
 hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 
 hl.exec_cmd("wal -R")
@@ -101,6 +100,8 @@ hl.exec_cmd("nm-applet --indicator")
 
 hl.exec_cmd("wl-paste --type text --watch cliphist store")
 hl.exec_cmd("wl-paste --type image --watch cliphist store")
+
+hl.exec_cmd("~/.config/hypr/scripts/gtkthemes-bkp.sh")
 
 hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
 
@@ -120,7 +121,7 @@ hl.config({
 
     touchpad = {
         natural_scroll = false,
-        scroll_factor = 1,
+        scroll_factor = 1.5,
         -- Use two-finger clicks for right-click instead of lower-right corner
         clickfinger_behavior = 1,
     },
@@ -276,7 +277,7 @@ hl.window_rule({ match = { tag = "pip" }, float = true, pin = true, size = { 600
 
 hl.window_rule({ workspace = 1, match = { class = "^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$" } })
 hl.window_rule({ workspace = 2, match = { class = "(brave-browser|zen$)" } })
-hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" }, no_initial_focus = false })
+hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.*" } })
 hl.window_rule({ workspace = "special:scratchpad", match = { class = "deezer-desktop" }, tag = "+floating-window" })
 
 hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, no_initial_focus = true, no_dim = true, move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)"  } })
@@ -441,6 +442,7 @@ hl.bind("SUPER + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { descripti
 
 hl.env("GDK_BACKEND","wayland,x11,*")
 hl.env("QT_QPA_PLATFORM","wayland;xcb")
+hl.env("QT_QPA_PLATFORMTHEME","qt6ct")
 hl.env("QT_STYLE_OVERRIDE","kvantum")
 hl.env("SDL_VIDEODRIVER","wayland")
 hl.env("CLUTTER_BACKEND","wayland")
