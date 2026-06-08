@@ -13,6 +13,7 @@
   - [[#default-setup][Default Setup]]
   - [[#workspace-layouts][Workspace layouts]]
 - [[#startup][STARTUP]]
+  - [[#noctalia][Noctalia]]
   - [[#desktop-portals][Desktop-Portals]]
   - [[#wallpaper][Wallpaper]]
   - [[#bluelight-filter][BlueLight Filter]]
@@ -29,7 +30,6 @@
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
   - [[#hyprcursor][Hyprcursor]]
-  - [[#noctalia][Noctalia]]
 - [[#color][Color]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
@@ -178,13 +178,18 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 #+begin_src lua
   hl.on("hyprland.start", function ()
 #+end_src
+** Noctalia
+#+begin_src lua
+  hl.exec_cmd("qs -c noctalia-shell")
+#+end_src
+
 ** Desktop-Portals
 #+begin_src lua
     hl.exec_cmd("~/.config/hypr/scripts/desktop-portals.sh")
 #+end_src
 
 ** Wallpaper
-#+begin_src lua
+#+begin_src lua :tangle no
     hl.exec_cmd("hyprpaper")
 #+end_src
 
@@ -222,7 +227,7 @@ Make sure you have installed =hyprshade=
 
 ** Bluetooth
 Make sure you have installed =blueman=
-#+begin_src lua
+#+begin_src lua :tangle no
   hl.exec_cmd("blueman-applet")
 #+end_src
 
@@ -234,8 +239,8 @@ Make sure you have installed =blueman=
 ** Polkit
 Be careful to use the appropriate =polkit= and the right =path=
 #+begin_src lua
-  -- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
   hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+  -- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
 #+end_src
 
 ** Wal
@@ -263,11 +268,6 @@ Make sure you havc installed =network-manager-applet=
 ** Hyprcursor
 #+begin_src lua
   hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
-#+end_src
-
-** Noctalia
-#+begin_src lua
-  hl.exec_cmd("qs -c noctalia-shell")
 #+end_src
 
 #+begin_src lua
@@ -482,6 +482,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 
   hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin|org.gnome.Nautilus|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
   hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
+  hl.window_rule({ match = { class = "[Ss]lack", title = "Slack - Huddle Preview" }, tag = "+floating-window" })
   hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
   hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = true, size = {1400, 400}, move = { "(window_w*0.5)", "(monitor_h-window_h-50)" }})
 
@@ -517,15 +518,23 @@ the more passes, the more you can up the blur_size without noticing artifacts.
   local termapp = "uwsm-app -- ghostty +new-window -e"
   local termapp2 = "uwsm-app -- kitty -e"
 
-  local wallpapermenu = "~/.config/rofi/wallpaper.sh"
   local thememenu = "~/.config/rofi/theme.sh"
   local appmenu = "vicinae toggle"
-  -- local appmenu = "~/.config/hypr/scripts/walker-menu.sh"
   local appmenu2 = "~/.config/rofi/appmenu.sh"
   local clipboardlist = "~/.config/rofi/clipboardlist.sh"
   local powermenu = "~/.config/hypr/scripts/powermenu.sh"
   local volume = "~/.config/hypr/scripts/volume.sh"
-  local notificationmenu = "swaync-client -t"
+
+
+  local noctalia_ipc = "qs -c noctalia-shell ipc call"
+
+  -- local wallpapermenu = "~/.config/rofi/wallpaper.sh"
+  local wallpapermenu = noctalia_ipc .. " wallpaper toggle"
+
+  local notification_menu = noctalia_ipc .. " notifications toggleHistory"
+  local notification_toggle = noctalia_ipc .. " notifications toggleDND"
+  local notification_clear = noctalia_ipc .. " notifications clear"
+
   local brightness = "~/.config/hypr/scripts/brightness.sh"
   local lockscreen = "hyprlock"
   local sleep = "~/.config/hypr/scripts/sleep.sh"
@@ -538,7 +547,8 @@ the more passes, the more you can up the blur_size without noticing artifacts.
   local editorEverywhere =  "emacsclient --eval '(thanos/type)'"
 
   local browser = "uwsm-app -- zen-browser"
-  local help_keybind = "~/.config/hypr/scripts/show_keybind.sh"
+  -- local help_keybind = "~/.config/hypr/scripts/show_keybind.sh"
+  local help_keybind = noctalia_ipc .. " plugin:keybind-cheatsheet toggle"
   local screenshot = "~/.config/hypr/scripts/screenshot.sh"
   local screenrecord = "~/.config/hypr/scripts/screenrecord.sh"
   local screenrecordMenu = "~/.config/hypr/scripts/screenrecord-menu.sh"
@@ -565,12 +575,12 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 ** Menu
 #+begin_src lua
   hl.bind("SUPER + D", hl.dsp.exec_cmd(appmenu), { description = "AppMenu" })
-  hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(appmenu2), { description = "AppMenu2" })
   hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
   hl.bind("SUPER + W", hl.dsp.exec_cmd(wallpapermenu), { description = "WallpaperMenu" })
-  hl.bind("SUPER + T", hl.dsp.exec_cmd(thememenu), { description = "ThemeMenu" })
   hl.bind("SUPER + SHIFT + COMMA", hl.dsp.exec_cmd(help_keybind), { description = "HelpMenu" })
-  hl.bind("SUPER + N", hl.dsp.exec_cmd(notificationmenu), { description = "NotificationMenu" })
+  hl.bind("SUPER + N", hl.dsp.exec_cmd(notification_menu), { description = "NotificationMenu" })
+  hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(notification_toggle), { description = "NotificationDNDToggle" })
+  hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(notification_clear), { description = "NotificationClear" })
 #+end_src
 
 ** Misc
@@ -662,11 +672,11 @@ To switch between windows in a floating workspace
   hl.bind("SUPER + TAB", function()
       hl.dispatch(hl.dsp.window.cycle_next())   -- Change focus to another window
       hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
-  end)
+  end, { description = "Cycle windows forward" })
   hl.bind("SUPER + SHIFT + TAB", function()
       hl.dispatch(hl.dsp.window.cycle_next({next = false})) -- Change focus to another window
       hl.dispatch(hl.dsp.window.bring_to_top())             -- Bring it to the top
-  end)
+  end, { description = "Cycle windows backward" })
 #+end_src
 ** Focus
 #+begin_src lua

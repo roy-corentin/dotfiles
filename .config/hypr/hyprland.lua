@@ -71,9 +71,9 @@ hl.workspace_rule({ workspace = "5", layout = "scrolling" })
 
 hl.on("hyprland.start", function ()
 
-hl.exec_cmd("~/.config/hypr/scripts/desktop-portals.sh")
+hl.exec_cmd("qs -c noctalia-shell")
 
-hl.exec_cmd("hyprpaper")
+hl.exec_cmd("~/.config/hypr/scripts/desktop-portals.sh")
 
 hl.exec_cmd("hyprsunset")
 
@@ -85,12 +85,10 @@ hl.exec_cmd("emacs --init-directory ~/.config/light_emacs --daemon")
 
 hl.exec_cmd("hyprshade auto")
 
-hl.exec_cmd("blueman-applet")
-
 hl.exec_cmd("hypridle")
 
--- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
 hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+-- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
 
 hl.exec_cmd("wal -R")
 
@@ -98,8 +96,6 @@ hl.exec_cmd("wl-paste --type text --watch cliphist store")
 hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
 hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
-
-hl.exec_cmd("qs -c noctalia-shell")
 
 end)
 
@@ -265,6 +261,7 @@ hl.window_rule({ match = { tag = "floating-window" }, float = true, center = tru
 
 hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin|org.gnome.Nautilus|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
 hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
+hl.window_rule({ match = { class = "[Ss]lack", title = "Slack - Huddle Preview" }, tag = "+floating-window" })
 hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
 hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = true, size = {1400, 400}, move = { "(window_w*0.5)", "(monitor_h-window_h-50)" }})
 
@@ -291,15 +288,23 @@ local term2 = "uwsm-app -- kitty"
 local termapp = "uwsm-app -- ghostty +new-window -e"
 local termapp2 = "uwsm-app -- kitty -e"
 
-local wallpapermenu = "~/.config/rofi/wallpaper.sh"
 local thememenu = "~/.config/rofi/theme.sh"
 local appmenu = "vicinae toggle"
--- local appmenu = "~/.config/hypr/scripts/walker-menu.sh"
 local appmenu2 = "~/.config/rofi/appmenu.sh"
 local clipboardlist = "~/.config/rofi/clipboardlist.sh"
 local powermenu = "~/.config/hypr/scripts/powermenu.sh"
 local volume = "~/.config/hypr/scripts/volume.sh"
-local notificationmenu = "swaync-client -t"
+
+
+local noctalia_ipc = "qs -c noctalia-shell ipc call"
+
+-- local wallpapermenu = "~/.config/rofi/wallpaper.sh"
+local wallpapermenu = noctalia_ipc .. " wallpaper toggle"
+
+local notification_menu = noctalia_ipc .. " notifications toggleHistory"
+local notification_toggle = noctalia_ipc .. " notifications toggleDND"
+local notification_clear = noctalia_ipc .. " notifications clear"
+
 local brightness = "~/.config/hypr/scripts/brightness.sh"
 local lockscreen = "hyprlock"
 local sleep = "~/.config/hypr/scripts/sleep.sh"
@@ -312,7 +317,8 @@ local editorTerm = term .. " -e emacsclient -t -a 'emacs -nw'"
 local editorEverywhere =  "emacsclient --eval '(thanos/type)'"
 
 local browser = "uwsm-app -- zen-browser"
-local help_keybind = "~/.config/hypr/scripts/show_keybind.sh"
+-- local help_keybind = "~/.config/hypr/scripts/show_keybind.sh"
+local help_keybind = noctalia_ipc .. " plugin:keybind-cheatsheet toggle"
 local screenshot = "~/.config/hypr/scripts/screenshot.sh"
 local screenrecord = "~/.config/hypr/scripts/screenrecord.sh"
 local screenrecordMenu = "~/.config/hypr/scripts/screenrecord-menu.sh"
@@ -330,12 +336,12 @@ hl.bind("SUPER + V", hl.dsp.exec_cmd(clipboardlist), { description = "Open clipb
 hl.bind("SUPER + SHIFT + I", hl.dsp.exec_cmd(editorEverywhere), { description = "Editor for every text" })
 
 hl.bind("SUPER + D", hl.dsp.exec_cmd(appmenu), { description = "AppMenu" })
-hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(appmenu2), { description = "AppMenu2" })
 hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
 hl.bind("SUPER + W", hl.dsp.exec_cmd(wallpapermenu), { description = "WallpaperMenu" })
-hl.bind("SUPER + T", hl.dsp.exec_cmd(thememenu), { description = "ThemeMenu" })
 hl.bind("SUPER + SHIFT + COMMA", hl.dsp.exec_cmd(help_keybind), { description = "HelpMenu" })
-hl.bind("SUPER + N", hl.dsp.exec_cmd(notificationmenu), { description = "NotificationMenu" })
+hl.bind("SUPER + N", hl.dsp.exec_cmd(notification_menu), { description = "NotificationMenu" })
+hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(notification_toggle), { description = "NotificationDNDToggle" })
+hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(notification_clear), { description = "NotificationClear" })
 
 hl.bind("SUPER + C", hl.dsp.exec_cmd(colorpicker), { description = "ColorPicker" })
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd(suspend), { description = "Suspend" })
@@ -398,11 +404,11 @@ hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:scratchpa
 hl.bind("SUPER + TAB", function()
     hl.dispatch(hl.dsp.window.cycle_next())   -- Change focus to another window
     hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
-end)
+end, { description = "Cycle windows forward" })
 hl.bind("SUPER + SHIFT + TAB", function()
     hl.dispatch(hl.dsp.window.cycle_next({next = false})) -- Change focus to another window
     hl.dispatch(hl.dsp.window.bring_to_top())             -- Bring it to the top
-end)
+end, { description = "Cycle windows backward" })
 
 hl.bind("SUPER + H", hl.dsp.focus( { direction = "l" }), { description = "Focus Left" })
 hl.bind("SUPER + L", hl.dsp.focus( { direction = "r" }), { description = "Focus Right" })
