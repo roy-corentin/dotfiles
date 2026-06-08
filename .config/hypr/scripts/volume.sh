@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR="$HOME/.config/icons"
+ICONS_DIR="$HOME/.config/icons"
 
 get_volume() {
     # volume=$(amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]')
@@ -11,13 +11,13 @@ get_icon() {
     vol="$(get_volume)"
     current="${vol%%%}"
     if [[ "$current" -eq "0" ]]; then
-        icon="$DIR/volume-mute.png"
+        icon="$ICONS_DIR/volume-mute.png"
     elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
-        icon="$DIR/volume-low.png"
+        icon="$ICONS_DIR/volume-low.png"
     elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
-        icon="$DIR/volume-mid.png"
+        icon="$ICONS_DIR/volume-mid.png"
     elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
-        icon="$DIR/volume-high.png"
+        icon="$ICONS_DIR/volume-high.png"
     fi
 }
 
@@ -39,7 +39,7 @@ dec_volume() {
 toggle_mute() {
     # amixer get Master | grep '\[on\]' &>/dev/null
     # if [[ "$?" == 0 ]]; then
-    # 	amixer set Master toggle && notify-send -h string:synchronous:volume -u low -i "$DIR/volume-mute.png" "Mute"
+    # 	amixer set Master toggle && notify-send -h string:synchronous:volume -u low -i "$ICONS_DIR/volume-mute.png" "Mute"
     # else
     # 	amixer set Master toggle && get_icon && notify-send -h string:synchronous:volume -u low -i "$icon" "Unmute"
     # fi
@@ -49,9 +49,9 @@ toggle_mute() {
 toggle_mic() {
     amixer get Capture | grep '\[on\]' &>/dev/null
     if [[ "$?" == 0 ]]; then
-	amixer -D pulse sset Capture toggle && notify-send -h string:synchronous:volume -u low -i "$DIR/mute.png" "Microphone Switched OFF"
+	amixer -D pulse sset Capture toggle && notify-send -h string:synchronous:volume -u low -i "$ICONS_DIR/mute.png" "Microphone Switched OFF"
     else
-	amixer -D pulse sset Capture toggle && get_icon && notify-send -h string:synchronous:volume -u low -i "$DIR/microphone.png" "Microphone Switched ON"
+	amixer -D pulse sset Capture toggle && get_icon && notify-send -h string:synchronous:volume -u low -i "$ICONS_DIR/microphone.png" "Microphone Switched ON"
     fi
 }
 
