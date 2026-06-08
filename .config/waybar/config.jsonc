@@ -36,11 +36,7 @@
   },
   "group/quicklinks-right": {
     "orientation": "horizontal",
-    "modules": [
-      "idle_inhibitor",
-      "custom/wallpaper",
-      "custom/notification",
-    ]
+    "modules": ["idle_inhibitor", "custom/wallpaper", "custom/notification"]
   },
   "group/tray-expander": {
     "orientation": "inherit",
