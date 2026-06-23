@@ -56,7 +56,6 @@ if [[ $PROCESSING == "slurp" ]]; then
       --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
       --early-exit \
       --actions-on-enter save-to-clipboard \
-      --save-after-copy \
       --copy-command 'wl-copy'
 else
   grim -g "$SELECTION" - | wl-copy
