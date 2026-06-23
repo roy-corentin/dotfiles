@@ -263,6 +263,7 @@ hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin
 hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
 hl.window_rule({ match = { class = "[Ss]lack", title = "Slack - Huddle Preview" }, tag = "+floating-window" })
 hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
+hl.window_rule({ match = { class = ".*Noctalia.Settings.*"}, tag = "+floating-window" })
 hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = true, size = {1400, 400}, move = { "(window_w*0.5)", "(monitor_h-window_h-50)" }})
 
 hl.window_rule({ match = { title = "(Picture.?in.?[Pp]icture)" }, tag = "+pip" })
@@ -279,7 +280,7 @@ hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, 
 hl.window_rule({ match = { class = ".*" }, opaque = 1, idle_inhibit = "fullscreen" })
 hl.window_rule({ match = { class = "^(kitty|Alacritty|com.mitchellh.ghostty)$" }, opaque = 0 })
 
-hl.layer_rule({ match = { namespace = "(selection|wayfreeze|hyprpicker)" }, no_anim = true })
+hl.layer_rule({ match = { namespace = "(selection|wayfreeze|hyprpicker|noctalia-attached-panel|noctalia-screenshot-.*)" }, no_anim = true })
 hl.layer_rule({ match = { namespace = "(rofi|walker|vicinae)" }, dim_around = true })
 hl.layer_rule({ match = { namespace = "swaync-control-center" }, animation = "slide", blur = true, no_screen_share = true })
 
