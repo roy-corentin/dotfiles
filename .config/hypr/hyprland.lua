@@ -81,7 +81,7 @@ require("exec")
 
 hl.exec_cmd("vicinae server")
 
-hl.exec_cmd("emacs --init-directory ~/.config/light_emacs --daemon")
+hl.exec_cmd("emacs --daemon")
 
 hl.exec_cmd("hyprshade auto")
 
@@ -156,10 +156,10 @@ hl.config({
 hl.config({
     group = {
         groupbar = {
-            render_titles = false,
-            gradients = false,
-            height = 10,
-            indicator_height = 7
+            render_titles = true,
+            gradients = true,
+            height = 17,
+            indicator_height = 0
         }
     }
 })
@@ -268,7 +268,6 @@ hl.window_rule({ match = { class = "emacs", title = "emacs-float" }, float = tru
 
 hl.window_rule({ match = { title = "(Picture.?in.?[Pp]icture)" }, tag = "+pip" })
 hl.window_rule({ match = { tag = "pip" }, float = true, pin = true, size = { 600, 338 }, keep_aspect_ratio = true, border_size = 0, opacity = "1 1", move = { "(monitor_w-window_w-10)", "(monitor_h-window_h-10)" } })
-
 
 hl.window_rule({ workspace = 1, match = { class = "^(.*Microsoft Teams.*|teams-for-linux|discord|WebCord|[Ss]lack)$" } })
 hl.window_rule({ workspace = 2, match = { class = "(brave-browser|zen$)" } })
