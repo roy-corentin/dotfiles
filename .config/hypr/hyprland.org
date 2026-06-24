@@ -30,7 +30,7 @@
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
   - [[#hyprcursor][Hyprcursor]]
-- [[#color][Color]]
+- [[#color][COLOR]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#gestures][GESTURES]]
@@ -130,6 +130,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
     scale = 1
   })
 #+end_src
+
 ** Home Setup
 #+begin_src lua
   hl.monitor({
@@ -146,6 +147,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
       scale = 1
   })
 #+end_src
+
 ** Bandung Setup
 #+begin_src lua
   hl.monitor({
@@ -166,6 +168,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
   })
   hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", default = true })
 #+end_src
+
 ** Workspace layouts
 #+begin_src lua
   hl.workspace_rule({ workspace = "4", layout = "scrolling" })
@@ -178,6 +181,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 #+begin_src lua
   hl.on("hyprland.start", function ()
 #+end_src
+
 ** Noctalia
 #+begin_src lua
   hl.exec_cmd("qs -c noctalia-shell")
@@ -273,7 +277,7 @@ Make sure you havc installed =network-manager-applet=
 #+begin_src lua
   end)
 #+end_src
-* Color
+* COLOR
 #+begin_src lua
   require("colors")
 #+end_src
@@ -636,6 +640,7 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 #+begin_src lua
   hl.bind("SUPER + CTRL + S", hl.dsp.exec_cmd(screenrecordMenu), { description = "Start Capture" })
 #+end_src
+
 ** Image To Text
 #+begin_src lua
   hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/image-to-text.sh"), { description = "Image To Text" })
@@ -678,6 +683,7 @@ To switch between windows in a floating workspace
       hl.dispatch(hl.dsp.window.bring_to_top())             -- Bring it to the top
   end, { description = "Cycle windows backward" })
 #+end_src
+
 ** Focus
 #+begin_src lua
   hl.bind("SUPER + H", hl.dsp.focus( { direction = "l" }), { description = "Focus Left" })
@@ -696,11 +702,13 @@ To switch between windows in a floating workspace
   hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u", group_aware = true }), { description = "Move Up"})
   hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d", group_aware = true }), { description = "Move Down"})
 #+end_src
+
 ** Focus Group Window
 #+begin_src lua
   hl.bind("SUPER + B", hl.dsp.group.prev(), { description = "Previous In Group" })
   hl.bind("SUPER + SHIFT + B", hl.dsp.group.next(), { description = "Next In Group" })
 #+end_src
+
 ** Resize Window
 - 'e' flag is used to repeat cmd when hold
 #+begin_src lua
@@ -750,6 +758,7 @@ To activate default app for dolphin
 #+begin_src lua
   hl.env("XDG_MENU_PREFIX", "arch-")
 #+end_src
+
 * DEBUG
 #+begin_src lua
   hl.env("DEBUGINFOD_URLS", "https://debuginfod.archlinux.org")
