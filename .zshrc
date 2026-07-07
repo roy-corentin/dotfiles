@@ -63,6 +63,7 @@ alias neo=fastfetch
 alias y=yazi
 alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 alias zshconfig="nvim ~/.zshrc"
+alias myip="curl https://ipinfo.io/ip"
 
 source "$HOME/.emacs_alias.zsh"
 
