@@ -40,7 +40,7 @@ hl.monitor({
 hl.monitor({
     output = "desc:Iiyama North America PL2390 11298JH100680",
     mode = "preferred",
-    position = "auto-left",
+    position = "auto-right",
     scale = 1
 })
 
@@ -87,10 +87,8 @@ hl.exec_cmd("hyprshade auto")
 
 hl.exec_cmd("hypridle")
 
-hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
--- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
-
-hl.exec_cmd("wal -R")
+-- hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+hl.exec_cmd("/usr/lib/polkit-1/polkitd")
 
 hl.exec_cmd("wl-paste --type text --watch cliphist store")
 hl.exec_cmd("wl-paste --type image --watch cliphist store")
@@ -127,7 +125,7 @@ hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 12,
-        border_size = 1,
+        border_size = 2,
         layout = "dwindle",
         allow_tearing = false,
         snap = {
@@ -260,7 +258,7 @@ hl.window_rule({ match = { title = "^float-.*$" }, tag = "+floating-window" })
 hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = {1276, 750} })
 
 hl.window_rule({ match = { class = "blueberry.py|blueman-manager|org.kde.dolphin|org.gnome.Nautilus|org.gnome.NautilusPreviewer|com.gabm.satty|About|TUI.float|nm-connection-editor|org.pulseaudio.pavucontrol|org.kde.gwenview|Wiremix|waypaper"}, tag = "+floating-window" })
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
+hl.window_rule({ match = { class = "xdg-desktop-portal-wlr|xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.kde|sublime_text|DesktopEditors|org.gnome.Nautilus|waypaper|brave-browser|zen", title="^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*|File.*Upload.*)" }, tag = "+floating-window" })
 hl.window_rule({ match = { class = "[Ss]lack", title = "Slack - Huddle Preview" }, tag = "+floating-window" })
 hl.window_rule({ match = { class = "^(Bitwarden)$"}, no_screen_share = true, tag = "+floating-window" })
 hl.window_rule({ match = { class = ".*Noctalia.Settings.*"}, tag = "+floating-window" })
@@ -283,7 +281,7 @@ hl.layer_rule({ match = { namespace = "(selection|wayfreeze|hyprpicker|noctalia-
 hl.layer_rule({ match = { namespace = "(rofi|walker|vicinae)" }, dim_around = true })
 hl.layer_rule({ match = { namespace = "swaync-control-center" }, animation = "slide", blur = true, no_screen_share = true })
 
-local term = "uwsm-app -- ghostty"
+local term = "uwsm-app -- ghostty +new-window"
 local term2 = "uwsm-app -- kitty"
 local termapp = "uwsm-app -- ghostty +new-window -e"
 local termapp2 = "uwsm-app -- kitty -e"
@@ -361,6 +359,33 @@ hl.config({
 
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true, description = "MoveWindow" })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true, description = "ResizeWindow" })
+
+local MAX_ZOOM = 5
+local MIN_ZOOM = 1
+local ZOOM_TOGGLE_FACTOR = 1.5
+
+---@param offset number
+---@return nil
+local function zoom(offset)
+    local current = hl.get_config("cursor.zoom_factor")
+    if offset ~= nil then
+        current = current + offset
+    elseif current ~= MIN_ZOOM then
+        current = MIN_ZOOM
+    else
+        current = ZOOM_TOGGLE_FACTOR
+    end
+    current = math.max(MIN_ZOOM, math.min(MAX_ZOOM, current))
+    hl.config({ cursor = { zoom_factor = current } })
+end
+
+hl.bind("SUPER + Z", zoom)
+hl.bind("SUPER + mouse_up", function()
+    zoom(-1)
+end, { description = "ZoomIn" })
+hl.bind("SUPER + mouse_down", function()
+    zoom(1)
+end, { description = "ZoomOut" })
 
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(brightness .. " --inc"), { locked = true, repeating = true, description = "Raise Brightness" })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(brightness .. " --dec"), { locked = true, repeating = true, description = "Lower Brightness" })
@@ -445,7 +470,7 @@ hl.bind("SUPER + ALT + J", hl.dsp.workspace.move({ monitor = "d" }), { descripti
 
 hl.env("GDK_BACKEND","wayland,x11,*")
 hl.env("QT_QPA_PLATFORM","wayland;xcb")
-hl.env("QT_QPA_PLATFORMTHEME","qt6ct")
+-- hl.env("QT_QPA_PLATFORMTHEME","qt6ct")
 hl.env("QT_STYLE_OVERRIDE","kvantum")
 hl.env("SDL_VIDEODRIVER","wayland")
 hl.env("CLUTTER_BACKEND","wayland")
