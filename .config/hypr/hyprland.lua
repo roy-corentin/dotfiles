@@ -66,12 +66,13 @@ hl.monitor({
 })
 hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", default = true })
 
+hl.workspace_rule({ workspace = "3", layout = "scrolling" })
 hl.workspace_rule({ workspace = "4", layout = "scrolling" })
-hl.workspace_rule({ workspace = "5", layout = "scrolling" })
 
 hl.on("hyprland.start", function ()
 
-hl.exec_cmd("qs -c noctalia-shell")
+-- hl.exec_cmd("qs -c noctalia-shell")
+hl.exec_cmd("noctalia")
 
 hl.exec_cmd("~/.config/hypr/scripts/desktop-portals.sh")
 
@@ -293,15 +294,14 @@ local clipboardlist = "~/.config/rofi/clipboardlist.sh"
 local powermenu = "~/.config/hypr/scripts/powermenu.sh"
 local volume = "~/.config/hypr/scripts/volume.sh"
 
-
-local noctalia_ipc = "qs -c noctalia-shell ipc call"
-
 -- local wallpapermenu = "~/.config/rofi/wallpaper.sh"
-local wallpapermenu = noctalia_ipc .. " wallpaper toggle"
+local wallpapermenu = "noctalia msg panel-toggle wallpaper"
 
-local notification_menu = noctalia_ipc .. " notifications toggleHistory"
-local notification_toggle = noctalia_ipc .. " notifications toggleDND"
-local notification_clear = noctalia_ipc .. " notifications clear"
+local notification_menu = "noctalia msg panel-toggle control-center notifications"
+local notification_clear = "noctalia msg notification-clear-history"
+local notification_toggle = "noctalia msg notification-dnd-toggle"
+
+local media_menu = "noctalia msg panel-toggle control-center media"
 
 local brightness = "~/.config/hypr/scripts/brightness.sh"
 local lockscreen = "hyprlock"
@@ -316,7 +316,7 @@ local editorEverywhere =  "emacsclient --eval '(thanos/type)'"
 
 local browser = "uwsm-app -- zen-browser"
 -- local help_keybind = "~/.config/hypr/scripts/show_keybind.sh"
-local help_keybind = noctalia_ipc .. " plugin:keybind-cheatsheet toggle"
+local help_keybind = "noctalia msg panel-toggle kenn/keybind-cheatsheet:cheatsheet"
 local screenshot = "~/.config/hypr/scripts/screenshot.sh"
 local screenrecord = "~/.config/hypr/scripts/screenrecord.sh"
 local screenrecordMenu = "~/.config/hypr/scripts/screenrecord-menu.sh"
@@ -340,6 +340,7 @@ hl.bind("SUPER + SHIFT + COMMA", hl.dsp.exec_cmd(help_keybind), { description = 
 hl.bind("SUPER + N", hl.dsp.exec_cmd(notification_menu), { description = "NotificationMenu" })
 hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd(notification_toggle), { description = "NotificationDNDToggle" })
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(notification_clear), { description = "NotificationClear" })
+hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd(media_menu), { description = "MediaMenu" })
 
 hl.bind("SUPER + C", hl.dsp.exec_cmd(colorpicker), { description = "ColorPicker" })
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd(suspend), { description = "Suspend" })
@@ -379,11 +380,11 @@ local function zoom(offset)
     hl.config({ cursor = { zoom_factor = current } })
 end
 
-hl.bind("SUPER + Z", zoom)
-hl.bind("SUPER + mouse_up", function()
+hl.bind("SUPER + Z", zoom, { description = "Toggle zoom" })
+hl.bind("SUPER + mouse_down", function()
     zoom(-1)
 end, { description = "ZoomIn" })
-hl.bind("SUPER + mouse_down", function()
+hl.bind("SUPER + mouse_up", function()
     zoom(1)
 end, { description = "ZoomOut" })
 
@@ -412,6 +413,7 @@ hl.bind("SUPER + SHIFT + CTRL + W", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"), { 
 
 hl.bind("SUPER + Q", hl.dsp.window.close(), { description = "Kill Active"})
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/window-pop.sh"), { description = "Pop window" })
+hl.bind("SUPER + CTRL+ SPACE", hl.dsp.window.pin(), { description = "Pin window" })
 hl.bind("SUPER + SHIFT + SPACE", hl.dsp.layout("togglesplit"), { description = "Toggle window split" })
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }), { description = "Full screen" })
 hl.bind("SUPER + ALT + F", hl.dsp.window.fullscreen_state({ internal = 0, client = 2 }), { description = "Tiled full screen" })
