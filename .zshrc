@@ -83,6 +83,7 @@ esac
 
 # Mise
 eval "$(mise activate)"
+export MISE_DISABLE_TOOLS="ruby"
 
 # bun completions
 [ -s "/home/croy/.bun/_bun" ] && source "/home/croy/.bun/_bun"
