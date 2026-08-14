@@ -8,8 +8,8 @@ yay -S kanata
 sudo groupadd uinput
 
 # Add your user to the input and the uniput group
-sudo usermod -aG iput $USER
-sudo usermod -aG uiput $USER
+sudo usermod -aG input $USER
+sudo usermod -aG uinput $USER
 
 # Make sure th uinput device file has the right permissions.
 echo "KERNEL=='uinput', MODE='0660', GROUP='uinput', OPTIONS+='static_node=uinput'" | sudo tee /etc/udev/rules.d/99-input.rules
