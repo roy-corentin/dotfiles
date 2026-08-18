@@ -88,17 +88,15 @@ hl.exec_cmd("hyprshade auto")
 
 hl.exec_cmd("hypridle")
 
--- hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
-hl.exec_cmd("/usr/lib/polkit-1/polkitd")
+-- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
+hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 
 hl.exec_cmd("wl-paste --type text --watch cliphist store")
 hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
-hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
-
 end)
 
-require("colors")
+require("noctalia").apply_theme()
 
 hl.config({
   input = {
@@ -274,7 +272,6 @@ hl.window_rule({ workspace = 3, match = { class = "emacs", title = ".*GNU Emacs.
 hl.window_rule({ workspace = "special:scratchpad", match = { class = "deezer-desktop" }, tag = "+floating-window" })
 
 hl.window_rule({ match = { title = "WebcamOverlay" }, float = true, pin = true, no_initial_focus = true, no_dim = true, move = { "(monitor_w-window_w-10)", "(monitor_h-window-h-10)"  } })
-hl.window_rule({ match = { title = "Seekey" }, no_initial_focus = true, no_blur = true, border_size = 0 })
 
 hl.window_rule({ match = { class = ".*" }, opaque = 1, idle_inhibit = "fullscreen" })
 hl.window_rule({ match = { class = "^(kitty|Alacritty|com.mitchellh.ghostty)$" }, opaque = 0 })
@@ -335,7 +332,8 @@ hl.bind("SUPER + V", hl.dsp.exec_cmd(clipboardlist), { description = "Open clipb
 hl.bind("SUPER + SHIFT + I", hl.dsp.exec_cmd(editorEverywhere), { description = "Editor for every text" })
 
 hl.bind("SUPER + D", hl.dsp.exec_cmd(appmenu), { description = "AppMenu" })
-hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
+--- hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
+hl.bind("SUPER + X", hl.dsp.exec_cmd("noctalia msg panel-toggle session"), { description = "PowerMenu" })
 hl.bind("SUPER + W", hl.dsp.exec_cmd(wallpapermenu), { description = "WallpaperMenu" })
 hl.bind("SUPER + SHIFT + COMMA", hl.dsp.exec_cmd(help_keybind), { description = "HelpMenu" })
 hl.bind("SUPER + N", hl.dsp.exec_cmd(notification_menu), { description = "NotificationMenu" })

@@ -1,29 +1,27 @@
-# Use powerline
-USE_POWERLINE="true"
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
-
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
 # Source other config file inspired from manjaro
-source "$HOME/.zsh-manjaro-config"
+# source "$HOME/.zsh-manjaro-config"
 source "$HOME/.zsh-plugins"
 source "$HOME/.zsh-keybinding"
 
 # Use 256 colors and UNICODE.
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
+# Completions
+autoload -U compinit colors
+compinit -d
+colors
+zstyle ':completion:*' menu select # Highlight menu selection
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zhistory
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+setopt extendedglob         # Extended globbing. Allows using regular expressions with *
 setopt appendhistory        # Immediately append history instead of overwriting
 setopt sharehistory         # History shared between term
 setopt hist_ignore_space    # Ignore command with spaces
@@ -33,8 +31,8 @@ setopt hist_save_no_dups    # Do not save duplicates
 setopt hist_find_no_dups
 
 # File and Dir colors for ls and other outputs
-export LS_OPTIONS='--color=auto'
-eval "$(dircolors -b)"
+# export LS_OPTIONS='--color=auto'
+# eval "$(dircolors -b)"
 
 # Path
 # local bin
@@ -42,7 +40,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # export local gem
 export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
-# export GEM_PATH="$GEM_HOME/gems:$HOME/.local/share/gem/ruby/3.3.0/gems"
+export GEM_PATH="$GEM_HOME/gems"
 export PATH="$GEM_HOME/bin:$PATH"
 
 export EDITOR=/usr/bin/nano
@@ -82,24 +80,20 @@ esac
 # pnpm end
 
 # Mise
-eval "$(mise activate)"
+eval "$(mise activate zsh)"
 export MISE_DISABLE_TOOLS="ruby"
-
-# bun completions
-[ -s "/home/croy/.bun/_bun" ] && source "/home/croy/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-source "$HOME/Applications/Hyprland/hyprctl/hyprctl.zsh"
+# bun completions
+[ -s "/home/croy/.bun/_bun" ] && source "/home/croy/.bun/_bun"
 
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
 # Fzf
 eval "$(fzf --zsh)"
-
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
@@ -112,8 +106,9 @@ _fzf_comprun() {
      export|unset) fzf --preview "eval 'echo \$' {}" "$@" ;;
      ssh) fzf --preview 'dig {}' "$@" ;;
      *) fzf --preview "--preview 'bat -n —-color=always —-line-range :500 {}'" "$@" ;;
-esac
+ esac
 }
+
 # Starship
 eval "$(starship init zsh)"
 

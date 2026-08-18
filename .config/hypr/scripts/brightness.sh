@@ -10,11 +10,11 @@ notify_user() {
 }
 
 inc_brightness() {
-    brightnessctl -e4 -n2 set 5%+ && notify_user
+    brightnessctl -e4 -n2 set 5%+
 }
 
 dec_brightness() {
-    brightnessctl -e4 -n2 set 5%- && notify_user
+    brightnessctl -e4 -n2 set 5%-
 }
 
 if [[ "$1" == "--get" ]]; then

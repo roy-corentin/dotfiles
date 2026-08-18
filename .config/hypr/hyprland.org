@@ -29,7 +29,7 @@
   - [[#clipboard][Clipboard]]
   - [[#gtk][Gtk]]
   - [[#hyprcursor][Hyprcursor]]
-- [[#color][COLOR]]
+- [[#theme][THEME]]
 - [[#input][INPUT]]
 - [[#general][GENERAL]]
 - [[#gestures][GESTURES]]
@@ -193,6 +193,7 @@ If you want to mirror a display, add a =,mirror,[NAME]= at the end of the monito
 #+end_src
 
 ** Wallpaper
+Managed by Noctalia actually
 #+begin_src lua :tangle no
     hl.exec_cmd("hyprpaper")
 #+end_src
@@ -241,10 +242,10 @@ Make sure you have installed =blueman=
 #+end_src
 
 ** Polkit
-Be careful to use the appropriate =polkit= and the right =path=
+Start a graphical authentication agent. The system =polkitd= daemon is managed separately.
 #+begin_src lua
-  -- hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
-  hl.exec_cmd("/usr/lib/polkit-1/polkitd")
+  -- hl.exec_cmd("/usr/lib/polkit-1/polkitd")
+  hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 #+end_src
 
 ** Network-Manager
@@ -265,16 +266,17 @@ Make sure you have installed =network-manager-applet=
 #+end_src
 
 ** Hyprcursor
-#+begin_src lua
+#+begin_src lua :tangle no
   hl.exec_cmd("hyprctl setcursor Qogir-Dark 24")
 #+end_src
 
 #+begin_src lua
   end)
 #+end_src
-* COLOR
+* THEME
+For Noctalia Color templates
 #+begin_src lua
-  require("colors")
+require("noctalia").apply_theme()
 #+end_src
 * INPUT
 Configure mouse and touchpad here
@@ -573,7 +575,8 @@ the more passes, the more you can up the blur_size without noticing artifacts.
 ** Menu
 #+begin_src lua
   hl.bind("SUPER + D", hl.dsp.exec_cmd(appmenu), { description = "AppMenu" })
-  hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
+  --- hl.bind("SUPER + X", hl.dsp.exec_cmd(powermenu), { description = "PowerMenu" })
+  hl.bind("SUPER + X", hl.dsp.exec_cmd("noctalia msg panel-toggle session"), { description = "PowerMenu" })
   hl.bind("SUPER + W", hl.dsp.exec_cmd(wallpapermenu), { description = "WallpaperMenu" })
   hl.bind("SUPER + SHIFT + COMMA", hl.dsp.exec_cmd(help_keybind), { description = "HelpMenu" })
   hl.bind("SUPER + N", hl.dsp.exec_cmd(notification_menu), { description = "NotificationMenu" })

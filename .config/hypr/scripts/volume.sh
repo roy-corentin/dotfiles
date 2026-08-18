@@ -3,7 +3,6 @@
 ICONS_DIR="$HOME/.config/icons"
 
 get_volume() {
-    # volume=$(amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]')
     echo $(pulsemixer --get-volume | awk '{print $1}')
 }
 
@@ -27,22 +26,14 @@ notify_user() {
 }
 
 inc_volume() {
-    # amixer -Mq set Master,0 5%+ unmute && notify_user
-    pulsemixer --unmute --change-volume +5 && notify_user
+    pulsemixer --unmute --change-volume +5
 }
 
 dec_volume() {
-    # amixer -Mq set Master,0 5%- unmute && notify_user
-    pulsemixer --unmute --change-volume -5 && notify_user
+    pulsemixer --unmute --change-volume -5
 }
 
 toggle_mute() {
-    # amixer get Master | grep '\[on\]' &>/dev/null
-    # if [[ "$?" == 0 ]]; then
-    # 	amixer set Master toggle && notify-send -h string:synchronous:volume -u low -i "$ICONS_DIR/volume-mute.png" "Mute"
-    # else
-    # 	amixer set Master toggle && get_icon && notify-send -h string:synchronous:volume -u low -i "$icon" "Unmute"
-    # fi
     pulsemixer --toggle-mute
 }
 
