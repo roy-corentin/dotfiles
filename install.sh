@@ -8,6 +8,9 @@ echo "Done."
 # Give people a chance to retry running the installation
 trap 'echo "installation failed! You can retry"' ERR
 
+echo "Install yay"
+sudo pacman -S yay
+
 yay -S --needed gum
 
 echo "Install Lib"
