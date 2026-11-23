@@ -14,7 +14,7 @@ menu() {
     fi
   fi
 
-  echo -e "$options" | ~/.config/hypr/scripts/walker-menu.sh --dmenu --width 295 --minheight 1 --maxheight 600 -p "$prompt…" "${args[@]}" 2>/dev/null
+  echo -e "$options" | vicinae dmenu --width 295 -height 500 -p "$prompt…" "${args[@]}" 2>/dev/null
 }
 
 get_webcam_list() {
